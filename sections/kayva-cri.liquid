@@ -1,0 +1,84 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-cri-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.kv-cri-content{display:flex;flex-direction:column;gap:20px;}
+.kv-cri-heading{font-family:var(--kayva-font);font-weight:{{section.settings.heading_weight}};font-size:clamp(26px,3.5vw,44px);color:{{section.settings.heading_color}};line-height:1.15;}
+.kv-cri-body{font-family:var(--kayva-font);font-size:15px;color:{{section.settings.body_color}};line-height:1.75;}
+.kv-cri-body p+p{margin-top:14px;}
+.kv-swatches{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.kv-swatch{display:flex;flex-direction:column;gap:10px;}
+.kv-swatch__img{overflow:hidden;aspect-ratio:{{section.settings.swatch_ratio}};}
+.kv-swatch__img img{width:100%;height:100%;object-fit:cover;display:block;}
+.kv-swatch__color{width:100%;height:100%;}
+.kv-swatch__name{font-family:var(--kayva-font);font-size:14px;font-weight:600;color:{{section.settings.heading_color}};text-align:center;}
+.kv-swatch__sub{font-family:var(--kayva-font);font-size:12px;color:var(--kayva-soft-brown);text-align:center;}
+@media(max-width:768px){.kv-cri-grid{grid-template-columns:1fr;gap:48px;}}
+</style>
+
+<section style="background:{{section.settings.bg}};padding:80px 0;">
+  <div class="kayva-page-width">
+    <div class="kv-cri-grid">
+      <div class="kv-cri-content">
+        {%- if section.settings.eyebrow != blank -%}
+          <span style="font-family:var(--kayva-font);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:{{section.settings.eyebrow_color}};">{{section.settings.eyebrow}}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="kv-cri-heading">{{section.settings.heading}}</h2>{%- endif -%}
+        {%- if section.settings.body != blank -%}<div class="kv-cri-body">{{section.settings.body}}</div>{%- endif -%}
+        {%- if section.settings.btn_label != blank -%}
+          <div><a href="{{section.settings.btn_url}}" class="kayva-btn kayva-btn--primary">{{section.settings.btn_label}}</a></div>
+        {%- endif -%}
+      </div>
+      <div class="kv-swatches">
+        <div class="kv-swatch">
+          <div class="kv-swatch__img">
+            {%- if section.settings.img1 != blank -%}
+              <img src="{{section.settings.img1 | image_url: width:600}}" alt="{{section.settings.name1}}" loading="lazy">
+            {%- else -%}
+              <div class="kv-swatch__color" style="background:{{section.settings.color1}};"></div>
+            {%- endif -%}
+          </div>
+          <p class="kv-swatch__name">{{section.settings.name1}}</p>
+          <p class="kv-swatch__sub">{{section.settings.sub1}}</p>
+        </div>
+        <div class="kv-swatch">
+          <div class="kv-swatch__img">
+            {%- if section.settings.img2 != blank -%}
+              <img src="{{section.settings.img2 | image_url: width:600}}" alt="{{section.settings.name2}}" loading="lazy">
+            {%- else -%}
+              <div class="kv-swatch__color" style="background:{{section.settings.color2}};"></div>
+            {%- endif -%}
+          </div>
+          <p class="kv-swatch__name">{{section.settings.name2}}</p>
+          <p class="kv-swatch__sub">{{section.settings.sub2}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"KAYVA CRI Comparison","settings":[
+{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Why It Matters"},
+{"type":"textarea","id":"heading","label":"Heading","default":"Most strips in Singapore are Ra80. You'll see the difference."},
+{"type":"select","id":"heading_weight","label":"Heading weight","options":[{"value":"300","label":"Light"},{"value":"400","label":"Regular"},{"value":"600","label":"SemiBold"}],"default":"300"},
+{"type":"richtext","id":"body","label":"Body","default":"<p>CRI measures how accurately a light renders colour. Most generic strips sit at Ra80 — skin looks slightly grey, wood loses its warmth, food looks dull.</p><p>KAYVA is Ra95+ with R9 over 50. It's the same standard used in museums, hotels, and premium restaurants.</p>"},
+{"type":"text","id":"btn_label","label":"Button label","default":"Shop the Range"},
+{"type":"url","id":"btn_url","label":"Button URL"},
+{"type":"header","content":"Swatch 1 — Generic"},
+{"type":"image_picker","id":"img1","label":"Swatch 1 image"},
+{"type":"color","id":"color1","label":"Fallback colour","default":"#A89B7C"},
+{"type":"text","id":"name1","label":"Swatch 1 name","default":"Generic strip"},
+{"type":"text","id":"sub1","label":"Swatch 1 subtitle","default":"Ra80 · dull, flat"},
+{"type":"header","content":"Swatch 2 — KAYVA"},
+{"type":"image_picker","id":"img2","label":"Swatch 2 image"},
+{"type":"color","id":"color2","label":"Fallback colour","default":"#E8B870"},
+{"type":"text","id":"name2","label":"Swatch 2 name","default":"KAYVA"},
+{"type":"text","id":"sub2","label":"Swatch 2 subtitle","default":"Ra95+ · warm, true"},
+{"type":"header","content":"Style"},
+{"type":"select","id":"swatch_ratio","label":"Swatch ratio","options":[{"value":"4 / 3","label":"4:3"},{"value":"1 / 1","label":"1:1"},{"value":"3 / 2","label":"3:2"}],"default":"4 / 3"},
+{"type":"color","id":"bg","label":"Background","default":"#FFFFFF"},
+{"type":"color","id":"eyebrow_color","label":"Eyebrow colour","default":"#B8753A"},
+{"type":"color","id":"heading_color","label":"Heading colour","default":"#3D2A15"},
+{"type":"color","id":"body_color","label":"Body colour","default":"#1F1B16"}
+],"presets":[{"name":"KAYVA CRI Comparison"}]}
+{% endschema %}

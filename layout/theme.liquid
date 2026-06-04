@@ -1,126 +1,138 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#3D2A15">
-
-  <title>
-    {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
-  </title>
-
-  {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
   {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
 
-  <!-- Canonical -->
-  <link rel="canonical" href="{{ canonical_url }}">
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
 
-  <!-- Open Graph -->
-  {% if settings.share_image %}
-    <meta property="og:image" content="{{ settings.share_image | image_url: width: 1200 }}">
-  {% endif %}
-  <meta property="og:title" content="{{ page_title | escape }}">
-  <meta property="og:description" content="{{ page_description | escape }}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="{{ shop.name }}">
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
 
-  <!-- Favicon -->
-  {% if settings.favicon %}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-  {% endif %}
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
 
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    {{ content_for_header }}
+    {% # theme-check-enable RemoteAsset %}
+  </head>
 
-  <!-- CSS -->
-  {{ 'base.css' | asset_url | stylesheet_tag }}
-  {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
-
-  {{ content_for_header }}
-</head>
-
-<body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}--{{ template.suffix }}{% endif %}">
-
-  <!-- Skip to content -->
-  <a href="#main-content" class="visually-hidden">Skip to content</a>
-
-  <!-- Announcement Bar -->
-  {%- if settings.show_announcement and settings.announcement_text != blank -%}
-    <div class="announcement-bar">
-      {%- if settings.announcement_link != blank -%}
-        <a href="{{ settings.announcement_link }}">{{ settings.announcement_text }}</a>
-      {%- else -%}
-        {{ settings.announcement_text }}
-      {%- endif -%}
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
     </div>
-  {%- endif -%}
 
-  <!-- Header -->
-  {%- section 'header' -%}
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
+      (function setHeaderHeighCustomProperties() {
+        /*
+         * Header calculation functions for maintaining CSS variables
+         * Mimic calculateHeaderGroupHeight() in utilities.js
+         */
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
 
-  <!-- Mobile Nav Overlay -->
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <button class="mobile-nav__close" aria-label="Close menu">&#x2715;</button>
-    {%- for link in linklists[settings.main_menu].links -%}
-      <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
-    {%- endfor -%}
-    <div style="margin-top: auto; padding-top: 24px;">
-      {%- if shop.customer_accounts_enabled -%}
-        <a href="/account" class="mobile-nav__link" style="font-size: 14px;">Account</a>
-      {%- endif -%}
-    </div>
-  </nav>
+        if (!header || !headerGroup) return;
 
-  <!-- Cart Drawer -->
-  <div class="cart-drawer__overlay" aria-hidden="true"></div>
-  <div class="cart-drawer" role="dialog" aria-label="Cart" aria-modal="true">
-    <div class="cart-drawer__header">
-      <span class="cart-drawer__title">Cart</span>
-      <button class="cart-drawer__close" data-cart-close aria-label="Close cart">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
-      </button>
-    </div>
-    <div class="cart-drawer__items">
-      <!-- Populated by JS -->
-    </div>
-    <div class="cart-drawer__footer">
-      <div class="cart-drawer__subtotal">
-        <span class="cart-drawer__subtotal-label">Subtotal</span>
-        <span class="cart-drawer__subtotal-value">--</span>
-      </div>
-      <a href="/cart" class="btn btn--primary btn--full">Checkout</a>
-      <p class="cart-drawer__note">Shipping and taxes calculated at checkout.</p>
-    </div>
-  </div>
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
 
-  <!-- Main Content -->
-  <main id="main-content" tabindex="-1">
-    {{ content_for_layout }}
-  </main>
+        // Calculate the total height of the header group
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
 
-  <!-- Footer -->
-  {%- section 'footer' -%}
+        // Check for transparent header special case
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
 
-  <!-- Scripts -->
-  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+        // Set CSS variables
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
 
-  <!-- Cart count init -->
-  <script>
-    fetch('/cart.js').then(r => r.json()).then(cart => {
-      document.querySelectorAll('.cart-count__badge').forEach(el => {
-        el.textContent = cart.item_count;
-        el.style.display = cart.item_count > 0 ? 'flex' : 'none';
-      });
-    });
-  </script>
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
 
-</body>
+        /**
+         * Updates CSS custom properties for transparent header offset calculation
+         * Mimic updateTransparentHeaderOffset() in utilities.js
+         */
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+  </body>
 </html>

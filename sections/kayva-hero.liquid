@@ -1,0 +1,60 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kayva-hero{position:relative;min-height:{{section.settings.min_height}}px;display:flex;align-items:center;overflow:hidden;}
+.kayva-hero__media{position:absolute;inset:0;z-index:0;}
+.kayva-hero__media img,.kayva-hero__media video{width:100%;height:100%;object-fit:cover;object-position:{{section.settings.focal_point}};}
+.kayva-hero__overlay{position:absolute;inset:0;background:{{section.settings.overlay_color}};opacity:{{section.settings.overlay_opacity|divided_by:100.0}};z-index:1;}
+.kayva-hero__content{position:relative;z-index:2;width:100%;padding:80px 0;}
+.kayva-hero__inner{max-width:var(--kayva-page-width);margin:0 auto;padding:0 16px;text-align:{{section.settings.text_align}};{%if section.settings.text_align=='center'%}display:flex;flex-direction:column;align-items:center;{%endif%}}
+.kayva-hero__heading{font-family:var(--kayva-font);font-weight:300;font-size:clamp(38px,6vw,70px);letter-spacing:-0.5px;line-height:1.05;color:{{section.settings.text_color}};max-width:800px;margin-bottom:18px;}
+.kayva-hero__sub{font-size:clamp(15px,1.5vw,18px);color:{{section.settings.text_color}};opacity:.8;max-width:520px;margin-bottom:32px;line-height:1.65;font-family:var(--kayva-font);}
+.kayva-hero__eyebrow{font-family:var(--kayva-font);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:{{section.settings.text_color}};opacity:.7;margin-bottom:14px;}
+.kayva-hero__ctas{display:flex;gap:12px;flex-wrap:wrap;{%if section.settings.text_align=='center'%}justify-content:center;{%endif%}}
+</style>
+
+<section class="kayva-hero" id="kayva-hero-{{ section.id }}">
+  {%- if section.settings.image != blank -%}
+    <div class="kayva-hero__media">
+      <img src="{{ section.settings.image | image_url: width: 2000 }}"
+           srcset="{{ section.settings.image | image_url: width: 800 }} 800w,{{ section.settings.image | image_url: width: 1400 }} 1400w,{{ section.settings.image | image_url: width: 2000 }} 2000w"
+           sizes="100vw" alt="{{ section.settings.image.alt | escape }}" loading="eager" fetchpriority="high">
+    </div>
+  {%- endif -%}
+  {%- if section.settings.image != blank -%}<div class="kayva-hero__overlay"></div>{%- endif -%}
+  <div class="kayva-hero__content">
+    <div class="kayva-hero__inner">
+      {%- if section.settings.eyebrow != blank -%}<p class="kayva-hero__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h1 class="kayva-hero__heading">{{ section.settings.heading }}</h1>{%- endif -%}
+      {%- if section.settings.subtext != blank -%}<p class="kayva-hero__sub">{{ section.settings.subtext }}</p>{%- endif -%}
+      <div class="kayva-hero__ctas">
+        {%- if section.settings.btn1_label != blank -%}
+          <a href="{{ section.settings.btn1_url }}" class="kayva-btn kayva-btn--ghost">{{ section.settings.btn1_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}
+          <a href="{{ section.settings.btn2_url }}" style="font-family:var(--kayva-font);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:{{section.settings.text_color}};opacity:.8;align-self:center;border-bottom:1px solid currentColor;padding-bottom:2px;text-decoration:none;">{{ section.settings.btn2_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"KAYVA Hero","settings":[
+{"type":"image_picker","id":"image","label":"Background image"},
+{"type":"select","id":"focal_point","label":"Focal point","options":[{"value":"center center","label":"Centre"},{"value":"top center","label":"Top"},{"value":"bottom center","label":"Bottom"}],"default":"center center"},
+{"type":"color","id":"overlay_color","label":"Overlay colour","default":"#1F1B16"},
+{"type":"range","id":"overlay_opacity","label":"Overlay opacity %","min":0,"max":80,"step":5,"default":35},
+{"type":"header","content":"Content"},
+{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Ra95+ Lighting"},
+{"type":"textarea","id":"heading","label":"Heading","default":"Light that renders colour the way your home deserves."},
+{"type":"textarea","id":"subtext","label":"Subtext","default":"Properly specified, fairly priced, designed for Singapore homes."},
+{"type":"color","id":"text_color","label":"Text colour","default":"#F5EFE5"},
+{"type":"select","id":"text_align","label":"Alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Centre"}],"default":"left"},
+{"type":"header","content":"Buttons"},
+{"type":"text","id":"btn1_label","label":"Button 1 label","default":"Shop Now"},
+{"type":"url","id":"btn1_url","label":"Button 1 URL"},
+{"type":"text","id":"btn2_label","label":"Button 2 label","default":"Learn About CRI"},
+{"type":"url","id":"btn2_url","label":"Button 2 URL"},
+{"type":"range","id":"min_height","label":"Min height (px)","min":400,"max":900,"step":50,"default":700}
+],"presets":[{"name":"KAYVA Hero"}]}
+{% endschema %}

@@ -1,0 +1,88 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-showcase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:{{section.settings.gap}}px;}
+.kv-showcase-card__image{aspect-ratio:{{section.settings.image_ratio}};}
+@media(max-width:600px){.kv-showcase-grid{grid-template-columns:1fr;}}
+</style>
+
+<section style="background:{{section.settings.bg}};padding:80px 0;" id="kv-showcase-{{section.id}}">
+  <div class="kayva-page-width">
+    {%- if section.settings.heading != blank -%}
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:16px;">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}<span class="kayva-eyebrow">{{section.settings.eyebrow}}</span>{%- endif -%}
+          <h2 class="kayva-heading">{{section.settings.heading}}</h2>
+        </div>
+        {%- if section.settings.view_all != blank -%}
+          <a href="{{section.settings.view_all_url}}" style="font-family:var(--kayva-font);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--kayva-warm-brown);border-bottom:1px solid currentColor;padding-bottom:2px;white-space:nowrap;text-decoration:none;">{{section.settings.view_all}}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="kv-showcase-grid">
+      {%- for block in section.blocks -%}
+        {%- assign sp = all_products[block.settings.product] -%}
+        <div class="kayva-showcase-card" {{block.shopify_attributes}}>
+          {%- if block.settings.badge != blank -%}<span class="kayva-showcase-card__badge">{{block.settings.badge}}</span>{%- endif -%}
+          <a href="{{sp.url}}" class="kayva-showcase-card__image kv-showcase-card__image">
+            <div class="kayva-showcase-card__image-bg"></div>
+            {%- if block.settings.image != blank -%}
+              <img src="{{block.settings.image | image_url: width:800}}" alt="{{sp.title | escape}}" loading="lazy" style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;">
+            {%- elsif sp.featured_image -%}
+              <img src="{{sp.featured_image | image_url: width:800}}" alt="{{sp.featured_image.alt | escape}}" loading="lazy" style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;">
+            {%- endif -%}
+          </a>
+          <div class="kayva-showcase-card__body">
+            <a href="{{sp.url}}" class="kayva-showcase-card__title">{{sp.title}}</a>
+            {%- if block.settings.desc != blank -%}
+              <p class="kayva-showcase-card__desc">{{block.settings.desc}}</p>
+            {%- endif -%}
+            {%- unless sp.has_only_default_variant -%}
+              <div class="kayva-showcase-card__variants">
+                {%- for v in sp.variants limit:4 -%}
+                  <a href="{{sp.url}}?variant={{v.id}}" class="kayva-showcase-card__pill">{{v.title}}</a>
+                {%- endfor -%}
+                {%- if sp.variants.size > 4 -%}
+                  <span class="kayva-showcase-card__pill" style="border-style:dashed;color:var(--kayva-soft-brown);">+{{sp.variants.size | minus:4}} more</span>
+                {%- endif -%}
+              </div>
+            {%- endunless -%}
+          </div>
+          <div class="kayva-showcase-card__footer">
+            <div>
+              {%- if sp.price_varies -%}<span class="kayva-showcase-card__from">from</span>{%- endif -%}
+              <span class="kayva-showcase-card__price">{{sp.price_min | money}}</span>
+            </div>
+            <a href="{{sp.url}}" class="kayva-showcase-card__view">
+              {{block.settings.view_label | default:'View'}}
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{"name":"KAYVA Product Showcase","max_blocks":4,"settings":[
+{"type":"text","id":"eyebrow","label":"Eyebrow","default":"The Range"},
+{"type":"text","id":"heading","label":"Heading","default":"Shop by product family."},
+{"type":"text","id":"view_all","label":"View all label","default":"View all"},
+{"type":"url","id":"view_all_url","label":"View all URL"},
+{"type":"color","id":"bg","label":"Background","default":"#FFFFFF"},
+{"type":"range","id":"gap","label":"Gap (px)","min":0,"max":48,"step":4,"default":20},
+{"type":"select","id":"image_ratio","label":"Image ratio","options":[{"value":"4 / 3","label":"4:3"},{"value":"1 / 1","label":"1:1"},{"value":"3 / 2","label":"3:2"}],"default":"4 / 3"}
+],"blocks":[{"type":"card","name":"Product Card","settings":[
+{"type":"product","id":"product","label":"Product"},
+{"type":"text","id":"badge","label":"Badge (e.g. STRIP, GU10)"},
+{"type":"image_picker","id":"image","label":"Custom image"},
+{"type":"textarea","id":"desc","label":"Description"},
+{"type":"text","id":"view_label","label":"View label","default":"View"}
+]}],"presets":[{"name":"KAYVA Product Showcase","blocks":[
+{"type":"card","settings":{"badge":"STRIP","desc":"10-metre dotless COB at Ra95+. Warm, even, shadow-free."}},
+{"type":"card","settings":{"badge":"GU10","desc":"Switch on for warm. Flip twice for crisp."}},
+{"type":"card","settings":{"badge":"GU10","desc":"Fixed CCT, fully dimmable. Glass body, Ra95+."}},
+{"type":"card","settings":{"badge":"E27","desc":"For pendants and floor lamps. 9W, Ra95+, dimmable."}}
+]}]}
+{% endschema %}

@@ -1,256 +1,259 @@
-<style>
-  .collection-page { padding: var(--spacing-xl) 0; }
-  .collection-page__hero {
-    background: var(--color-cream);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-  }
-  .collection-page__layout {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: var(--spacing-xl);
-    align-items: start;
-  }
 
-  .collection-filters {
-    position: sticky;
-    top: 100px;
-  }
-  .filter-group {
-    border-bottom: 1px solid var(--color-line);
-    padding: var(--spacing-sm) 0;
-  }
-  .filter-group__title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-dark-brown);
-    margin-bottom: 12px;
-  }
-  .filter-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    font-size: 13px;
-    color: var(--color-ink);
-    cursor: pointer;
-  }
-  .filter-option input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: var(--color-dark-brown);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
 
-  .collection-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--color-line);
-  }
-  .collection-count {
-    font-size: 13px;
-    color: var(--color-soft-brown);
-  }
-  .collection-sort {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .collection-sort label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-soft-brown);
-  }
-  .collection-sort select {
-    border: 1px solid var(--color-line);
-    padding: 8px 12px;
-    font-size: 13px;
-    color: var(--color-dark-brown);
-    background: var(--color-white);
-    cursor: pointer;
-    outline: none;
-  }
+<script
+  src="{{ 'results-list.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
 
-  .collection-grid {
-    display: grid;
-    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
-    gap: var(--grid-gutter);
+{% javascript %}
+  const url = new URL(window.location.href);
+  if (url.hash) {
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        const card = document.getElementById(url.hash.slice(1));
+        if (card) {
+          card.scrollIntoView({ behavior: 'instant' });
+        }
+      },
+      { once: true }
+    );
   }
+{% endjavascript %}
 
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    margin-top: var(--spacing-xl);
-  }
-  .pagination__item {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    color: var(--color-dark-brown);
-    border: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .pagination__item:hover,
-  .pagination__item.is-current {
-    border-color: var(--color-dark-brown);
-  }
-  .pagination__item.is-current { font-weight: 600; }
+{% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<results-list
+  class="section product-grid-container color-{{ section.settings.color_scheme }}"
+  style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
+  section-id="{{ section.id }}"
+  infinite-scroll="{{ section.settings.enable_infinite_scroll }}"
+>
+  {% render 'skip-to-content-link', href: '#ResultsList', text: 'accessibility.skip_to_results_list' %}
 
-  @media (max-width: 1024px) {
-    .collection-page__layout { grid-template-columns: 1fr; }
-    .collection-filters { display: none; }
-    .collection-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 480px) {
-    .collection-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  }
-</style>
+  <div
+    class="collection-wrapper grid gap-style{% if section.settings.product_grid_width == 'full-width' %} collection-wrapper--grid-full-width{% endif %}"
+  >
+    {% content_for 'block',
+      type: 'filters',
+      id: 'filters',
+      results: collection,
+      results_size: collection.products_count
+    %}
 
-<div class="collection-page__hero">
-  <div class="page-width">
-    <p class="label" style="margin-bottom:12px;">{{ section.settings.eyebrow | default: 'Shop' }}</p>
-    <h1 class="display-headline" style="font-size:clamp(32px,4vw,52px);">{{ collection.title }}</h1>
-    {%- if collection.description != blank and section.settings.show_description -%}
-      <p style="font-size:15px; color:var(--color-ink); opacity:0.7; max-width:600px; margin:16px auto 0; line-height:1.7;">
-        {{ collection.description | strip_html }}
-      </p>
-    {%- endif -%}
+    {% assign products_per_page = 24 %}
+
+    {% if section.settings.enable_infinite_scroll == false %}
+      {% assign products_per_page = section.settings.products_per_page %}
+    {% endif %}
+
+    {% paginate collection.products by products_per_page %}
+      {% capture children %}
+        {% for product in collection.products %}
+          <li
+            id="{{ section.id }}-{{ product.id }}"
+            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+            data-page="{{ paginate.current_page }}"
+            data-product-id="{{ product.id }}"
+            ref="cards[]"
+          >
+            {% # theme-check-disable %}
+            {% content_for 'block', type: '_product-card', id: 'product-card', closest.product: product %}
+            {% # theme-check-enable %}
+          </li>
+        {% endfor %}
+      {% endcapture %}
+
+      {% render 'product-grid',
+        section: section,
+        children: children,
+        products: collection.products,
+        paginate: paginate,
+        enable_infinite_scroll: section.settings.enable_infinite_scroll
+      %}
+    {% endpaginate %}
   </div>
-</div>
-
-{%- paginate collection.products by section.settings.products_per_page -%}
-<section class="collection-page">
-  <div class="page-width">
-    <form data-filter-form>
-      <div class="collection-page__layout">
-
-        {%- if section.settings.show_filters -%}
-          <aside class="collection-filters">
-            <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-dark-brown); margin-bottom:var(--spacing-sm);">Filter</p>
-            {%- for filter in collection.filters -%}
-              <div class="filter-group">
-                <p class="filter-group__title">{{ filter.label }}</p>
-                {%- for value in filter.values -%}
-                  <label class="filter-option">
-                    <input type="checkbox"
-                           name="{{ value.param_name }}"
-                           value="{{ value.value }}"
-                           {% if value.active %}checked{% endif %}>
-                    {{ value.label }}
-                    <span style="color:var(--color-soft-brown); font-size:11px;">({{ value.count }})</span>
-                  </label>
-                {%- endfor -%}
-              </div>
-            {%- endfor -%}
-            {%- if collection.filters.size > 0 -%}
-              <a href="{{ collection.url }}" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-soft-brown); margin-top:16px; display:block;">Clear all</a>
-            {%- endif -%}
-          </aside>
-        {%- endif -%}
-
-        <div>
-          <div class="collection-toolbar">
-            <span class="collection-count">{{ collection.products_count }} products</span>
-            <div class="collection-sort">
-              <label for="sort-{{ section.id }}">Sort by</label>
-              <select id="sort-{{ section.id }}" data-sort-by name="sort_by">
-                <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Featured</option>
-                <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Price: Low to high</option>
-                <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Price: High to low</option>
-                <option value="title-ascending"{% if collection.sort_by == 'title-ascending' %} selected{% endif %}>Alphabetical</option>
-                <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Newest</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="collection-grid">
-            {%- for product in collection.products -%}
-              {%- render 'product-card', product: product -%}
-            {%- else -%}
-              <p style="grid-column:1/-1; color:var(--color-soft-brown); font-size:14px;">No products found.</p>
-            {%- endfor -%}
-          </div>
-
-          {%- if paginate.pages > 1 -%}
-            <nav class="pagination" aria-label="Pagination">
-              {%- if paginate.previous -%}
-                <a href="{{ paginate.previous.url }}" class="pagination__item">&larr;</a>
-              {%- endif -%}
-              {%- for part in paginate.parts -%}
-                {%- if part.is_link -%}
-                  <a href="{{ part.url }}" class="pagination__item">{{ part.title }}</a>
-                {%- else -%}
-                  <span class="pagination__item is-current">{{ part.title }}</span>
-                {%- endif -%}
-              {%- endfor -%}
-              {%- if paginate.next -%}
-                <a href="{{ paginate.next.url }}" class="pagination__item">&rarr;</a>
-              {%- endif -%}
-            </nav>
-          {%- endif -%}
-        </div>
-
-      </div>
-    </form>
-  </div>
-</section>
-{%- endpaginate -%}
+</results-list>
 
 {% schema %}
 {
-  "name": "Collection Main",
-  "tag": "section",
+  "name": "t:names.collection_container",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
   "settings": [
     {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow label",
-      "default": "Shop"
+      "type": "select",
+      "id": "layout_type",
+      "label": "t:settings.type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:options.grid"
+        },
+        {
+          "value": "organic",
+          "label": "t:options.editorial"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "select",
+      "id": "product_card_size",
+      "label": "t:settings.card_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:options.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:options.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:options.large"
+        },
+        {
+          "value": "extra-large",
+          "label": "t:options.extra_large"
+        }
+      ],
+      "default": "medium",
+      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "select",
+      "id": "mobile_product_card_size",
+      "label": "t:settings.mobile_card_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:options.small"
+        },
+        {
+          "value": "large",
+          "label": "t:options.large"
+        }
+      ],
+      "default": "small"
     },
     {
       "type": "checkbox",
-      "id": "show_description",
-      "label": "Show collection description",
+      "id": "enable_infinite_scroll",
+      "label": "t:settings.auto_load_products",
       "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_filters",
-      "label": "Show filter sidebar",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "label": "Columns on desktop",
-      "min": 2,
-      "max": 5,
-      "step": 1,
-      "default": 3
     },
     {
       "type": "range",
       "id": "products_per_page",
-      "label": "Products per page",
+      "label": "t:settings.products_per_page",
       "min": 8,
-      "max": 48,
+      "max": 36,
       "step": 4,
-      "default": 12
+      "default": 24,
+      "visible_if": "{{ section.settings.enable_infinite_scroll == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "select",
+      "id": "product_grid_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "centered",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_on_mobile",
+      "label": "t:settings.full_width_on_mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.product_grid_width != 'full-width' }}"
+    },
+    {
+      "type": "range",
+      "id": "columns_gap_horizontal",
+      "label": "t:settings.horizontal_gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "columns_gap_vertical",
+      "label": "t:settings.vertical_gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 8
     }
-  ]
+  ],
+  "presets": []
 }
 {% endschema %}
