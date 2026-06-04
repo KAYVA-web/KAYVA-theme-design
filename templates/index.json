@@ -88,8 +88,9 @@
         "card-2": {
           "type": "product_card",
           "settings": {
-            "product": "",
+            "product": "aerotilt-gu10-holder",
             "badge": "GU10",
+            "custom_image": "shopify://shop_images/LUMIRA.jpg",
             "description": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
             "view_label": "View"
           }
@@ -167,7 +168,7 @@
         "eyebrow": "Browse",
         "heading": "Shop by category.",
         "text_align": "left",
-        "background_color": "#ffffff",
+        "background_color": "#5b5555",
         "columns": 3,
         "grid_gap": 16,
         "image_ratio": "4 / 3",
