@@ -21,6 +21,36 @@
     "announcement_text": "Free shipping on orders above $80 — Singapore delivery only.",
     "main_menu": "main-menu",
     "instagram_url": "",
-    "facebook_url": ""
+    "facebook_url": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 120,
+          "menu": "main-menu",
+          "show_search": true,
+          "background_color": "#ffffff",
+          "text_color": "#1f1b16",
+          "hover_color": "#b8753a",
+          "border_color": "#e8e0d2",
+          "transparent_on_hero": false,
+          "transparent_text_color": "#f5efe5"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "Ra95+ lighting, properly specified, designed for Singapore homes.",
+          "show_social": true,
+          "footer_title_1": "Shop",
+          "footer_menu_1": "footer",
+          "footer_title_2": "Learn",
+          "footer_menu_2": "kayva-footer-learn",
+          "footer_title_3": "Help",
+          "footer_menu_3": "kavya-footer-company"
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
