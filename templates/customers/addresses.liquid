@@ -1,17 +1,113 @@
-{% layout 'theme' %}
 <section class="section">
   <div class="page-width--narrow" style="max-width:640px;">
-    <h1 class="section-heading" style="margin-bottom:var(--spacing-xl);">Addresses</h1>
-    {%- for address in customer.addresses -%}
-      <div style="border:1px solid var(--color-line); padding:20px; margin-bottom:16px; font-size:14px; color:var(--color-ink); line-height:1.7;">
-        {{ address | format_address }}
-        {%- if address == customer.default_address -%}
-          <span class="badge" style="margin-left:8px;">Default</span>
-        {%- endif -%}
+
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--spacing-xl); flex-wrap:wrap; gap:12px;">
+      <h1 class="section-heading">Addresses</h1>
+      <a href="{{ routes.account_url }}"
+         style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-soft-brown);">
+        &larr; Back to account
+      </a>
+    </div>
+
+    <!-- Add new address -->
+    <h2 style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-dark-brown); margin-bottom:var(--spacing-md);">
+      Add new address
+    </h2>
+
+    {%- form 'customer_address', customer.new_address -%}
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div class="field">
+          <label class="field__label" for="address-first-name">First name</label>
+          <input class="field__input" type="text" name="address[first_name]" id="address-first-name"
+                 value="{{ form.first_name }}" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label class="field__label" for="address-last-name">Last name</label>
+          <input class="field__input" type="text" name="address[last_name]" id="address-last-name"
+                 value="{{ form.last_name }}" autocomplete="family-name">
+        </div>
       </div>
-    {%- else -%}
-      <p style="color:var(--color-soft-brown);">No addresses saved.</p>
-    {%- endfor -%}
-    <a href="{{ routes.account_url }}" style="font-size:12px; color:var(--color-warm-brown); letter-spacing:0.1em; text-transform:uppercase;">&larr; Back to account</a>
+      <div class="field" style="margin-bottom:16px;">
+        <label class="field__label" for="address-company">Company (optional)</label>
+        <input class="field__input" type="text" name="address[company]" id="address-company"
+               value="{{ form.company }}" autocomplete="organization">
+      </div>
+      <div class="field" style="margin-bottom:16px;">
+        <label class="field__label" for="address-address1">Address</label>
+        <input class="field__input" type="text" name="address[address1]" id="address-address1"
+               value="{{ form.address1 }}" autocomplete="address-line1" required>
+      </div>
+      <div class="field" style="margin-bottom:16px;">
+        <label class="field__label" for="address-address2">Apartment, suite (optional)</label>
+        <input class="field__input" type="text" name="address[address2]" id="address-address2"
+               value="{{ form.address2 }}" autocomplete="address-line2">
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div class="field">
+          <label class="field__label" for="address-city">City</label>
+          <input class="field__input" type="text" name="address[city]" id="address-city"
+                 value="{{ form.city }}" autocomplete="address-level2" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="address-zip">Postal code</label>
+          <input class="field__input" type="text" name="address[zip]" id="address-zip"
+                 value="{{ form.zip }}" autocomplete="postal-code">
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:16px;">
+        <label class="field__label" for="address-country">Country</label>
+        <select class="field__input" name="address[country]" id="address-country"
+                autocomplete="country" data-default="{{ form.country }}">
+          {{ all_country_option_tags }}
+        </select>
+      </div>
+      <div class="field" style="margin-bottom:16px;">
+        <label class="field__label" for="address-phone">Phone (optional)</label>
+        <input class="field__input" type="tel" name="address[phone]" id="address-phone"
+               value="{{ form.phone }}" autocomplete="tel">
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:24px;">
+        <input type="checkbox" name="address[default]" id="address-default"
+               value="1" style="width:16px; height:16px; accent-color:var(--color-dark-brown);">
+        <label for="address-default" style="font-size:13px; color:var(--color-ink);">Set as default address</label>
+      </div>
+      <button type="submit" class="btn btn--primary">Add address</button>
+    {%- endform -%}
+
+    <!-- Existing addresses -->
+    {%- if customer.addresses.size > 0 -%}
+      <hr class="divider" style="margin:var(--spacing-xl) 0;">
+      <h2 style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-dark-brown); margin-bottom:var(--spacing-md);">
+        Saved addresses
+      </h2>
+      {%- for address in customer.addresses -%}
+        <div style="border:1px solid var(--color-line); padding:20px 24px; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="font-size:14px; line-height:1.8; color:var(--color-ink);">
+              {{ address | format_address }}
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; flex-shrink:0;">
+              {%- if address == customer.default_address -%}
+                <span class="badge">Default</span>
+              {%- endif -%}
+              <button type="button"
+                      onclick="document.getElementById('edit-address-{{ address.id }}').style.display='block'"
+                      style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-warm-brown); background:none; border:none; cursor:pointer; padding:0; text-align:left;">
+                Edit
+              </button>
+              {%- form 'customer_address', address -%}
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit"
+                        style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-soft-brown); background:none; border:none; cursor:pointer; padding:0; text-align:left;"
+                        onclick="return confirm('Remove this address?')">
+                  Remove
+                </button>
+              {%- endform -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+
   </div>
 </section>

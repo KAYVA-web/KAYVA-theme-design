@@ -1,25 +1,35 @@
-{% layout 'theme' %}
-<section class="section">
-  <div class="page-width--narrow" style="max-width:480px;">
-    <h1 class="section-heading" style="margin-bottom:var(--spacing-lg); text-align:center;">Sign in</h1>
-    {%- form 'customer_login' -%}
-      {%- if form.errors -%}
-        <p style="font-size:13px; color:#c0392b; margin-bottom:16px;">{{ form.errors | default_errors }}</p>
-      {%- endif -%}
-      <div class="field" style="margin-bottom:16px;">
-        <label class="field__label" for="customer-email">Email</label>
-        <input class="field__input" type="email" name="customer[email]" id="customer-email" autocomplete="email" required>
-      </div>
-      <div class="field" style="margin-bottom:24px;">
-        <label class="field__label" for="customer-password">Password</label>
-        <input class="field__input" type="password" name="customer[password]" id="customer-password" autocomplete="current-password" required>
-      </div>
-      <button type="submit" class="btn btn--primary btn--full">Sign in</button>
-    {%- endform -%}
-    <div style="text-align:center; margin-top:20px; font-size:13px; color:var(--color-soft-brown);">
-      <a href="{{ routes.account_register_url }}" style="color:var(--color-warm-brown);">Create account</a>
-      &nbsp;·&nbsp;
-      <a href="{{ routes.account_recover_url }}" style="color:var(--color-warm-brown);">Forgot password?</a>
+<div class="page-width--narrow section" style="max-width:480px;">
+  <h1 class="section-heading" style="margin-bottom:var(--spacing-lg); text-align:center;">Sign in</h1>
+
+  {%- form 'customer_login' -%}
+    {%- if form.errors -%}
+      <p style="font-size:13px; color:#c0392b; margin-bottom:16px; padding:12px 16px; background:#fef2f2; border:1px solid #fecaca;">
+        {{ form.errors | default_errors }}
+      </p>
+    {%- endif -%}
+
+    <div class="field" style="margin-bottom:16px;">
+      <label class="field__label" for="customer-email">Email</label>
+      <input class="field__input" type="email" name="customer[email]" id="customer-email"
+             autocomplete="email" autocorrect="off" autocapitalize="off" required>
     </div>
-  </div>
-</section>
+
+    <div class="field" style="margin-bottom:8px;">
+      <label class="field__label" for="customer-password">Password</label>
+      <input class="field__input" type="password" name="customer[password]" id="customer-password"
+             autocomplete="current-password" required>
+    </div>
+
+    <div style="text-align:right; margin-bottom:24px;">
+      <a href="{{ routes.account_recover_url }}"
+         style="font-size:12px; color:var(--color-warm-brown);">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="btn btn--primary btn--full">Sign in</button>
+  {%- endform -%}
+
+  <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--color-soft-brown);">
+    Don&rsquo;t have an account?
+    <a href="{{ routes.account_register_url }}" style="color:var(--color-warm-brown);">Create one</a>
+  </p>
+</div>

@@ -1,31 +1,42 @@
-{% layout 'theme' %}
-<section class="section">
-  <div class="page-width--narrow" style="max-width:480px;">
-    <h1 class="section-heading" style="margin-bottom:var(--spacing-lg); text-align:center;">Create account</h1>
-    {%- form 'create_customer' -%}
-      {%- if form.errors -%}
-        <p style="font-size:13px; color:#c0392b; margin-bottom:16px;">{{ form.errors | default_errors }}</p>
-      {%- endif -%}
-      <div class="field" style="margin-bottom:16px;">
-        <label class="field__label" for="first-name">First name</label>
-        <input class="field__input" type="text" name="customer[first_name]" id="first-name" autocomplete="given-name">
-      </div>
-      <div class="field" style="margin-bottom:16px;">
-        <label class="field__label" for="last-name">Last name</label>
-        <input class="field__input" type="text" name="customer[last_name]" id="last-name" autocomplete="family-name">
-      </div>
-      <div class="field" style="margin-bottom:16px;">
-        <label class="field__label" for="reg-email">Email</label>
-        <input class="field__input" type="email" name="customer[email]" id="reg-email" autocomplete="email" required>
-      </div>
-      <div class="field" style="margin-bottom:24px;">
-        <label class="field__label" for="reg-password">Password</label>
-        <input class="field__input" type="password" name="customer[password]" id="reg-password" autocomplete="new-password" required>
-      </div>
-      <button type="submit" class="btn btn--primary btn--full">Create account</button>
-    {%- endform -%}
-    <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--color-soft-brown);">
-      Already have an account? <a href="{{ routes.account_login_url }}" style="color:var(--color-warm-brown);">Sign in</a>
-    </p>
-  </div>
-</section>
+<div class="page-width--narrow section" style="max-width:480px;">
+  <h1 class="section-heading" style="margin-bottom:var(--spacing-lg); text-align:center;">Create account</h1>
+
+  {%- form 'create_customer' -%}
+    {%- if form.errors -%}
+      <p style="font-size:13px; color:#c0392b; margin-bottom:16px; padding:12px 16px; background:#fef2f2; border:1px solid #fecaca;">
+        {{ form.errors | default_errors }}
+      </p>
+    {%- endif -%}
+
+    <div class="field" style="margin-bottom:16px;">
+      <label class="field__label" for="first-name">First name</label>
+      <input class="field__input" type="text" name="customer[first_name]" id="first-name"
+             autocomplete="given-name">
+    </div>
+
+    <div class="field" style="margin-bottom:16px;">
+      <label class="field__label" for="last-name">Last name</label>
+      <input class="field__input" type="text" name="customer[last_name]" id="last-name"
+             autocomplete="family-name">
+    </div>
+
+    <div class="field" style="margin-bottom:16px;">
+      <label class="field__label" for="reg-email">Email</label>
+      <input class="field__input" type="email" name="customer[email]" id="reg-email"
+             autocomplete="email" autocorrect="off" autocapitalize="off" required>
+    </div>
+
+    <div class="field" style="margin-bottom:24px;">
+      <label class="field__label" for="reg-password">Password</label>
+      <input class="field__input" type="password" name="customer[password]" id="reg-password"
+             autocomplete="new-password" required>
+    </div>
+
+    <button type="submit" class="btn btn--primary btn--full">Create account</button>
+  {%- endform -%}
+
+  <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--color-soft-brown);">
+    Already have an account?
+    <a href="{{ routes.account_login_url }}" style="color:var(--color-warm-brown);">Sign in</a>
+  </p>
+</div>
