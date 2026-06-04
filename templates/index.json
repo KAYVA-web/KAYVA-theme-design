@@ -156,6 +156,7 @@
           "settings": {
             "product": "",
             "badge": "GU10",
+            "image": "shopify://shop_images/1.svg",
             "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
             "view_label": "View"
           }
@@ -192,7 +193,7 @@
         "view_all_url": "/collections/all",
         "bg": "#ffffff",
         "gap": 48,
-        "image_ratio": "3 / 2"
+        "image_ratio": "4 / 3"
       }
     },
     "cri": {
