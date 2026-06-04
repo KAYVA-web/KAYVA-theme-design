@@ -78,8 +78,9 @@
         "c1": {
           "type": "card",
           "settings": {
-            "product": "",
+            "product": "aerotilt-gu10-holder",
             "badge": "STRIP",
+            "image": "shopify://shop_images/LUMIRA.jpg",
             "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves.",
             "view_label": "View"
           }
@@ -168,6 +169,7 @@
           "settings": {
             "collection": "",
             "title": "Accessories",
+            "image": "shopify://shop_images/LUMIRA.jpg",
             "url": ""
           }
         }
