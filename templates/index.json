@@ -135,7 +135,7 @@
         "t1": {
           "type": "tile",
           "settings": {
-            "collection": "",
+            "collection": "led-strip",
             "title": "LED Strip",
             "url": ""
           }
