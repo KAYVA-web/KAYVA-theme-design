@@ -1,11 +1,27 @@
 <style>
+  .site-header {
+    background: {{ section.settings.background_color }};
+    border-bottom-color: {{ section.settings.border_color }};
+  }
+  .site-header .site-header__logo,
+  .site-header .site-nav__link,
+  .site-header .header-icon {
+    color: {{ section.settings.text_color }};
+  }
+  .site-header .menu-toggle__line {
+    background: {{ section.settings.text_color }};
+  }
+  .site-header .site-nav__link:hover,
+  .site-header .header-icon:hover {
+    color: {{ section.settings.hover_color }};
+  }
   .site-header.is-scrolled {
     box-shadow: 0 2px 16px rgba(61,42,21,0.08);
   }
   {%- if section.settings.transparent_on_hero and template.name == 'index' -%}
   .site-header--transparent {
-    background: transparent;
-    border-bottom-color: transparent;
+    background: transparent !important;
+    border-bottom-color: transparent !important;
     position: absolute;
     width: 100%;
   }
@@ -117,6 +133,34 @@
       "id": "show_search",
       "label": "Show search icon",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Header background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text & icon colour",
+      "default": "#1F1B16"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Hover colour",
+      "default": "#B8753A"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Bottom border colour",
+      "default": "#E8E0D2"
     },
     {
       "type": "header",
