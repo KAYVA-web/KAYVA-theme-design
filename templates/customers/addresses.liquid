@@ -1,0 +1,17 @@
+{% layout 'theme' %}
+<section class="section">
+  <div class="page-width--narrow" style="max-width:640px;">
+    <h1 class="section-heading" style="margin-bottom:var(--spacing-xl);">Addresses</h1>
+    {%- for address in customer.addresses -%}
+      <div style="border:1px solid var(--color-line); padding:20px; margin-bottom:16px; font-size:14px; color:var(--color-ink); line-height:1.7;">
+        {{ address | format_address }}
+        {%- if address == customer.default_address -%}
+          <span class="badge" style="margin-left:8px;">Default</span>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <p style="color:var(--color-soft-brown);">No addresses saved.</p>
+    {%- endfor -%}
+    <a href="{{ routes.account_url }}" style="font-size:12px; color:var(--color-warm-brown); letter-spacing:0.1em; text-transform:uppercase;">&larr; Back to account</a>
+  </div>
+</section>

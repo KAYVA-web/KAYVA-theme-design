@@ -1,0 +1,17 @@
+<style>
+  .not-found { padding: var(--spacing-xxl) 0; text-align: center; }
+  .not-found__code { font-size: 80px; font-weight: 300; color: var(--color-line); line-height: 1; margin-bottom: 16px; }
+  .not-found__heading { font-size: 24px; font-weight: 600; color: var(--color-dark-brown); margin-bottom: 12px; }
+  .not-found__text { font-size: 15px; color: var(--color-soft-brown); margin-bottom: 32px; }
+</style>
+<section class="not-found">
+  <div class="page-width--narrow">
+    <p class="not-found__code">404</p>
+    <h1 class="not-found__heading">Page not found.</h1>
+    <p class="not-found__text">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="btn btn--primary">Back to home</a>
+  </div>
+</section>
+{% schema %}
+{ "name": "404 Page", "settings": [] }
+{% endschema %}
