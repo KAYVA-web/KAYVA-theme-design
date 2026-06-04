@@ -204,9 +204,11 @@
         "body": "<p>CRI measures how accurately a light renders colour. Most generic strips sit at Ra80 — skin looks slightly grey, wood loses its warmth, food looks dull.</p><p>KAYVA is Ra95+ with R9 over 50. Colours look the way they should. It's the same standard used in museums, hotels, and premium restaurants — now in your home.</p>",
         "btn_label": "Shop the Range",
         "btn_url": "/collections/all",
+        "img1": "shopify://shop_images/c2ea0c2b6800a219700effaba3e0987c.png",
         "color1": "#a89b7c",
         "name1": "Generic strip",
         "sub1": "Ra80 · dull, flat",
+        "img2": "shopify://shop_images/87465d9a40f5e15b4da259620e81a359.png",
         "color2": "#e8b870",
         "name2": "KAYVA",
         "sub2": "Ra95+ · warm, true",
@@ -220,6 +222,7 @@
     "imgtext": {
       "type": "kayva-image-text",
       "settings": {
+        "image": "shopify://shop_images/echo-bluetooth-ceiling-speaker-6872699.jpg",
         "ratio": "4 / 5",
         "image_side": "right",
         "eyebrow": "Our Products",
