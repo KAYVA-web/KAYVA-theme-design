@@ -24,7 +24,7 @@
         "cta_label": "Shop Now",
         "cta_url": "/collections/all",
         "cta2_label": "Learn About CRI",
-        "cta2_url": "",
+        "cta2_url": "shopify://blogs/lighting-guides/how-to-choose-downlight-beam-angle",
         "min_height": 700
       }
     },
@@ -185,7 +185,7 @@
         "heading_weight": "300",
         "body": "<p>CRI measures how accurately a light renders colour. Most generic strips sit at Ra80 — skin looks slightly grey, wood loses its warmth, food looks dull.</p><p>KAYVA is Ra95+ with R9 over 50. Colours look the way they should. It's the same standard used in museums, hotels, and premium restaurants — now in your home.</p>",
         "cta_label": "Shop the Range",
-        "cta_url": "/collections/all",
+        "cta_url": "shopify://collections/all",
         "swatch1_fallback_color": "#a89b7c",
         "swatch1_title": "Generic strip",
         "swatch1_subtitle": "Ra80 · dull, flat",
