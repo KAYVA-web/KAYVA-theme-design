@@ -107,6 +107,34 @@
     "
   >
     {{ children }}
+
+    {%- unless onboarding -%}
+      {%- liquid
+        assign kv_has_features = false
+        for tag in product.tags
+          if tag contains 'feature:'
+            assign kv_has_features = true
+          endif
+        endfor
+      -%}
+      {%- if kv_has_features -%}
+        {{ 'kayva.css' | asset_url | stylesheet_tag }}
+        <ul class="kayva-features" style="padding:0 var(--padding-xs,12px) var(--padding-xs,12px);">
+          {%- for tag in product.tags -%}
+            {%- if tag contains 'feature:' -%}
+              <li class="kayva-feature">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;">
+                  <circle cx="7" cy="7" r="6.5" stroke="currentColor"/>
+                  <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ tag | remove_first: 'feature:' }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endunless -%}
+
   </div>
 </product-card>
 
