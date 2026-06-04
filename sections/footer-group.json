@@ -11,6 +11,51 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "kayva_footer_tEJgmi": {
+      "type": "kayva-footer",
+      "blocks": {
+        "nav_column_Lq7bkM": {
+          "type": "nav_column",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "nav_column_6QYgXj": {
+          "type": "nav_column",
+          "settings": {
+            "title": "Learn",
+            "menu": "footer"
+          }
+        },
+        "nav_column_zKbdAV": {
+          "type": "nav_column",
+          "settings": {
+            "title": "Help",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "nav_column_Lq7bkM",
+        "nav_column_6QYgXj",
+        "nav_column_zKbdAV"
+      ],
+      "name": "KAYVA Footer",
+      "settings": {
+        "logo_width": 120,
+        "tagline": "Ra95+ lighting, properly specified, designed for Singapore homes.",
+        "tagline_short": "Designed in Singapore.",
+        "instagram": "",
+        "facebook": "",
+        "tiktok": "",
+        "shopee": "",
+        "privacy_url": "",
+        "terms_url": "",
+        "bg": "#3D2A15",
+        "text_color": "#F5EFE5"
+      }
+    },
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
@@ -115,9 +160,9 @@
             "width": "fill",
             "custom_width": 100,
             "inherit_color_scheme": true,
+            "color_scheme": "",
             "heading": "",
             "heading_preset": "h3",
-            "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
             "border_radius": 100,
@@ -139,6 +184,7 @@
         "group_H6VpwJ",
         "email_signup_crihX7"
       ],
+      "disabled": true,
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
@@ -193,6 +239,7 @@
         "footer_policy_list_VCdnpa",
         "social_links_Ew63Kq"
       ],
+      "disabled": true,
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
@@ -205,6 +252,7 @@
     }
   },
   "order": [
+    "kayva_footer_tEJgmi",
     "footer_m9NzUG",
     "footer_utilities_jLGE8U"
   ]
