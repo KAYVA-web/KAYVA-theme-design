@@ -1,0 +1,341 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+  .kv-footer {
+    background: {{ section.settings.bg }};
+    padding: 80px 0 0;
+    font-family: var(--kayva-font);
+  }
+
+  .kv-footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+  }
+
+  /* Brand column */
+  .kv-footer__brand-name {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .kv-footer__tagline {
+    font-size: 13px;
+    font-weight: 300;
+    color: {{ section.settings.text_color }};
+    opacity: 0.6;
+    line-height: 1.65;
+    max-width: 280px;
+    margin-bottom: 24px;
+  }
+
+  /* Social icons */
+  .kv-footer__social {
+    display: flex;
+    gap: 16px;
+  }
+  .kv-footer__social-link {
+    color: {{ section.settings.text_color }};
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  .kv-footer__social-link:hover { opacity: 1; }
+
+  /* Nav columns */
+  .kv-footer__col-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    opacity: 0.45;
+    margin-bottom: 16px;
+  }
+  .kv-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .kv-footer__link {
+    font-size: 13px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.75;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .kv-footer__link:hover { opacity: 1; }
+
+  /* Bottom bar */
+  .kv-footer__bottom {
+    border-top: 1px solid {{ section.settings.text_color }};
+    border-top-opacity: 0.12;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .kv-footer__copy {
+    font-size: 11px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.35;
+    letter-spacing: 0.04em;
+  }
+  .kv-footer__legal {
+    display: flex;
+    gap: 20px;
+  }
+  .kv-footer__legal a {
+    font-size: 11px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.35;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .kv-footer__legal a:hover { opacity: 0.7; }
+
+  @media (max-width: 1024px) {
+    .kv-footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .kv-footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .kv-footer__bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<footer class="kv-footer" role="contentinfo">
+  <div class="kayva-page-width">
+    <div class="kv-footer__grid">
+
+      <!-- Brand column -->
+      <div>
+        {%- if section.settings.logo != blank -%}
+          <a href="{{ routes.root_url }}">
+            <img src="{{ section.settings.logo | image_url: width: 160 }}"
+                 alt="{{ shop.name }}"
+                 width="{{ section.settings.logo_width }}"
+                 loading="lazy"
+                 style="margin-bottom:16px;display:block;">
+          </a>
+        {%- else -%}
+          <a href="{{ routes.root_url }}" class="kv-footer__brand-name">{{ shop.name }}</a>
+        {%- endif -%}
+
+        {%- if section.settings.tagline != blank -%}
+          <p class="kv-footer__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+
+        <!-- Social icons -->
+        <div class="kv-footer__social">
+          {%- if section.settings.instagram != blank -%}
+            <a href="{{ section.settings.instagram }}" class="kv-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.facebook != blank -%}
+            <a href="{{ section.settings.facebook }}" class="kv-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.tiktok != blank -%}
+            <a href="{{ section.settings.tiktok }}" class="kv-footer__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.96a8.22 8.22 0 004.84 1.56V7.07a4.85 4.85 0 01-1.07-.38z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.shopee != blank -%}
+            <a href="{{ section.settings.shopee }}" class="kv-footer__social-link" aria-label="Shopee" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 01-8 0"/>
+              </svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Menu columns from blocks -->
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <p class="kv-footer__col-title">{{ block.settings.title }}</p>
+          {%- endif -%}
+          {%- if linklists[block.settings.menu].links.size > 0 -%}
+            <ul class="kv-footer__links">
+              {%- for link in linklists[block.settings.menu].links -%}
+                <li><a href="{{ link.url }}" class="kv-footer__link">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="kv-footer__bottom">
+      <p class="kv-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}.
+        {%- if section.settings.tagline_short != blank -%}
+          {{ section.settings.tagline_short }}
+        {%- endif -%}
+      </p>
+      <div class="kv-footer__legal">
+        {%- if linklists['footer-legal'].links.size > 0 -%}
+          {%- for link in linklists['footer-legal'].links -%}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endfor -%}
+        {%- else -%}
+          {%- if section.settings.privacy_url != blank -%}
+            <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
+          {%- endif -%}
+          {%- if section.settings.terms_url != blank -%}
+            <a href="{{ section.settings.terms_url }}">Terms</a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "KAYVA Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Leave blank to use shop name as text."
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width (px)",
+      "min": 60,
+      "max": 200,
+      "step": 10,
+      "default": 120
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "Ra95+ lighting, properly specified, designed for Singapore homes."
+    },
+    {
+      "type": "text",
+      "id": "tagline_short",
+      "label": "Copyright line suffix",
+      "default": "Designed in Singapore."
+    },
+    {
+      "type": "header",
+      "content": "Social media"
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "shopee",
+      "label": "Shopee URL"
+    },
+    {
+      "type": "header",
+      "content": "Legal links"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy policy URL"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of service URL"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background",
+      "default": "#3D2A15"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#F5EFE5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_column",
+      "name": "Navigation Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Footer",
+      "blocks": [
+        { "type": "nav_column", "settings": { "title": "Shop", "menu": "footer" } },
+        { "type": "nav_column", "settings": { "title": "Learn", "menu": "footer" } },
+        { "type": "nav_column", "settings": { "title": "Help", "menu": "footer" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
