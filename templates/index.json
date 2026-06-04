@@ -167,7 +167,7 @@
       "settings": {
         "eyebrow": "Browse",
         "heading": "Shop by category.",
-        "text_align": "left",
+        "text_align": "center",
         "background_color": "#5b5555",
         "columns": 3,
         "grid_gap": 16,
@@ -200,6 +200,7 @@
     "image-text": {
       "type": "image-with-text",
       "settings": {
+        "image": "shopify://shop_images/abcbad972ce415e347d9ea65af1b39c4.png",
         "image_ratio": "4 / 5",
         "image_position": "right",
         "label": "Our Products",
@@ -207,7 +208,7 @@
         "text": "<p>Ra95+ means your colours render the way they should. Skin looks alive, wood shows its grain, and food looks like food — not like it's under a hospital fluorescent.</p>",
         "button_label": "Shop GU10",
         "button_url": "/collections/gu10",
-        "background_color": "#f5efe5",
+        "background_color": "#ffffff",
         "text_color": "#3d2a15"
       }
     },
