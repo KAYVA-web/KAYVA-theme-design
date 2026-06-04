@@ -1,0 +1,152 @@
+<style>
+  .featured-products {
+    background: {{ section.settings.background_color }};
+  }
+  .featured-products__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+  .featured-products__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: var(--grid-gutter);
+  }
+  @media (max-width: 1024px) {
+    .featured-products__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .featured-products__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+</style>
+
+<section class="featured-products section" id="section-{{ section.id }}">
+  <div class="page-width">
+
+    <div class="featured-products__header">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="label" style="margin-bottom:8px;">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="section-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.view_all_label != blank -%}
+        <a href="{{ section.settings.view_all_url }}"
+           style="font-size:12px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase;
+                  color:var(--color-warm-brown); border-bottom:1px solid currentColor;
+                  padding-bottom:2px; white-space:nowrap;">
+          {{ section.settings.view_all_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="featured-products__grid">
+      {%- if section.settings.collection != blank -%}
+        {%- assign collection = collections[section.settings.collection] -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}
+            {%- assign product = all_products[block.settings.product] -%}
+            {%- render 'product-card', product: product -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "The Range"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Shop by product family."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Products source"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "If set, shows products from this collection. Otherwise uses pinned blocks below."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "View all link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

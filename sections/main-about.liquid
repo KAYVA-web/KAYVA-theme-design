@@ -1,0 +1,278 @@
+<style>
+  .about-hero {
+    background: var(--color-dark-brown);
+    padding: var(--spacing-xxl) 0;
+    text-align: center;
+  }
+  .about-hero__eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,239,229,0.6);
+    margin-bottom: 16px;
+  }
+  .about-hero__heading {
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--color-cream);
+    line-height: 1.1;
+    max-width: 760px;
+    margin: 0 auto 24px;
+  }
+  .about-hero__subtext {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: rgba(245,239,229,0.7);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .about-story {
+    padding: var(--spacing-xxl) 0;
+  }
+  .about-story__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+  }
+  .about-story__image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .about-story__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-story__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about-story__body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-ink);
+  }
+  .about-story__body p + p { margin-top: 16px; }
+
+  .about-values {
+    background: var(--color-cream);
+    padding: var(--spacing-xxl) 0;
+  }
+  .about-values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+  .about-value {
+    padding: 36px 28px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .about-value__icon {
+    font-size: 24px;
+    color: var(--color-amber);
+  }
+  .about-value__title {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-dark-brown);
+  }
+  .about-value__text {
+    font-size: 13px;
+    color: var(--color-ink);
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .about-story__grid { grid-template-columns: 1fr; }
+    .about-values__grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- Hero -->
+<div class="about-hero">
+  <div class="page-width">
+    <p class="about-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="about-hero__heading">{{ section.settings.hero_heading }}</h1>
+    <p class="about-hero__subtext">{{ section.settings.hero_subtext }}</p>
+  </div>
+</div>
+
+<!-- Story section -->
+<section class="about-story">
+  <div class="page-width">
+    <div class="about-story__grid">
+      <div class="about-story__image">
+        {%- if section.settings.story_image != blank -%}
+          <img src="{{ section.settings.story_image | image_url: width: 800 }}"
+               alt="{{ section.settings.story_image.alt | escape }}"
+               loading="lazy">
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="about-story__content">
+        <p class="label">{{ section.settings.story_label }}</p>
+        <h2 class="section-heading" style="font-size:clamp(22px,3vw,32px);">{{ section.settings.story_heading }}</h2>
+        <div class="about-story__body">{{ section.settings.story_body }}</div>
+        {%- if section.settings.story_cta_label != blank -%}
+          <div>
+            <a href="{{ section.settings.story_cta_url }}" class="btn btn--primary">{{ section.settings.story_cta_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values section -->
+<section class="about-values">
+  <div class="page-width">
+    <div style="text-align:center;">
+      <p class="label" style="margin-bottom:12px;">{{ section.settings.values_label }}</p>
+      <h2 class="section-heading">{{ section.settings.values_heading }}</h2>
+    </div>
+    <div class="about-values__grid">
+      {%- for block in section.blocks -%}
+        <div class="about-value" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="about-value__icon">{{ block.settings.icon }}</div>
+          {%- endif -%}
+          <h3 class="about-value__title">{{ block.settings.title }}</h3>
+          <p class="about-value__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "Honest light for Singapore homes."
+    },
+    {
+      "type": "text",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "We exist to close the gap between premium renovation and generic Ra80 lighting."
+    },
+    {
+      "type": "header",
+      "content": "Story section"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story image"
+    },
+    {
+      "type": "text",
+      "id": "story_label",
+      "label": "Story label",
+      "default": "Why KAYVA Exists"
+    },
+    {
+      "type": "textarea",
+      "id": "story_heading",
+      "label": "Story heading",
+      "default": "Homeowners spend significant sums on renovation, then light their spaces with Ra80 bulbs."
+    },
+    {
+      "type": "richtext",
+      "id": "story_body",
+      "label": "Story body",
+      "default": "<p>Most never realise the light is the problem. Wood looks flat, skin looks grey, and food looks dull — not because of the renovation, but because of the bulbs.</p><p>KAYVA was founded to close that gap. We offer properly specified, properly documented Ra95+ lighting designed for the way Singapore homes actually live.</p>"
+    },
+    {
+      "type": "text",
+      "id": "story_cta_label",
+      "label": "Story CTA label",
+      "default": "Shop the Range"
+    },
+    {
+      "type": "url",
+      "id": "story_cta_url",
+      "label": "Story CTA URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Values section"
+    },
+    {
+      "type": "text",
+      "id": "values_label",
+      "label": "Values eyebrow",
+      "default": "Brand Values"
+    },
+    {
+      "type": "text",
+      "id": "values_heading",
+      "label": "Values heading",
+      "default": "What we stand for."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or symbol)",
+          "default": "—"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Honest"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "We state real numbers and admit trade-offs. Never overclaim."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page",
+      "blocks": [
+        { "type": "value", "settings": { "icon": "—", "title": "Honest", "text": "We state real numbers and admit trade-offs. Never overclaim." } },
+        { "type": "value", "settings": { "icon": "—", "title": "Precise", "text": "We care about specifications and get them right. Details matter." } },
+        { "type": "value", "settings": { "icon": "—", "title": "Local", "text": "Proudly Singaporean, with genuine knowledge of local homes and conditions." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

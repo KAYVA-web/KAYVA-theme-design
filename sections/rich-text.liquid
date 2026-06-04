@@ -1,0 +1,124 @@
+<style>
+  .rich-text {
+    background: {{ section.settings.background_color }};
+    text-align: {{ section.settings.text_align }};
+  }
+  .rich-text__inner {
+    max-width: {{ section.settings.content_width }}px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: {{ section.settings.text_align == 'center' ? 'center' : 'flex-start' }};
+    gap: 20px;
+  }
+  .rich-text__heading {
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 48px);
+    color: {{ section.settings.text_color }};
+    line-height: 1.15;
+  }
+  .rich-text__body {
+    font-size: 15px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    line-height: 1.75;
+    max-width: 640px;
+  }
+</style>
+
+<section class="rich-text section" id="section-{{ section.id }}">
+  <div class="page-width">
+    <div class="rich-text__inner">
+      {%- if section.settings.label != blank -%}
+        <p class="label" style="color:{{ section.settings.text_color }};opacity:0.6;">{{ section.settings.label }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rich-text__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rich-text__body">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_url }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content max width (px)",
+      "min": 400,
+      "max": 1280,
+      "step": 40,
+      "default": 760
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#3D2A15"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text"
+    }
+  ]
+}
+{% endschema %}

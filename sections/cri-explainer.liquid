@@ -1,0 +1,345 @@
+<style>
+  .cri-section {
+    background: {{ section.settings.background_color }};
+  }
+
+  .cri-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+  }
+
+  /* Left — text */
+  .cri-section__content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .cri-section__eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  .cri-section__heading {
+    font-weight: {{ section.settings.heading_weight }};
+    font-size: clamp(26px, 3.5vw, 44px);
+    color: {{ section.settings.heading_color }};
+    line-height: 1.15;
+  }
+
+  .cri-section__body {
+    font-size: 15px;
+    color: {{ section.settings.body_color }};
+    line-height: 1.75;
+  }
+
+  .cri-section__body p + p {
+    margin-top: 14px;
+  }
+
+  .cri-section__cta {
+    margin-top: 4px;
+  }
+
+  /* Right — two swatches */
+  .cri-section__swatches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .cri-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cri-swatch__image-wrap {
+    aspect-ratio: {{ section.settings.swatch_ratio }};
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cri-swatch__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Fallback colour block when no image uploaded */
+  .cri-swatch__color-block {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .cri-swatch__labels {
+    text-align: center;
+  }
+
+  .cri-swatch__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.heading_color }};
+    margin-bottom: 2px;
+  }
+
+  .cri-swatch__subtitle {
+    font-size: 12px;
+    color: var(--color-soft-brown);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .cri-section__grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cri-section__swatches { gap: 12px; }
+  }
+</style>
+
+<section class="cri-section section" id="section-{{ section.id }}">
+  <div class="page-width">
+    <div class="cri-section__grid">
+
+      <!-- Left: text -->
+      <div class="cri-section__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="cri-section__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cri-section__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <div class="cri-section__body">{{ section.settings.body }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.cta_label != blank -%}
+          <div class="cri-section__cta">
+            <a href="{{ section.settings.cta_url }}" class="btn btn--primary">
+              {{ section.settings.cta_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right: two comparison swatches -->
+      <div class="cri-section__swatches">
+
+        <!-- Swatch 1 (Generic / Ra80) -->
+        <div class="cri-swatch">
+          <div class="cri-swatch__image-wrap">
+            {%- if section.settings.swatch1_image != blank -%}
+              <img src="{{ section.settings.swatch1_image | image_url: width: 600 }}"
+                   alt="{{ section.settings.swatch1_image.alt | escape | default: section.settings.swatch1_title }}"
+                   loading="lazy">
+            {%- else -%}
+              <div class="cri-swatch__color-block"
+                   style="background: {{ section.settings.swatch1_fallback_color }};"></div>
+            {%- endif -%}
+          </div>
+          <div class="cri-swatch__labels">
+            {%- if section.settings.swatch1_title != blank -%}
+              <p class="cri-swatch__title">{{ section.settings.swatch1_title }}</p>
+            {%- endif -%}
+            {%- if section.settings.swatch1_subtitle != blank -%}
+              <p class="cri-swatch__subtitle">{{ section.settings.swatch1_subtitle }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Swatch 2 (KAYVA / Ra95+) -->
+        <div class="cri-swatch">
+          <div class="cri-swatch__image-wrap">
+            {%- if section.settings.swatch2_image != blank -%}
+              <img src="{{ section.settings.swatch2_image | image_url: width: 600 }}"
+                   alt="{{ section.settings.swatch2_image.alt | escape | default: section.settings.swatch2_title }}"
+                   loading="lazy">
+            {%- else -%}
+              <div class="cri-swatch__color-block"
+                   style="background: {{ section.settings.swatch2_fallback_color }};"></div>
+            {%- endif -%}
+          </div>
+          <div class="cri-swatch__labels">
+            {%- if section.settings.swatch2_title != blank -%}
+              <p class="cri-swatch__title">{{ section.settings.swatch2_title }}</p>
+            {%- endif -%}
+            {%- if section.settings.swatch2_subtitle != blank -%}
+              <p class="cri-swatch__subtitle">{{ section.settings.swatch2_subtitle }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CRI Comparison",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text — left column"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Why It Matters"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Most strips in Singapore are Ra80. You'll see the difference."
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        { "value": "300", "label": "Light (300)" },
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "600", "label": "SemiBold (600)" }
+      ],
+      "default": "300"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>CRI measures how accurately a light renders colour. Most generic strips sit at Ra80 — skin looks slightly grey, wood loses its warmth, food looks dull.</p><p>KAYVA is Ra95+ with R9 over 50. Colours look the way they should. It's the same standard used in museums, hotels, and premium restaurants — now in your home.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop the Range"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Swatch 1 — Generic / Ra80"
+    },
+    {
+      "type": "image_picker",
+      "id": "swatch1_image",
+      "label": "Swatch 1 image",
+      "info": "Upload a photo showing Ra80 light quality. If blank, shows the fallback colour below."
+    },
+    {
+      "type": "color",
+      "id": "swatch1_fallback_color",
+      "label": "Fallback colour (if no image)",
+      "default": "#A89B7C",
+      "info": "Used as a colour block when no image is uploaded — dull/flat tone to represent Ra80."
+    },
+    {
+      "type": "text",
+      "id": "swatch1_title",
+      "label": "Swatch 1 title",
+      "default": "Generic strip"
+    },
+    {
+      "type": "text",
+      "id": "swatch1_subtitle",
+      "label": "Swatch 1 subtitle",
+      "default": "Ra80 · dull, flat"
+    },
+    {
+      "type": "header",
+      "content": "Swatch 2 — KAYVA / Ra95+"
+    },
+    {
+      "type": "image_picker",
+      "id": "swatch2_image",
+      "label": "Swatch 2 image",
+      "info": "Upload a photo showing Ra95+ light quality. If blank, shows the fallback colour below."
+    },
+    {
+      "type": "color",
+      "id": "swatch2_fallback_color",
+      "label": "Fallback colour (if no image)",
+      "default": "#E8B870",
+      "info": "Used as a colour block when no image is uploaded — warm, vibrant tone to represent Ra95+."
+    },
+    {
+      "type": "text",
+      "id": "swatch2_title",
+      "label": "Swatch 2 title",
+      "default": "KAYVA"
+    },
+    {
+      "type": "text",
+      "id": "swatch2_subtitle",
+      "label": "Swatch 2 subtitle",
+      "default": "Ra95+ · warm, true"
+    },
+    {
+      "type": "header",
+      "content": "Layout & colours"
+    },
+    {
+      "type": "select",
+      "id": "swatch_ratio",
+      "label": "Swatch image ratio",
+      "options": [
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "3 / 2", "label": "Wide (3:2)" }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow colour",
+      "default": "#B8753A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#3D2A15"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text colour",
+      "default": "#1F1B16"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CRI Comparison"
+    }
+  ]
+}
+{% endschema %}

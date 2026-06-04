@@ -1,0 +1,146 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "KAYVA",
+    "theme_version": "1.0.0",
+    "theme_author": "KAYVA",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (Dark Brown)",
+        "default": "#3D2A15"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary (Warm Brown)",
+        "default": "#6B4823"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (Amber)",
+        "default": "#B8753A"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream background",
+        "default": "#F5EFE5"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Body text",
+        "default": "#1F1B16"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_heading_weight",
+        "label": "Heading weight",
+        "options": [
+          { "value": "300", "label": "Light (300)" },
+          { "value": "400", "label": "Regular (400)" },
+          { "value": "600", "label": "SemiBold (600)" }
+        ],
+        "default": "600"
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "label": "Body font size (px)",
+        "min": 12,
+        "max": 18,
+        "step": 1,
+        "default": 14
+      }
+    ]
+  },
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement bar",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Announcement text",
+        "default": "Free shipping on orders above $80 — Singapore delivery only."
+      },
+      {
+        "type": "url",
+        "id": "announcement_link",
+        "label": "Announcement link (optional)"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Main navigation menu",
+        "default": "main-menu"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "32×32px PNG recommended."
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      }
+    ]
+  },
+  {
+    "name": "Share Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Default sharing image",
+        "info": "Used for social sharing when no product/collection image is available. 1200×630px recommended."
+      }
+    ]
+  }
+]

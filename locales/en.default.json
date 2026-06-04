@@ -1,0 +1,28 @@
+{
+  "general": {
+    "search": "Search",
+    "close": "Close",
+    "loading": "Loading"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "empty": "Your cart is empty.",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_products": "No products found."
+    }
+  }
+}

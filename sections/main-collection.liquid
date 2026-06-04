@@ -1,0 +1,280 @@
+<style>
+  .collection-page { padding: var(--spacing-xl) 0; }
+  .collection-page__hero {
+    background: var(--color-cream);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+  .collection-page__layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  /* Filters sidebar */
+  .collection-filters {
+    position: sticky;
+    top: 100px;
+  }
+  .filter-group {
+    border-bottom: 1px solid var(--color-line);
+    padding: var(--spacing-sm) 0;
+  }
+  .filter-group__title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+  .filter-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-dark-brown);
+    cursor: pointer;
+  }
+
+  /* Toolbar */
+  .collection-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .collection-count {
+    font-size: 13px;
+    color: var(--color-soft-brown);
+  }
+  .collection-sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .collection-sort label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-soft-brown);
+  }
+  .collection-sort select {
+    border: 1px solid var(--color-line);
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--color-dark-brown);
+    background: var(--color-white);
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* Grid */
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: var(--grid-gutter);
+  }
+
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: var(--spacing-xl);
+  }
+  .pagination__item {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--color-dark-brown);
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .pagination__item:hover,
+  .pagination__item.is-current {
+    border-color: var(--color-dark-brown);
+  }
+  .pagination__item.is-current { font-weight: 600; }
+
+  @media (max-width: 1024px) {
+    .collection-page__layout { grid-template-columns: 1fr; }
+    .collection-filters { display: none; }
+    .collection-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .collection-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  }
+</style>
+
+<!-- Collection hero -->
+<div class="collection-page__hero">
+  <div class="page-width">
+    {%- if collection.image -%}
+      <!-- Hero image could go here if desired -->
+    {%- endif -%}
+    <p class="label" style="margin-bottom:12px;">{{ section.settings.eyebrow | default: 'Shop' }}</p>
+    <h1 class="display-headline" style="font-size:clamp(32px,4vw,52px);">{{ collection.title }}</h1>
+    {%- if collection.description != blank and section.settings.show_description -%}
+      <p style="font-size:15px; color:var(--color-ink); opacity:0.7; max-width:600px; margin:16px auto 0; line-height:1.7;">
+        {{ collection.description | strip_html }}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+<section class="collection-page">
+  <div class="page-width">
+
+    <form data-filter-form>
+      <div class="collection-page__layout">
+
+        <!-- Sidebar Filters -->
+        {%- if section.settings.show_filters -%}
+          <aside class="collection-filters">
+            <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-dark-brown); margin-bottom:var(--spacing-sm);">Filter</p>
+
+            {%- for filter in collection.filters -%}
+              <div class="filter-group">
+                <p class="filter-group__title">{{ filter.label }}</p>
+                {%- for value in filter.values -%}
+                  <label class="filter-option">
+                    <input type="checkbox"
+                           name="{{ value.param_name }}"
+                           value="{{ value.value }}"
+                           {% if value.active %}checked{% endif %}>
+                    {{ value.label }}
+                    <span style="color:var(--color-soft-brown); font-size:12px;">({{ value.count }})</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+
+            {%- if collection.filters.size > 0 -%}
+              <a href="{{ collection.url }}"
+                 style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-soft-brown); margin-top:16px; display:block;">
+                Clear all filters
+              </a>
+            {%- endif -%}
+          </aside>
+        {%- endif -%}
+
+        <div>
+          <!-- Toolbar -->
+          <div class="collection-toolbar">
+            <span class="collection-count">{{ collection.products_count }} products</span>
+            <div class="collection-sort">
+              <label for="sort-by-{{ section.id }}">Sort by</label>
+              <select id="sort-by-{{ section.id }}" data-sort-by name="sort_by">
+                <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Featured</option>
+                <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Price: Low to high</option>
+                <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Price: High to low</option>
+                <option value="title-ascending"{% if collection.sort_by == 'title-ascending' %} selected{% endif %}>Alphabetical</option>
+                <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Newest</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Product grid -->
+          <div class="collection-grid">
+            {%- paginate collection.products by section.settings.products_per_page -%}
+              {%- for product in collection.products -%}
+                {%- render 'product-card', product: product -%}
+              {%- else -%}
+                <p style="grid-column:1/-1; color:var(--color-soft-brown); font-size:14px;">No products found.</p>
+              {%- endfor -%}
+            {%- endpaginate -%}
+          </div>
+
+          <!-- Pagination -->
+          {%- paginate collection.products by section.settings.products_per_page -%}
+            {%- if paginate.pages > 1 -%}
+              <nav class="pagination">
+                {%- if paginate.previous -%}
+                  <a href="{{ paginate.previous.url }}" class="pagination__item">&larr;</a>
+                {%- endif -%}
+                {%- for part in paginate.parts -%}
+                  {%- if part.is_link -%}
+                    <a href="{{ part.url }}" class="pagination__item">{{ part.title }}</a>
+                  {%- else -%}
+                    <span class="pagination__item is-current">{{ part.title }}</span>
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if paginate.next -%}
+                  <a href="{{ paginate.next.url }}" class="pagination__item">&rarr;</a>
+                {%- endif -%}
+              </nav>
+            {%- endif -%}
+          {%- endpaginate -%}
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Main",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Shop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show collection description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show filter sidebar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+<style>
+  .image-text {
+    background: {{ section.settings.background_color }};
+  }
+  .image-text__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+  }
+  .image-text__grid--reverse .image-text__media { order: 2; }
+  .image-text__grid--reverse .image-text__content { order: 1; }
+
+  .image-text__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background: var(--color-cream);
+  }
+  .image-text__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-text__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .image-text__label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-amber);
+  }
+  .image-text__heading {
+    font-weight: 600;
+    font-size: clamp(22px, 3vw, 32px);
+    color: {{ section.settings.text_color }};
+    line-height: 1.25;
+  }
+  .image-text__body {
+    font-size: 15px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 768px) {
+    .image-text__grid,
+    .image-text__grid--reverse { grid-template-columns: 1fr; }
+    .image-text__grid--reverse .image-text__media { order: 0; }
+    .image-text__grid--reverse .image-text__content { order: 0; }
+  }
+</style>
+
+<section class="image-text section" id="section-{{ section.id }}">
+  <div class="page-width">
+    <div class="image-text__grid{% if section.settings.image_position == 'right' %} image-text__grid--reverse{% endif %}">
+
+      <div class="image-text__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1000 }}"
+               srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                       {{ section.settings.image | image_url: width: 1000 }} 1000w"
+               sizes="(max-width: 768px) 100vw, 50vw"
+               alt="{{ section.settings.image.alt | escape }}"
+               loading="lazy">
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="image-text__content">
+        {%- if section.settings.label != blank -%}
+          <span class="image-text__label">{{ section.settings.label }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="image-text__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="image-text__body">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <div>
+            <a href="{{ section.settings.button_url }}" class="btn btn--primary">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Wide (3:2)" }
+      ],
+      "default": "4 / 5"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Fewer lumens, better light."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body text",
+      "default": "<p>Ra95+ means your colours render the way they should. Skin looks alive, wood shows its grain, and food looks like food — not like it&#39;s under a hospital fluorescent.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Learn about CRI"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#F5EFE5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#3D2A15"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text"
+    }
+  ]
+}
+{% endschema %}

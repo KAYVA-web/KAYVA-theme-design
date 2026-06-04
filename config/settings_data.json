@@ -1,0 +1,17 @@
+{
+  "current": {
+    "color_primary": "#3D2A15",
+    "color_secondary": "#6B4823",
+    "color_accent": "#B8753A",
+    "color_background": "#FFFFFF",
+    "color_cream": "#F5EFE5",
+    "color_body_text": "#1F1B16",
+    "font_heading_weight": "600",
+    "font_body_size": 14,
+    "show_announcement": false,
+    "announcement_text": "Free shipping on orders above $80 — Singapore delivery only.",
+    "main_menu": "main-menu",
+    "instagram_url": "",
+    "facebook_url": ""
+  }
+}

@@ -1,0 +1,77 @@
+{% comment %}
+  Usage: {% render 'product-card', product: product %}
+  Feature bullets: add product tags prefixed with "feature:" e.g. "feature:LED integrated"
+{% endcomment %}
+
+{%- liquid
+  assign product_url = product.url
+  assign product_image = product.featured_image
+  assign product_title = product.title
+  assign current_variant = product.selected_or_first_available_variant
+  assign on_sale = false
+  if current_variant.compare_at_price > current_variant.price
+    assign on_sale = true
+  endif
+
+  assign has_features = false
+  for tag in product.tags
+    if tag contains 'feature:'
+      assign has_features = true
+    endif
+  endfor
+-%}
+
+<div class="product-card">
+  <a href="{{ product_url }}" class="product-card__image-wrapper" aria-label="{{ product_title | escape }}">
+    <div class="product-card__image-bg"></div>
+
+    {%- if product_image != blank -%}
+      <img src="{{ product_image | image_url: width: 600 }}"
+           srcset="{{ product_image | image_url: width: 400 }} 400w,
+                   {{ product_image | image_url: width: 600 }} 600w,
+                   {{ product_image | image_url: width: 900 }} 900w"
+           sizes="(max-width: 480px) calc(50vw - 16px),
+                  (max-width: 1024px) calc(50vw - 40px),
+                  calc(25vw - 32px)"
+           alt="{{ product_image.alt | escape | default: product_title }}"
+           loading="lazy"
+           width="600"
+           height="600">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+
+    {%- if on_sale -%}
+      <span class="badge badge--amber" style="position:absolute;top:12px;left:12px;z-index:2;">Sale</span>
+    {%- endif -%}
+  </a>
+
+  <div class="product-card__info">
+    <p class="product-card__name">{{ product_title }}</p>
+
+    <!-- Feature bullets from product tags (tag format: "feature:LED integrated") -->
+    {%- if has_features -%}
+      <ul class="product-card__features">
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'feature:' -%}
+            {%- assign feature_label = tag | remove_first: 'feature:' -%}
+            <li class="product-card__feature">
+              <svg class="product-card__feature-icon" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <circle cx="7.5" cy="7.5" r="7" stroke="currentColor"/>
+                <path d="M4.5 7.5l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ feature_label }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    <div style="display:flex; align-items:baseline; gap:8px; margin-top:auto; padding-top:8px;">
+      <span class="product-card__price">{{ current_variant.price | money }}</span>
+      {%- if on_sale -%}
+        <span class="product-card__price--compare">{{ current_variant.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

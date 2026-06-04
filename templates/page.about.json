@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "main-about": {
+      "type": "main-about",
+      "settings": {
+        "eyebrow": "Our Story",
+        "hero_heading": "Honest light for Singapore homes.",
+        "hero_subtext": "We exist to close the gap between premium renovation and generic Ra80 lighting.",
+        "story_label": "Why KAYVA Exists",
+        "story_heading": "Homeowners spend significant sums on renovation, then light their spaces with Ra80 bulbs.",
+        "story_body": "<p>Most never realise the light is the problem. Wood looks flat, skin looks grey, and food looks dull — not because of the renovation, but because of the bulbs.</p><p>KAYVA was founded to close that gap. We offer properly specified, properly documented Ra95+ lighting designed for the way Singapore homes actually live.</p>",
+        "story_cta_label": "Shop the Range",
+        "story_cta_url": "/collections/all",
+        "values_label": "Brand Values",
+        "values_heading": "What we stand for."
+      },
+      "blocks": {
+        "val-1": {
+          "type": "value",
+          "settings": {
+            "icon": "—",
+            "title": "Honest",
+            "text": "We state real numbers and admit trade-offs. Never overclaim."
+          }
+        },
+        "val-2": {
+          "type": "value",
+          "settings": {
+            "icon": "—",
+            "title": "Precise",
+            "text": "We care about specifications and get them right. Details matter."
+          }
+        },
+        "val-3": {
+          "type": "value",
+          "settings": {
+            "icon": "—",
+            "title": "Local",
+            "text": "Proudly Singaporean, with genuine knowledge of local homes and conditions."
+          }
+        }
+      },
+      "block_order": ["val-1", "val-2", "val-3"]
+    }
+  },
+  "order": ["main-about"]
+}

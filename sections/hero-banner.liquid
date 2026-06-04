@@ -1,0 +1,273 @@
+<style>
+  .hero {
+    position: relative;
+    min-height: {{ section.settings.min_height }}px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: {{ section.settings.overlay_color }};
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__media img,
+  .hero__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.focal_point }};
+  }
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 1;
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 80px 0;
+  }
+  .hero__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    text-align: {{ section.settings.text_align }};
+    {%- if section.settings.text_align == 'center' -%}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    {%- endif -%}
+  }
+  .hero__eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+  .hero__heading {
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    color: {{ section.settings.text_color }};
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  .hero__subtext {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    max-width: 520px;
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+  .hero__cta-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    {%- if section.settings.text_align == 'center' -%}justify-content: center;{%- endif -%}
+  }
+</style>
+
+<section class="hero" id="section-{{ section.id }}">
+  {%- if section.settings.background_image != blank -%}
+    <div class="hero__media">
+      <img src="{{ section.settings.background_image | image_url: width: 2000 }}"
+           srcset="{{ section.settings.background_image | image_url: width: 800 }} 800w,
+                   {{ section.settings.background_image | image_url: width: 1200 }} 1200w,
+                   {{ section.settings.background_image | image_url: width: 2000 }} 2000w"
+           sizes="100vw"
+           alt="{{ section.settings.background_image.alt | escape }}"
+           loading="eager"
+           fetchpriority="high">
+    </div>
+  {%- elsif section.settings.background_video_url != blank -%}
+    <div class="hero__media">
+      <video autoplay muted loop playsinline>
+        <source src="{{ section.settings.background_video_url }}" type="video/mp4">
+      </video>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.background_image != blank or section.settings.background_video_url != blank -%}
+    <div class="hero__overlay"></div>
+  {%- endif -%}
+
+  <div class="hero__content">
+    <div class="hero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subtext != blank -%}
+        <p class="hero__subtext">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+
+      <div class="hero__cta-group">
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn--ghost">
+            {{ section.settings.cta_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}
+          <a href="{{ section.settings.cta2_url }}"
+             style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+                    color:{{ section.settings.text_color }}; opacity:0.8; align-self:center;
+                    border-bottom:1px solid currentColor; padding-bottom:2px;">
+            {{ section.settings.cta2_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "background_video_url",
+      "label": "Background video URL (.mp4)",
+      "info": "Overridden by image if both are set. Use for autoplay hero video."
+    },
+    {
+      "type": "select",
+      "id": "focal_point",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Centre" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" },
+        { "value": "left center", "label": "Left" },
+        { "value": "right center", "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay colour",
+      "default": "#1F1B16"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity (%)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Ra95+ Lighting"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Light that renders colour the way your home deserves."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Properly specified, fairly priced, designed for Singapore homes."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#F5EFE5"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Primary button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Primary button URL"
+    },
+    {
+      "type": "text",
+      "id": "cta2_label",
+      "label": "Secondary link label",
+      "default": "Learn About CRI"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Secondary link URL"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height (px)",
+      "min": 400,
+      "max": 900,
+      "step": 50,
+      "default": 700
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,434 @@
+<style>
+  .product-showcase { background: {{ section.settings.background_color }}; }
+
+  .product-showcase__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+
+  /* 2×2 grid */
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ section.settings.grid_gap }}px;
+  }
+
+  /* Each card */
+  .showcase-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+  }
+  .showcase-card:hover {
+    box-shadow: 0 8px 32px rgba(61,42,21,0.10);
+  }
+
+  /* Badge top-left */
+  .showcase-card__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+    border: 1.5px solid var(--color-dark-brown);
+    padding: 4px 10px;
+    background: var(--color-white);
+    pointer-events: none;
+  }
+
+  /* Image area */
+  .showcase-card__image-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-cream);
+    aspect-ratio: {{ section.settings.image_ratio }};
+    display: block;
+  }
+
+  /* Static background inside — only img zooms */
+  .showcase-card__image-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-cream);
+    z-index: 0;
+  }
+
+  .showcase-card__image-wrap img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: {{ section.settings.image_fit }};
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+  }
+
+  .showcase-card:hover .showcase-card__image-wrap img {
+    transform: scale(1.07);
+  }
+
+  /* Info area */
+  .showcase-card__body {
+    padding: 20px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .showcase-card__title {
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--color-dark-brown);
+    line-height: 1.25;
+  }
+
+  .showcase-card__desc {
+    font-size: 13px;
+    color: var(--color-warm-brown);
+    line-height: 1.6;
+  }
+
+  /* Variant pills */
+  .showcase-card__variants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0;
+  }
+
+  .showcase-card__variant-pill {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-dark-brown);
+    border: 1.5px solid var(--color-line);
+    padding: 4px 10px;
+    white-space: nowrap;
+    transition: border-color 0.2s;
+  }
+
+  .showcase-card__variant-pill:hover {
+    border-color: var(--color-warm-brown);
+  }
+
+  /* Price + CTA row */
+  .showcase-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px 20px;
+    margin-top: auto;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .showcase-card__price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .showcase-card__from {
+    font-size: 11px;
+    color: var(--color-soft-brown);
+  }
+
+  .showcase-card__price {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-dark-brown);
+  }
+
+  .showcase-card__view {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-amber);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s, color 0.2s;
+  }
+
+  .showcase-card:hover .showcase-card__view {
+    gap: 8px;
+    color: var(--color-warm-brown);
+  }
+
+  /* Placeholder when no image */
+  .showcase-card__placeholder {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .showcase-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .showcase-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .showcase-card__title { font-size: 14px; }
+    .showcase-card__body { padding: 14px 12px 10px; }
+    .showcase-card__footer { padding: 10px 12px 14px; }
+  }
+</style>
+
+<section class="product-showcase section" id="section-{{ section.id }}">
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="product-showcase__header">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="label" style="margin-bottom:8px;">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="section-heading">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.view_all_label != blank -%}
+          <a href="{{ section.settings.view_all_url }}"
+             style="font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+                    color:var(--color-warm-brown);border-bottom:1px solid currentColor;padding-bottom:2px;white-space:nowrap;">
+            {{ section.settings.view_all_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="showcase-grid">
+      {%- for block in section.blocks -%}
+        {%- assign sp = all_products[block.settings.product] -%}
+        {%- assign showcase_variant = sp.selected_or_first_available_variant -%}
+
+        <div class="showcase-card" {{ block.shopify_attributes }}>
+
+          <!-- Badge — free text, editable per card -->
+          {%- if block.settings.badge != blank -%}
+            <span class="showcase-card__badge">{{ block.settings.badge }}</span>
+          {%- endif -%}
+
+          <!-- Image — use custom uploaded image OR fall back to product image -->
+          <a href="{{ sp.url }}" class="showcase-card__image-wrap">
+            <div class="showcase-card__image-bg"></div>
+            {%- if block.settings.custom_image != blank -%}
+              <img src="{{ block.settings.custom_image | image_url: width: 800 }}"
+                   srcset="{{ block.settings.custom_image | image_url: width: 400 }} 400w,
+                           {{ block.settings.custom_image | image_url: width: 800 }} 800w"
+                   sizes="(max-width: 768px) 100vw, 50vw"
+                   alt="{{ block.settings.custom_image.alt | escape | default: sp.title }}">
+            {%- elsif sp.featured_image != blank -%}
+              <img src="{{ sp.featured_image | image_url: width: 800 }}"
+                   srcset="{{ sp.featured_image | image_url: width: 400 }} 400w,
+                           {{ sp.featured_image | image_url: width: 800 }} 800w"
+                   sizes="(max-width: 768px) 100vw, 50vw"
+                   alt="{{ sp.featured_image.alt | escape | default: sp.title }}">
+            {%- else -%}
+              <div class="showcase-card__placeholder">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+          </a>
+
+          <!-- Body -->
+          <div class="showcase-card__body">
+            <!-- Title: from product listing -->
+            <a href="{{ sp.url }}" class="showcase-card__title">{{ sp.title }}</a>
+
+            <!-- Description: free text editable per card -->
+            {%- if block.settings.description != blank -%}
+              <p class="showcase-card__desc">{{ block.settings.description }}</p>
+            {%- elsif sp.description != blank -%}
+              <p class="showcase-card__desc">{{ sp.description | strip_html | truncatewords: 20 }}</p>
+            {%- endif -%}
+
+            <!-- Variants: from product listing -->
+            {%- unless sp.has_only_default_variant -%}
+              <div class="showcase-card__variants">
+                {%- for variant in sp.variants limit: 4 -%}
+                  <a href="{{ sp.url }}?variant={{ variant.id }}" class="showcase-card__variant-pill">
+                    {{ variant.title }}
+                  </a>
+                {%- endfor -%}
+                {%- if sp.variants.size > 4 -%}
+                  <span class="showcase-card__variant-pill" style="border-style:dashed;color:var(--color-soft-brown);">
+                    +{{ sp.variants.size | minus: 4 }} more
+                  </span>
+                {%- endif -%}
+              </div>
+            {%- endunless -%}
+          </div>
+
+          <!-- Footer: price + view -->
+          <div class="showcase-card__footer">
+            <div class="showcase-card__price-wrap">
+              {%- if sp.price_varies -%}
+                <span class="showcase-card__from">from</span>
+              {%- endif -%}
+              <span class="showcase-card__price">{{ sp.price_min | money }}</span>
+            </div>
+            <a href="{{ sp.url }}" class="showcase-card__view">
+              {{ block.settings.view_label | default: 'View' }}
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Showcase (2×2)",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "The Range"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Shop by product family."
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all URL"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Gap between cards (px)",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 2", "label": "Wide (3:2)" },
+        { "value": "5 / 4", "label": "Tall (5:4)" }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        { "value": "cover", "label": "Cover (crop to fill)" },
+        { "value": "contain", "label": "Contain (show full image)" }
+      ],
+      "default": "contain",
+      "info": "Use 'Contain' to show the full product on a clean background (like the screenshot). Use 'Cover' for lifestyle images."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Title, variants and price are pulled from the product listing automatically."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge label (top-left)",
+          "info": "Free text — e.g. STRIP, GU10, E27",
+          "default": "GU10"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom image (optional)",
+          "info": "Upload a custom image for this card. If left blank, the product's main image is used."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card description (free text)",
+          "info": "Short one-liner shown below the title. If blank, uses the product description.",
+          "default": "10-metre dotless COB at Ra95+. Warm, even, shadow-free."
+        },
+        {
+          "type": "text",
+          "id": "view_label",
+          "label": "View button label",
+          "default": "View"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase (2×2)",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": { "badge": "STRIP", "description": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves." }
+        },
+        {
+          "type": "product_card",
+          "settings": { "badge": "GU10", "description": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi." }
+        },
+        {
+          "type": "product_card",
+          "settings": { "badge": "GU10", "description": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth." }
+        },
+        {
+          "type": "product_card",
+          "settings": { "badge": "E27", "description": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable. The bulb your fixture deserves." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

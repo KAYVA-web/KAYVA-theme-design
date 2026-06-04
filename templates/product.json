@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "settings": {
+        "show_quantity": true,
+        "show_trust_badges": true,
+        "free_shipping_threshold": 80,
+        "shipping_text": "<p>Free shipping on orders above $80. Standard delivery 3–5 business days. Local Singapore warranty included. All products ship with a printed test report.</p>",
+        "show_complementary": true
+      }
+    }
+  },
+  "order": ["main-product"]
+}

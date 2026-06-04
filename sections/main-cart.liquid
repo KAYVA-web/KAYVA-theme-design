@@ -1,0 +1,267 @@
+<style>
+  .cart-page { padding: var(--spacing-xl) 0; }
+  .cart-page__grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+  .cart-page__title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Cart items */
+  .cart-line-items { border-top: 1px solid var(--color-line); }
+  .cart-line-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .cart-line-item__image {
+    background: var(--color-cream);
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+  .cart-line-item__image img { width: 100%; height: 100%; object-fit: cover; }
+  .cart-line-item__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .cart-line-item__name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-dark-brown);
+  }
+  .cart-line-item__variant {
+    font-size: 12px;
+    color: var(--color-soft-brown);
+  }
+  .cart-line-item__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cart-line-item__price {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-dark-brown);
+  }
+  .cart-remove-btn {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-soft-brown);
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .cart-remove-btn:hover { color: var(--color-dark-brown); }
+
+  /* Summary */
+  .cart-summary {
+    position: sticky;
+    top: 100px;
+    border: 1px solid var(--color-line);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cart-summary__title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+  }
+  .cart-summary__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--color-ink);
+  }
+  .cart-summary__row--total {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-dark-brown);
+    padding-top: 12px;
+    border-top: 1px solid var(--color-line);
+  }
+  .cart-summary__shipping-note {
+    font-size: 12px;
+    color: var(--color-soft-brown);
+    text-align: center;
+  }
+
+  /* Empty cart */
+  .cart-empty {
+    text-align: center;
+    padding: var(--spacing-xxl) 0;
+  }
+  .cart-empty__heading {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--color-dark-brown);
+    margin-bottom: 12px;
+  }
+  .cart-empty__text {
+    font-size: 14px;
+    color: var(--color-soft-brown);
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 768px) {
+    .cart-page__grid { grid-template-columns: 1fr; }
+    .cart-summary { position: static; }
+  }
+</style>
+
+<section class="cart-page">
+  <div class="page-width">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span>Cart</span>
+    </nav>
+
+    {%- if cart.item_count > 0 -%}
+
+      <div class="cart-page__grid">
+
+        <!-- Items -->
+        <div>
+          <p class="cart-page__title">Your Cart ({{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</p>
+
+          {%- form 'cart', cart, id: 'cart-form' -%}
+            <div class="cart-line-items">
+              {%- for item in cart.items -%}
+                <div class="cart-line-item">
+                  <a href="{{ item.url }}" class="cart-line-item__image">
+                    <img src="{{ item.image | image_url: width: 200 }}"
+                         alt="{{ item.title | escape }}"
+                         loading="lazy">
+                  </a>
+                  <div class="cart-line-item__details">
+                    <div>
+                      <p class="cart-line-item__name">{{ item.product.title }}</p>
+                      {%- unless item.variant.title == 'Default Title' -%}
+                        <p class="cart-line-item__variant">{{ item.variant.title }}</p>
+                      {%- endunless -%}
+                    </div>
+                    <div class="cart-line-item__row">
+                      <div class="qty-selector">
+                        <button type="button" class="qty-selector__btn"
+                                onclick="let i=document.getElementById('qty-{{ item.key }}'); i.value=Math.max(0,+i.value-1); document.getElementById('cart-form').submit();">−</button>
+                        <input type="number"
+                               id="qty-{{ item.key }}"
+                               name="updates[{{ item.key }}]"
+                               value="{{ item.quantity }}"
+                               min="0"
+                               class="qty-selector__input">
+                        <button type="button" class="qty-selector__btn"
+                                onclick="let i=document.getElementById('qty-{{ item.key }}'); i.value=+i.value+1; document.getElementById('cart-form').submit();">+</button>
+                      </div>
+                      <span class="cart-line-item__price">{{ item.final_line_price | money }}</span>
+                    </div>
+                    <button type="button" class="cart-remove-btn"
+                            onclick="fetch('/cart/change.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:'{{ item.key }}',quantity:0})}).then(()=>location.reload())">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endform -%}
+
+          {%- if section.settings.show_note -%}
+            <div style="margin-top:var(--spacing-lg);">
+              <label for="cart-note" style="font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-soft-brown); display:block; margin-bottom:8px;">
+                Order note
+              </label>
+              <textarea id="cart-note" name="note" rows="3"
+                        style="width:100%; border:1.5px solid var(--color-line); padding:12px 16px; font-size:14px; font-family:inherit; resize:vertical; outline:none;"
+                        placeholder="Special instructions, delivery notes…"></textarea>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <p class="cart-summary__title">Order Summary</p>
+
+          {%- for item in cart.items -%}
+            <div class="cart-summary__row">
+              <span>{{ item.product.title }}{% unless item.variant.title == 'Default Title' %} — {{ item.variant.title }}{% endunless %} × {{ item.quantity }}</span>
+              <span>{{ item.final_line_price | money }}</span>
+            </div>
+          {%- endfor -%}
+
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Subtotal</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+
+          <a href="/checkout" class="btn btn--primary btn--full">
+            Proceed to Checkout
+          </a>
+
+          <p class="cart-summary__shipping-note">
+            Shipping and taxes calculated at checkout.
+          </p>
+
+          {%- if section.settings.show_payment_icons -%}
+            <div style="display:flex; justify-content:center; gap:8px; opacity:0.4; flex-wrap:wrap; margin-top:4px;">
+              {% for type in shop.enabled_payment_types %}
+                {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+              {% endfor %}
+            </div>
+          {%- endif -%}
+        </div>
+
+      </div>
+
+    {%- else -%}
+
+      <div class="cart-empty">
+        <h1 class="cart-empty__heading">Your cart is empty.</h1>
+        <p class="cart-empty__text">Add some properly-specified light to your space.</p>
+        <a href="/collections/all" class="btn btn--primary">Shop the range</a>
+      </div>
+
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Main",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_note",
+      "label": "Show order note field",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

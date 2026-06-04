@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3D2A15">
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <!-- Open Graph -->
+  {% if settings.share_image %}
+    <meta property="og:image" content="{{ settings.share_image | image_url: width: 1200 }}">
+  {% endif %}
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:site_name" content="{{ shop.name }}">
+
+  <!-- Favicon -->
+  {% if settings.favicon %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {% endif %}
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+</head>
+
+<body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}--{{ template.suffix }}{% endif %}">
+
+  <!-- Skip to content -->
+  <a href="#main-content" class="visually-hidden">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  {%- if settings.show_announcement and settings.announcement_text != blank -%}
+    <div class="announcement-bar">
+      {%- if settings.announcement_link != blank -%}
+        <a href="{{ settings.announcement_link }}">{{ settings.announcement_text }}</a>
+      {%- else -%}
+        {{ settings.announcement_text }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <!-- Header -->
+  {%- section 'header' -%}
+
+  <!-- Mobile Nav Overlay -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&#x2715;</button>
+    {%- for link in linklists[settings.main_menu].links -%}
+      <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+    {%- endfor -%}
+    <div style="margin-top: auto; padding-top: 24px;">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="/account" class="mobile-nav__link" style="font-size: 14px;">Account</a>
+      {%- endif -%}
+    </div>
+  </nav>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer__overlay" aria-hidden="true"></div>
+  <div class="cart-drawer" role="dialog" aria-label="Cart" aria-modal="true">
+    <div class="cart-drawer__header">
+      <span class="cart-drawer__title">Cart</span>
+      <button class="cart-drawer__close" data-cart-close aria-label="Close cart">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-drawer__items">
+      <!-- Populated by JS -->
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span class="cart-drawer__subtotal-label">Subtotal</span>
+        <span class="cart-drawer__subtotal-value">--</span>
+      </div>
+      <a href="/cart" class="btn btn--primary btn--full">Checkout</a>
+      <p class="cart-drawer__note">Shipping and taxes calculated at checkout.</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- Footer -->
+  {%- section 'footer' -%}
+
+  <!-- Scripts -->
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+  <!-- Cart count init -->
+  <script>
+    fetch('/cart.js').then(r => r.json()).then(cart => {
+      document.querySelectorAll('.cart-count__badge').forEach(el => {
+        el.textContent = cart.item_count;
+        el.style.display = cart.item_count > 0 ? 'flex' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

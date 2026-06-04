@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main-cart": {
+      "type": "main-cart",
+      "settings": {
+        "show_note": true,
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": ["main-cart"]
+}
