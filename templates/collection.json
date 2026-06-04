@@ -16,18 +16,18 @@
         "background_image": "shopify://shop_images/b10e6af89b8ef921edd032d21426c4f7.png",
         "background_video_url": "",
         "focal_point": "center center",
-        "overlay_color": "#1F1B16",
-        "overlay_opacity": 35,
+        "overlay_color": "#1f1b16",
+        "overlay_opacity": 30,
         "eyebrow": "Ra95+ Lighting",
         "heading": "Light that renders colour the way your home deserves.",
         "subtext": "Properly specified, fairly priced, designed for Singapore homes.",
-        "text_color": "#F5EFE5",
-        "text_align": "left",
+        "text_color": "#f5efe5",
+        "text_align": "center",
         "cta_label": "",
         "cta_url": "",
         "cta2_label": "",
         "cta2_url": "",
-        "min_height": 700
+        "min_height": 400
       }
     },
     "main": {
@@ -146,7 +146,7 @@
       },
       "settings": {
         "layout_type": "grid",
-        "product_card_size": "medium",
+        "product_card_size": "large",
         "mobile_product_card_size": "small",
         "enable_infinite_scroll": true,
         "products_per_page": 24,
