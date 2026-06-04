@@ -191,7 +191,7 @@
         "view_all": "View all",
         "view_all_url": "/collections/all",
         "bg": "#ffffff",
-        "gap": 20,
+        "gap": 48,
         "image_ratio": "1 / 1"
       }
     },
