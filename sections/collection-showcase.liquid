@@ -12,136 +12,94 @@
     grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
   }
 
-  /* Each collection tile */
+  /* Each tile — icon card style like Philips Hue */
   .collection-tile {
-    display: block;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 12px 16px;
     text-decoration: none;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: var(--color-cream);
+    border: 1.5px solid var(--color-line);
+    border-radius: {{ section.settings.border_radius }}px;
+    background: var(--color-white);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
   }
 
-  /* Border glow on hover — using the brand amber */
+  /* Border lights up on hover — amber glow */
   .collection-tile:hover {
     border-color: var(--color-amber);
     box-shadow: 0 0 0 1px var(--color-amber),
-                0 0 20px rgba(184, 117, 58, 0.20);
+                0 4px 20px rgba(184, 117, 58, 0.15);
   }
 
-  /* Image: background stays still, only img zooms */
+  /* Icon-sized image container */
   .collection-tile__image-wrap {
-    position: relative;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
     overflow: hidden;
-    aspect-ratio: {{ section.settings.image_ratio }};
-  }
-
-  .collection-tile__image-bg {
-    position: absolute;
-    inset: 0;
-    background: var(--color-cream);
-    z-index: 0;
+    border-radius: {{ section.settings.border_radius | divided_by: 2 }}px;
+    flex-shrink: 0;
+    position: relative;
   }
 
   .collection-tile__image-wrap img {
-    position: relative;
-    z-index: 1;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform-origin: center center;
+    object-fit: contain;
+    transition: transform 0.4s ease;
   }
 
   .collection-tile:hover .collection-tile__image-wrap img {
-    transform: scale(1.06);
+    transform: scale(1.08);
   }
 
-  /* Overlay */
-  .collection-tile__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: linear-gradient(to top, rgba(31,27,22,0.55) 0%, transparent 55%);
-    transition: opacity 0.3s;
-  }
-
-  .collection-tile:hover .collection-tile__overlay {
-    opacity: 0.85;
-  }
-
-  /* Text over image */
-  .collection-tile__info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .collection-tile__title {
-    font-weight: 600;
-    font-size: clamp(14px, 1.5vw, 17px);
-    color: var(--color-white);
-    line-height: 1.25;
-  }
-
-  .collection-tile__count {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.65);
-    white-space: nowrap;
-  }
-
-  /* Arrow that slides in on hover */
-  .collection-tile__arrow {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    z-index: 3;
-    width: 32px;
-    height: 32px;
-    background: var(--color-amber);
+  /* Placeholder icon when no image */
+  .collection-tile__placeholder-icon {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.25s, transform 0.25s;
+    color: var(--color-soft-brown);
   }
 
-  .collection-tile:hover .collection-tile__arrow {
-    opacity: 1;
-    transform: translateY(0);
+  /* Label below icon */
+  .collection-tile__title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-dark-brown);
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
   }
 
-  /* Placeholder when no image */
-  .collection-tile__placeholder {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+  /* Optional product count */
+  .collection-tile__count {
+    font-size: 11px;
+    color: var(--color-soft-brown);
+    text-align: center;
+  }
+
+  /* View all button below grid */
+  .collection-showcase__footer {
+    text-align: center;
+    margin-top: var(--spacing-lg);
   }
 
   @media (max-width: 1024px) {
     .collection-grid-showcase {
-      grid-template-columns: repeat({{ section.settings.columns | at_most: 3 }}, 1fr);
+      grid-template-columns: repeat({{ section.settings.columns | at_most: 4 }}, 1fr);
     }
   }
 
-  @media (max-width: 768px) {
-    .collection-grid-showcase { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px) {
+    .collection-grid-showcase { grid-template-columns: repeat(3, 1fr); }
   }
 
-  @media (max-width: 480px) {
-    .collection-grid-showcase { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (max-width: 380px) {
+    .collection-grid-showcase { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 
@@ -167,48 +125,46 @@
         <a href="{{ tile_url }}" class="collection-tile" {{ block.shopify_attributes }}>
 
           <div class="collection-tile__image-wrap">
-            <div class="collection-tile__image-bg"></div>
-
             {%- if block.settings.custom_image != blank -%}
-              <img src="{{ block.settings.custom_image | image_url: width: 800 }}"
-                   srcset="{{ block.settings.custom_image | image_url: width: 400 }} 400w,
-                           {{ block.settings.custom_image | image_url: width: 800 }} 800w"
-                   sizes="(max-width: 480px) calc(50vw - 10px),
-                          (max-width: 768px) calc(50vw - 20px),
-                          calc({{ 100 | divided_by: section.settings.columns }}vw - 40px)"
-                   alt="{{ block.settings.custom_image.alt | escape | default: block.settings.title }}">
+              <img src="{{ block.settings.custom_image | image_url: width: 300 }}"
+                   alt="{{ block.settings.custom_image.alt | escape | default: block.settings.title }}"
+                   loading="lazy"
+                   width="{{ section.settings.icon_size }}"
+                   height="{{ section.settings.icon_size }}">
             {%- elsif col.image != blank -%}
-              <img src="{{ col.image | image_url: width: 800 }}"
+              <img src="{{ col.image | image_url: width: 300 }}"
                    alt="{{ col.image.alt | escape | default: col.title }}"
                    loading="lazy">
             {%- else -%}
-              <div class="collection-tile__placeholder">
-                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              <div class="collection-tile__placeholder-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <rect x="8" y="14" width="24" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="20" cy="23" r="4" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M14 14v-2a6 6 0 0112 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
               </div>
             {%- endif -%}
-
-            <div class="collection-tile__overlay"></div>
-
-            <!-- Arrow badge -->
-            <span class="collection-tile__arrow" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-
-            <div class="collection-tile__info">
-              <span class="collection-tile__title">
-                {{ block.settings.title | default: col.title }}
-              </span>
-              {%- if section.settings.show_product_count and col.products_count > 0 -%}
-                <span class="collection-tile__count">{{ col.products_count }} products</span>
-              {%- endif -%}
-            </div>
           </div>
+
+          <span class="collection-tile__title">
+            {{ block.settings.title | default: col.title }}
+          </span>
+
+          {%- if section.settings.show_product_count and col.products_count > 0 -%}
+            <span class="collection-tile__count">{{ col.products_count }} products</span>
+          {%- endif -%}
 
         </a>
       {%- endfor -%}
     </div>
+
+    {%- if section.settings.view_all_label != blank -%}
+      <div class="collection-showcase__footer">
+        <a href="{{ section.settings.view_all_url }}" class="btn btn--primary">
+          {{ section.settings.view_all_label }}
+        </a>
+      </div>
+    {%- endif -%}
 
   </div>
 </section>
@@ -239,7 +195,7 @@
         { "value": "left", "label": "Left" },
         { "value": "center", "label": "Centre" }
       ],
-      "default": "left"
+      "default": "center"
     },
     {
       "type": "color",
@@ -254,38 +210,59 @@
     {
       "type": "range",
       "id": "columns",
-      "label": "Columns on desktop (max 6 tiles)",
+      "label": "Columns on desktop",
       "min": 2,
       "max": 6,
       "step": 1,
-      "default": 3
+      "default": 5
     },
     {
       "type": "range",
       "id": "grid_gap",
       "label": "Gap between tiles (px)",
-      "min": 0,
+      "min": 4,
       "max": 40,
       "step": 4,
-      "default": 16
+      "default": 12
     },
     {
-      "type": "select",
-      "id": "image_ratio",
-      "label": "Tile image ratio",
-      "options": [
-        { "value": "1 / 1", "label": "Square (1:1)" },
-        { "value": "4 / 3", "label": "Landscape (4:3)" },
-        { "value": "3 / 4", "label": "Portrait (3:4)" },
-        { "value": "16 / 9", "label": "Wide (16:9)" }
-      ],
-      "default": "4 / 3"
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon image size (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Corner roundness (px)",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "default": 8
     },
     {
       "type": "checkbox",
       "id": "show_product_count",
       "label": "Show product count",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "View all button"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "Button label",
+      "info": "Leave blank to hide the button."
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "Button URL"
     }
   ],
   "blocks": [
@@ -296,8 +273,7 @@
         {
           "type": "collection",
           "id": "collection",
-          "label": "Collection",
-          "info": "Title is pulled from the collection automatically."
+          "label": "Collection"
         },
         {
           "type": "text",
@@ -308,14 +284,13 @@
         {
           "type": "image_picker",
           "id": "custom_image",
-          "label": "Custom tile image (optional)",
-          "info": "Overrides the collection image. Recommended: minimum 800×600px."
+          "label": "Icon image",
+          "info": "Upload a small icon or product image. Transparent PNG works best."
         },
         {
           "type": "url",
           "id": "custom_url",
-          "label": "Custom link URL (optional)",
-          "info": "Overrides the collection URL if needed."
+          "label": "Override link URL (optional)"
         }
       ]
     }
@@ -326,7 +301,9 @@
       "blocks": [
         { "type": "collection_tile", "settings": { "title": "LED Strip" } },
         { "type": "collection_tile", "settings": { "title": "GU10 Bulbs" } },
-        { "type": "collection_tile", "settings": { "title": "E27 Bulbs" } }
+        { "type": "collection_tile", "settings": { "title": "E27 Bulbs" } },
+        { "type": "collection_tile", "settings": { "title": "Downlights" } },
+        { "type": "collection_tile", "settings": { "title": "Accessories" } }
       ]
     }
   ]
