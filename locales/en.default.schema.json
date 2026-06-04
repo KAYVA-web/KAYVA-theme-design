@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "header": { "name": "Header" },
+    "footer": { "name": "Footer" },
+    "hero_banner": { "name": "Hero Banner" },
+    "brand_pillars": { "name": "Brand Pillars" },
+    "featured_products": { "name": "Featured Products" },
+    "product_showcase": { "name": "Product Showcase" },
+    "collection_showcase": { "name": "Collection Showcase" },
+    "cri_explainer": { "name": "CRI Comparison" },
+    "image_with_text": { "name": "Image with Text" },
+    "newsletter": { "name": "Newsletter" },
+    "rich_text": { "name": "Rich Text" },
+    "main_product": { "name": "Product" },
+    "main_collection": { "name": "Collection" },
+    "main_cart": { "name": "Cart" },
+    "main_about": { "name": "About" },
+    "main_404": { "name": "404 Page" },
+    "main_page": { "name": "Page" },
+    "main_search": { "name": "Search" },
+    "password": { "name": "Password" }
+  }
+}
