@@ -1,68 +1,197 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "kayva-hero",
       "settings": {
+        "image": "shopify://shop_images/32f2d1f0e16955e2279cc0db087fb6a6.png",
+        "focal_point": "center center",
+        "overlay_color": "#1f1b16",
+        "overlay_opacity": 35,
         "eyebrow": "Ra95+ Lighting",
         "heading": "Light that renders colour the way your home deserves.",
         "subtext": "Properly specified, fairly priced, designed for Singapore homes.",
+        "text_color": "#f5efe5",
+        "text_align": "left",
         "btn1_label": "Shop Now",
         "btn1_url": "/collections/all",
         "btn2_label": "Learn About CRI",
-        "overlay_opacity": 35,
+        "btn2_url": "",
         "min_height": 700
       }
     },
     "pillars": {
       "type": "kayva-pillars",
+      "blocks": {
+        "p1": {
+          "type": "pillar",
+          "settings": {
+            "title": "Properly Specified",
+            "text": "We publish the real numbers — CRI, R9, CCT tolerance, lumens. No hidden specs, no vague claims.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "p2": {
+          "type": "pillar",
+          "settings": {
+            "title": "Designed for Singapore",
+            "text": "Built for tropical homes, HDB and condo proportions, and how Singapore rooms actually use light.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "p3": {
+          "type": "pillar",
+          "settings": {
+            "title": "Ra95+ Throughout",
+            "text": "One quality standard across every product — strip, GU10, and E27. Museum-grade colour accuracy.",
+            "link_label": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "eyebrow": "Why KAYVA",
         "heading": "Built on three principles.",
-        "columns": 3
-      },
-      "blocks": {
-        "p1": { "type": "pillar", "settings": { "title": "Properly Specified", "text": "We publish the real numbers — CRI, R9, CCT tolerance, lumens. No hidden specs, no vague claims." } },
-        "p2": { "type": "pillar", "settings": { "title": "Designed for Singapore", "text": "Built for tropical homes, HDB and condo proportions, and how Singapore rooms actually use light." } },
-        "p3": { "type": "pillar", "settings": { "title": "Ra95+ Throughout", "text": "One quality standard across every product — strip, GU10, and E27. Museum-grade colour accuracy." } }
-      },
-      "block_order": ["p1", "p2", "p3"]
+        "bg": "#ffffff",
+        "columns": 3,
+        "gap": 24
+      }
     },
     "showcase": {
       "type": "kayva-product-showcase",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "badge": "STRIP",
+            "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves.",
+            "view_label": "View"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "badge": "GU10",
+            "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
+            "view_label": "View"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "badge": "GU10",
+            "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth.",
+            "view_label": "View"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "product": "",
+            "badge": "E27",
+            "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
+            "view_label": "View"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
       "settings": {
         "eyebrow": "The Range",
         "heading": "Shop by product family.",
         "view_all": "View all",
         "view_all_url": "/collections/all",
+        "bg": "#ffffff",
         "gap": 20,
         "image_ratio": "4 / 3"
-      },
-      "blocks": {
-        "c1": { "type": "card", "settings": { "badge": "STRIP", "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves." } },
-        "c2": { "type": "card", "settings": { "badge": "GU10", "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi." } },
-        "c3": { "type": "card", "settings": { "badge": "GU10", "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth." } },
-        "c4": { "type": "card", "settings": { "badge": "E27", "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable." } }
-      },
-      "block_order": ["c1", "c2", "c3", "c4"]
+      }
     },
     "collections": {
       "type": "kayva-collection-showcase",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "LED Strip",
+            "url": ""
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "GU10",
+            "url": ""
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "E27",
+            "url": ""
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "Downlights",
+            "url": ""
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "Accessories",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
       "settings": {
         "eyebrow": "Browse",
         "heading": "Shop by category.",
+        "text_align": "center",
+        "bg": "#ffffff",
         "columns": 5,
+        "gap": 12,
         "icon_size": 72,
         "radius": 8,
-        "text_align": "center"
-      },
-      "blocks": {
-        "t1": { "type": "tile", "settings": { "title": "LED Strip" } },
-        "t2": { "type": "tile", "settings": { "title": "GU10" } },
-        "t3": { "type": "tile", "settings": { "title": "E27" } },
-        "t4": { "type": "tile", "settings": { "title": "Downlights" } },
-        "t5": { "type": "tile", "settings": { "title": "Accessories" } }
-      },
-      "block_order": ["t1", "t2", "t3", "t4", "t5"]
+        "show_count": false,
+        "btn_label": "",
+        "btn_url": ""
+      }
     },
     "cri": {
       "type": "kayva-cri",
@@ -73,24 +202,31 @@
         "body": "<p>CRI measures how accurately a light renders colour. Most generic strips sit at Ra80 — skin looks slightly grey, wood loses its warmth, food looks dull.</p><p>KAYVA is Ra95+ with R9 over 50. Colours look the way they should. It's the same standard used in museums, hotels, and premium restaurants — now in your home.</p>",
         "btn_label": "Shop the Range",
         "btn_url": "/collections/all",
+        "color1": "#a89b7c",
         "name1": "Generic strip",
         "sub1": "Ra80 · dull, flat",
-        "color1": "#A89B7C",
+        "color2": "#e8b870",
         "name2": "KAYVA",
         "sub2": "Ra95+ · warm, true",
-        "color2": "#E8B870"
+        "swatch_ratio": "4 / 3",
+        "bg": "#ffffff",
+        "eyebrow_color": "#b8753a",
+        "heading_color": "#3d2a15",
+        "body_color": "#1f1b16"
       }
     },
     "imgtext": {
       "type": "kayva-image-text",
       "settings": {
+        "ratio": "4 / 5",
+        "image_side": "right",
         "eyebrow": "Our Products",
         "heading": "Fewer lumens, better light.",
         "text": "<p>Ra95+ means your colours render the way they should. Skin looks alive, wood shows its grain, and food looks like food.</p>",
         "btn_label": "Shop GU10",
         "btn_url": "/collections/all",
-        "image_side": "right",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5",
+        "text_color": "#3d2a15"
       }
     },
     "newsletter": {
@@ -98,9 +234,25 @@
       "settings": {
         "eyebrow": "Lighting guides",
         "heading": "Get our Singapore lighting guide.",
-        "subtext": "CRI explained, Kelvin guide, and cove lighting tips for HDB and condo spaces."
+        "subtext": "CRI explained, Kelvin guide, and cove lighting tips for HDB and condo spaces.",
+        "placeholder": "your@email.com",
+        "btn_label": "Subscribe",
+        "disclaimer": "No spam. Unsubscribe any time.",
+        "bg": "#f5efe5",
+        "text_color": "#3d2a15",
+        "border_color": "#8a5524",
+        "btn_bg": "#3d2a15",
+        "btn_text": "#f5efe5"
       }
     }
   },
-  "order": ["hero", "pillars", "showcase", "collections", "cri", "imgtext", "newsletter"]
+  "order": [
+    "hero",
+    "pillars",
+    "showcase",
+    "collections",
+    "cri",
+    "imgtext",
+    "newsletter"
+  ]
 }
