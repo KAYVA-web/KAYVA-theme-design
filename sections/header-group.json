@@ -51,7 +51,7 @@
         "logo_position": "left",
         "menu_position": "center",
         "menu_row": "top",
-        "customer_account_menu": "kayva-header-menu",
+        "customer_account_menu": "main-menu",
         "show_search": false,
         "search_position": "right",
         "search_row": "top",
