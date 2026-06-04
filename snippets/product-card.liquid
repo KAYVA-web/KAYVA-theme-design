@@ -119,7 +119,7 @@
       -%}
       {%- if kv_has_features -%}
         {{ 'kayva.css' | asset_url | stylesheet_tag }}
-        <ul class="kayva-features" style="padding:0 var(--padding-xs,12px) var(--padding-xs,12px);">
+        <ul class="kayva-features">
           {%- for tag in product.tags -%}
             {%- if tag contains 'feature:' -%}
               <li class="kayva-feature">

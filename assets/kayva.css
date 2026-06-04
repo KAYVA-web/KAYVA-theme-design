@@ -172,10 +172,39 @@
   color: var(--kayva-dark-brown);
   line-height: 1.3;
 }
+/* ===== HORIZON PRODUCT CARD — ALIGNMENT FIX =====
+   DOM order from Horizon: image → title → price → [bullets]
+   Desired visual order: image → title → [bullets] → price (always at bottom)
+
+   Fix: use CSS order on the flex column, and push price to bottom.
+   product-card__content is already layout-panel-flex--column (flex column).
+*/
+
+/* Make every card in the grid stretch to full row height */
+.product-grid product-card,
+.product-grid product-card .product-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Price: always at the bottom of the card info area */
+.product-grid product-card product-price {
+  order: 10;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* Feature bullets: sit between title and price */
+.product-grid product-card .kayva-features {
+  order: 9;
+  padding-bottom: 0;
+}
+
 /* Feature bullets — works inside both KAYVA cards and Horizon product cards */
 .kayva-features {
   list-style: none;
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
