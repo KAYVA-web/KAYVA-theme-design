@@ -28,6 +28,72 @@
         "min_height": 700
       }
     },
+    "collections": {
+      "type": "kayva-collection-showcase",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "led-strip",
+            "title": "LED Strip",
+            "url": ""
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "GU10",
+            "url": ""
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "E27",
+            "url": ""
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "Downlights",
+            "url": ""
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "collection": "",
+            "title": "Accessories",
+            "image": "shopify://shop_images/LUMIRA.jpg",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
+      "settings": {
+        "eyebrow": "Browse",
+        "heading": "Shop by category.",
+        "text_align": "center",
+        "bg": "#ffffff",
+        "columns": 5,
+        "gap": 12,
+        "icon_size": 56,
+        "radius": 6,
+        "show_count": false,
+        "btn_label": "",
+        "btn_url": ""
+      }
+    },
     "pillars": {
       "type": "kayva-pillars",
       "blocks": {
@@ -67,7 +133,7 @@
       "settings": {
         "eyebrow": "Why KAYVA",
         "heading": "Built on three principles.",
-        "bg": "#ffffff",
+        "bg": "#f5efe5",
         "columns": 3,
         "gap": 24
       }
@@ -129,72 +195,6 @@
         "image_ratio": "4 / 3"
       }
     },
-    "collections": {
-      "type": "kayva-collection-showcase",
-      "blocks": {
-        "t1": {
-          "type": "tile",
-          "settings": {
-            "collection": "led-strip",
-            "title": "LED Strip",
-            "url": ""
-          }
-        },
-        "t2": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "title": "GU10",
-            "url": ""
-          }
-        },
-        "t3": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "title": "E27",
-            "url": ""
-          }
-        },
-        "t4": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "title": "Downlights",
-            "url": ""
-          }
-        },
-        "t5": {
-          "type": "tile",
-          "settings": {
-            "collection": "",
-            "title": "Accessories",
-            "image": "shopify://shop_images/LUMIRA.jpg",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4",
-        "t5"
-      ],
-      "settings": {
-        "eyebrow": "Browse",
-        "heading": "Shop by category.",
-        "text_align": "center",
-        "bg": "#ffffff",
-        "columns": 5,
-        "gap": 12,
-        "icon_size": 72,
-        "radius": 8,
-        "show_count": false,
-        "btn_label": "",
-        "btn_url": ""
-      }
-    },
     "cri": {
       "type": "kayva-cri",
       "settings": {
@@ -213,7 +213,7 @@
         "name2": "KAYVA",
         "sub2": "Ra95+ · warm, true",
         "swatch_ratio": "4 / 3",
-        "bg": "#ffffff",
+        "bg": "#f5efe5",
         "eyebrow_color": "#b8753a",
         "heading_color": "#3d2a15",
         "body_color": "#1f1b16"
@@ -221,6 +221,7 @@
     },
     "imgtext": {
       "type": "kayva-image-text",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/echo-bluetooth-ceiling-speaker-6872699.jpg",
         "ratio": "4 / 5",
@@ -230,7 +231,7 @@
         "text": "<p>Ra95+ means your colours render the way they should. Skin looks alive, wood shows its grain, and food looks like food.</p>",
         "btn_label": "Shop GU10",
         "btn_url": "/collections/all",
-        "bg": "#f5efe5",
+        "bg": "#ffffff",
         "text_color": "#3d2a15"
       }
     },
@@ -253,9 +254,9 @@
   },
   "order": [
     "hero",
+    "collections",
     "pillars",
     "showcase",
-    "collections",
     "cri",
     "imgtext",
     "newsletter"
