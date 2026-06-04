@@ -146,7 +146,7 @@
           "settings": {
             "product": "aerotilt-gu10-holder",
             "badge": "STRIP",
-            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
+            "image": "shopify://shop_images/2.svg",
             "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves.",
             "view_label": "View"
           }
@@ -166,6 +166,7 @@
           "settings": {
             "product": "",
             "badge": "GU10",
+            "image": "shopify://shop_images/2.svg",
             "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth.",
             "view_label": "View"
           }
@@ -175,6 +176,7 @@
           "settings": {
             "product": "",
             "badge": "E27",
+            "image": "shopify://shop_images/3.svg",
             "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
             "view_label": "View"
           }
