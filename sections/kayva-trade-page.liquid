@@ -395,16 +395,21 @@
   {%- endif -%}
 
   <!-- ===== FORM ===== -->
-  <div class="kv-trade__section kv-trade__section--bordered">
+  {%- comment -%}
+    Wrap everything in a div with a data attribute so JS can find
+    the form reliably — we never put section.id inside {% form %} tags
+    because Shopify does NOT process Liquid inside tag string params.
+  {%- endcomment -%}
+  <div class="kv-trade__section kv-trade__section--bordered" data-trade-section="{{ section.id }}">
     <div class="kayva-page-width">
       {%- if section.settings.form_heading != blank -%}
         <h2 class="kv-trade__section-title">{{ section.settings.form_heading }}</h2>
       {%- endif -%}
 
-      <!-- Error message shown inline if JS fails -->
-      <div class="kv-trade__message" id="kv-trade-error-{{ section.id }}"></div>
+      <!-- Inline error message (shown if fetch fails) -->
+      <div class="kv-trade__message" data-trade-error></div>
 
-      {%- form 'contact', id: 'kv-trade-form-{{ section.id }}' -%}
+      {%- form 'contact' -%}
 
         <!-- Hidden fields -->
         <input type="hidden" name="contact[tags]" value="trade-account">
@@ -501,9 +506,8 @@
                       placeholder="{{ section.settings.placeholder_message }}"></textarea>
           </div>
 
-          <button type="submit" class="kv-trade__submit" id="kv-submit-{{ section.id }}">
-            {{ section.settings.submit_label }}
-          </button>
+          <button type="submit" class="kv-trade__submit" data-trade-submit>
+            {{ section.settings.submit_label }}</button>
 
           {%- if section.settings.disclaimer != blank -%}
             <p class="kv-trade__disclaimer">{{ section.settings.disclaimer }}</p>
@@ -517,9 +521,9 @@
 </div>
 
 <!-- ===== SUCCESS POPUP ===== -->
-<div class="kv-trade__popup-overlay" id="kv-trade-popup-{{ section.id }}" role="dialog" aria-modal="true" aria-label="Application received">
+<!-- data-trade-popup ties this popup to the section above via JS querySelector -->
+<div class="kv-trade__popup-overlay" data-trade-popup="{{ section.id }}" role="dialog" aria-modal="true" aria-label="Application received">
   <div class="kv-trade__popup">
-    <!-- Tick icon -->
     <div class="kv-trade__popup-icon">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -528,11 +532,10 @@
     </div>
     <h2 class="kv-trade__popup-heading">{{ section.settings.popup_heading }}</h2>
     <p class="kv-trade__popup-body">{{ section.settings.popup_body }}</p>
-    <!-- Progress bar -->
     <div class="kv-trade__popup-bar-wrap">
-      <div class="kv-trade__popup-bar" id="kv-popup-bar-{{ section.id }}"></div>
+      <div class="kv-trade__popup-bar" data-trade-bar></div>
     </div>
-    <p class="kv-trade__popup-countdown" id="kv-popup-count-{{ section.id }}">
+    <p class="kv-trade__popup-countdown" data-trade-count>
       Redirecting to home in <strong>10</strong> seconds
     </p>
     <button class="kv-trade__popup-home" onclick="window.location.href='/'">
@@ -543,19 +546,17 @@
 
 <script>
 (function () {
-  var formId    = 'kv-trade-form-{{ section.id }}';
-  var popupId   = 'kv-trade-popup-{{ section.id }}';
-  var barId     = 'kv-popup-bar-{{ section.id }}';
-  var countId   = 'kv-popup-count-{{ section.id }}';
-  var errorId   = 'kv-trade-error-{{ section.id }}';
-  var submitId  = 'kv-submit-{{ section.id }}';
+  /* Find elements via data attributes — no IDs with section.id needed */
+  var sid     = '{{ section.id }}';
+  var wrapper = document.querySelector('[data-trade-section="' + sid + '"]');
+  if (!wrapper) return;
 
-  var form    = document.getElementById(formId);
-  var popup   = document.getElementById(popupId);
-  var bar     = document.getElementById(barId);
-  var counter = document.getElementById(countId);
-  var errorEl = document.getElementById(errorId);
-  var submitBtn = document.getElementById(submitId);
+  var form      = wrapper.querySelector('form');
+  var submitBtn = wrapper.querySelector('[data-trade-submit]');
+  var errorEl   = wrapper.querySelector('[data-trade-error]');
+  var popup     = document.querySelector('[data-trade-popup="' + sid + '"]');
+  var bar       = popup ? popup.querySelector('[data-trade-bar]') : null;
+  var counter   = popup ? popup.querySelector('[data-trade-count]') : null;
 
   if (!form) return;
 
