@@ -1,7 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "trade": {
+    "kayva_trade_page_ngtF7r": {
       "type": "kayva-trade-page",
+      "blocks": {
+        "benefit_tVzi7i": {
+          "type": "benefit",
+          "settings": {
+            "title": "Trade pricing",
+            "text": "Volume pricing across the full range — strip, GU10, and E27. Better margins on every project."
+          }
+        },
+        "benefit_QiEzFF": {
+          "type": "benefit",
+          "settings": {
+            "title": "Consistent quality",
+            "text": "Ra95+ across every product, every batch. What you spec is what your client gets."
+          }
+        },
+        "benefit_9kAH7d": {
+          "type": "benefit",
+          "settings": {
+            "title": "Full documentation",
+            "text": "Test reports and specs on request — everything you need to justify the choice to clients."
+          }
+        },
+        "benefit_zMkHPK": {
+          "type": "benefit",
+          "settings": {
+            "title": "Local support",
+            "text": "Singapore-based. Direct line for sizing, compatibility, and project questions."
+          }
+        },
+        "who_tag_L3wCxr": {
+          "type": "who_tag",
+          "settings": {
+            "label": "Interior Designers"
+          }
+        },
+        "who_tag_QN8Tpr": {
+          "type": "who_tag",
+          "settings": {
+            "label": "Electricians"
+          }
+        },
+        "who_tag_nfdYQJ": {
+          "type": "who_tag",
+          "settings": {
+            "label": "Contractors"
+          }
+        },
+        "who_tag_ri4bYh": {
+          "type": "who_tag",
+          "settings": {
+            "label": "Renovation Firms"
+          }
+        },
+        "who_tag_qgFFLg": {
+          "type": "who_tag",
+          "settings": {
+            "label": "Lighting Specialists"
+          }
+        },
+        "biz_option_VPiFaN": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Interior Designer",
+            "value": "Interior Designer"
+          }
+        },
+        "biz_option_6Jdwa8": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Electrician",
+            "value": "Electrician"
+          }
+        },
+        "biz_option_TGzEgf": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Contractor",
+            "value": "Contractor"
+          }
+        },
+        "biz_option_eQqfLg": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Renovation Firm",
+            "value": "Renovation Firm"
+          }
+        },
+        "biz_option_R8YGWy": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Lighting Retailer",
+            "value": "Lighting Retailer"
+          }
+        },
+        "biz_option_x9kiyk": {
+          "type": "biz_option",
+          "settings": {
+            "label": "Other",
+            "value": "Other"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_tVzi7i",
+        "benefit_QiEzFF",
+        "benefit_9kAH7d",
+        "benefit_zMkHPK",
+        "who_tag_L3wCxr",
+        "who_tag_QN8Tpr",
+        "who_tag_nfdYQJ",
+        "who_tag_ri4bYh",
+        "who_tag_qgFFLg",
+        "biz_option_VPiFaN",
+        "biz_option_6Jdwa8",
+        "biz_option_TGzEgf",
+        "biz_option_eQqfLg",
+        "biz_option_R8YGWy",
+        "biz_option_x9kiyk"
+      ],
+      "name": "KAYVA Trade Page",
       "settings": {
         "eyebrow": "FOR THE TRADE",
         "heading": "Specify KAYVA for your projects.",
@@ -20,27 +149,13 @@
         "label_message": "Tell us about your projects",
         "placeholder_message": "Typical project type, volume, and what you're looking for",
         "submit_label": "Apply for Trade Account",
-        "disclaimer": "We review all applications within one business day."
-      },
-      "blocks": {
-        "b1": { "type": "benefit", "settings": { "title": "Trade pricing", "text": "Volume pricing across the full range — strip, GU10, and E27. Better margins on every project." } },
-        "b2": { "type": "benefit", "settings": { "title": "Consistent quality", "text": "Ra95+ across every product, every batch. What you spec is what your client gets." } },
-        "b3": { "type": "benefit", "settings": { "title": "Full documentation", "text": "Test reports and specs on request — everything you need to justify the choice to clients." } },
-        "b4": { "type": "benefit", "settings": { "title": "Local support", "text": "Singapore-based. Direct line for sizing, compatibility, and project questions." } },
-        "w1": { "type": "who_tag", "settings": { "label": "Interior Designers" } },
-        "w2": { "type": "who_tag", "settings": { "label": "Electricians" } },
-        "w3": { "type": "who_tag", "settings": { "label": "Contractors" } },
-        "w4": { "type": "who_tag", "settings": { "label": "Renovation Firms" } },
-        "w5": { "type": "who_tag", "settings": { "label": "Lighting Specialists" } },
-        "o1": { "type": "biz_option", "settings": { "label": "Interior Designer", "value": "Interior Designer" } },
-        "o2": { "type": "biz_option", "settings": { "label": "Electrician", "value": "Electrician" } },
-        "o3": { "type": "biz_option", "settings": { "label": "Contractor", "value": "Contractor" } },
-        "o4": { "type": "biz_option", "settings": { "label": "Renovation Firm", "value": "Renovation Firm" } },
-        "o5": { "type": "biz_option", "settings": { "label": "Lighting Retailer", "value": "Lighting Retailer" } },
-        "o6": { "type": "biz_option", "settings": { "label": "Other", "value": "Other" } }
-      },
-      "block_order": ["b1","b2","b3","b4","w1","w2","w3","w4","w5","o1","o2","o3","o4","o5","o6"]
+        "disclaimer": "We review all applications within one business day.",
+        "popup_heading": "We received your enquiry.",
+        "popup_body": "We will get back to you within 1 business day."
+      }
     }
   },
-  "order": ["trade"]
+  "order": [
+    "kayva_trade_page_ngtF7r"
+  ]
 }
