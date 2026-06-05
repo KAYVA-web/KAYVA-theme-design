@@ -206,121 +206,37 @@
   cursor: not-allowed;
 }
 
-/* Error message (inline) */
-.kv-trade__message {
+/* Success message — same pattern as default Shopify/Horizon contact form */
+.kv-trade__success {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   padding: 14px 18px;
-  font-size: 14px;
-  margin-top: 16px;
-  display: none;
-  border-left: 3px solid var(--kayva-amber, #B8753A);
-  background: #FBF3E8;
-  color: var(--kayva-warm-brown, #6B4823);
-}
-.kv-trade__message.is-visible { display: block; }
-
-/* ===== SUCCESS POPUP ===== */
-.kv-trade__popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(31, 27, 22, 0.6);
-  z-index: 9998;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-.kv-trade__popup-overlay.is-visible {
-  opacity: 1;
-  pointer-events: all;
-}
-.kv-trade__popup {
-  background: var(--kayva-white, #FFFFFF);
-  max-width: 480px;
-  width: 100%;
-  padding: 48px 40px;
-  text-align: center;
-  transform: translateY(16px);
-  transition: transform 0.35s ease;
-  position: relative;
-}
-.kv-trade__popup-overlay.is-visible .kv-trade__popup {
-  transform: translateY(0);
-}
-.kv-trade__popup-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--kayva-cream, #F5EFE5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  color: var(--kayva-amber, #B8753A);
-}
-.kv-trade__popup-heading {
-  font-family: var(--kayva-font);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--kayva-dark-brown, #3D2A15);
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-.kv-trade__popup-body {
-  font-family: var(--kayva-font);
-  font-size: 15px;
-  color: var(--kayva-warm-brown, #6B4823);
-  line-height: 1.65;
-  margin-bottom: 28px;
-}
-.kv-trade__popup-countdown {
-  font-family: var(--kayva-font);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--kayva-soft-brown, #8A5524);
-  opacity: 0.7;
-  margin-bottom: 20px;
-}
-.kv-trade__popup-bar-wrap {
-  height: 3px;
-  background: var(--kayva-line, #E8E0D2);
-  border-radius: 2px;
-  overflow: hidden;
   margin-bottom: 24px;
-}
-.kv-trade__popup-bar {
-  height: 100%;
-  background: var(--kayva-amber, #B8753A);
-  width: 100%;
-  transform-origin: left;
-  animation: none;
-}
-.kv-trade__popup-bar.is-counting {
-  animation: kv-countdown 10s linear forwards;
-}
-@keyframes kv-countdown {
-  from { transform: scaleX(1); }
-  to   { transform: scaleX(0); }
-}
-.kv-trade__popup-home {
   font-family: var(--kayva-font);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--kayva-warm-brown, #6B4823);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-  cursor: pointer;
-  background: none;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  font-size: 14px;
+  color: #2D6A2D;
+  background: #EEF7EE;
+  border-left: 3px solid #4A8C4A;
+  line-height: 1.55;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.kv-trade__popup-home:hover { color: var(--kayva-amber, #B8753A); }
+
+/* Error message */
+.kv-trade__error {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  color: var(--kayva-warm-brown, #6B4823);
+  background: #FBF3E8;
+  border-left: 3px solid var(--kayva-amber, #B8753A);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Disclaimer */
 .kv-trade__disclaimer {
@@ -395,23 +311,28 @@
   {%- endif -%}
 
   <!-- ===== FORM ===== -->
-  {%- comment -%}
-    Wrap everything in a div with a data attribute so JS can find
-    the form reliably — we never put section.id inside {% form %} tags
-    because Shopify does NOT process Liquid inside tag string params.
-  {%- endcomment -%}
-  <div class="kv-trade__section kv-trade__section--bordered" data-trade-section="{{ section.id }}">
+  <div class="kv-trade__section kv-trade__section--bordered">
     <div class="kayva-page-width">
       {%- if section.settings.form_heading != blank -%}
         <h2 class="kv-trade__section-title">{{ section.settings.form_heading }}</h2>
       {%- endif -%}
 
-      <!-- Inline error message (shown if fetch fails) -->
-      <div class="kv-trade__message" data-trade-error></div>
-
       {%- form 'contact' -%}
 
-        <!-- Hidden fields -->
+        {%- if form.posted_successfully? -%}
+          <div class="kv-trade__success">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
+              <circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ section.settings.success_message }}
+          </div>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="kv-trade__error">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+
         <input type="hidden" name="contact[tags]" value="trade-account">
 
         <div class="kv-trade__form-wrap">
@@ -419,69 +340,52 @@
           <!-- Name + Company -->
           <div class="kv-trade__form-row">
             <div class="kv-trade__field">
-              <label class="kv-trade__label" for="kv-name-{{ section.id }}">
+              <label class="kv-trade__label" for="kv-name">
                 {{ section.settings.label_name }}<span class="kv-required">*</span>
               </label>
-              <input class="kv-trade__input"
-                     type="text"
-                     id="kv-name-{{ section.id }}"
-                     name="contact[name]"
-                     placeholder="{{ section.settings.placeholder_name }}"
-                     autocomplete="name"
-                     required>
+              <input class="kv-trade__input" type="text" id="kv-name"
+                     name="contact[name]" placeholder="{{ section.settings.placeholder_name }}"
+                     autocomplete="name" required value="{{ form.name }}">
             </div>
             <div class="kv-trade__field">
-              <label class="kv-trade__label" for="kv-company-{{ section.id }}">
+              <label class="kv-trade__label" for="kv-company">
                 {{ section.settings.label_company }}<span class="kv-required">*</span>
               </label>
-              <input class="kv-trade__input"
-                     type="text"
-                     id="kv-company-{{ section.id }}"
-                     name="contact[company]"
-                     placeholder="{{ section.settings.placeholder_company }}"
-                     required>
+              <input class="kv-trade__input" type="text" id="kv-company"
+                     name="contact[company]" placeholder="{{ section.settings.placeholder_company }}"
+                     required value="{{ form.company }}">
             </div>
           </div>
 
           <!-- Email + Phone -->
           <div class="kv-trade__form-row">
             <div class="kv-trade__field">
-              <label class="kv-trade__label" for="kv-email-{{ section.id }}">
+              <label class="kv-trade__label" for="kv-email">
                 {{ section.settings.label_email }}<span class="kv-required">*</span>
               </label>
-              <input class="kv-trade__input"
-                     type="email"
-                     id="kv-email-{{ section.id }}"
-                     name="contact[email]"
-                     placeholder="{{ section.settings.placeholder_email }}"
-                     autocomplete="email"
-                     autocorrect="off"
-                     autocapitalize="off"
-                     required>
+              <input class="kv-trade__input" type="email" id="kv-email"
+                     name="contact[email]" placeholder="{{ section.settings.placeholder_email }}"
+                     autocomplete="email" autocorrect="off" autocapitalize="off"
+                     required value="{{ form.email }}">
             </div>
             <div class="kv-trade__field">
-              <label class="kv-trade__label" for="kv-phone-{{ section.id }}">
+              <label class="kv-trade__label" for="kv-phone">
                 {{ section.settings.label_phone }}
               </label>
-              <input class="kv-trade__input"
-                     type="tel"
-                     id="kv-phone-{{ section.id }}"
-                     name="contact[phone]"
-                     placeholder="{{ section.settings.placeholder_phone }}"
-                     autocomplete="tel">
+              <input class="kv-trade__input" type="tel" id="kv-phone"
+                     name="contact[phone]" placeholder="{{ section.settings.placeholder_phone }}"
+                     autocomplete="tel" value="{{ form.phone }}">
             </div>
           </div>
 
           <!-- Business type -->
           <div class="kv-trade__field">
-            <label class="kv-trade__label" for="kv-biz-{{ section.id }}">
+            <label class="kv-trade__label" for="kv-biz">
               {{ section.settings.label_biz_type }}<span class="kv-required">*</span>
             </label>
             <div class="kv-trade__select-wrap">
-              <select class="kv-trade__select"
-                      id="kv-biz-{{ section.id }}"
-                      name="contact[business_type]"
-                      required>
+              <select class="kv-trade__select" id="kv-biz"
+                      name="contact[business_type]" required>
                 <option value="" disabled selected>Select your business type</option>
                 {%- for block in section.blocks -%}
                   {%- if block.type == 'biz_option' -%}
@@ -496,18 +400,17 @@
 
           <!-- Message -->
           <div class="kv-trade__field">
-            <label class="kv-trade__label" for="kv-msg-{{ section.id }}">
+            <label class="kv-trade__label" for="kv-msg">
               {{ section.settings.label_message }}
             </label>
-            <textarea class="kv-trade__textarea"
-                      id="kv-msg-{{ section.id }}"
-                      name="contact[body]"
-                      rows="5"
-                      placeholder="{{ section.settings.placeholder_message }}"></textarea>
+            <textarea class="kv-trade__textarea" id="kv-msg"
+                      name="contact[body]" rows="5"
+                      placeholder="{{ section.settings.placeholder_message }}">{{ form.body }}</textarea>
           </div>
 
-          <button type="submit" class="kv-trade__submit" data-trade-submit>
-            {{ section.settings.submit_label }}</button>
+          <button type="submit" class="kv-trade__submit">
+            {{ section.settings.submit_label }}
+          </button>
 
           {%- if section.settings.disclaimer != blank -%}
             <p class="kv-trade__disclaimer">{{ section.settings.disclaimer }}</p>
@@ -519,114 +422,6 @@
   </div>
 
 </div>
-
-<!-- ===== SUCCESS POPUP ===== -->
-<!-- data-trade-popup ties this popup to the section above via JS querySelector -->
-<div class="kv-trade__popup-overlay" data-trade-popup="{{ section.id }}" role="dialog" aria-modal="true" aria-label="Application received">
-  <div class="kv-trade__popup">
-    <div class="kv-trade__popup-icon">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M8.5 14l4 4 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <h2 class="kv-trade__popup-heading">{{ section.settings.popup_heading }}</h2>
-    <p class="kv-trade__popup-body">{{ section.settings.popup_body }}</p>
-    <div class="kv-trade__popup-bar-wrap">
-      <div class="kv-trade__popup-bar" data-trade-bar></div>
-    </div>
-    <p class="kv-trade__popup-countdown" data-trade-count>
-      Redirecting to home in <strong>10</strong> seconds
-    </p>
-    <button class="kv-trade__popup-home" onclick="window.location.href='/'">
-      Go home now
-    </button>
-  </div>
-</div>
-
-<script>
-(function () {
-  /* Find elements via data attributes — no IDs with section.id needed */
-  var sid     = '{{ section.id }}';
-  var wrapper = document.querySelector('[data-trade-section="' + sid + '"]');
-  if (!wrapper) return;
-
-  var form      = wrapper.querySelector('form');
-  var submitBtn = wrapper.querySelector('[data-trade-submit]');
-  var errorEl   = wrapper.querySelector('[data-trade-error]');
-  var popup     = document.querySelector('[data-trade-popup="' + sid + '"]');
-  var bar       = popup ? popup.querySelector('[data-trade-bar]') : null;
-  var counter   = popup ? popup.querySelector('[data-trade-count]') : null;
-
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Validate HTML5 required fields first
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    // Disable submit while sending
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-    }
-
-    var data = new FormData(form);
-
-    fetch(form.action, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    })
-    .then(function (res) {
-      if (res.ok || res.status === 200) {
-        showPopup();
-      } else {
-        return res.json().then(function (json) {
-          throw new Error(json.description || 'Something went wrong. Please try again.');
-        });
-      }
-    })
-    .catch(function (err) {
-      // Re-enable button on error
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = '{{ section.settings.submit_label }}';
-      }
-      if (errorEl) {
-        errorEl.textContent = err.message || 'Something went wrong. Please try again.';
-        errorEl.classList.add('is-visible');
-        errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  });
-
-  function showPopup() {
-    // Show overlay
-    popup.classList.add('is-visible');
-    document.body.style.overflow = 'hidden';
-
-    // Start countdown bar animation
-    bar.classList.add('is-counting');
-
-    // Tick down counter text
-    var secs = 10;
-    var strong = counter.querySelector('strong');
-    var interval = setInterval(function () {
-      secs--;
-      if (strong) strong.textContent = secs;
-      if (secs <= 0) {
-        clearInterval(interval);
-        window.location.href = '/';
-      }
-    }, 1000);
-  }
-})();
-</script>
 
 {% schema %}
 {
@@ -673,6 +468,12 @@
       "id": "form_heading",
       "label": "Form section heading",
       "default": "Open a trade account"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Application received. We'll review your details and be in touch within one business day."
     },
     {
       "type": "header",
@@ -755,22 +556,6 @@
       "id": "disclaimer",
       "label": "Disclaimer below button",
       "default": "We review all applications within one business day."
-    },
-    {
-      "type": "header",
-      "content": "Success popup"
-    },
-    {
-      "type": "text",
-      "id": "popup_heading",
-      "label": "Popup heading",
-      "default": "We received your enquiry."
-    },
-    {
-      "type": "textarea",
-      "id": "popup_body",
-      "label": "Popup message",
-      "default": "We will get back to you within 1 business day."
     }
   ],
   "blocks": [
