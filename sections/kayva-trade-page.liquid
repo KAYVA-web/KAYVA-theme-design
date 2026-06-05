@@ -107,12 +107,19 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: start; /* prevent fields stretching to different heights */
+  margin-top: 20px;
 }
 
+/* Fields outside a row get top spacing */
 .kv-trade__field {
   margin-top: 20px;
 }
-.kv-trade__field:first-child { margin-top: 0; }
+
+/* Fields INSIDE a row — row handles its own spacing, fields start flush */
+.kv-trade__form-row .kv-trade__field {
+  margin-top: 0;
+}
 
 .kv-trade__label {
   display: block;
@@ -230,8 +237,18 @@
 
 @media (max-width: 768px) {
   .kv-trade__benefits { grid-template-columns: 1fr; }
-  .kv-trade__form-row { grid-template-columns: 1fr; gap: 0; }
   .kv-trade__form-wrap { padding: 28px 20px; }
+  /* On mobile: stack to single column, restore per-field spacing */
+  .kv-trade__form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .kv-trade__form-row .kv-trade__field {
+    margin-top: 20px;
+  }
+  .kv-trade__form-row .kv-trade__field:first-child {
+    margin-top: 0;
+  }
 }
 </style>
 
