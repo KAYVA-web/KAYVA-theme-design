@@ -25,14 +25,14 @@
           "type": "nav_column",
           "settings": {
             "title": "Learn",
-            "menu": "footer"
+            "menu": "kayva-footer-learn"
           }
         },
         "nav_column_zKbdAV": {
           "type": "nav_column",
           "settings": {
             "title": "Help",
-            "menu": "footer"
+            "menu": "kavya-footer-company"
           }
         }
       },
