@@ -49,6 +49,7 @@
         },
         "t3": {
           "type": "tile",
+          "disabled": true,
           "settings": {
             "collection": "",
             "title": "E27",
@@ -57,6 +58,7 @@
         },
         "t4": {
           "type": "tile",
+          "disabled": true,
           "settings": {
             "collection": "",
             "title": "Downlights",
@@ -85,7 +87,7 @@
         "heading": "Shop by category.",
         "text_align": "center",
         "bg": "#ffffff",
-        "columns": 5,
+        "columns": 3,
         "gap": 12,
         "icon_size": 56,
         "radius": 6,
