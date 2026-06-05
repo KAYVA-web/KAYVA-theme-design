@@ -91,7 +91,7 @@
         "bg": "#ffffff",
         "columns": 3,
         "gap": 12,
-        "icon_size": 56,
+        "icon_size": 104,
         "radius": 6,
         "show_count": false,
         "btn_label": "",
