@@ -12,10 +12,10 @@
     "hero": {
       "type": "kayva-hero",
       "settings": {
-        "image": "shopify://shop_images/32f2d1f0e16955e2279cc0db087fb6a6.png",
+        "image": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_12_05_PM.png",
         "focal_point": "center center",
-        "overlay_color": "#1f1b16",
-        "overlay_opacity": 35,
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0,
         "eyebrow": "Ra95+ Lighting",
         "heading": "Light that renders colour the way your home deserves.",
         "subtext": "Properly specified, fairly priced, designed for Singapore homes.",
