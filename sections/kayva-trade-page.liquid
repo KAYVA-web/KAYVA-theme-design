@@ -1,0 +1,628 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* ===== TRADE PAGE ===== */
+.kv-trade { font-family: var(--kayva-font); }
+
+/* Hero */
+.kv-trade__hero {
+  background: var(--kayva-cream, #F5EFE5);
+  padding: 90px 0 80px;
+  text-align: center;
+}
+.kv-trade__hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin-bottom: 16px;
+  display: block;
+}
+.kv-trade__hero-title {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.kv-trade__hero-sub {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--kayva-warm-brown, #6B4823);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Section wrappers */
+.kv-trade__section {
+  padding: 72px 0;
+}
+.kv-trade__section--bordered {
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-trade__section-title {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  letter-spacing: -0.3px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Benefits grid */
+.kv-trade__benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+.kv-trade__benefit {
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 28px;
+}
+.kv-trade__benefit-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 8px;
+}
+.kv-trade__benefit-text {
+  font-size: 14px;
+  color: var(--kayva-warm-brown, #6B4823);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Who it's for tags */
+.kv-trade__who {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.kv-trade__who-tag {
+  background: var(--kayva-cream, #F5EFE5);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+  letter-spacing: 0.02em;
+}
+
+/* Form area */
+.kv-trade__form-wrap {
+  background: var(--kayva-cream, #F5EFE5);
+  padding: 44px 40px;
+  margin-top: 16px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kv-trade__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.kv-trade__field {
+  margin-top: 20px;
+}
+.kv-trade__field:first-child { margin-top: 0; }
+
+.kv-trade__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 8px;
+}
+.kv-trade__label .kv-required {
+  color: var(--kayva-amber, #B8753A);
+  margin-left: 2px;
+}
+
+.kv-trade__input,
+.kv-trade__select,
+.kv-trade__textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  background: var(--kayva-white, #FFFFFF);
+  outline: none;
+  border-radius: 0;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.kv-trade__input:focus,
+.kv-trade__select:focus,
+.kv-trade__textarea:focus {
+  border-color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-trade__input::placeholder,
+.kv-trade__textarea::placeholder {
+  color: var(--kayva-soft-brown, #8A5524);
+  opacity: 0.5;
+}
+
+/* Select arrow */
+.kv-trade__select-wrap {
+  position: relative;
+}
+.kv-trade__select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--kayva-soft-brown, #8A5524);
+  pointer-events: none;
+}
+
+.kv-trade__textarea { resize: vertical; min-height: 120px; }
+
+/* Submit button */
+.kv-trade__submit {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  padding: 16px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border: none;
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 0;
+}
+.kv-trade__submit:hover { background: var(--kayva-warm-brown, #6B4823); }
+.kv-trade__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success / error messages */
+.kv-trade__message {
+  padding: 16px 20px;
+  font-size: 14px;
+  margin-top: 20px;
+  display: none;
+}
+.kv-trade__message--success {
+  background: #F0FAF0;
+  border-left: 3px solid #4A8C4A;
+  color: #2D5A2D;
+}
+.kv-trade__message--error {
+  background: #FBF3E8;
+  border-left: 3px solid var(--kayva-amber, #B8753A);
+  color: var(--kayva-warm-brown, #6B4823);
+}
+.kv-trade__message.is-visible { display: block; }
+
+/* Disclaimer */
+.kv-trade__disclaimer {
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin-top: 16px;
+  text-align: center;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .kv-trade__benefits { grid-template-columns: 1fr; }
+  .kv-trade__form-row { grid-template-columns: 1fr; gap: 0; }
+  .kv-trade__form-wrap { padding: 28px 20px; }
+}
+</style>
+
+<div class="kv-trade">
+
+  <!-- ===== HERO ===== -->
+  <div class="kv-trade__hero">
+    <div class="kayva-page-width">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="kv-trade__hero-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h1 class="kv-trade__hero-title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subtext != blank -%}
+        <p class="kv-trade__hero-sub">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <!-- ===== BENEFITS ===== -->
+  {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+  {%- assign who_blocks     = section.blocks | where: 'type', 'who_tag' -%}
+
+  {%- if benefit_blocks.size > 0 -%}
+    <div class="kv-trade__section">
+      <div class="kayva-page-width">
+        {%- if section.settings.benefits_heading != blank -%}
+          <h2 class="kv-trade__section-title">{{ section.settings.benefits_heading }}</h2>
+        {%- endif -%}
+        <div class="kv-trade__benefits">
+          {%- for block in benefit_blocks -%}
+            <div class="kv-trade__benefit" {{ block.shopify_attributes }}>
+              <h3 class="kv-trade__benefit-title">{{ block.settings.title }}</h3>
+              <p class="kv-trade__benefit-text">{{ block.settings.text }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if who_blocks.size > 0 -%}
+          <div class="kv-trade__who">
+            {%- for block in who_blocks -%}
+              <span class="kv-trade__who-tag" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- ===== FORM ===== -->
+  <div class="kv-trade__section kv-trade__section--bordered">
+    <div class="kayva-page-width">
+      {%- if section.settings.form_heading != blank -%}
+        <h2 class="kv-trade__section-title">{{ section.settings.form_heading }}</h2>
+      {%- endif -%}
+
+      {%- form 'contact', id: 'kv-trade-form' -%}
+
+        {%- if form.posted_successfully? -%}
+          <div class="kv-trade__message kv-trade__message--success is-visible">
+            <strong>Application received.</strong> We'll review your details and be in touch within one business day.
+          </div>
+        {%- elsif form.errors -%}
+          <div class="kv-trade__message kv-trade__message--error is-visible">
+            <strong>Something went wrong.</strong> {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <!-- Hidden tag to identify trade enquiries in your Shopify inbox -->
+        <input type="hidden" name="contact[tags]" value="trade-account">
+
+        <div class="kv-trade__form-wrap">
+
+          <!-- Name + Company -->
+          <div class="kv-trade__form-row">
+            <div class="kv-trade__field">
+              <label class="kv-trade__label" for="kv-name">
+                {{ section.settings.label_name }}<span class="kv-required">*</span>
+              </label>
+              <input class="kv-trade__input"
+                     type="text"
+                     id="kv-name"
+                     name="contact[name]"
+                     placeholder="{{ section.settings.placeholder_name }}"
+                     autocomplete="name"
+                     required
+                     value="{{ form.name }}">
+            </div>
+            <div class="kv-trade__field">
+              <label class="kv-trade__label" for="kv-company">
+                {{ section.settings.label_company }}<span class="kv-required">*</span>
+              </label>
+              <input class="kv-trade__input"
+                     type="text"
+                     id="kv-company"
+                     name="contact[company]"
+                     placeholder="{{ section.settings.placeholder_company }}"
+                     required
+                     value="{{ form.company }}">
+            </div>
+          </div>
+
+          <!-- Email + Phone -->
+          <div class="kv-trade__form-row">
+            <div class="kv-trade__field">
+              <label class="kv-trade__label" for="kv-email">
+                {{ section.settings.label_email }}<span class="kv-required">*</span>
+              </label>
+              <input class="kv-trade__input"
+                     type="email"
+                     id="kv-email"
+                     name="contact[email]"
+                     placeholder="{{ section.settings.placeholder_email }}"
+                     autocomplete="email"
+                     autocorrect="off"
+                     autocapitalize="off"
+                     required
+                     value="{{ form.email }}">
+            </div>
+            <div class="kv-trade__field">
+              <label class="kv-trade__label" for="kv-phone">
+                {{ section.settings.label_phone }}
+              </label>
+              <input class="kv-trade__input"
+                     type="tel"
+                     id="kv-phone"
+                     name="contact[phone]"
+                     placeholder="{{ section.settings.placeholder_phone }}"
+                     autocomplete="tel"
+                     value="{{ form.phone }}">
+            </div>
+          </div>
+
+          <!-- Business type -->
+          <div class="kv-trade__field">
+            <label class="kv-trade__label" for="kv-biz-type">
+              {{ section.settings.label_biz_type }}<span class="kv-required">*</span>
+            </label>
+            <div class="kv-trade__select-wrap">
+              <select class="kv-trade__select"
+                      id="kv-biz-type"
+                      name="contact[business_type]"
+                      required>
+                <option value="" disabled selected>Select your business type</option>
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'biz_option' -%}
+                    <option value="{{ block.settings.value }}" {{ block.shopify_attributes }}>
+                      {{ block.settings.label }}
+                    </option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="kv-trade__field">
+            <label class="kv-trade__label" for="kv-message">
+              {{ section.settings.label_message }}
+            </label>
+            <textarea class="kv-trade__textarea"
+                      id="kv-message"
+                      name="contact[body]"
+                      rows="5"
+                      placeholder="{{ section.settings.placeholder_message }}">{{ form.body }}</textarea>
+          </div>
+
+          <button type="submit" class="kv-trade__submit">
+            {{ section.settings.submit_label }}
+          </button>
+
+          {%- if section.settings.disclaimer != blank -%}
+            <p class="kv-trade__disclaimer">{{ section.settings.disclaimer }}</p>
+          {%- endif -%}
+
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "FOR THE TRADE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Specify KAYVA for your projects."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Trade pricing and dedicated support for interior designers, electricians, and contractors across Singapore."
+    },
+    {
+      "type": "header",
+      "content": "Benefits section"
+    },
+    {
+      "type": "text",
+      "id": "benefits_heading",
+      "label": "Section heading",
+      "default": "Why specify KAYVA"
+    },
+    {
+      "type": "header",
+      "content": "Form section"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form section heading",
+      "default": "Open a trade account"
+    },
+    {
+      "type": "header",
+      "content": "Form field labels"
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Name label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name placeholder",
+      "default": "Your full name"
+    },
+    {
+      "type": "text",
+      "id": "label_company",
+      "label": "Company label",
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_company",
+      "label": "Company placeholder",
+      "default": "Company name"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_phone",
+      "label": "Phone placeholder",
+      "default": "+65"
+    },
+    {
+      "type": "text",
+      "id": "label_biz_type",
+      "label": "Business type label",
+      "default": "Business type"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message label",
+      "default": "Tell us about your projects"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message placeholder",
+      "default": "Typical project type, volume, and what you're looking for"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button label",
+      "default": "Apply for Trade Account"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer below button",
+      "default": "We review all applications within one business day."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Trade pricing"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Volume pricing across the full range — strip, GU10, and E27. Better margins on every project."
+        }
+      ]
+    },
+    {
+      "type": "who_tag",
+      "name": "Who it's for tag",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tag label",
+          "default": "Interior Designers"
+        }
+      ]
+    },
+    {
+      "type": "biz_option",
+      "name": "Business type option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Option label",
+          "default": "Interior Designer"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Option value",
+          "info": "Sent in the email. Keep concise.",
+          "default": "Interior Designer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Trade Page",
+      "settings": {
+        "eyebrow": "FOR THE TRADE",
+        "heading": "Specify KAYVA for your projects.",
+        "subtext": "Trade pricing and dedicated support for interior designers, electricians, and contractors across Singapore.",
+        "benefits_heading": "Why specify KAYVA",
+        "form_heading": "Open a trade account",
+        "submit_label": "Apply for Trade Account",
+        "disclaimer": "We review all applications within one business day."
+      },
+      "blocks": [
+        { "type": "benefit", "settings": { "title": "Trade pricing", "text": "Volume pricing across the full range — strip, GU10, and E27. Better margins on every project." } },
+        { "type": "benefit", "settings": { "title": "Consistent quality", "text": "Ra95+ across every product, every batch. What you spec is what your client gets." } },
+        { "type": "benefit", "settings": { "title": "Full documentation", "text": "Test reports and specs on request — everything you need to justify the choice to clients." } },
+        { "type": "benefit", "settings": { "title": "Local support", "text": "Singapore-based. Direct line for sizing, compatibility, and project questions." } },
+        { "type": "who_tag", "settings": { "label": "Interior Designers" } },
+        { "type": "who_tag", "settings": { "label": "Electricians" } },
+        { "type": "who_tag", "settings": { "label": "Contractors" } },
+        { "type": "who_tag", "settings": { "label": "Renovation Firms" } },
+        { "type": "who_tag", "settings": { "label": "Lighting Specialists" } },
+        { "type": "biz_option", "settings": { "label": "Interior Designer", "value": "Interior Designer" } },
+        { "type": "biz_option", "settings": { "label": "Electrician", "value": "Electrician" } },
+        { "type": "biz_option", "settings": { "label": "Contractor", "value": "Contractor" } },
+        { "type": "biz_option", "settings": { "label": "Renovation Firm", "value": "Renovation Firm" } },
+        { "type": "biz_option", "settings": { "label": "Lighting Retailer", "value": "Lighting Retailer" } },
+        { "type": "biz_option", "settings": { "label": "Other", "value": "Other" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

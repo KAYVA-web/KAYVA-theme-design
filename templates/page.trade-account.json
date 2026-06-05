@@ -1,85 +1,46 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "name": "t:names.content",
-          "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "title",
-        "content"
-      ],
-      "disabled": true,
+    "trade": {
+      "type": "kayva-trade-page",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 0
-      }
+        "eyebrow": "FOR THE TRADE",
+        "heading": "Specify KAYVA for your projects.",
+        "subtext": "Trade pricing and dedicated support for interior designers, electricians, and contractors across Singapore.",
+        "benefits_heading": "Why specify KAYVA",
+        "form_heading": "Open a trade account",
+        "label_name": "Name",
+        "placeholder_name": "Your full name",
+        "label_company": "Company",
+        "placeholder_company": "Company name",
+        "label_email": "Email",
+        "placeholder_email": "your@email.com",
+        "label_phone": "Phone",
+        "placeholder_phone": "+65",
+        "label_biz_type": "Business type",
+        "label_message": "Tell us about your projects",
+        "placeholder_message": "Typical project type, volume, and what you're looking for",
+        "submit_label": "Apply for Trade Account",
+        "disclaimer": "We review all applications within one business day."
+      },
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "title": "Trade pricing", "text": "Volume pricing across the full range — strip, GU10, and E27. Better margins on every project." } },
+        "b2": { "type": "benefit", "settings": { "title": "Consistent quality", "text": "Ra95+ across every product, every batch. What you spec is what your client gets." } },
+        "b3": { "type": "benefit", "settings": { "title": "Full documentation", "text": "Test reports and specs on request — everything you need to justify the choice to clients." } },
+        "b4": { "type": "benefit", "settings": { "title": "Local support", "text": "Singapore-based. Direct line for sizing, compatibility, and project questions." } },
+        "w1": { "type": "who_tag", "settings": { "label": "Interior Designers" } },
+        "w2": { "type": "who_tag", "settings": { "label": "Electricians" } },
+        "w3": { "type": "who_tag", "settings": { "label": "Contractors" } },
+        "w4": { "type": "who_tag", "settings": { "label": "Renovation Firms" } },
+        "w5": { "type": "who_tag", "settings": { "label": "Lighting Specialists" } },
+        "o1": { "type": "biz_option", "settings": { "label": "Interior Designer", "value": "Interior Designer" } },
+        "o2": { "type": "biz_option", "settings": { "label": "Electrician", "value": "Electrician" } },
+        "o3": { "type": "biz_option", "settings": { "label": "Contractor", "value": "Contractor" } },
+        "o4": { "type": "biz_option", "settings": { "label": "Renovation Firm", "value": "Renovation Firm" } },
+        "o5": { "type": "biz_option", "settings": { "label": "Lighting Retailer", "value": "Lighting Retailer" } },
+        "o6": { "type": "biz_option", "settings": { "label": "Other", "value": "Other" } }
+      },
+      "block_order": ["b1","b2","b3","b4","w1","w2","w3","w4","w5","o1","o2","o3","o4","o5","o6"]
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["trade"]
 }
