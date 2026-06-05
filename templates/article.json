@@ -6,8 +6,30 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
+    "hero_banner_DpnhGf": {
+      "type": "hero-banner",
+      "name": "Hero Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/c2ea0c2b6800a219700effaba3e0987c.png",
+        "background_video_url": "",
+        "focal_point": "center center",
+        "overlay_color": "#1F1B16",
+        "overlay_opacity": 15,
+        "eyebrow": "Ra95+ Lighting",
+        "heading": "Light that renders colour the way your home deserves.",
+        "subtext": "Properly specified, fairly priced, designed for Singapore homes.",
+        "text_color": "#F5EFE5",
+        "text_align": "left",
+        "cta_label": "Shop Now",
+        "cta_url": "",
+        "cta2_label": "Learn About CRI",
+        "cta2_url": "",
+        "min_height": 400
+      }
+    },
     "section": {
       "type": "main-blog-post",
       "blocks": {
@@ -54,11 +76,10 @@
           "blocks": {}
         },
         "blog-post-image": {
-          "type": "image",
-          "name": "Featured image",
+          "type": "_blog-post-featured-image",
           "static": true,
           "settings": {
-            "image_ratio": "landscape",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -92,6 +113,7 @@
     }
   },
   "order": [
+    "hero_banner_DpnhGf",
     "section"
   ]
 }
