@@ -156,7 +156,7 @@
         "c2": {
           "type": "card",
           "settings": {
-            "product": "",
+            "product": "controller-tri-tone",
             "badge": "GU10",
             "image": "shopify://shop_images/1.svg",
             "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
@@ -166,7 +166,7 @@
         "c3": {
           "type": "card",
           "settings": {
-            "product": "",
+            "product": "gu10-bulbs",
             "badge": "GU10",
             "image": "shopify://shop_images/2.svg",
             "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth.",
@@ -176,7 +176,7 @@
         "c4": {
           "type": "card",
           "settings": {
-            "product": "",
+            "product": "24-led-driver",
             "badge": "E27",
             "image": "shopify://shop_images/3.svg",
             "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
