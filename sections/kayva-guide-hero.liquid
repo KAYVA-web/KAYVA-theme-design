@@ -1,0 +1,102 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+
+<style>
+.kv-hero-{{ section.id }} {
+  padding: 72px 0 64px;
+  text-align: center;
+  background-color: {{ section.settings.background_color }};
+}
+.kv-guide__hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin-bottom: 14px;
+  font-family: var(--kayva-font);
+}
+.kv-guide__hero-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  font-family: var(--kayva-font);
+}
+.kv-guide__hero-sub {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--kayva-warm-brown, #6B4823);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.65;
+  font-family: var(--kayva-font);
+}
+</style>
+
+<div class="kv-hero-{{ section.id }}">
+  <div class="kayva-page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="kv-guide__hero-eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <h1 class="kv-guide__hero-title">
+      {%- if section.settings.title != blank -%}
+        {{ section.settings.title }}
+      {%- else -%}
+        {{ article.title }}
+      {%- endif -%}
+    </h1>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="kv-guide__hero-sub">{{ section.settings.subtitle }}</p>
+    {%- elsif article.excerpt != blank -%}
+      <p class="kv-guide__hero-sub">{{ article.excerpt | strip_html }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KAYVA Guide Hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#F5EFE5"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "info": "e.g. STRIP DRIVER SIZING"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero title",
+      "info": "Leave blank to use the article title."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Hero subtitle",
+      "info": "Leave blank to use the article excerpt."
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Guide Hero",
+      "settings": {
+        "background_color": "#F5EFE5",
+        "eyebrow": "STRIP DRIVER SIZING",
+        "title": "Choosing the right driver.",
+        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly."
+      }
+    }
+  ]
+}
+{% endschema %}

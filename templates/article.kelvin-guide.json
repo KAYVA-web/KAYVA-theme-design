@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero_banner_DpnhGf": {
@@ -32,6 +23,14 @@
     },
     "section": {
       "type": "main-blog-post",
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      },
       "blocks": {
         "blog-post-title": {
           "type": "text",
@@ -102,31 +101,29 @@
           "settings": {},
           "blocks": {}
         }
-      },
-      "disabled": true,
-      "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
       }
     },
-    "kayva_guide_article_htxk8X": {
-      "type": "kayva-guide-article",
+    "guide_hero": {
+      "type": "kayva-guide-hero",
+      "settings": {
+        "background_color": "#F5EFE5",
+        "eyebrow": "STRIP DRIVER SIZING",
+        "title": "Choosing the right driver.",
+        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly."
+      }
+    },
+    "guide_sizing": {
+      "type": "kayva-guide-driver-sizing",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "show_meta": true,
+        "show_back_link": true,
+        "back_label": "All guides",
+        "show_article_content": false
+      },
       "blocks": {
-        "heading_Vh9fxw": {
-          "type": "heading",
-          "settings": {
-            "text": "The simple rule"
-          }
-        },
-        "text_NQPwKk": {
-          "type": "text",
-          "settings": {
-            "content": "<p>Multiply your strip length by 12W per metre, then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early.</p>"
-          }
-        },
+        "heading_Vh9fxw": { "type": "heading", "settings": { "text": "The simple rule" } },
+        "text_NQPwKk": { "type": "text", "settings": { "content": "<p>Multiply your strip length by 12W per metre, then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early.</p>" } },
         "calculator_etdaPV": {
           "type": "calculator",
           "settings": {
@@ -140,12 +137,7 @@
             "unit": "m"
           }
         },
-        "heading_ptAgMz": {
-          "type": "heading",
-          "settings": {
-            "text": "Quick reference"
-          }
-        },
+        "heading_ptAgMz": { "type": "heading", "settings": { "text": "Quick reference" } },
         "table_qjmCDd": {
           "type": "table",
           "settings": {
@@ -160,18 +152,8 @@
             "text": "Power the strip from both ends, or split into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start."
           }
         },
-        "heading_kgGdYm": {
-          "type": "heading",
-          "settings": {
-            "text": "What driver to buy"
-          }
-        },
-        "text_Jk9ddg": {
-          "type": "text",
-          "settings": {
-            "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
-          }
-        },
+        "heading_kgGdYm": { "type": "heading", "settings": { "text": "What driver to buy" } },
+        "text_Jk9ddg": { "type": "text", "settings": { "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>" } },
         "callout_tzmwgT": {
           "type": "callout",
           "settings": {
@@ -190,27 +172,26 @@
         "heading_kgGdYm",
         "text_Jk9ddg",
         "callout_tzmwgT"
-      ],
-      "name": "KAYVA Guide Article",
+      ]
+    },
+    "guide_cta": {
+      "type": "kayva-guide-cta",
       "settings": {
-        "show_hero": true,
-        "eyebrow": "STRIP DRIVER SIZING",
-        "title": "Choosing the right driver.",
-        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly.",
-        "show_meta": true,
-        "show_back_link": true,
-        "back_label": "All guides",
-        "show_article_content": false,
-        "cta_heading": "Ready to order your strip?",
-        "cta_text": "KAYVA 480 Pro Strip — Ra95+, 24V, dotless COB. Available in 2700K and 4000K.",
-        "cta_btn_label": "Shop Strip Lighting",
-        "cta_btn_url": "/collections/all"
+        "background_color": "#3D2A15",
+        "heading_color": "#F5EFE5",
+        "text_color": "#A8967E",
+        "heading": "Ready to order your strip?",
+        "subtext": "KAYVA 480 Pro Strip — Ra95+, 24V, dotless COB. Available in 2700K and 4000K.",
+        "btn_label": "Shop Strip Lighting",
+        "btn_url": "/collections/all"
       }
     }
   },
   "order": [
     "hero_banner_DpnhGf",
     "section",
-    "kayva_guide_article_htxk8X"
+    "guide_hero",
+    "guide_sizing",
+    "guide_cta"
   ]
 }

@@ -1,29 +1,22 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "kayva-guide-article",
+    "guide_hero": {
+      "type": "kayva-guide-hero",
       "settings": {
+        "background_color": "#F5EFE5",
         "eyebrow": "STRIP DRIVER SIZING",
         "title": "Choosing the right driver.",
-        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly.",
-        "show_hero": true,
+        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly."
+      }
+    },
+    "guide_sizing": {
+      "type": "kayva-guide-driver-sizing",
+      "settings": {
+        "background_color": "#FFFFFF",
         "show_meta": true,
         "show_back_link": true,
         "back_label": "All guides",
-        "show_article_content": false,
-        "cta_heading": "Ready to order your strip?",
-        "cta_text": "KAYVA 480 Pro Strip — Ra95+, 24V, dotless COB. Available in 2700K and 4000K.",
-        "cta_btn_label": "Shop Strip Lighting",
-        "cta_btn_url": "/collections/all"
+        "show_article_content": false
       },
       "blocks": {
         "h1": { "type": "heading", "settings": { "text": "The simple rule" } },
@@ -67,7 +60,19 @@
         }
       },
       "block_order": ["h1", "t1", "calc", "h2", "tbl", "c1", "h3", "t2", "c2"]
+    },
+    "guide_cta": {
+      "type": "kayva-guide-cta",
+      "settings": {
+        "background_color": "#3D2A15",
+        "heading_color": "#F5EFE5",
+        "text_color": "#A8967E",
+        "heading": "Ready to order your strip?",
+        "subtext": "KAYVA 480 Pro Strip — Ra95+, 24V, dotless COB. Available in 2700K and 4000K.",
+        "btn_label": "Shop Strip Lighting",
+        "btn_url": "/collections/all"
+      }
     }
   },
-  "order": ["main"]
+  "order": ["guide_hero", "guide_sizing", "guide_cta"]
 }
