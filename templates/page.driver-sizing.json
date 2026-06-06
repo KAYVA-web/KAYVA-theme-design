@@ -57,22 +57,22 @@
         "padding-block-end": 80
       }
     },
-    "kayva_guide_article_XibpAt": {
-      "type": "kayva-guide-article",
+    "kayva_guide_driver_sizing_JfTF7U": {
+      "type": "kayva-guide-driver-sizing",
       "blocks": {
-        "heading_6XjnDQ": {
+        "heading_h3QKEY": {
           "type": "heading",
           "settings": {
             "text": "The simple rule"
           }
         },
-        "text_WqUzAQ": {
+        "text_pb4kB6": {
           "type": "text",
           "settings": {
             "content": "<p>Multiply your strip length by 12W per metre, then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early.</p>"
           }
         },
-        "calculator_ctQeVi": {
+        "calculator_8M884t": {
           "type": "calculator",
           "settings": {
             "label": "Your strip length (metres)",
@@ -80,44 +80,44 @@
             "default_value": 10,
             "result_label": "Minimum driver size",
             "result_suffix": "W",
-            "watts_per_unit": 17,
+            "watts_per_unit": 12,
             "headroom_percent": 20,
             "unit": "m"
           }
         },
-        "heading_gM4R9U": {
+        "heading_CztzTH": {
           "type": "heading",
           "settings": {
             "text": "Quick reference"
           }
         },
-        "table_PNkQp9": {
+        "table_kBH47j": {
           "type": "table",
           "settings": {
             "header_row": "Strip length | Power draw | Recommended driver",
             "rows": "3 m | 36W | 45W (24V)\n5 m | 60W | 75W (24V)\n8 m | 96W | 120W (24V)\n10 m | 120W | 150W (24V)\n15 m | 180W | 220W (24V)\n20 m | 240W | 300W (24V)"
           }
         },
-        "callout_cDJPnh": {
+        "callout_HyNXJB": {
           "type": "callout",
           "settings": {
             "label": "For runs 6 m and longer:",
             "text": "Power the strip from both ends, or split into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start."
           }
         },
-        "heading_CY9d49": {
+        "heading_CahKyL": {
           "type": "heading",
           "settings": {
             "text": "What driver to buy"
           }
         },
-        "text_QHztti": {
+        "text_eBtDbA": {
           "type": "text",
           "settings": {
             "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
           }
         },
-        "callout_3bkEpq": {
+        "callout_Jq8qPN": {
           "type": "callout",
           "settings": {
             "label": "Always use a licensed electrician",
@@ -126,35 +126,26 @@
         }
       },
       "block_order": [
-        "heading_6XjnDQ",
-        "text_WqUzAQ",
-        "calculator_ctQeVi",
-        "heading_gM4R9U",
-        "table_PNkQp9",
-        "callout_cDJPnh",
-        "heading_CY9d49",
-        "text_QHztti",
-        "callout_3bkEpq"
+        "heading_h3QKEY",
+        "text_pb4kB6",
+        "calculator_8M884t",
+        "heading_CztzTH",
+        "table_kBH47j",
+        "callout_HyNXJB",
+        "heading_CahKyL",
+        "text_eBtDbA",
+        "callout_Jq8qPN"
       ],
-      "name": "KAYVA Guide Article",
+      "name": "KAYVA Guide Driver Sizing",
       "settings": {
-        "show_hero": true,
-        "eyebrow": "STRIP DRIVER SIZING",
-        "title": "Choosing the right driver.",
-        "subtitle": "KAYVA 480 Pro Strip runs on 24V and draws 12W per metre. Here's how to size your driver correctly.",
+        "background_color": "#ffffff",
         "show_meta": true,
-        "show_back_link": true,
-        "back_label": "All guides",
-        "show_article_content": false,
-        "cta_heading": "Ready to order your strip?",
-        "cta_text": "KAYVA 480 Pro Strip — Ra95+, 24V, dotless COB. Available in 2700K and 4000K.",
-        "cta_btn_label": "Shop Strip Lighting",
-        "cta_btn_url": "/collections/all"
+        "show_article_content": false
       }
     }
   },
   "order": [
     "main",
-    "kayva_guide_article_XibpAt"
+    "kayva_guide_driver_sizing_JfTF7U"
   ]
 }
