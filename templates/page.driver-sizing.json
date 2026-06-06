@@ -80,7 +80,7 @@
             "default_value": 10,
             "result_label": "Minimum driver size",
             "result_suffix": "W",
-            "watts_per_unit": 12,
+            "watts_per_unit": 17,
             "headroom_percent": 20,
             "unit": "m"
           }
