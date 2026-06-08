@@ -153,7 +153,7 @@
       {%- case block.type -%}
 
         {%- when 'feature' -%}
-          <div class="kv-spot__feature{% if block.settings.layout == 'reverse' %} kv-spot__feature--reverse{% endif %}" {{ block.shopify_attributes }}>
+          <div class="kv-spot__feature{% if block.settings.layout == 'reverse' %} kv-spot__feature--reverse{% endif %}" data-spot-block="feature" {{ block.shopify_attributes }}>
             <div class="kv-spot__feature-media">
               {%- if block.settings.video_url != blank -%}
                 <video src="{{ block.settings.video_url }}" autoplay muted loop playsinline></video>
@@ -175,7 +175,7 @@
           </div>
 
         {%- when 'spec_table' -%}
-          <div class="kv-spot__specs" {{ block.shopify_attributes }}>
+          <div class="kv-spot__specs" data-spot-block="spec_table" {{ block.shopify_attributes }}>
             {%- if block.settings.heading != blank -%}
               <h2 class="kv-spot__specs-title">{{ block.settings.heading }}</h2>
             {%- endif -%}
@@ -198,7 +198,7 @@
           </div>
 
         {%- when 'gallery' -%}
-          <div class="kv-spot__gallery" {{ block.shopify_attributes }}>
+          <div class="kv-spot__gallery" data-spot-block="gallery" {{ block.shopify_attributes }}>
             {%- if block.settings.heading != blank -%}
               <h2 class="kv-spot__gallery-title">{{ block.settings.heading }}</h2>
             {%- endif -%}

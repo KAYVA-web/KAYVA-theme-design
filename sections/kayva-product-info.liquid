@@ -131,7 +131,14 @@
 }
 
 /* Quantity + add to cart */
-.kv-pinfo__buy-row { display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.kv-pinfo__buy-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.kv-pinfo__qty-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+}
 .kv-pinfo__qty {
   display: flex;
   align-items: stretch;
@@ -361,6 +368,57 @@
   color: var(--kayva-warm-brown, #6B4823);
 }
 .kv-pinfo__accordion-body p { margin-bottom: 12px; }
+
+/* Description show more / show less */
+.kv-pinfo__desc-body {
+  max-height: 6.6em;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+.kv-pinfo__desc-body.is-expanded {
+  max-height: none;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+.kv-pinfo__desc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  padding: 6px 0 18px;
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kayva-amber, #B8753A);
+  cursor: pointer;
+}
+
+/* Section nav (Govee-style sticky tab bar linking to spotlight blocks) */
+.kv-pinfo__section-nav {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 16px 2px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.kv-pinfo__section-nav button {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--kayva-warm-brown, #6B4823);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.kv-pinfo__section-nav button:hover { color: var(--kayva-dark-brown, #3D2A15); }
 </style>
 
 <div class="kv-pinfo-{{ section.id }}">
@@ -444,6 +502,7 @@
           {%- endunless -%}
 
           <div class="kv-pinfo__buy-row">
+            <span class="kv-pinfo__qty-label">Quantity</span>
             <div class="kv-pinfo__qty">
               <button type="button" onclick="var i=this.nextElementSibling;i.value=Math.max(1,(parseInt(i.value)||1)-1);">−</button>
               <input type="number" name="quantity" value="1" min="1">
@@ -543,7 +602,8 @@
                 {{ section.settings.description_label | default: 'Description' }}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
               </summary>
-              <div class="kv-pinfo__accordion-body">{{ product.description }}</div>
+              <div class="kv-pinfo__accordion-body kv-pinfo__desc-body" data-desc-body>{{ product.description }}</div>
+              <button type="button" class="kv-pinfo__desc-toggle" data-desc-toggle>Show more</button>
             </details>
           {%- endif -%}
           {%- for block in section.blocks -%}
@@ -561,6 +621,13 @@
 
       </div>
     </div>
+
+    <!-- Section nav — smooth-scrolls down to matching blocks in the KAYVA Product Spotlight section -->
+    <nav class="kv-pinfo__section-nav">
+      <button type="button" data-scroll-to="feature">Description</button>
+      <button type="button" data-scroll-to="spec_table">Specifications</button>
+      <button type="button" data-scroll-to="gallery">Gallery</button>
+    </nav>
   </div>
 
   <!-- Floating buy bar — appears once the main buy box scrolls out of view -->
@@ -734,14 +801,23 @@
 
     syncFloatbar();
 
-    /* ---------- Accordion: scroll the opened panel into view, Govee-style ---------- */
-    document.querySelectorAll('.kv-pinfo-' + sectionId + ' .kv-pinfo__accordion-item').forEach(function(item){
-      item.addEventListener('toggle', function(){
-        if (item.open) {
-          setTimeout(function(){
-            item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 80);
-        }
+    /* ---------- Description: show more / show less ---------- */
+    var descBody = document.querySelector('.kv-pinfo-' + sectionId + ' [data-desc-body]');
+    var descToggle = document.querySelector('.kv-pinfo-' + sectionId + ' [data-desc-toggle]');
+    if (descBody && descToggle) {
+      descToggle.addEventListener('click', function(){
+        var expanded = descBody.classList.toggle('is-expanded');
+        descToggle.textContent = expanded
+          ? {{ 'Show less' | json }}
+          : {{ 'Show more' | json }};
+      });
+    }
+
+    /* ---------- Section nav: smooth-scroll to blocks in the spotlight section ---------- */
+    document.querySelectorAll('.kv-pinfo-' + sectionId + ' [data-scroll-to]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var target = document.querySelector('[data-spot-block="' + btn.dataset.scrollTo + '"]');
+        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
   })();
