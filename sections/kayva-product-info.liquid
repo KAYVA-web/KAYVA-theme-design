@@ -282,10 +282,7 @@
   background: var(--kayva-white, #FFFFFF);
   border-top: 1px solid var(--kayva-line, #E8E0D2);
   box-shadow: 0 -6px 24px rgba(61,42,21,0.08);
-  transform: translateY(100%);
-  transition: transform 0.25s ease;
 }
-.kv-pinfo__floatbar.is-visible { transform: translateY(0); }
 .kv-pinfo__floatbar-inner {
   display: flex;
   align-items: center;
@@ -356,7 +353,7 @@
 }
 .kv-pinfo__accordion-item summary::-webkit-details-marker { display: none; }
 .kv-pinfo__accordion-item summary svg { transition: transform 0.2s; }
-.kv-pinfo__accordion-item[open] summary svg { transform: rotate(45deg); }
+.kv-pinfo__accordion-item[open] summary svg { transform: rotate(180deg); }
 .kv-pinfo__accordion-body {
   padding: 0 2px 20px;
   font-size: 15px;
@@ -452,13 +449,6 @@
               <input type="number" name="quantity" value="1" min="1">
               <button type="button" onclick="var i=this.previousElementSibling;i.value=(parseInt(i.value)||1)+1;">+</button>
             </div>
-            <button type="submit" class="kv-pinfo__atc" id="kv-pinfo-atc-{{ section.id }}" {% unless current_variant.available %}disabled{% endunless %}>
-              {%- if current_variant.available -%}
-                {{ section.settings.atc_label | default: 'Add to cart' }}
-              {%- else -%}
-                {{ section.settings.sold_out_label | default: 'Sold out' }}
-              {%- endif -%}
-            </button>
           </div>
         {%- endform -%}
 
@@ -469,8 +459,7 @@
             <div class="kv-pinfo__bundle-tabs" role="tablist">
               {%- for block in bundle_blocks -%}
                 <button type="button" class="kv-pinfo__bundle-tab{% if forloop.first %} is-active{% endif %}"
-                        data-bundle-tab="{{ forloop.index0 }}"
-                        onclick="kvPinfoBundleTab{{ section.id }}({{ forloop.index0 }})">
+                        data-bundle-tab="{{ forloop.index0 }}">
                   {{ block.settings.label | default: 'Bundle' }}
                 </button>
               {%- endfor -%}
@@ -552,7 +541,7 @@
             <details class="kv-pinfo__accordion-item" open>
               <summary>
                 {{ section.settings.description_label | default: 'Description' }}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
               </summary>
               <div class="kv-pinfo__accordion-body">{{ product.description }}</div>
             </details>
@@ -562,7 +551,7 @@
               <details class="kv-pinfo__accordion-item" {{ block.shopify_attributes }}>
                 <summary>
                   {{ block.settings.title }}
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
                 </summary>
                 <div class="kv-pinfo__accordion-body">{{ block.settings.content }}</div>
               </details>
@@ -615,20 +604,13 @@
           return v[key] === selected[opt.position];
         });
       });
-      var btn = document.getElementById('kv-pinfo-atc-' + sectionId);
       var input = document.getElementById('kv-pinfo-variant-id-' + sectionId);
       if (match) {
         input.value = match.id;
-        btn.disabled = !match.available;
-        btn.textContent = match.available
-          ? {{ section.settings.atc_label | default: 'Add to cart' | json }}
-          : {{ section.settings.sold_out_label | default: 'Sold out' | json }};
         if (match.featured_media) {
           var img = document.getElementById('kv-pinfo-main-img-' + sectionId);
           if (img) { img.src = match.featured_media.preview_image.src + '&width=1200'; }
         }
-      } else {
-        btn.disabled = true;
       }
       syncFloatbar();
     };
@@ -643,10 +625,13 @@
       var panels = bundleRoot.querySelectorAll('[data-bundle-panel]');
       var tabs = bundleRoot.querySelectorAll('[data-bundle-tab]');
 
-      window['kvPinfoBundleTab' + sectionId] = function(index){
-        tabs.forEach(function(t){ t.classList.toggle('is-active', t.dataset.bundleTab == index); });
-        panels.forEach(function(p){ p.classList.toggle('is-active', p.dataset.bundlePanel == index); });
-      };
+      tabs.forEach(function(tab){
+        tab.addEventListener('click', function(){
+          var index = tab.dataset.bundleTab;
+          tabs.forEach(function(t){ t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function(p){ p.classList.toggle('is-active', p.dataset.bundlePanel === index); });
+        });
+      });
 
       function recalcBundle(panel){
         var idx = panel.dataset.bundlePanel;
@@ -742,16 +727,23 @@
     if (floatAddBtn) { floatAddBtn.addEventListener('click', function(){ floatbarAddToCart(false); }); }
     if (floatBuyBtn) { floatBuyBtn.addEventListener('click', function(){ floatbarAddToCart(true); }); }
 
-    if (floatbar && mainForm) {
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          floatbar.classList.toggle('is-visible', !entry.isIntersecting);
-        });
-      }, { threshold: 0 });
-      observer.observe(mainForm);
+    /* Floating bar is permanently fixed to the bottom — reserve space so it never overlaps content */
+    if (floatbar) {
+      document.body.style.paddingBottom = floatbar.offsetHeight + 'px';
     }
 
     syncFloatbar();
+
+    /* ---------- Accordion: scroll the opened panel into view, Govee-style ---------- */
+    document.querySelectorAll('.kv-pinfo-' + sectionId + ' .kv-pinfo__accordion-item').forEach(function(item){
+      item.addEventListener('toggle', function(){
+        if (item.open) {
+          setTimeout(function(){
+            item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 80);
+        }
+      });
+    });
   })();
 </script>
 
