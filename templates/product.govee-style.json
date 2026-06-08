@@ -128,7 +128,11 @@
         "gallery": {
           "type": "gallery",
           "settings": {
-            "heading": "In the home"
+            "heading": "In the home",
+            "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "image_2": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_12_05_PM.png",
+            "image_3": "shopify://shop_images/CRI_Comparision_CRI80.png",
+            "image_4": "shopify://shop_images/CRI_Comparision_CRI95.png"
           }
         },
         "banner": {
@@ -152,59 +156,6 @@
       ],
       "settings": {
         "background_color": "#ffffff"
-      }
-    },
-    "bundles": {
-      "type": "kayva-bundle-showcase",
-      "blocks": {
-        "b1": {
-          "type": "bundle",
-          "settings": {
-            "product": "",
-            "featured": false,
-            "badge": "GOOD",
-            "name": "Bundle 1 — Starter",
-            "desc": "For a single accent wall or shelf run.",
-            "includes": "1x KAYVA 480 Pro Strip (3m)\n1x 24V Driver\n1x Aluminium Channel + Diffuser",
-            "buy_label": "Buy now"
-          }
-        },
-        "b2": {
-          "type": "bundle",
-          "settings": {
-            "product": "",
-            "featured": true,
-            "badge": "MOST POPULAR",
-            "name": "Bundle 2 — Pro",
-            "desc": "Our most-bought setup — enough for a full room run.",
-            "includes": "1x KAYVA 480 Pro Strip (5m)\n1x 24V Driver\n1x Aluminium Channel + Diffuser\n1x TRIAC Wall Dimmer",
-            "buy_label": "Buy now"
-          }
-        },
-        "b3": {
-          "type": "bundle",
-          "settings": {
-            "product": "",
-            "featured": false,
-            "badge": "BEST VALUE",
-            "name": "Bundle 3 — Complete Room",
-            "desc": "Everything for a full room, multiple runs included.",
-            "includes": "2x KAYVA 480 Pro Strip (5m)\n2x 24V Driver\n2x Aluminium Channel + Diffuser\n1x TRIAC Wall Dimmer\n1x Connector Kit",
-            "buy_label": "Buy now"
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3"
-      ],
-      "settings": {
-        "background_color": "#f5efe5",
-        "eyebrow": "BUNDLE & SAVE",
-        "heading": "Build your setup.",
-        "subheading": "Pick the bundle that matches your room. Each one is priced to save you more than buying separately.",
-        "sold_out_label": "Sold out"
       }
     },
     "product_recommendations": {
@@ -352,7 +303,6 @@
   "order": [
     "main",
     "spotlight",
-    "bundles",
     "product_recommendations"
   ]
 }
