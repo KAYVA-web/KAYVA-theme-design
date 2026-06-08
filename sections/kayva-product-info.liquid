@@ -73,13 +73,6 @@
   text-decoration: line-through;
   margin-left: 10px;
 }
-.kv-pinfo__excerpt {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--kayva-warm-brown, #6B4823);
-  margin-bottom: 24px;
-}
-
 /* Highlight bullets (Govee-style "key features" list) */
 .kv-pinfo__highlights {
   list-style: none;
@@ -261,12 +254,6 @@
           {%- endif -%}
         </div>
 
-        {%- if section.settings.excerpt != blank -%}
-          <div class="kv-pinfo__excerpt">{{ section.settings.excerpt }}</div>
-        {%- elsif product.description != blank -%}
-          <div class="kv-pinfo__excerpt">{{ product.description | strip_html | truncatewords: 40 }}</div>
-        {%- endif -%}
-
         {%- if section.blocks.size > 0 -%}
           <ul class="kv-pinfo__highlights">
             {%- for block in section.blocks -%}
@@ -410,12 +397,6 @@
       "id": "eyebrow",
       "label": "Eyebrow",
       "info": "e.g. STRIP LIGHTING · RA95+"
-    },
-    {
-      "type": "richtext",
-      "id": "excerpt",
-      "label": "Short description",
-      "info": "Leave blank to auto-use the product description (truncated)."
     },
     {
       "type": "header",
