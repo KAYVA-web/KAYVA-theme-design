@@ -185,6 +185,159 @@
   margin-bottom: 32px;
 }
 
+/* Bundle picker */
+.kv-pinfo__bundles {
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 24px 0 28px;
+  margin-bottom: 28px;
+}
+.kv-pinfo__bundle-tabs { display: flex; gap: 28px; margin-bottom: 20px; }
+.kv-pinfo__bundle-tab {
+  border: none;
+  background: none;
+  padding: 0 0 10px;
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--kayva-soft-brown, #8A5524);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.kv-pinfo__bundle-tab.is-active {
+  color: var(--kayva-dark-brown, #3D2A15);
+  border-bottom-color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-pinfo__bundle-panel { display: none; }
+.kv-pinfo__bundle-panel.is-active { display: block; }
+.kv-pinfo__bundle-label {
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin-bottom: 14px;
+}
+.kv-pinfo__bundle-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--kayva-cream, #F5EFE5);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+.kv-pinfo__bundle-plus {
+  text-align: center;
+  font-size: 16px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 8px 0;
+}
+.kv-pinfo__bundle-thumb {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--kayva-white, #FFFFFF);
+  display: block;
+}
+.kv-pinfo__bundle-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.kv-pinfo__bundle-info { flex: 1; min-width: 0; }
+.kv-pinfo__bundle-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kv-pinfo__bundle-price { font-size: 14px; color: var(--kayva-warm-brown, #6B4823); }
+.kv-pinfo__bundle-select {
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  border-radius: 2px;
+  background: var(--kayva-white, #FFFFFF);
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-ink, #1F1B16);
+  padding: 8px 10px;
+  max-width: 150px;
+}
+.kv-pinfo__bundle-total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 18px 0 14px;
+  font-size: 15px;
+  color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-pinfo__bundle-total strong { font-size: 20px; }
+.kv-pinfo__bundle-total s { color: var(--kayva-soft-brown, #8A5524); font-weight: 400; font-size: 14px; }
+.kv-pinfo__bundle-add { width: 100%; }
+
+/* Floating buy bar */
+.kv-pinfo__floatbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  background: var(--kayva-white, #FFFFFF);
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  box-shadow: 0 -6px 24px rgba(61,42,21,0.08);
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+}
+.kv-pinfo__floatbar.is-visible { transform: translateY(0); }
+.kv-pinfo__floatbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 24px;
+}
+.kv-pinfo__floatbar-info { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.kv-pinfo__floatbar-info img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: var(--kayva-cream, #F5EFE5);
+  flex-shrink: 0;
+}
+.kv-pinfo__floatbar-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+.kv-pinfo__floatbar-price { font-size: 14px; color: var(--kayva-warm-brown, #6B4823); }
+.kv-pinfo__floatbar-actions { display: flex; gap: 12px; flex-shrink: 0; }
+.kv-pinfo__floatbar-btn {
+  height: 44px;
+  padding: 0 28px;
+  border: 1.5px solid var(--kayva-dark-brown, #3D2A15);
+  border-radius: 2px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.kv-pinfo__floatbar-btn--ghost {
+  background: transparent;
+  color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-pinfo__floatbar-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+@media (max-width: 640px) {
+  .kv-pinfo__floatbar-title { max-width: 140px; }
+  .kv-pinfo__floatbar-btn { padding: 0 16px; }
+}
+
 /* Accordion (description / shipping / etc) */
 .kv-pinfo__accordion { border-top: 1px solid var(--kayva-line, #E8E0D2); }
 .kv-pinfo__accordion-item { border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
@@ -309,6 +462,86 @@
           </div>
         {%- endform -%}
 
+        <!-- Bundle picker (Govee-style: tabs + frequently-bought-together rows, adds as one cart action) -->
+        {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle_option' -%}
+        {%- if bundle_blocks.size > 0 -%}
+          <div class="kv-pinfo__bundles" id="kv-bundles-{{ section.id }}">
+            <div class="kv-pinfo__bundle-tabs" role="tablist">
+              {%- for block in bundle_blocks -%}
+                <button type="button" class="kv-pinfo__bundle-tab{% if forloop.first %} is-active{% endif %}"
+                        data-bundle-tab="{{ forloop.index0 }}"
+                        onclick="kvPinfoBundleTab{{ section.id }}({{ forloop.index0 }})">
+                  {{ block.settings.label | default: 'Bundle' }}
+                </button>
+              {%- endfor -%}
+            </div>
+
+            {%- for block in bundle_blocks -%}
+              {%- assign addon = block.settings.addon_product -%}
+              {%- assign addon_variant = addon.selected_or_first_available_variant -%}
+              <div class="kv-pinfo__bundle-panel{% if forloop.first %} is-active{% endif %}" data-bundle-panel="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <p class="kv-pinfo__bundle-label">Frequently bought together:</p>
+
+                <div class="kv-pinfo__bundle-row">
+                  <div class="kv-pinfo__bundle-thumb">
+                    {%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 160 }}" alt="{{ product.title | escape }}" loading="lazy">{%- endif -%}
+                  </div>
+                  <div class="kv-pinfo__bundle-info">
+                    <p class="kv-pinfo__bundle-name">{{ product.title }}</p>
+                    <p class="kv-pinfo__bundle-price" data-bundle-main-price="{{ forloop.index0 }}">{{ current_variant.price | money }}</p>
+                  </div>
+                  {%- unless product.has_only_default_variant -%}
+                    <select class="kv-pinfo__bundle-select" data-bundle-main-select="{{ forloop.index0 }}">
+                      {%- for v in product.variants -%}
+                        <option value="{{ v.id }}" data-price="{{ v.price }}" {% if v.id == current_variant.id %}selected{% endif %}>{{ v.title }}</option>
+                      {%- endfor -%}
+                    </select>
+                  {%- endunless -%}
+                </div>
+
+                {%- if addon != blank -%}
+                  <div class="kv-pinfo__bundle-plus">+</div>
+                  <div class="kv-pinfo__bundle-row">
+                    <div class="kv-pinfo__bundle-thumb">
+                      {%- if addon.featured_image -%}<img src="{{ addon.featured_image | image_url: width: 160 }}" alt="{{ addon.title | escape }}" loading="lazy">{%- endif -%}
+                    </div>
+                    <div class="kv-pinfo__bundle-info">
+                      <p class="kv-pinfo__bundle-name">{{ addon.title }}</p>
+                      <p class="kv-pinfo__bundle-price" data-bundle-addon-price="{{ forloop.index0 }}">{{ addon_variant.price | money }}</p>
+                    </div>
+                    {%- unless addon.has_only_default_variant -%}
+                      <select class="kv-pinfo__bundle-select" data-bundle-addon-select="{{ forloop.index0 }}">
+                        {%- for v in addon.variants -%}
+                          <option value="{{ v.id }}" data-price="{{ v.price }}" {% if v.id == addon_variant.id %}selected{% endif %}>{{ v.title }}</option>
+                        {%- endfor -%}
+                      </select>
+                    {%- endunless -%}
+                  </div>
+                {%- endif -%}
+
+                <div class="kv-pinfo__bundle-total">
+                  <span>Total:</span>
+                  <strong data-bundle-total="{{ forloop.index0 }}"></strong>
+                  {%- if block.settings.savings > 0 -%}
+                    <s data-bundle-compare="{{ forloop.index0 }}"></s>
+                  {%- endif -%}
+                </div>
+
+                <button type="button"
+                        class="kv-pinfo__atc kv-pinfo__bundle-add"
+                        data-bundle-add="{{ forloop.index0 }}"
+                        data-main-variant-id="{{ current_variant.id }}"
+                        data-main-price="{{ current_variant.price | default: 0 }}"
+                        data-addon-variant-id="{{ addon_variant.id }}"
+                        data-addon-price="{{ addon_variant.price | default: 0 }}"
+                        data-savings="{{ block.settings.savings | default: 0 }}">
+                  {{ block.settings.add_label | default: 'Add bundle to cart' }}
+                </button>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
         {%- if section.settings.note != blank -%}
           <p class="kv-pinfo__note">{{ section.settings.note }}</p>
         {%- endif -%}
@@ -337,6 +570,29 @@
           {%- endfor -%}
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating buy bar — appears once the main buy box scrolls out of view -->
+  <div class="kv-pinfo__floatbar" id="kv-floatbar-{{ section.id }}">
+    <div class="kayva-page-width kv-pinfo__floatbar-inner">
+      <div class="kv-pinfo__floatbar-info">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title | escape }}">
+        {%- endif -%}
+        <div>
+          <p class="kv-pinfo__floatbar-title">{{ product.title }}</p>
+          <p class="kv-pinfo__floatbar-price" id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</p>
+        </div>
+      </div>
+      <div class="kv-pinfo__floatbar-actions">
+        <button type="button" class="kv-pinfo__floatbar-btn kv-pinfo__floatbar-btn--ghost" id="kv-floatbar-add-{{ section.id }}">
+          {{ section.settings.atc_label | default: 'Add to cart' }}
+        </button>
+        <button type="button" class="kv-pinfo__floatbar-btn" id="kv-floatbar-buy-{{ section.id }}">
+          {{ section.settings.buy_now_label | default: 'Buy now' }}
+        </button>
       </div>
     </div>
   </div>
@@ -374,7 +630,128 @@
       } else {
         btn.disabled = true;
       }
+      syncFloatbar();
     };
+
+    function moneyFmt(cents){
+      return ({{ shop.money_format | json }}).replace(/\{\{\s*amount\s*\}\}/, (cents/100).toFixed(2));
+    }
+
+    /* ---------- Bundle picker ---------- */
+    var bundleRoot = document.getElementById('kv-bundles-' + sectionId);
+    if (bundleRoot) {
+      var panels = bundleRoot.querySelectorAll('[data-bundle-panel]');
+      var tabs = bundleRoot.querySelectorAll('[data-bundle-tab]');
+
+      window['kvPinfoBundleTab' + sectionId] = function(index){
+        tabs.forEach(function(t){ t.classList.toggle('is-active', t.dataset.bundleTab == index); });
+        panels.forEach(function(p){ p.classList.toggle('is-active', p.dataset.bundlePanel == index); });
+      };
+
+      function recalcBundle(panel){
+        var idx = panel.dataset.bundlePanel;
+        var mainSelect = panel.querySelector('[data-bundle-main-select]');
+        var addonSelect = panel.querySelector('[data-bundle-addon-select]');
+        var addBtn = panel.querySelector('[data-bundle-add]');
+        var mainPriceEl = panel.querySelector('[data-bundle-main-price="' + idx + '"]');
+        var addonPriceEl = panel.querySelector('[data-bundle-addon-price="' + idx + '"]');
+        var totalEl = panel.querySelector('[data-bundle-total="' + idx + '"]');
+        var compareEl = panel.querySelector('[data-bundle-compare="' + idx + '"]');
+
+        var mainPrice = parseInt(addBtn.dataset.mainPrice || '0', 10);
+        if (mainSelect) {
+          mainPrice = parseInt(mainSelect.options[mainSelect.selectedIndex].dataset.price, 10);
+          if (mainPriceEl) { mainPriceEl.textContent = moneyFmt(mainPrice); }
+          addBtn.dataset.mainVariantId = mainSelect.value;
+        }
+
+        var addonPrice = parseInt(addBtn.dataset.addonPrice || '0', 10);
+        if (addonSelect) {
+          addonPrice = parseInt(addonSelect.options[addonSelect.selectedIndex].dataset.price, 10);
+          if (addonPriceEl) { addonPriceEl.textContent = moneyFmt(addonPrice); }
+          addBtn.dataset.addonVariantId = addonSelect.value;
+        }
+
+        var savings = parseFloat(addBtn.dataset.savings || '0') * 100;
+        var rawTotal = mainPrice + addonPrice;
+        var total = Math.max(rawTotal - savings, 0);
+        if (totalEl) { totalEl.textContent = moneyFmt(total); }
+        if (compareEl) { compareEl.textContent = savings > 0 ? moneyFmt(rawTotal) : ''; }
+      }
+
+      panels.forEach(function(panel){
+        recalcBundle(panel);
+        panel.querySelectorAll('select').forEach(function(sel){
+          sel.addEventListener('change', function(){ recalcBundle(panel); });
+        });
+        var addBtn = panel.querySelector('[data-bundle-add]');
+        if (addBtn) {
+          addBtn.addEventListener('click', function(){
+            var items = [];
+            if (addBtn.dataset.mainVariantId) { items.push({ id: parseInt(addBtn.dataset.mainVariantId, 10), quantity: 1 }); }
+            if (addBtn.dataset.addonVariantId) { items.push({ id: parseInt(addBtn.dataset.addonVariantId, 10), quantity: 1 }); }
+            if (!items.length) { return; }
+            addBtn.disabled = true;
+            var original = addBtn.textContent;
+            addBtn.textContent = 'Adding…';
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ items: items })
+            }).then(function(r){ return r.json(); }).then(function(){
+              window.location.href = '/cart';
+            }).catch(function(){
+              addBtn.disabled = false;
+              addBtn.textContent = original;
+            });
+          });
+        }
+      });
+    }
+
+    /* ---------- Floating buy bar ---------- */
+    var floatbar = document.getElementById('kv-floatbar-' + sectionId);
+    var floatPriceEl = document.getElementById('kv-floatbar-price-' + sectionId);
+    var floatAddBtn = document.getElementById('kv-floatbar-add-' + sectionId);
+    var floatBuyBtn = document.getElementById('kv-floatbar-buy-' + sectionId);
+    var mainForm = document.getElementById('kv-pinfo-form');
+    var mainVariantInput = document.getElementById('kv-pinfo-variant-id-' + sectionId);
+    var mainQtyInput = mainForm ? mainForm.querySelector('input[name="quantity"]') : null;
+
+    function syncFloatbar(){
+      if (!floatPriceEl || !mainVariantInput) { return; }
+      var match = product.variants.find(function(v){ return v.id == mainVariantInput.value; });
+      if (match) { floatPriceEl.textContent = moneyFmt(match.price); }
+      var unavailable = match ? !match.available : false;
+      if (floatAddBtn) { floatAddBtn.disabled = unavailable; }
+      if (floatBuyBtn) { floatBuyBtn.disabled = unavailable; }
+    }
+
+    function floatbarAddToCart(buyNow){
+      if (!mainVariantInput) { return; }
+      var qty = mainQtyInput ? (parseInt(mainQtyInput.value, 10) || 1) : 1;
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(mainVariantInput.value, 10), quantity: qty }] })
+      }).then(function(r){ return r.json(); }).then(function(){
+        window.location.href = buyNow ? '/checkout' : '/cart';
+      });
+    }
+
+    if (floatAddBtn) { floatAddBtn.addEventListener('click', function(){ floatbarAddToCart(false); }); }
+    if (floatBuyBtn) { floatBuyBtn.addEventListener('click', function(){ floatbarAddToCart(true); }); }
+
+    if (floatbar && mainForm) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          floatbar.classList.toggle('is-visible', !entry.isIntersecting);
+        });
+      }, { threshold: 0 });
+      observer.observe(mainForm);
+    }
+
+    syncFloatbar();
   })();
 </script>
 
@@ -416,6 +793,12 @@
     },
     {
       "type": "text",
+      "id": "buy_now_label",
+      "label": "Floating bar — Buy now label",
+      "default": "Buy now"
+    },
+    {
+      "type": "text",
       "id": "note",
       "label": "Note under buy button",
       "info": "e.g. Ships within 2–4 working days · Free delivery over $150"
@@ -428,6 +811,38 @@
     }
   ],
   "blocks": [
+    {
+      "type": "bundle_option",
+      "name": "Bundle option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "default": "Bundle 1",
+          "info": "Shown as the tab name (Bundle 1 / Bundle 2 / Bundle 3)."
+        },
+        {
+          "type": "product",
+          "id": "addon_product",
+          "label": "Add-on product",
+          "info": "The other product bundled with this one. Customers pick its variant right here — nothing links away to another product page."
+        },
+        {
+          "type": "number",
+          "id": "savings",
+          "label": "Bundle savings ($)",
+          "info": "Amount knocked off the combined total when buying as a bundle, e.g. 24.99",
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "add_label",
+          "label": "Add-bundle button label",
+          "default": "Add bundle to cart"
+        }
+      ]
+    },
     {
       "type": "highlight",
       "name": "Highlight bullet",
@@ -453,10 +868,14 @@
         "eyebrow": "STRIP LIGHTING · RA95+",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
+        "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
         "description_label": "Description"
       },
       "blocks": [
+        { "type": "bundle_option", "settings": { "label": "Bundle 1", "savings": 0, "add_label": "Add bundle to cart" } },
+        { "type": "bundle_option", "settings": { "label": "Bundle 2", "savings": 15, "add_label": "Add bundle to cart" } },
+        { "type": "bundle_option", "settings": { "label": "Bundle 3", "savings": 25, "add_label": "Add bundle to cart" } },
         { "type": "highlight", "settings": { "label": "Ra95+:", "text": "True-to-life colour rendering, indoors and out." } },
         { "type": "highlight", "settings": { "label": "Dotless COB:", "text": "Even, shadow-free light with no visible diodes." } },
         { "type": "highlight", "settings": { "label": "30,000 hrs:", "text": "Rated lifespan with stable brightness and colour." } },
