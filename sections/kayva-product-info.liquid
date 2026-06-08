@@ -1,0 +1,488 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign product = section.settings.product | default: product
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<style>
+.kv-pinfo-{{ section.id }} { font-family: var(--kayva-font); background: {{ section.settings.background_color }}; }
+.kv-pinfo__wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  padding: 56px 0 80px;
+  align-items: flex-start;
+}
+@media (max-width: 900px) {
+  .kv-pinfo__wrap { grid-template-columns: 1fr; gap: 28px; padding: 32px 0 56px; }
+}
+
+/* Gallery */
+.kv-pinfo__gallery { position: sticky; top: 24px; }
+@media (max-width: 900px) { .kv-pinfo__gallery { position: static; } }
+.kv-pinfo__main-image {
+  aspect-ratio: 1 / 1;
+  background: var(--kayva-cream, #F5EFE5);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.kv-pinfo__main-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.kv-pinfo__thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
+.kv-pinfo__thumb {
+  width: 76px;
+  height: 76px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--kayva-cream, #F5EFE5);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.kv-pinfo__thumb.is-active { border-color: var(--kayva-dark-brown, #3D2A15); }
+.kv-pinfo__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* Copy column */
+.kv-pinfo__eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin-bottom: 12px;
+}
+.kv-pinfo__title {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 300;
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 12px;
+}
+.kv-pinfo__price {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 8px;
+}
+.kv-pinfo__price .kv-pinfo__price-compare {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--kayva-soft-brown, #8A5524);
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+.kv-pinfo__excerpt {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--kayva-warm-brown, #6B4823);
+  margin-bottom: 24px;
+}
+
+/* Highlight bullets (Govee-style "key features" list) */
+.kv-pinfo__highlights {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.kv-pinfo__highlights li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--kayva-warm-brown, #6B4823);
+}
+.kv-pinfo__highlights svg { flex-shrink: 0; margin-top: 3px; color: var(--kayva-amber, #B8753A); }
+.kv-pinfo__highlights strong { color: var(--kayva-dark-brown, #3D2A15); font-weight: 600; }
+
+/* Variant options */
+.kv-pinfo__option { margin-bottom: 22px; }
+.kv-pinfo__option-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin-bottom: 10px;
+}
+.kv-pinfo__swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+.kv-pinfo__swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  border-radius: 2px;
+  background: var(--kayva-white, #FFFFFF);
+  font-size: 14px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.kv-pinfo__swatch input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.kv-pinfo__swatch:has(input:checked) {
+  border-color: var(--kayva-dark-brown, #3D2A15);
+  font-weight: 600;
+}
+.kv-pinfo__swatch:has(input:disabled) {
+  opacity: 0.4;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Quantity + add to cart */
+.kv-pinfo__buy-row { display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.kv-pinfo__qty {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  border-radius: 2px;
+  overflow: hidden;
+  height: 50px;
+}
+.kv-pinfo__qty button {
+  width: 40px;
+  border: none;
+  background: var(--kayva-cream, #F5EFE5);
+  color: var(--kayva-dark-brown, #3D2A15);
+  font-size: 18px;
+  cursor: pointer;
+}
+.kv-pinfo__qty input {
+  width: 48px;
+  border: none;
+  text-align: center;
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  -moz-appearance: textfield;
+}
+.kv-pinfo__qty input::-webkit-outer-spin-button,
+.kv-pinfo__qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.kv-pinfo__atc {
+  flex: 1;
+  min-width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 2px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.kv-pinfo__atc:hover { background: var(--kayva-warm-brown, #6B4823); }
+.kv-pinfo__atc:disabled { background: var(--kayva-soft-brown, #8A5524); cursor: not-allowed; }
+
+.kv-pinfo__note {
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin-bottom: 32px;
+}
+
+/* Accordion (description / shipping / etc) */
+.kv-pinfo__accordion { border-top: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-pinfo__accordion-item { border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-pinfo__accordion-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 2px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  list-style: none;
+}
+.kv-pinfo__accordion-item summary::-webkit-details-marker { display: none; }
+.kv-pinfo__accordion-item summary svg { transition: transform 0.2s; }
+.kv-pinfo__accordion-item[open] summary svg { transform: rotate(45deg); }
+.kv-pinfo__accordion-body {
+  padding: 0 2px 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--kayva-warm-brown, #6B4823);
+}
+.kv-pinfo__accordion-body p { margin-bottom: 12px; }
+</style>
+
+<div class="kv-pinfo-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-pinfo__wrap">
+
+      <!-- Gallery -->
+      <div class="kv-pinfo__gallery">
+        <div class="kv-pinfo__main-image" id="kv-pinfo-main-{{ section.id }}">
+          {%- if product.featured_media -%}
+            <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.featured_media.alt | escape }}" id="kv-pinfo-main-img-{{ section.id }}">
+          {%- endif -%}
+        </div>
+        {%- if product.media.size > 1 -%}
+          <div class="kv-pinfo__thumbs">
+            {%- for media in product.media limit: 8 -%}
+              <button type="button" class="kv-pinfo__thumb{% if forloop.first %} is-active{% endif %}" data-full="{{ media | image_url: width: 1200 }}" onclick="
+                document.getElementById('kv-pinfo-main-img-{{ section.id }}').src = this.dataset.full;
+                this.parentElement.querySelectorAll('.kv-pinfo__thumb').forEach(function(t){t.classList.remove('is-active')});
+                this.classList.add('is-active');
+              ">
+                <img src="{{ media | image_url: width: 200 }}" alt="{{ media.alt | escape }}" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Copy / buy box -->
+      <div class="kv-pinfo__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="kv-pinfo__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        <h1 class="kv-pinfo__title">{{ product.title }}</h1>
+
+        <div class="kv-pinfo__price">
+          {{ current_variant.price | money }}
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <span class="kv-pinfo__price-compare">{{ current_variant.compare_at_price | money }}</span>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.excerpt != blank -%}
+          <div class="kv-pinfo__excerpt">{{ section.settings.excerpt }}</div>
+        {%- elsif product.description != blank -%}
+          <div class="kv-pinfo__excerpt">{{ product.description | strip_html | truncatewords: 40 }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="kv-pinfo__highlights">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'highlight' -%}
+                <li {{ block.shopify_attributes }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>
+                    {%- if block.settings.label != blank -%}<strong>{{ block.settings.label }}</strong> {%- endif -%}
+                    {{ block.settings.text }}
+                  </span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- form 'product', product, id: 'kv-pinfo-form', class: 'kv-pinfo__form' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" id="kv-pinfo-variant-id-{{ section.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="kv-pinfo__option">
+                <span class="kv-pinfo__option-label">{{ option.name }}</span>
+                <div class="kv-pinfo__swatches">
+                  {%- for value in option.values -%}
+                    <label class="kv-pinfo__swatch">
+                      <input type="radio"
+                             name="kv-option-{{ section.id }}-{{ option.position }}"
+                             value="{{ value | escape }}"
+                             {% if option.selected_value == value %}checked{% endif %}
+                             onchange="kvPinfoSelectOption{{ section.id }}({{ option.position }}, this.value)">
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <div class="kv-pinfo__buy-row">
+            <div class="kv-pinfo__qty">
+              <button type="button" onclick="var i=this.nextElementSibling;i.value=Math.max(1,(parseInt(i.value)||1)-1);">−</button>
+              <input type="number" name="quantity" value="1" min="1">
+              <button type="button" onclick="var i=this.previousElementSibling;i.value=(parseInt(i.value)||1)+1;">+</button>
+            </div>
+            <button type="submit" class="kv-pinfo__atc" id="kv-pinfo-atc-{{ section.id }}" {% unless current_variant.available %}disabled{% endunless %}>
+              {%- if current_variant.available -%}
+                {{ section.settings.atc_label | default: 'Add to cart' }}
+              {%- else -%}
+                {{ section.settings.sold_out_label | default: 'Sold out' }}
+              {%- endif -%}
+            </button>
+          </div>
+        {%- endform -%}
+
+        {%- if section.settings.note != blank -%}
+          <p class="kv-pinfo__note">{{ section.settings.note }}</p>
+        {%- endif -%}
+
+        <!-- Accordion -->
+        <div class="kv-pinfo__accordion">
+          {%- if product.description != blank -%}
+            <details class="kv-pinfo__accordion-item" open>
+              <summary>
+                {{ section.settings.description_label | default: 'Description' }}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </summary>
+              <div class="kv-pinfo__accordion-body">{{ product.description }}</div>
+            </details>
+          {%- endif -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'accordion' -%}
+              <details class="kv-pinfo__accordion-item" {{ block.shopify_attributes }}>
+                <summary>
+                  {{ block.settings.title }}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                </summary>
+                <div class="kv-pinfo__accordion-body">{{ block.settings.content }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var product = {{ product | json }};
+    var sectionId = {{ section.id | json }};
+    var selected = {};
+    {%- for option in product.options_with_values -%}
+      selected[{{ option.position | json }}] = {{ option.selected_value | json }};
+    {%- endfor -%}
+
+    window['kvPinfoSelectOption' + sectionId] = function(position, value){
+      selected[position] = value;
+      var match = product.variants.find(function(v){
+        return product.options_with_values.every(function(opt, i){
+          var key = 'option' + (i + 1);
+          return v[key] === selected[opt.position];
+        });
+      });
+      var btn = document.getElementById('kv-pinfo-atc-' + sectionId);
+      var input = document.getElementById('kv-pinfo-variant-id-' + sectionId);
+      if (match) {
+        input.value = match.id;
+        btn.disabled = !match.available;
+        btn.textContent = match.available
+          ? {{ section.settings.atc_label | default: 'Add to cart' | json }}
+          : {{ section.settings.sold_out_label | default: 'Sold out' | json }};
+        if (match.featured_media) {
+          var img = document.getElementById('kv-pinfo-main-img-' + sectionId);
+          if (img) { img.src = match.featured_media.preview_image.src + '&width=1200'; }
+        }
+      } else {
+        btn.disabled = true;
+      }
+    };
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KAYVA Product Info",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "info": "e.g. STRIP LIGHTING · RA95+"
+    },
+    {
+      "type": "richtext",
+      "id": "excerpt",
+      "label": "Short description",
+      "info": "Leave blank to auto-use the product description (truncated)."
+    },
+    {
+      "type": "header",
+      "content": "Buy box"
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold out label",
+      "default": "Sold out"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note under buy button",
+      "info": "e.g. Ships within 2–4 working days · Free delivery over $150"
+    },
+    {
+      "type": "text",
+      "id": "description_label",
+      "label": "Description accordion label",
+      "default": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight bullet",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Bold lead-in", "info": "e.g. Ra95+:" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion item",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Shipping & returns" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Product Info",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "eyebrow": "STRIP LIGHTING · RA95+",
+        "atc_label": "Add to cart",
+        "sold_out_label": "Sold out",
+        "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
+        "description_label": "Description"
+      },
+      "blocks": [
+        { "type": "highlight", "settings": { "label": "Ra95+:", "text": "True-to-life colour rendering, indoors and out." } },
+        { "type": "highlight", "settings": { "label": "Dotless COB:", "text": "Even, shadow-free light with no visible diodes." } },
+        { "type": "highlight", "settings": { "label": "30,000 hrs:", "text": "Rated lifespan with stable brightness and colour." } },
+        { "type": "accordion", "settings": { "title": "Shipping & returns", "content": "<p>Delivered within 2–4 working days across Singapore. 30-day returns on unused items in original packaging.</p>" } },
+        { "type": "accordion", "settings": { "title": "Warranty", "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
