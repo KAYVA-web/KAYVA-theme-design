@@ -87,6 +87,50 @@
       },
       "block_order": ["feat_1", "feat_2", "feat_3", "specs", "gallery", "banner"]
     },
+    "bundles": {
+      "type": "kayva-bundle-showcase",
+      "settings": {
+        "background_color": "#F5EFE5",
+        "eyebrow": "BUNDLE & SAVE",
+        "heading": "Build your setup.",
+        "subheading": "Pick the bundle that matches your room. Each one is priced to save you more than buying separately.",
+        "sold_out_label": "Sold out"
+      },
+      "blocks": {
+        "b1": {
+          "type": "bundle",
+          "settings": {
+            "name": "Bundle 1 — Starter",
+            "badge": "GOOD",
+            "desc": "For a single accent wall or shelf run.",
+            "includes": "1x KAYVA 480 Pro Strip (3m)\n1x 24V Driver\n1x Aluminium Channel + Diffuser",
+            "buy_label": "Buy now"
+          }
+        },
+        "b2": {
+          "type": "bundle",
+          "settings": {
+            "featured": true,
+            "name": "Bundle 2 — Pro",
+            "badge": "MOST POPULAR",
+            "desc": "Our most-bought setup — enough for a full room run.",
+            "includes": "1x KAYVA 480 Pro Strip (5m)\n1x 24V Driver\n1x Aluminium Channel + Diffuser\n1x TRIAC Wall Dimmer",
+            "buy_label": "Buy now"
+          }
+        },
+        "b3": {
+          "type": "bundle",
+          "settings": {
+            "name": "Bundle 3 — Complete Room",
+            "badge": "BEST VALUE",
+            "desc": "Everything for a full room, multiple runs included.",
+            "includes": "2x KAYVA 480 Pro Strip (5m)\n2x 24V Driver\n2x Aluminium Channel + Diffuser\n1x TRIAC Wall Dimmer\n1x Connector Kit",
+            "buy_label": "Buy now"
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
     "product_recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -232,6 +276,7 @@
   "order": [
     "main",
     "spotlight",
+    "bundles",
     "product_recommendations"
   ]
 }
