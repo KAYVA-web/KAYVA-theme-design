@@ -9,7 +9,7 @@
 .kv-pinfo-{{ section.id }} { font-family: var(--kayva-font); background: {{ section.settings.background_color }}; }
 .kv-pinfo__wrap {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 64px;
   padding: 56px 0 80px;
   align-items: flex-start;
@@ -315,7 +315,9 @@
   white-space: nowrap;
   max-width: 280px;
 }
-.kv-pinfo__floatbar-price { font-size: 14px; color: var(--kayva-warm-brown, #6B4823); }
+.kv-pinfo__floatbar-variant { font-size: 12px; color: var(--kayva-soft-brown, #8A5524); margin: 2px 0; }
+.kv-pinfo__floatbar-price { font-size: 14px; color: var(--kayva-warm-brown, #6B4823); display: flex; align-items: baseline; gap: 8px; }
+.kv-pinfo__floatbar-compare { font-size: 12px; color: var(--kayva-soft-brown, #8A5524); text-decoration: line-through; }
 .kv-pinfo__floatbar-actions { display: flex; gap: 12px; flex-shrink: 0; }
 .kv-pinfo__floatbar-btn {
   height: 44px;
@@ -639,7 +641,13 @@
         {%- endif -%}
         <div>
           <p class="kv-pinfo__floatbar-title">{{ product.title }}</p>
-          <p class="kv-pinfo__floatbar-price" id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</p>
+          {%- unless product.has_only_default_variant -%}
+            <p class="kv-pinfo__floatbar-variant" id="kv-floatbar-variant-{{ section.id }}">{{ current_variant.title }}</p>
+          {%- endunless -%}
+          <p class="kv-pinfo__floatbar-price">
+            <span id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+            <s id="kv-floatbar-compare-{{ section.id }}" class="kv-pinfo__floatbar-compare"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+          </p>
         </div>
       </div>
       <div class="kv-pinfo__floatbar-actions">
@@ -764,6 +772,8 @@
     /* ---------- Floating buy bar ---------- */
     var floatbar = document.getElementById('kv-floatbar-' + sectionId);
     var floatPriceEl = document.getElementById('kv-floatbar-price-' + sectionId);
+    var floatCompareEl = document.getElementById('kv-floatbar-compare-' + sectionId);
+    var floatVariantEl = document.getElementById('kv-floatbar-variant-' + sectionId);
     var floatAddBtn = document.getElementById('kv-floatbar-add-' + sectionId);
     var floatBuyBtn = document.getElementById('kv-floatbar-buy-' + sectionId);
     var mainForm = document.getElementById('kv-pinfo-form');
@@ -773,7 +783,18 @@
     function syncFloatbar(){
       if (!floatPriceEl || !mainVariantInput) { return; }
       var match = product.variants.find(function(v){ return v.id == mainVariantInput.value; });
-      if (match) { floatPriceEl.textContent = moneyFmt(match.price); }
+      if (match) {
+        floatPriceEl.textContent = moneyFmt(match.price);
+        if (floatVariantEl) { floatVariantEl.textContent = match.title; }
+        if (floatCompareEl) {
+          if (match.compare_at_price > match.price) {
+            floatCompareEl.textContent = moneyFmt(match.compare_at_price);
+            floatCompareEl.hidden = false;
+          } else {
+            floatCompareEl.hidden = true;
+          }
+        }
+      }
       var unavailable = match ? !match.available : false;
       if (floatAddBtn) { floatAddBtn.disabled = unavailable; }
       if (floatBuyBtn) { floatBuyBtn.disabled = unavailable; }
