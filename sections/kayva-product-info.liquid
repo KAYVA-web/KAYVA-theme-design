@@ -316,9 +316,17 @@
   max-width: 280px;
 }
 .kv-pinfo__floatbar-variant { font-size: 12px; color: var(--kayva-soft-brown, #8A5524); margin: 2px 0; }
-.kv-pinfo__floatbar-price { font-size: 14px; color: var(--kayva-warm-brown, #6B4823); display: flex; align-items: baseline; gap: 8px; }
-.kv-pinfo__floatbar-compare { font-size: 12px; color: var(--kayva-soft-brown, #8A5524); text-decoration: line-through; }
-.kv-pinfo__floatbar-actions { display: flex; gap: 12px; flex-shrink: 0; }
+.kv-pinfo__floatbar-price {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  white-space: nowrap;
+}
+.kv-pinfo__floatbar-compare { font-size: 15px; font-weight: 400; color: var(--kayva-soft-brown, #8A5524); text-decoration: line-through; }
+.kv-pinfo__floatbar-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
 .kv-pinfo__floatbar-btn {
   height: 44px;
   padding: 0 28px;
@@ -342,6 +350,9 @@
 @media (max-width: 640px) {
   .kv-pinfo__floatbar-title { max-width: 140px; }
   .kv-pinfo__floatbar-btn { padding: 0 16px; }
+  .kv-pinfo__floatbar-actions { gap: 10px; }
+  .kv-pinfo__floatbar-price { font-size: 17px; }
+  .kv-pinfo__floatbar-compare { font-size: 12px; }
 }
 
 /* Accordion (description / shipping / etc) */
@@ -644,13 +655,13 @@
           {%- unless product.has_only_default_variant -%}
             <p class="kv-pinfo__floatbar-variant" id="kv-floatbar-variant-{{ section.id }}">{{ current_variant.title }}</p>
           {%- endunless -%}
-          <p class="kv-pinfo__floatbar-price">
-            <span id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</span>
-            <s id="kv-floatbar-compare-{{ section.id }}" class="kv-pinfo__floatbar-compare"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
-          </p>
         </div>
       </div>
       <div class="kv-pinfo__floatbar-actions">
+        <p class="kv-pinfo__floatbar-price">
+          <span id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+          <s id="kv-floatbar-compare-{{ section.id }}" class="kv-pinfo__floatbar-compare"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+        </p>
         <button type="button" class="kv-pinfo__floatbar-btn kv-pinfo__floatbar-btn--ghost" id="kv-floatbar-add-{{ section.id }}">
           {{ section.settings.atc_label | default: 'Add to cart' }}
         </button>
