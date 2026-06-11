@@ -92,6 +92,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
+            "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
             "video_url": "",
             "eyebrow": "DOTLESS DESIGN",
             "title": "No dots. No glare. Just light.",
@@ -102,6 +103,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
+            "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -112,6 +114,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
+            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
             "video_url": "",
             "eyebrow": "BUILT TO LAST",
             "title": "30,000 hours, no flicker, no fade.",
