@@ -91,10 +91,16 @@
           "info": "Text shown in the nav bar, e.g. Description"
         },
         {
-          "type": "text",
+          "type": "select",
           "id": "anchor",
-          "label": "Anchor target",
-          "info": "For Spotlight blocks use: feature · spec_table · gallery. For other sections use the element's HTML id attribute."
+          "label": "Scroll to section",
+          "options": [
+            { "value": "feature",       "label": "Description"    },
+            { "value": "spec_table",    "label": "Specifications" },
+            { "value": "gallery",       "label": "Gallery"        },
+            { "value": "driver-sizing", "label": "Driver Sizing"  }
+          ],
+          "default": "feature"
         }
       ]
     }
@@ -103,9 +109,10 @@
     {
       "name": "KAYVA Product Section Nav",
       "blocks": [
-        { "type": "nav_item", "settings": { "label": "Description",   "anchor": "feature"    } },
-        { "type": "nav_item", "settings": { "label": "Specifications","anchor": "spec_table" } },
-        { "type": "nav_item", "settings": { "label": "Gallery",       "anchor": "gallery"    } }
+        { "type": "nav_item", "settings": { "label": "Description",    "anchor": "feature"       } },
+        { "type": "nav_item", "settings": { "label": "Specifications", "anchor": "spec_table"    } },
+        { "type": "nav_item", "settings": { "label": "Gallery",        "anchor": "gallery"       } },
+        { "type": "nav_item", "settings": { "label": "Driver Sizing",  "anchor": "driver-sizing" } }
       ]
     }
   ]
