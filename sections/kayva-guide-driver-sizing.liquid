@@ -50,20 +50,65 @@
   color: var(--kayva-dark-brown, #3D2A15);
   margin-bottom: 10px;
 }
-.kv-calc__input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1.5px solid var(--kayva-line, #E8E0D2);
-  font-family: var(--kayva-font);
-  font-size: 16px;
-  color: var(--kayva-ink, #1F1B16);
-  background: var(--kayva-white, #FFFFFF);
-  outline: none;
+.kv-calc__slider-wrap {
   margin-bottom: 24px;
-  border-radius: 0;
-  transition: border-color 0.2s;
 }
-.kv-calc__input:focus { border-color: var(--kayva-dark-brown, #3D2A15); }
+.kv-calc__slider-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.kv-calc__slider-num {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1;
+}
+.kv-calc__slider-unit {
+  font-size: 16px;
+  color: var(--kayva-soft-brown, #8A5524);
+  letter-spacing: 0.05em;
+}
+.kv-calc__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--kayva-dark-brown, #3D2A15) var(--kv-pct, 0%), var(--kayva-line, #E8E0D2) var(--kv-pct, 0%));
+  outline: none;
+  border: none;
+  border-radius: 0;
+  cursor: ew-resize;
+}
+.kv-calc__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--kayva-dark-brown, #3D2A15);
+  cursor: ew-resize;
+  border: 3px solid var(--kayva-white, #FFFFFF);
+  box-shadow: 0 0 0 1.5px var(--kayva-dark-brown, #3D2A15);
+}
+.kv-calc__input::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--kayva-dark-brown, #3D2A15);
+  cursor: ew-resize;
+  border: 3px solid var(--kayva-white, #FFFFFF);
+  box-shadow: 0 0 0 1.5px var(--kayva-dark-brown, #3D2A15);
+}
+.kv-calc__slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--kayva-soft-brown, #8A5524);
+  letter-spacing: 0.05em;
+}
 .kv-calc__result {
   background: var(--kayva-white, #FFFFFF);
   border: 1.5px solid var(--kayva-dark-brown, #3D2A15);
@@ -231,13 +276,23 @@
             <label class="kv-calc__label" for="kv-input-{{ block.id }}">
               {{ block.settings.label }}
             </label>
-            <input class="kv-calc__input"
-                   type="number"
-                   id="kv-input-{{ block.id }}"
-                   placeholder="{{ block.settings.placeholder }}"
-                   value="{{ block.settings.default_value }}"
-                   min="0"
-                   step="0.5">
+            <div class="kv-calc__slider-wrap">
+              <div class="kv-calc__slider-value">
+                <span class="kv-calc__slider-num" id="kv-num-{{ block.id }}">{{ block.settings.default_value }}</span>
+                <span class="kv-calc__slider-unit">{{ block.settings.unit }}</span>
+              </div>
+              <input class="kv-calc__input"
+                     type="range"
+                     id="kv-input-{{ block.id }}"
+                     value="{{ block.settings.default_value }}"
+                     min="{{ block.settings.slider_min | default: 1 }}"
+                     max="{{ block.settings.slider_max | default: 30 }}"
+                     step="0.5">
+              <div class="kv-calc__slider-ticks">
+                <span>{{ block.settings.slider_min | default: 1 }}{{ block.settings.unit }}</span>
+                <span>{{ block.settings.slider_max | default: 30 }}{{ block.settings.unit }}</span>
+              </div>
+            </div>
             <div class="kv-calc__result">
               <p class="kv-calc__result-label">{{ block.settings.result_label }}</p>
               <p class="kv-calc__result-value" id="kv-out-{{ block.id }}">—</p>
@@ -247,14 +302,20 @@
           <script>
             (function(){
               var inp = document.getElementById('kv-input-{{ block.id }}');
+              var num = document.getElementById('kv-num-{{ block.id }}');
               var out = document.getElementById('kv-out-{{ block.id }}');
               var sub = document.getElementById('kv-sub-{{ block.id }}');
               var wpm = {{ block.settings.watts_per_unit }};
               var headroom = {{ block.settings.headroom_percent }};
               var unit = '{{ block.settings.unit }}';
               var suffix = '{{ block.settings.result_suffix }}';
+              var min = parseFloat(inp.min);
+              var max = parseFloat(inp.max);
               function run(){
                 var v = parseFloat(inp.value)||0;
+                num.textContent = v % 1 === 0 ? v : v.toFixed(1);
+                var pct = ((v - min) / (max - min) * 100).toFixed(1);
+                inp.style.setProperty('--kv-pct', pct + '%');
                 var draw = v * wpm;
                 var rec = Math.ceil(draw * (1 + headroom/100));
                 out.textContent = rec + suffix;
@@ -467,6 +528,24 @@
           "id": "unit",
           "label": "Input unit label",
           "default": "m"
+        },
+        {
+          "type": "range",
+          "id": "slider_min",
+          "label": "Slider minimum",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "slider_max",
+          "label": "Slider maximum",
+          "min": 10,
+          "max": 100,
+          "step": 5,
+          "default": 30
         }
       ]
     },
