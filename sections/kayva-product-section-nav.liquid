@@ -1,0 +1,113 @@
+<style>
+.kv-snav-{{ section.id }} {
+  background: {{ section.settings.background_color | default: '#FFFFFF' }};
+}
+.kv-snav__inner {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 16px 2px;
+  flex-wrap: wrap;
+}
+.kv-snav__btn {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--kayva-warm-brown, #6B4823);
+  cursor: pointer;
+  transition: color 0.15s;
+  text-decoration: none;
+}
+.kv-snav__btn:hover { color: var(--kayva-dark-brown, #3D2A15); }
+</style>
+
+{%- if section.blocks.size > 0 -%}
+  <div class="kv-snav-{{ section.id }}">
+    <div class="kayva-page-width">
+      <nav class="kv-snav__inner" aria-label="Page sections">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_item' and block.settings.label != blank -%}
+            <button type="button"
+                    class="kv-snav__btn"
+                    data-snav-anchor="{{ block.settings.anchor }}"
+                    {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var nav = document.querySelector('.kv-snav-{{ section.id }}');
+      if (!nav) return;
+      nav.querySelectorAll('[data-snav-anchor]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var anchor = btn.dataset.snavAnchor;
+          /* Try data-spot-block first (spotlight section blocks), then plain id */
+          var target = document.querySelector('[data-spot-block="' + anchor + '"]')
+                    || document.getElementById(anchor);
+          if (target) {
+            var offset = nav.getBoundingClientRect().bottom + window.scrollY;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "KAYVA Product Section Nav",
+  "tag": "section",
+  "class": "kayva-product-section-nav",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Nav item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "Text shown in the nav bar, e.g. Description"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Anchor target",
+          "info": "For Spotlight blocks use: feature · spec_table · gallery. For other sections use the element's HTML id attribute."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Product Section Nav",
+      "blocks": [
+        { "type": "nav_item", "settings": { "label": "Description",   "anchor": "feature"    } },
+        { "type": "nav_item", "settings": { "label": "Specifications","anchor": "spec_table" } },
+        { "type": "nav_item", "settings": { "label": "Gallery",       "anchor": "gallery"    } }
+      ]
+    }
+  ]
+}
+{% endschema %}

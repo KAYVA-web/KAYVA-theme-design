@@ -410,29 +410,6 @@
   cursor: pointer;
 }
 
-/* Section nav (Govee-style sticky tab bar linking to spotlight blocks) */
-.kv-pinfo__section-nav {
-  display: flex;
-  gap: 32px;
-  border-top: 1px solid var(--kayva-line, #E8E0D2);
-  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
-  padding: 16px 2px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-}
-.kv-pinfo__section-nav button {
-  border: none;
-  background: none;
-  padding: 0;
-  font-family: var(--kayva-font);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--kayva-warm-brown, #6B4823);
-  cursor: pointer;
-  transition: color 0.15s;
-}
-.kv-pinfo__section-nav button:hover { color: var(--kayva-dark-brown, #3D2A15); }
 </style>
 
 <div class="kv-pinfo-{{ section.id }}">
@@ -636,12 +613,6 @@
       </div>
     </div>
 
-    <!-- Section nav — smooth-scrolls down to matching blocks in the KAYVA Product Spotlight section -->
-    <nav class="kv-pinfo__section-nav">
-      <button type="button" data-scroll-to="feature">Description</button>
-      <button type="button" data-scroll-to="spec_table">Specifications</button>
-      <button type="button" data-scroll-to="gallery">Gallery</button>
-    </nav>
   </div>
 
   <!-- Floating buy bar — appears once the main buy box scrolls out of view -->
@@ -845,14 +816,6 @@
           : {{ 'Show more' | json }};
       });
     }
-
-    /* ---------- Section nav: smooth-scroll to blocks in the spotlight section ---------- */
-    document.querySelectorAll('.kv-pinfo-' + sectionId + ' [data-scroll-to]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var target = document.querySelector('[data-spot-block="' + btn.dataset.scrollTo + '"]');
-        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
   })();
 </script>
 
