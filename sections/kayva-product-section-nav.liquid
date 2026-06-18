@@ -55,8 +55,7 @@
           var target = document.querySelector('[data-spot-block="' + anchor + '"]')
                     || document.getElementById(anchor);
           if (target) {
-            var offset = nav.getBoundingClientRect().bottom + window.scrollY;
-            var top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+            var top = target.getBoundingClientRect().top + window.scrollY - 24;
             window.scrollTo({ top: top, behavior: 'smooth' });
           }
         });
