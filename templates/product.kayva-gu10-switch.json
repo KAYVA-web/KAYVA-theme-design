@@ -76,7 +76,7 @@
         "acc2"
       ],
       "settings": {
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "eyebrow": "STRIP LIGHTING · RA95+",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
@@ -110,7 +110,9 @@
             "result_suffix": "W",
             "watts_per_unit": 12,
             "headroom_percent": 20,
-            "unit": "m"
+            "unit": "m",
+            "slider_min": 1,
+            "slider_max": 30
           }
         },
         "heading_rDkVgb": {
@@ -387,10 +389,46 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "kayva_product_section_nav_3mLRdp": {
+      "type": "kayva-product-section-nav",
+      "blocks": {
+        "nav_item_dPypRB": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Description",
+            "anchor": "feature"
+          }
+        },
+        "nav_item_6q97qE": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Specifications",
+            "anchor": "spec_table"
+          }
+        },
+        "nav_item_AfLc8d": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Gallery",
+            "anchor": "gallery"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_dPypRB",
+        "nav_item_6q97qE",
+        "nav_item_AfLc8d"
+      ],
+      "name": "KAYVA Product Section Nav",
+      "settings": {
+        "background_color": "#FFFFFF"
+      }
     }
   },
   "order": [
     "main",
+    "kayva_product_section_nav_3mLRdp",
     "kayva_guide_driver_sizing_rF6czm",
     "spotlight",
     "product_recommendations"
