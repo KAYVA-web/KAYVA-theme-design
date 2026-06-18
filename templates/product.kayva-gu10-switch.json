@@ -76,13 +76,99 @@
         "acc2"
       ],
       "settings": {
-        "background_color": "#ffffff",
+        "background_color": "#FFFFFF",
         "eyebrow": "STRIP LIGHTING · RA95+",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
         "description_label": "Description"
+      }
+    },
+    "kayva_guide_driver_sizing_rF6czm": {
+      "type": "kayva-guide-driver-sizing",
+      "blocks": {
+        "heading_kDMFeW": {
+          "type": "heading",
+          "settings": {
+            "text": "Driver Sizing"
+          }
+        },
+        "text_VrjB4T": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Multiply your strip length by 12W per metre, then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early.</p>"
+          }
+        },
+        "calculator_YCLGi6": {
+          "type": "calculator",
+          "settings": {
+            "label": "Your strip length (metres)",
+            "placeholder": "e.g. 10",
+            "default_value": 10,
+            "result_label": "Minimum driver size",
+            "result_suffix": "W",
+            "watts_per_unit": 12,
+            "headroom_percent": 20,
+            "unit": "m"
+          }
+        },
+        "heading_rDkVgb": {
+          "type": "heading",
+          "settings": {
+            "text": "Quick reference"
+          }
+        },
+        "table_rU6neH": {
+          "type": "table",
+          "settings": {
+            "header_row": "Strip length | Power draw | Recommended driver",
+            "rows": "3 m | 36W | 45W (24V)\n5 m | 60W | 75W (24V)\n8 m | 96W | 120W (24V)\n10 m | 120W | 150W (24V)\n15 m | 180W | 220W (24V)\n20 m | 240W | 300W (24V)"
+          }
+        },
+        "callout_xLxmEX": {
+          "type": "callout",
+          "settings": {
+            "label": "For runs 6 m and longer:",
+            "text": "Power the strip from both ends, or split into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start."
+          }
+        },
+        "heading_gM8JLd": {
+          "type": "heading",
+          "settings": {
+            "text": "What driver to buy"
+          }
+        },
+        "text_iQgqAA": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
+          }
+        },
+        "callout_NWXJcQ": {
+          "type": "callout",
+          "settings": {
+            "label": "Always use a licensed electrician",
+            "text": "for connecting the driver to mains power in Singapore. The low-voltage side (driver to strip) is safe to handle when unpowered."
+          }
+        }
+      },
+      "block_order": [
+        "heading_kDMFeW",
+        "text_VrjB4T",
+        "calculator_YCLGi6",
+        "heading_rDkVgb",
+        "table_rU6neH",
+        "callout_xLxmEX",
+        "heading_gM8JLd",
+        "text_iQgqAA",
+        "callout_NWXJcQ"
+      ],
+      "name": "KAYVA Guide Driver Sizing",
+      "settings": {
+        "background_color": "#ffffff",
+        "show_meta": true,
+        "show_article_content": false
       }
     },
     "spotlight": {
@@ -305,6 +391,7 @@
   },
   "order": [
     "main",
+    "kayva_guide_driver_sizing_rF6czm",
     "spotlight",
     "product_recommendations"
   ]
