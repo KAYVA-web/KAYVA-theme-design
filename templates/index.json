@@ -134,6 +134,7 @@
         "p2",
         "p3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Why KAYVA",
         "heading": "Built on three principles.",
