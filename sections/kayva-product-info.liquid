@@ -587,13 +587,14 @@
 
         <!-- Accordion -->
         <div class="kv-pinfo__accordion">
-          {%- if product.description != blank -%}
+          {%- assign desc_content = section.settings.description_content | default: product.description -%}
+          {%- if desc_content != blank -%}
             <details class="kv-pinfo__accordion-item" open>
               <summary>
                 {{ section.settings.description_label | default: 'Description' }}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
               </summary>
-              <div class="kv-pinfo__accordion-body kv-pinfo__desc-body" data-desc-body>{{ product.description }}</div>
+              <div class="kv-pinfo__accordion-body kv-pinfo__desc-body" data-desc-body>{{ desc_content }}</div>
               <button type="button" class="kv-pinfo__desc-toggle" data-desc-toggle>Show more</button>
             </details>
           {%- endif -%}
@@ -872,6 +873,12 @@
       "id": "description_label",
       "label": "Description accordion label",
       "default": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description_content",
+      "label": "Description content",
+      "info": "Overrides the product description. Leave blank to use the default product description."
     }
   ],
   "blocks": [
