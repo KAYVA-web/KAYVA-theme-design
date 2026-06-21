@@ -15,26 +15,27 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+:",
-            "text": "True-to-life colour rendering, indoors and out."
+            "label": "Ra95+  ·",
+            "text": "True colour rendering in both 2700K and 4000K modes."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Dotless COB:",
-            "text": "Even, shadow-free light with no visible diodes."
+            "label": "Switch without rewiring ·",
+            "text": "Change colour temperature from your existing wall switch — no app, no dimmer."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
-            "label": "15,000 hrs:",
-            "text": "Rated lifespan with stable brightness and colour."
+            "label": "Glass body ·",
+            "text": "Frosted lens, no visible chip, premium finish in any downlight fitting."
           }
         },
         "bundle_option_xMe86y": {
           "type": "bundle_option",
+          "disabled": true,
           "settings": {
             "label": "Bundle 1",
             "addon_product": "aerotilt-gu10-holder",
@@ -44,6 +45,7 @@
         },
         "bundle_option_YCXqCr": {
           "type": "bundle_option",
+          "disabled": true,
           "settings": {
             "label": "Bundle 2",
             "addon_product": "auratrim-gypsum-downlight",
