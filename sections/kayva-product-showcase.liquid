@@ -37,6 +37,25 @@
             {%- if block.settings.desc != blank -%}
               <p class="kayva-showcase-card__desc">{{block.settings.desc}}</p>
             {%- endif -%}
+            {%- assign kv_has_features = false -%}
+            {%- for tag in sp.tags -%}
+              {%- if tag contains 'feature:' -%}{%- assign kv_has_features = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- if kv_has_features -%}
+              <ul class="kayva-features">
+                {%- for tag in sp.tags -%}
+                  {%- if tag contains 'feature:' -%}
+                    <li class="kayva-feature">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <circle cx="7" cy="7" r="6.5" stroke="currentColor"/>
+                        <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {{ tag | remove_first: 'feature:' }}
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
             {%- unless sp.has_only_default_variant -%}
               <div class="kayva-showcase-card__variants">
                 {%- for v in sp.variants limit:4 -%}
