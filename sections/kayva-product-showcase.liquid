@@ -1,6 +1,6 @@
 {{ 'kayva.css' | asset_url | stylesheet_tag }}
 <style>
-.kv-showcase-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:auto;gap:{{section.settings.gap}}px;}
+.kv-showcase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:{{section.settings.gap}}px;}
 .kv-showcase-card__image{aspect-ratio:{{section.settings.image_ratio}};}
 @media(max-width:600px){.kv-showcase-grid{grid-template-columns:1fr;}}
 </style>
@@ -32,37 +32,39 @@
               <img src="{{sp.featured_image | image_url: width:800}}" alt="{{sp.featured_image.alt | escape}}" loading="lazy" style="position:relative;z-index:1;width:100%;height:100%;object-fit:contain;">
             {%- endif -%}
           </a>
-          <a href="{{sp.url}}" class="kayva-showcase-card__title">{{sp.title}}</a>
-          <p class="kayva-showcase-card__desc">{{block.settings.desc}}</p>
-          {%- assign kv_has_features = false -%}
-          {%- for tag in sp.tags -%}
-            {%- if tag contains 'feature:' -%}{%- assign kv_has_features = true -%}{%- endif -%}
-          {%- endfor -%}
-          {%- if kv_has_features -%}
-            <ul class="kayva-features">
-              {%- for tag in sp.tags -%}
-                {%- if tag contains 'feature:' -%}
-                  <li class="kayva-feature">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <circle cx="7" cy="7" r="6.5" stroke="currentColor"/>
-                      <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    {{ tag | remove_first: 'feature:' }}
-                  </li>
-                {%- endif -%}
-              {%- endfor -%}
-            </ul>
-          {%- else -%}
-            <div></div>
-          {%- endif -%}
-          <div class="kayva-showcase-card__variants">
+          <div class="kayva-showcase-card__body">
+            <a href="{{sp.url}}" class="kayva-showcase-card__title">{{sp.title}}</a>
+            {%- if block.settings.desc != blank -%}
+              <p class="kayva-showcase-card__desc">{{block.settings.desc}}</p>
+            {%- endif -%}
+            {%- assign kv_has_features = false -%}
+            {%- for tag in sp.tags -%}
+              {%- if tag contains 'feature:' -%}{%- assign kv_has_features = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- if kv_has_features -%}
+              <ul class="kayva-features">
+                {%- for tag in sp.tags -%}
+                  {%- if tag contains 'feature:' -%}
+                    <li class="kayva-feature">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <circle cx="7" cy="7" r="6.5" stroke="currentColor"/>
+                        <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {{ tag | remove_first: 'feature:' }}
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
             {%- unless sp.has_only_default_variant -%}
-              {%- for v in sp.variants limit:4 -%}
-                <a href="{{sp.url}}?variant={{v.id}}" class="kayva-showcase-card__pill">{{v.title}}</a>
-              {%- endfor -%}
-              {%- if sp.variants.size > 4 -%}
-                <span class="kayva-showcase-card__pill" style="border-style:dashed;color:var(--kayva-soft-brown);">+{{sp.variants.size | minus:4}} more</span>
-              {%- endif -%}
+              <div class="kayva-showcase-card__variants">
+                {%- for v in sp.variants limit:4 -%}
+                  <a href="{{sp.url}}?variant={{v.id}}" class="kayva-showcase-card__pill">{{v.title}}</a>
+                {%- endfor -%}
+                {%- if sp.variants.size > 4 -%}
+                  <span class="kayva-showcase-card__pill" style="border-style:dashed;color:var(--kayva-soft-brown);">+{{sp.variants.size | minus:4}} more</span>
+                {%- endif -%}
+              </div>
             {%- endunless -%}
           </div>
           <div class="kayva-showcase-card__footer">
