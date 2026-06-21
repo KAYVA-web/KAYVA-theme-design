@@ -84,7 +84,8 @@
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
-        "description_label": "Description"
+        "description_label": "Description",
+        "description_content": ""
       }
     },
     "kayva_product_section_nav_3mLRdp": {
