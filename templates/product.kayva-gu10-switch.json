@@ -92,6 +92,7 @@
       "blocks": {
         "nav_item_Rrxkr9": {
           "type": "nav_item",
+          "disabled": true,
           "settings": {
             "label": "Driver Sizing",
             "anchor": "driver-sizing"
@@ -211,6 +212,7 @@
         "text_iQgqAA",
         "callout_NWXJcQ"
       ],
+      "disabled": true,
       "name": "KAYVA Guide Driver Sizing",
       "settings": {
         "background_color": "#ffffff",
