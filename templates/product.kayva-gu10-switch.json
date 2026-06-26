@@ -261,7 +261,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "Light source | Dotless COB LED strip\nColour rendering | Ra95+\nVoltage | 24V DC\nPower draw | 12W per metre\nColour temperature | 2700K / 4000K\nLifespan | 30,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
+            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 7W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K + 4000K\nDimmable | No\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
           }
         },
         "gallery": {
