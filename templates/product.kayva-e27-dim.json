@@ -268,10 +268,12 @@
           "type": "gallery",
           "settings": {
             "heading": "In the home",
-            "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
-            "image_2": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_12_05_PM.png",
-            "image_3": "shopify://shop_images/CRI_Comparision_CRI80.png",
-            "image_4": "shopify://shop_images/CRI_Comparision_CRI95.png"
+            "image_1": "shopify://shop_images/HDB_Livingroom_Cove_lighting_CRI95.png",
+            "image_2": "shopify://shop_images/HDB_bedroom_covelighting_highcri95.png",
+            "image_3": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
+            "image_4": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png",
+            "image_5": "shopify://shop_images/HDB_Feature_TV_console_wall_lighting_CRI95.png",
+            "image_6": "shopify://shop_images/HDB_Toilet_Cove_lighting_premium_high_CRI95.png"
           }
         },
         "banner": {
