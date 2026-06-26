@@ -23,14 +23,14 @@
           "type": "highlight",
           "settings": {
             "label": "Dimmable  ·",
-            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz at any dim level."
+            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
-            "label": "Glass body ·",
-            "text": "Frosted lens, no visible chip, premium finish in any downlight fitting."
+            "label": "E27 fitting ·",
+            "text": "Works in pendant lights, floor lamps, and table lamps. One product, any room."
           }
         },
         "bundle_option_xMe86y": {
@@ -230,9 +230,9 @@
             "layout": "default",
             "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
             "video_url": "",
-            "eyebrow": "DIMMING PERFORMANCE",
-            "title": "Dim without losing colour",
-            "text": "<p>Most bulbs shift colour or flicker as they dim. KAYVA maintains Ra95+ accuracy from full brightness to a low ambient glow.</p>"
+            "eyebrow": "COLOUR ACCURACY",
+            "title": "Ra95+, where it matters most.",
+            "text": "<p>Pendant lights and table lamps are the fittings closest to people. That's where colour rendering matters — and where most bulbs fall short.<br/>Image: Lifestyle shot — pendant light over a dining table with people and food, or a table lamp beside a person reading. 2700K warm light. Skin tones should look natural, not orange.</p>"
           }
         },
         "feat_2": {
@@ -241,9 +241,9 @@
             "layout": "reverse",
             "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
             "video_url": "",
-            "eyebrow": "COMPATIBILITY",
-            "title": "Works with your existing dimmer",
-            "text": "<p>Compatible with standard trailing-edge dimmers. No additional hardware, no configuration, no compatibility list to check.<br/>Image: A clean trailing-edge dimmer plate on a white or timber wall. Residential, not technical.</p>"
+            "eyebrow": "VERSATILITY",
+            "title": "One bulb, three fittings.",
+            "text": "<p>E27 fits pendant lights, floor lamps, and table lamps. No adapters, no special sockets.</p>"
           }
         },
         "feat_3": {
@@ -261,7 +261,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 5.5W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
+            "rows": "Fitting | E27\nCRI | Ra95+\nLumens | 1013 lm\nPower | 9W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K\nDimmable | Yes · TRIAC\nBeam angle | 200°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Polycarbonate\nWarranty | 2 years"
           }
         },
         "gallery": {
