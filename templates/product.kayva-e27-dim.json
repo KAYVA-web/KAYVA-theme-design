@@ -16,14 +16,14 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+  ·",
-            "text": "True colour rendering at every brightness level. Most E27 bulbs in this category run Ra80."
+            "text": "1,013 lumens of properly rendered warm light."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Dimmable  ·",
-            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz."
+            "label": "Fully dimmable  ·",
+            "text": "Compatible with standard TRIAC dimmers — pendants, floor lamps, table lamps."
           }
         },
         "h3": {
@@ -230,9 +230,9 @@
             "layout": "default",
             "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
             "video_url": "",
-            "eyebrow": "COLOUR ACCURACY",
-            "title": "Ra95+, where it matters most.",
-            "text": "<p>Pendant lights and table lamps are the fittings closest to people. That's where colour rendering matters — and where most bulbs fall short.<br/>Image: Lifestyle shot — pendant light over a dining table with people and food, or a table lamp beside a person reading. 2700K warm light. Skin tones should look natural, not orange.</p>"
+            "eyebrow": "1,013 LUMENS. RA95+",
+            "title": "Bright and accurate.",
+            "text": "<p>Most Ra95+ E27s sacrifice brightness for colour quality. KAYVA E27 Dim delivers 1,013 lumens at Ra96 — more light, better rendered, without the trade-off.</p>"
           }
         },
         "feat_2": {
@@ -241,9 +241,9 @@
             "layout": "reverse",
             "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
             "video_url": "",
-            "eyebrow": "VERSATILITY",
-            "title": "One bulb, three fittings.",
-            "text": "<p>E27 fits pendant lights, floor lamps, and table lamps. No adapters, no special sockets.</p>"
+            "eyebrow": "COLOUR ACCURACY",
+            "title": "Ra95+ rendering, true to life.",
+            "text": "<p>Most E27 bulbs sit around Ra80. KAYVA runs at Ra95+, which means the warm glow in your pendant or floor lamp renders skin tones, fabrics, and surfaces the way they actually look.</p>"
           }
         },
         "feat_3": {
@@ -252,9 +252,9 @@
             "layout": "default",
             "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
             "video_url": "",
-            "eyebrow": "BUILT TO LAST",
-            "title": "25,000 hours, no flicker, no fade.",
-            "text": "<p>Constant-current driving keeps brightness and colour stable over the strip's lifespan — so it looks the same on day 1,000 as it did on day one.</p>"
+            "eyebrow": "DEEP RED RENDERING",
+            "title": "R9 above 50. The difference you see.",
+            "text": "<p>R9 is the measure generic bulbs hide. It scores how accurately a light renders deep reds — the colour range that includes skin tones, warm timber, and rich textiles. KAYVA E27 Dim scores R9=70. Most Ra80 bulbs score below 20.</p>"
           }
         },
         "specs": {
