@@ -239,7 +239,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "image": "shopify://shop_images/CRI95_Ra95__rendering_high.png",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -250,7 +250,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
+            "image": "shopify://shop_images/high_R9_above_50.png",
             "video_url": "",
             "eyebrow": "DEEP RED RENDERING",
             "title": "R9 above 50. The difference you see.",
