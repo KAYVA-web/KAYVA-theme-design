@@ -1,0 +1,449 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "kayva-product-info",
+      "blocks": {
+        "h1": {
+          "type": "highlight",
+          "settings": {
+            "label": "Ra95+  ·",
+            "text": "Accurate colour rendering at every brightness level, from full output to ambient glow."
+          }
+        },
+        "h2": {
+          "type": "highlight",
+          "settings": {
+            "label": "Dimmable  ·",
+            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz at any dim level."
+          }
+        },
+        "h3": {
+          "type": "highlight",
+          "settings": {
+            "label": "Glass body ·",
+            "text": "Frosted lens, no visible chip, premium finish in any downlight fitting."
+          }
+        },
+        "bundle_option_xMe86y": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "label": "Bundle 1",
+            "addon_product": "aerotilt-gu10-holder",
+            "savings": 10,
+            "add_label": "Add bundle to cart"
+          }
+        },
+        "bundle_option_YCXqCr": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "label": "Bundle 2",
+            "addon_product": "auratrim-gypsum-downlight",
+            "savings": 0,
+            "add_label": "Add bundle to cart"
+          }
+        },
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping & returns",
+            "content": "<p>Delivered within 2–4 working days across Singapore. 30-day returns on unused items in original packaging.</p>"
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Warranty",
+            "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "h2",
+        "h3",
+        "bundle_option_xMe86y",
+        "bundle_option_YCXqCr",
+        "acc1",
+        "acc2"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "GU10 Switch · RA95+",
+        "atc_label": "Add to cart",
+        "sold_out_label": "Sold out",
+        "buy_now_label": "Buy now",
+        "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
+        "description_label": "Description",
+        "description_content": ""
+      }
+    },
+    "kayva_product_section_nav_3mLRdp": {
+      "type": "kayva-product-section-nav",
+      "blocks": {
+        "nav_item_Rrxkr9": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "label": "Driver Sizing",
+            "anchor": "driver-sizing"
+          }
+        },
+        "nav_item_dPypRB": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Description",
+            "anchor": "feature"
+          }
+        },
+        "nav_item_6q97qE": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Specifications",
+            "anchor": "spec_table"
+          }
+        },
+        "nav_item_AfLc8d": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Gallery",
+            "anchor": "gallery"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_Rrxkr9",
+        "nav_item_dPypRB",
+        "nav_item_6q97qE",
+        "nav_item_AfLc8d"
+      ],
+      "name": "KAYVA Product Section Nav",
+      "settings": {
+        "background_color": "#ffffff"
+      }
+    },
+    "kayva_guide_driver_sizing_rF6czm": {
+      "type": "kayva-guide-driver-sizing",
+      "blocks": {
+        "heading_kDMFeW": {
+          "type": "heading",
+          "settings": {
+            "text": "Driver Sizing"
+          }
+        },
+        "text_VrjB4T": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Multiply your strip length by 12W per metre, then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early.</p>"
+          }
+        },
+        "calculator_YCLGi6": {
+          "type": "calculator",
+          "settings": {
+            "label": "Your strip length (metres)",
+            "placeholder": "e.g. 10",
+            "default_value": 10,
+            "result_label": "Minimum driver size",
+            "result_suffix": "W",
+            "watts_per_unit": 12,
+            "headroom_percent": 20,
+            "unit": "m",
+            "slider_min": 1,
+            "slider_max": 30
+          }
+        },
+        "heading_rDkVgb": {
+          "type": "heading",
+          "settings": {
+            "text": "Quick reference"
+          }
+        },
+        "table_rU6neH": {
+          "type": "table",
+          "settings": {
+            "header_row": "Strip length | Power draw | Recommended driver",
+            "rows": "3 m | 36W | 45W (24V)\n5 m | 60W | 75W (24V)\n8 m | 96W | 120W (24V)\n10 m | 120W | 150W (24V)\n15 m | 180W | 220W (24V)\n20 m | 240W | 300W (24V)"
+          }
+        },
+        "callout_xLxmEX": {
+          "type": "callout",
+          "settings": {
+            "label": "For runs 6 m and longer:",
+            "text": "Power the strip from both ends, or split into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start."
+          }
+        },
+        "heading_gM8JLd": {
+          "type": "heading",
+          "settings": {
+            "text": "What driver to buy"
+          }
+        },
+        "text_iQgqAA": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
+          }
+        },
+        "callout_NWXJcQ": {
+          "type": "callout",
+          "settings": {
+            "label": "Always use a licensed electrician",
+            "text": "for connecting the driver to mains power in Singapore. The low-voltage side (driver to strip) is safe to handle when unpowered."
+          }
+        }
+      },
+      "block_order": [
+        "heading_kDMFeW",
+        "text_VrjB4T",
+        "calculator_YCLGi6",
+        "heading_rDkVgb",
+        "table_rU6neH",
+        "callout_xLxmEX",
+        "heading_gM8JLd",
+        "text_iQgqAA",
+        "callout_NWXJcQ"
+      ],
+      "disabled": true,
+      "name": "KAYVA Guide Driver Sizing",
+      "settings": {
+        "background_color": "#ffffff",
+        "show_meta": true,
+        "show_article_content": false
+      }
+    },
+    "spotlight": {
+      "type": "kayva-product-spotlight",
+      "blocks": {
+        "feat_1": {
+          "type": "feature",
+          "settings": {
+            "layout": "default",
+            "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
+            "video_url": "",
+            "eyebrow": "DIMMING PERFORMANCE",
+            "title": "Dim without losing colour",
+            "text": "<p>Most bulbs shift colour or flicker as they dim. KAYVA maintains Ra95+ accuracy from full brightness to a low ambient glow.</p>"
+          }
+        },
+        "feat_2": {
+          "type": "feature",
+          "settings": {
+            "layout": "reverse",
+            "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "video_url": "",
+            "eyebrow": "COMPATIBILITY",
+            "title": "Works with your existing dimmer",
+            "text": "<p>Compatible with standard trailing-edge dimmers. No additional hardware, no configuration, no compatibility list to check.<br/>Image: A clean trailing-edge dimmer plate on a white or timber wall. Residential, not technical.</p>"
+          }
+        },
+        "feat_3": {
+          "type": "feature",
+          "settings": {
+            "layout": "default",
+            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
+            "video_url": "",
+            "eyebrow": "BUILT TO LAST",
+            "title": "25,000 hours, no flicker, no fade.",
+            "text": "<p>Constant-current driving keeps brightness and colour stable over the strip's lifespan — so it looks the same on day 1,000 as it did on day one.</p>"
+          }
+        },
+        "specs": {
+          "type": "spec_table",
+          "settings": {
+            "heading": "Specifications",
+            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 5.5W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
+          }
+        },
+        "gallery": {
+          "type": "gallery",
+          "settings": {
+            "heading": "In the home",
+            "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "image_2": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_12_05_PM.png",
+            "image_3": "shopify://shop_images/CRI_Comparision_CRI80.png",
+            "image_4": "shopify://shop_images/CRI_Comparision_CRI95.png"
+          }
+        },
+        "banner": {
+          "type": "banner",
+          "settings": {
+            "eyebrow": "DESIGNED FOR SINGAPORE HOMES",
+            "heading": "Properly specified. Fairly priced.",
+            "text": "Every KAYVA product is chosen for how it actually performs in the spaces we live in — not just on a spec sheet.",
+            "btn_label": "Shop the range",
+            "btn_url": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "feat_1",
+        "feat_2",
+        "feat_3",
+        "specs",
+        "gallery",
+        "banner"
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
+    },
+    "product_recommendations": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_cbcgyb": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h3>You may also like</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_DNizbJ": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_M7MJkb": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_gLWgA6": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_DNizbJ",
+            "product_title_M7MJkb",
+            "price_gLWgA6"
+          ]
+        }
+      },
+      "block_order": [
+        "text_cbcgyb"
+      ],
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kayva_product_section_nav_3mLRdp",
+    "kayva_guide_driver_sizing_rF6czm",
+    "spotlight",
+    "product_recommendations"
+  ]
+}
