@@ -239,7 +239,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "image": "shopify://shop_images/CRI80_vs_CRI95.png",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -250,18 +250,18 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
+            "image": "shopify://shop_images/GU10_R9_highlight.png",
             "video_url": "",
-            "eyebrow": "BUILT TO LAST",
-            "title": "25,000 hours, no flicker, no fade.",
-            "text": "<p>Constant-current driving keeps brightness and colour stable over the strip's lifespan — so it looks the same on day 1,000 as it did on day one.</p>"
+            "eyebrow": "DEEP RED RENDERING",
+            "title": "R9 above 50. The difference you see.",
+            "text": "<p>R9 measures how accurately a light renders deep reds — skin tones, warm timber, rich textiles. KAYVA GU10 Dim scores R9=68. Most Ra90 bulbs score below 30. The difference is visible.</p>"
           }
         },
         "specs": {
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 5.5W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
+            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 510 lm\nPower | 5.5W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
           }
         },
         "gallery": {
