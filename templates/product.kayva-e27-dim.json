@@ -16,7 +16,7 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+  ·",
-            "text": "Accurate colour rendering at every brightness level, from full output to ambient glow."
+            "text": "True colour rendering at every brightness level. Most E27 bulbs in this category run Ra80."
           }
         },
         "h2": {
@@ -79,7 +79,7 @@
       ],
       "settings": {
         "background_color": "#ffffff",
-        "eyebrow": "GU10 Switch · RA95+",
+        "eyebrow": "E27 Dim · RA95+",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
