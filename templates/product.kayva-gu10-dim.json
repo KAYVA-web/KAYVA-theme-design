@@ -16,14 +16,14 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+  ·",
-            "text": "True colour rendering in both 2700K and 4000K modes."
+            "text": "Accurate colour rendering at every brightness level, from full output to ambient glow."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Switch without rewiring ·",
-            "text": "Change colour temperature from your existing wall switch — no app, no dimmer."
+            "label": "Dimmable  ·",
+            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz at any dim level."
           }
         },
         "h3": {
