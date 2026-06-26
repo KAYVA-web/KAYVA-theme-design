@@ -16,21 +16,21 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+  ·",
-            "text": "Accurate colour rendering at every brightness level, from full output to ambient glow."
+            "text": "True colour rendering at your chosen colour temperature."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Dimmable  ·",
-            "text": "Compatible with standard trailing-edge dimmers. No flicker, no buzz at any dim level."
+            "label": "Fully dimmable ·",
+            "text": "Compatible with standard TRIAC leading-edge dimmers — Legrand, Schneider, MK."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
             "label": "Glass body ·",
-            "text": "Frosted lens, no visible chip, premium finish in any downlight fitting."
+            "text": "Frosted lens, no visible chip, runs cool at 5.5W."
           }
         },
         "bundle_option_xMe86y": {
