@@ -230,9 +230,9 @@
             "layout": "default",
             "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
             "video_url": "",
-            "eyebrow": "Switch, not rewire.",
-            "title": "Switch, not rewire.",
-            "text": "<p>Change colour temperature from your existing wall switch. No dimmer required, no electrician needed.</p>"
+            "eyebrow": "DIMMING PERFORMANCE",
+            "title": "Dim without losing colour",
+            "text": "<p>Most bulbs shift colour or flicker as they dim. KAYVA maintains Ra95+ accuracy from full brightness to a low ambient glow.</p>"
           }
         },
         "feat_2": {
@@ -241,9 +241,9 @@
             "layout": "reverse",
             "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
             "video_url": "",
-            "eyebrow": "COLOUR ACCURACY",
-            "title": "Ra95+ rendering, true to life.",
-            "text": "<p>Most strip lights sit around Ra80. KAYVA runs at Ra95+, which means skin tones, fabrics, and finishes look the way they actually do — not washed out or shifted cool.</p>"
+            "eyebrow": "COMPATIBILITY",
+            "title": "Works with your existing dimmer",
+            "text": "<p>Compatible with standard trailing-edge dimmers. No additional hardware, no configuration, no compatibility list to check.<br/>Image: A clean trailing-edge dimmer plate on a white or timber wall. Residential, not technical.</p>"
           }
         },
         "feat_3": {
@@ -253,8 +253,8 @@
             "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
             "video_url": "",
             "eyebrow": "BUILT TO LAST",
-            "title": "20,000 hours, no flicker, no fade.",
-            "text": "<p>Constant-current driving keeps brightness and colour stable over the strip's lifespan — so it looks the same on day 3,000 as it did on day one.</p>"
+            "title": "25,000 hours, no flicker, no fade.",
+            "text": "<p>Constant-current driving keeps brightness and colour stable over the strip's lifespan — so it looks the same on day 1,000 as it did on day one.</p>"
           }
         },
         "specs": {
