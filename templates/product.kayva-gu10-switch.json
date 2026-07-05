@@ -300,6 +300,34 @@
     "kayva_product_faq": {
       "type": "kayva-product-faq",
       "blocks": {
+        "qa_ADU8wG": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
+        "qa_xN37ci": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
+        "qa_y8wpPK": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
+        "qa_A3NE8B": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
         "qa_1": {
           "type": "qa",
           "settings": {
@@ -315,7 +343,14 @@
           }
         }
       },
-      "block_order": ["qa_1", "qa_2"],
+      "block_order": [
+        "qa_ADU8wG",
+        "qa_xN37ci",
+        "qa_y8wpPK",
+        "qa_A3NE8B",
+        "qa_1",
+        "qa_2"
+      ],
       "settings": {
         "heading": "Frequently asked questions",
         "background_color": "#FFFFFF"
