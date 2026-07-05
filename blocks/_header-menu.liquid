@@ -692,6 +692,16 @@
     position: relative;
   }
 
+  /* Suppress the full-width header underlay when LEARN is open */
+  #header-component:has(.menu-list__list-item[data-handle='learn'] [aria-expanded='true']) .header__underlay-open {
+    --color-submenu: transparent;
+    height: var(--header-height) !important;
+    box-shadow: none;
+  }
+  #header-component:has(.menu-list__list-item[data-handle='learn'] [aria-expanded='true']) .header__underlay-open::after {
+    box-shadow: none;
+  }
+
   .menu-list__list-item[data-handle='learn'] > .menu-list__submenu {
     width: auto;
     min-width: 180px;
@@ -700,12 +710,16 @@
     top: 100%;
     clip-path: none !important;
     padding-inline: 0;
+    /* Remove any gap that causes hover flicker */
+    margin-top: -1px;
   }
 
   .menu-list__list-item[data-handle='learn'] .menu-list__submenu-inner {
     padding: 8px 0;
     transform: none !important;
+    max-height: none;
     flex-direction: column;
+    background: var(--color-background);
     border: 1px solid var(--color-border);
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
