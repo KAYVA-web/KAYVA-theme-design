@@ -14,7 +14,7 @@
       "settings": {
         "image": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_20_40_PM.png",
         "focal_point": "top center",
-        "overlay_color": "#ffffff",
+        "overlay_color": "#000000",
         "overlay_opacity": 0,
         "eyebrow": "Ra95+ Lighting",
         "heading": "Light that renders colour the way your home deserves.",
