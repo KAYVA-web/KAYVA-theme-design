@@ -1,18 +1,16 @@
 {{ 'kayva.css' | asset_url | stylesheet_tag }}
 <style>
-.kv-faq { padding: 64px 0; background: {{ section.settings.background_color }}; }
-.kv-faq__heading {
+.kv-faq-{{ section.id }} { padding: 64px 0; background: {{ section.settings.background_color }}; }
+.kv-faq-{{ section.id }} .kv-faq__heading {
   font-family: var(--kayva-font);
   font-size: 22px;
   font-weight: 600;
-  color: var(--kayva-dark-brown);
+  color: {{ section.settings.heading_color }};
   margin-bottom: 32px;
 }
-.kv-faq__list { border-top: 1px solid var(--kayva-line); }
-.kv-faq__item {
-  border-bottom: 1px solid var(--kayva-line);
-}
-.kv-faq__item summary {
+.kv-faq-{{ section.id }} .kv-faq__list { border-top: 1px solid {{ section.settings.divider_color }}; }
+.kv-faq-{{ section.id }} .kv-faq__item { border-bottom: 1px solid {{ section.settings.divider_color }}; }
+.kv-faq-{{ section.id }} .kv-faq__item summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,29 +19,29 @@
   font-family: var(--kayva-font);
   font-size: 15px;
   font-weight: 500;
-  color: var(--kayva-dark-brown);
+  color: {{ section.settings.question_color }};
   cursor: pointer;
   list-style: none;
   user-select: none;
 }
-.kv-faq__item summary::-webkit-details-marker { display: none; }
-.kv-faq__item summary svg {
+.kv-faq-{{ section.id }} .kv-faq__item summary::-webkit-details-marker { display: none; }
+.kv-faq-{{ section.id }} .kv-faq__item summary svg {
   flex-shrink: 0;
   transition: transform 0.25s;
-  color: var(--kayva-warm-brown);
+  color: {{ section.settings.question_color }};
 }
-.kv-faq__item[open] summary svg { transform: rotate(180deg); }
-.kv-faq__answer {
+.kv-faq-{{ section.id }} .kv-faq__item[open] summary svg { transform: rotate(180deg); }
+.kv-faq-{{ section.id }} .kv-faq__answer {
   font-family: var(--kayva-font);
   font-size: 14px;
-  color: var(--kayva-warm-brown);
+  color: {{ section.settings.answer_color }};
   line-height: 1.7;
   padding-bottom: 18px;
 }
-.kv-faq__answer a { color: var(--kayva-amber); text-decoration: underline; }
+.kv-faq-{{ section.id }} .kv-faq__answer a { color: {{ section.settings.answer_color }}; text-decoration: underline; }
 </style>
 
-<section class="kv-faq" id="kv-faq-{{ section.id }}">
+<section class="kv-faq-{{ section.id }}" id="kv-faq-{{ section.id }}">
   <div class="kayva-page-width">
     {%- if section.settings.heading != blank -%}
       <h2 class="kv-faq__heading">{{ section.settings.heading }}</h2>
@@ -84,6 +82,30 @@
       "id": "background_color",
       "label": "Background colour",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#3D2A15"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question colour",
+      "default": "#3D2A15"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer colour",
+      "default": "#6B4823"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider colour",
+      "default": "#E8E0D2"
     }
   ],
   "blocks": [
