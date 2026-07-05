@@ -299,6 +299,30 @@
         "background_color": "#ffffff"
       }
     },
+    "kayva_product_faq": {
+      "type": "kayva-product-faq",
+      "blocks": {
+        "qa_1": {
+          "type": "qa",
+          "settings": {
+            "question": "What is included in the box?",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
+        "qa_2": {
+          "type": "qa",
+          "settings": {
+            "question": "Is this product dimmable?",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        }
+      },
+      "block_order": ["qa_1", "qa_2"],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "background_color": "#FFFFFF"
+      }
+    },
     "product_recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -446,6 +470,7 @@
     "kayva_product_section_nav_3mLRdp",
     "kayva_guide_driver_sizing_rF6czm",
     "spotlight",
+    "kayva_product_faq",
     "product_recommendations"
   ]
 }
