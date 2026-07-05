@@ -741,6 +741,16 @@
     padding-inline: 0;
     /* Remove any gap that causes hover flicker */
     margin-top: -1px;
+    /* Fallback purely on CSS hover — don't depend on JS-driven aria-expanded timing */
+    transition: opacity 0.1s linear;
+  }
+
+  .menu-list__list-item[data-handle='learn']:hover > .menu-list__submenu,
+  .menu-list__list-item[data-handle='learn']:focus-within > .menu-list__submenu,
+  .menu-list__list-item[data-handle='learn'] > .menu-list__submenu:hover {
+    visibility: visible !important;
+    opacity: 1 !important;
+    --submenu-content-opacity: 1;
   }
 
   .menu-list__list-item[data-handle='learn'] .menu-list__submenu-inner {
