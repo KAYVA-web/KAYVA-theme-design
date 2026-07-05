@@ -109,7 +109,36 @@
           >
             <span class="menu-list__link-title">{{- link.title -}}</span>
           </a>
-          {%- if link.links != blank -%}
+          {%- if link.links != blank and link.handle == 'learn' -%}
+            <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
+              <div
+                id="submenu-{{ forloop.index }}"
+                class="menu-list__submenu-inner"
+              >
+                <ul class="kv-learn-list list-unstyled" role="list">
+                  {%- assign desc_lines = block_settings.learn_descriptions | newline_to_br | split: '<br />' -%}
+                  {%- for child in link.links -%}
+                    {%- assign child_desc = '' -%}
+                    {%- for line in desc_lines -%}
+                      {%- assign parts = line | split: '|' -%}
+                      {%- assign line_title = parts[0] | strip -%}
+                      {%- if line_title == child.title -%}
+                        {%- assign child_desc = parts[1] | strip -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                    <li>
+                      <a href="{{ child.url }}" class="kv-learn-item">
+                        <span class="kv-learn-item__title">{{ child.title }}</span>
+                        {%- if child_desc != blank -%}
+                          <span class="kv-learn-item__desc">{{ child_desc }}</span>
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          {%- elsif link.links != blank -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
               <div
                 id="submenu-{{ forloop.index }}"
@@ -724,33 +753,41 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
-  .menu-list__list-item[data-handle='learn'] .mega-menu,
-  .menu-list__list-item[data-handle='learn'] .section {
-    padding: 0;
-    margin: 0;
-    width: auto;
-  }
-
-  .menu-list__list-item[data-handle='learn'] .mega-menu__grid {
+  .kv-learn-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    width: auto;
+    margin: 0;
+    padding: 0;
   }
 
-  .menu-list__list-item[data-handle='learn'] .mega-menu__column {
-    grid-column: unset;
+  .kv-learn-list li {
+    white-space: normal;
   }
 
-  .menu-list__list-item[data-handle='learn'] .mega-menu__link {
-    padding: 8px 20px;
-    white-space: nowrap;
+  .kv-learn-item {
     display: block;
+    padding: 10px 22px;
+    min-width: 260px;
+    text-decoration: none;
+    transition: background-color 0.15s;
   }
 
-  .menu-list__list-item[data-handle='learn'] .mega-menu__link--parent {
-    padding: 8px 20px;
-    white-space: nowrap;
+  .kv-learn-item:hover {
+    background: #faf6ee;
+  }
+
+  .kv-learn-item__title {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3d2a15;
+  }
+
+  .kv-learn-item__desc {
+    display: block;
+    font-size: 12px;
+    color: #9a8468;
+    margin-top: 2px;
   }
 {% endstylesheet %}
 
@@ -944,6 +981,17 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.menu_style != 'text' }}"
+    },
+    {
+      "type": "header",
+      "content": "Learn dropdown"
+    },
+    {
+      "type": "textarea",
+      "id": "learn_descriptions",
+      "label": "Item descriptions",
+      "info": "One per line, matching the menu item title exactly: Title | Description",
+      "default": "Why CRI Matter | Learn about colour quality and accuracy\nKelvin Guide | Pick the right colour temperature for every room\nKAYVA Lighting Blog | Articles on lighting done properly"
     },
     {
       "type": "header",
