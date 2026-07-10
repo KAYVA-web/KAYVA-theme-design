@@ -15,8 +15,8 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+  ·",
-            "text": "1,013 lumens of properly rendered warm light."
+            "label": "Ra95+ with R9>50  ·",
+            "text": "True colour at 2700K, including saturated reds most bulbs drop."
           }
         },
         "h2": {
@@ -268,12 +268,8 @@
           "type": "gallery",
           "settings": {
             "heading": "In the home",
-            "image_1": "shopify://shop_images/HDB_Livingroom_Cove_lighting_CRI95.png",
-            "image_2": "shopify://shop_images/HDB_bedroom_covelighting_highcri95.png",
             "image_3": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
-            "image_4": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png",
-            "image_5": "shopify://shop_images/HDB_Feature_TV_console_wall_lighting_CRI95.png",
-            "image_6": "shopify://shop_images/HDB_Toilet_Cove_lighting_premium_high_CRI95.png"
+            "image_4": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png"
           }
         },
         "banner": {
@@ -317,10 +313,17 @@
           }
         }
       },
-      "block_order": ["qa_1", "qa_2"],
+      "block_order": [
+        "qa_1",
+        "qa_2"
+      ],
       "settings": {
         "heading": "Frequently asked questions",
-        "background_color": "#FFFFFF"
+        "background_color": "#ffffff",
+        "heading_color": "#3d2a15",
+        "question_color": "#3d2a15",
+        "answer_color": "#6b4823",
+        "divider_color": "#e8e0d2"
       }
     },
     "product_recommendations": {
