@@ -302,6 +302,13 @@
     "kayva_product_faq": {
       "type": "kayva-product-faq",
       "blocks": {
+        "qa_dJyzdc": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I cut the 10m reel into 4 strips?",
+            "answer": "<p>Yes, you can cut the strip into as many as you like with an interval of 50mm. Do note that each 10m comes with both end wire connectors. If you are cutting the reel into more than 2 strips. you will need to solder or get the clip-on wire connectors.</p>"
+          }
+        },
         "qa_1": {
           "type": "qa",
           "settings": {
@@ -318,6 +325,7 @@
         }
       },
       "block_order": [
+        "qa_dJyzdc",
         "qa_1",
         "qa_2"
       ],
