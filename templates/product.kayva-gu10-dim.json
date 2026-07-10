@@ -261,7 +261,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 510 lm\nPower | 5.5W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
+            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 7W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K / 4000K\nDimmable | Yes · TRIAC\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
           }
         },
         "gallery": {
@@ -311,7 +311,7 @@
           "type": "qa",
           "settings": {
             "question": "Is this product dimmable?",
-            "answer": "<p>Enter your answer here.</p>"
+            "answer": "<p>No. </p>"
           }
         }
       },
