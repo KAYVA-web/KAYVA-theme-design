@@ -15,8 +15,8 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+  ·",
-            "text": "True colour rendering at your chosen colour temperature."
+            "label": "Ra95+ rendering ·",
+            "text": "True colour at 2700K warm white. Most GU10s run Ra80."
           }
         },
         "h2": {
@@ -29,8 +29,8 @@
         "h3": {
           "type": "highlight",
           "settings": {
-            "label": "Glass body ·",
-            "text": "Frosted lens, no visible chip, runs cool at 5.5W."
+            "label": "490 lumens, 5.5W ·",
+            "text": "Glass body, 36° beam, 25,000 hours rated at L70."
           }
         },
         "bundle_option_xMe86y": {
