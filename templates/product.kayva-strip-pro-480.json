@@ -228,7 +228,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/CRI_Comparision_CRI80.png",
+            "image": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-7999412.png",
             "video_url": "",
             "eyebrow": "DOTLESS. END TO END.",
             "title": "No dots. No shadows.",
@@ -239,7 +239,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/CRI_Comparision_CRI95.png",
+            "image": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6162606.png",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -250,7 +250,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/LUMIRA_659923c7-01ba-4d30-9875-b3f20aa7af5f.jpg",
+            "image": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
             "video_url": "",
             "eyebrow": "BUILT TO LAST",
             "title": "25,000 hours, no flicker, no fade.",
@@ -261,7 +261,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 490 lm\nPower | 7W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K + 4000K\nDimmable | No\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\n\nWarranty | 2 years"
+            "rows": "CRI | Ra95+\nLumens | 1000 lm per meter\nPower | 12W per meter\nVoltage | 24V \nCCT | 2700K or 4000K\nDimmable | Yes, with dimmer controller\nBeam angle | 180°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
           }
         },
         "gallery": {
@@ -315,10 +315,17 @@
           }
         }
       },
-      "block_order": ["qa_1", "qa_2"],
+      "block_order": [
+        "qa_1",
+        "qa_2"
+      ],
       "settings": {
         "heading": "Frequently asked questions",
-        "background_color": "#FFFFFF"
+        "background_color": "#ffffff",
+        "heading_color": "#3d2a15",
+        "question_color": "#3d2a15",
+        "answer_color": "#6b4823",
+        "divider_color": "#e8e0d2"
       }
     },
     "product_recommendations": {
