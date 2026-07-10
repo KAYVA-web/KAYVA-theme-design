@@ -15,22 +15,22 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+  ·",
-            "text": "True colour rendering in both 2700K and 4000K modes."
+            "label": "Ra95+, R9>50 ·",
+            "text": "Skin tones, timber, and fabrics render accurately. Most strip lights run Ra80."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Dotless COB ·",
-            "text": "480 chips per metre on 8mm PCB — no visible dots, shadow-free from end to end."
+            "label": "24V dotless COB ·",
+            "text": "Runs cooler and more stable over long runs than 12V. 8mm PCB fits standard aluminium channels."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
-            "label": "25,000 hours ·",
-            "text": "Stable brightness and colour across the full run, from day one to year eight."
+            "label": "480 LEDs/m ·",
+            "text": "50% denser than the 320/m strips most of the market sells. No visible dots, no hot spots — even at close range or in shallow coves."
           }
         },
         "bundle_option_xMe86y": {
