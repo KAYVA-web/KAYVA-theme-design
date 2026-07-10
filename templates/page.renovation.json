@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "kayva-landing"
+    }
+  },
+  "order": ["main"]
+}

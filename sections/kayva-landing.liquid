@@ -1,0 +1,322 @@
+{% comment %}
+  KAYVA — Use-case landing section (Online Store 2.0 / Horizon compatible)
+  Reusable for any persona page (renovation, photographers, cafes...).
+  Brand-locked: Inter font + KAYVA colours are hardcoded on purpose — do not expose as settings.
+  All copy, links and images are editable in the Theme Editor.
+
+  PRE-PUBLISH (per KAYVA non-negotiables):
+   - Do not enable Ra95+ claims until the Waltek CNAS report is live; set the "Test report link".
+   - Add the real verified Ra80-vs-Ra95+ photo in "Comparison image" (leave blank to show the illustrative swatch diagram).
+   - Set the WhatsApp / CTA links (placeholders by default).
+{% endcomment %}
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  #kv-{{ section.id }}{
+    --kv-brown:#3D2A15; --kv-brown2:#6B4823; --kv-brown3:#8A5524;
+    --kv-amber:#B8753A; --kv-cream:#F5EFE5; --kv-line:#E8E0D2;
+    --kv-ink:#1F1B16; --kv-white:#FFFFFF;
+  }
+  #kv-{{ section.id }}, #kv-{{ section.id }} *{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    box-sizing:border-box;
+  }
+  #kv-{{ section.id }}{color:var(--kv-ink);background:var(--kv-white);line-height:1.6}
+  #kv-{{ section.id }} .kv-wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  #kv-{{ section.id }} .kv-sec{padding:88px 0}
+  #kv-{{ section.id }} h1,#kv-{{ section.id }} h2,#kv-{{ section.id }} h3{color:var(--kv-brown);font-weight:300;letter-spacing:-0.01em;line-height:1.15;margin:0}
+  #kv-{{ section.id }} h1{font-size:clamp(2.1rem,5vw,3.4rem)}
+  #kv-{{ section.id }} h2{font-size:clamp(1.6rem,3.6vw,2.4rem);margin-bottom:18px}
+  #kv-{{ section.id }} h3{font-size:1.15rem;font-weight:500}
+  #kv-{{ section.id }} p{margin:0 0 16px;max-width:62ch}
+  #kv-{{ section.id }} .kv-lead{font-size:1.15rem;color:var(--kv-brown2)}
+  #kv-{{ section.id }} .kv-eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--kv-amber);margin-bottom:16px}
+  #kv-{{ section.id }} a{color:var(--kv-brown);text-decoration:none}
+  #kv-{{ section.id }} .kv-cta{display:inline-block;background:var(--kv-brown);color:var(--kv-white);padding:13px 26px;border-radius:2px;font-weight:500;font-size:.95rem;letter-spacing:.02em;transition:background .2s;border:1px solid var(--kv-brown)}
+  #kv-{{ section.id }} .kv-cta:hover{background:var(--kv-amber);border-color:var(--kv-amber)}
+  #kv-{{ section.id }} .kv-ghost{background:transparent;color:var(--kv-brown);border:1px solid var(--kv-line)}
+  #kv-{{ section.id }} .kv-ghost:hover{background:var(--kv-cream);color:var(--kv-brown);border-color:var(--kv-line)}
+  #kv-{{ section.id }} .kv-band{background:var(--kv-cream)}
+  #kv-{{ section.id }} .kv-hero{padding:104px 0 84px}
+  #kv-{{ section.id }} .kv-hero h1{max-width:16ch;margin-bottom:22px}
+  #kv-{{ section.id }} .kv-hero .kv-lead{max-width:52ch;margin-bottom:32px}
+  #kv-{{ section.id }} .kv-actions{display:flex;gap:14px;flex-wrap:wrap}
+  #kv-{{ section.id }} .kv-cols{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  #kv-{{ section.id }} .kv-proof{border:1px solid var(--kv-line);border-radius:4px;overflow:hidden;background:var(--kv-white)}
+  #kv-{{ section.id }} .kv-proof img{display:block;width:100%;height:auto}
+  #kv-{{ section.id }} .kv-phead{display:grid;grid-template-columns:1fr 1fr}
+  #kv-{{ section.id }} .kv-phead div{padding:14px 18px;font-weight:500;font-size:.9rem}
+  #kv-{{ section.id }} .kv-phead .l{color:var(--kv-brown3);border-right:1px solid var(--kv-line)}
+  #kv-{{ section.id }} .kv-phead .r{color:var(--kv-brown)}
+  #kv-{{ section.id }} .kv-sw{display:grid;grid-template-columns:1fr 1fr}
+  #kv-{{ section.id }} .kv-col{padding:22px 18px;display:flex;flex-direction:column;gap:14px}
+  #kv-{{ section.id }} .kv-col.l{border-right:1px solid var(--kv-line);background:#faf7f2}
+  #kv-{{ section.id }} .kv-chip{height:46px;border-radius:3px;display:flex;align-items:flex-end;padding:6px 8px;font-size:.68rem;color:rgba(255,255,255,.92);font-weight:500}
+  #kv-{{ section.id }} .l .c1{background:#9a5442}#kv-{{ section.id }} .r .c1{background:#c0392b}
+  #kv-{{ section.id }} .l .c2{background:#9c8752}#kv-{{ section.id }} .r .c2{background:#d4a017}
+  #kv-{{ section.id }} .l .c3{background:#5f6f52}#kv-{{ section.id }} .r .c3{background:#4b8b3b}
+  #kv-{{ section.id }} .l .c4{background:#8a6f63;color:rgba(0,0,0,.5)}#kv-{{ section.id }} .r .c4{background:#c98a6a;color:rgba(0,0,0,.5)}
+  #kv-{{ section.id }} .kv-pnote{padding:12px 18px;font-size:.76rem;color:var(--kv-brown3);border-top:1px solid var(--kv-line);background:#faf7f2}
+  #kv-{{ section.id }} .kv-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+  #kv-{{ section.id }} .kv-card{border:1px solid var(--kv-line);border-radius:4px;padding:28px 24px}
+  #kv-{{ section.id }} .kv-card h3{margin-bottom:10px}
+  #kv-{{ section.id }} .kv-card p{font-size:.95rem;color:var(--kv-brown2);margin-bottom:0}
+  #kv-{{ section.id }} .kv-card .kv-tag{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--kv-amber);margin-bottom:14px}
+  #kv-{{ section.id }} .kv-card.muted{background:var(--kv-cream);border-style:dashed}
+  #kv-{{ section.id }} .kv-card.muted .kv-tag{color:var(--kv-brown3)}
+  #kv-{{ section.id }} table{width:100%;border-collapse:collapse;margin-top:22px;font-size:.95rem}
+  #kv-{{ section.id }} th,#kv-{{ section.id }} td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--kv-line)}
+  #kv-{{ section.id }} th{font-weight:500;color:var(--kv-brown);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+  #kv-{{ section.id }} td{color:var(--kv-brown2)}
+  #kv-{{ section.id }} td:first-child{color:var(--kv-brown);font-weight:500}
+  #kv-{{ section.id }} .kv-verified{font-size:.85rem;color:var(--kv-brown3);margin-top:16px}
+  #kv-{{ section.id }} .kv-verified a{color:var(--kv-amber);text-decoration:underline;text-underline-offset:2px}
+  #kv-{{ section.id }} .kv-steps{counter-reset:kvstep;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+  #kv-{{ section.id }} .kv-step{padding-top:6px}
+  #kv-{{ section.id }} .kv-step::before{counter-increment:kvstep;content:counter(kvstep);display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--kv-amber);color:var(--kv-amber);font-weight:500;margin-bottom:16px}
+  #kv-{{ section.id }} .kv-step h3{margin-bottom:8px}
+  #kv-{{ section.id }} .kv-step p{font-size:.95rem;color:var(--kv-brown2);margin-bottom:0}
+  #kv-{{ section.id }} .kv-final{background:var(--kv-brown);text-align:center}
+  #kv-{{ section.id }} .kv-final h2{color:var(--kv-white)}
+  #kv-{{ section.id }} .kv-final p{color:rgba(245,239,229,.82);margin:0 auto 28px;text-align:center}
+  #kv-{{ section.id }} .kv-final .kv-cta{background:var(--kv-white);color:var(--kv-brown);border-color:var(--kv-white)}
+  #kv-{{ section.id }} .kv-final .kv-cta:hover{background:var(--kv-amber);color:var(--kv-white);border-color:var(--kv-amber)}
+  @media(max-width:820px){
+    #kv-{{ section.id }} .kv-cols{grid-template-columns:1fr;gap:34px}
+    #kv-{{ section.id }} .kv-grid3,#kv-{{ section.id }} .kv-steps{grid-template-columns:1fr}
+    #kv-{{ section.id }} .kv-sec{padding:64px 0}
+  }
+</style>
+
+<div id="kv-{{ section.id }}">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="kv-hero">
+    <div class="kv-wrap">
+      {% if section.settings.hero_eyebrow != blank %}<p class="kv-eyebrow">{{ section.settings.hero_eyebrow }}</p>{% endif %}
+      <h1>{{ section.settings.hero_heading }}</h1>
+      <div class="kv-lead">{{ section.settings.hero_subheading }}</div>
+      <div class="kv-actions">
+        {% if section.settings.cta1_label != blank %}<a href="{{ section.settings.cta1_link | default: '#request' }}" class="kv-cta">{{ section.settings.cta1_label }}</a>{% endif %}
+        {% if section.settings.cta2_label != blank %}<a href="{{ section.settings.cta2_link | default: '#proof' }}" class="kv-cta kv-ghost">{{ section.settings.cta2_label }}</a>{% endif %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} PROOF {%- endcomment -%}
+  <section class="kv-band kv-sec" id="proof">
+    <div class="kv-wrap kv-cols">
+      <div>
+        {% if section.settings.proof_eyebrow != blank %}<p class="kv-eyebrow">{{ section.settings.proof_eyebrow }}</p>{% endif %}
+        <h2>{{ section.settings.proof_heading }}</h2>
+        <div>{{ section.settings.proof_body }}</div>
+      </div>
+      <div>
+        <div class="kv-proof">
+          {% if section.settings.comparison_image != blank %}
+            <img src="{{ section.settings.comparison_image | image_url: width: 1200 }}" alt="Ra80 versus KAYVA Ra95+ colour rendering comparison" loading="lazy">
+          {% else %}
+            <div class="kv-phead">
+              <div class="l">{{ section.settings.label_left }}</div>
+              <div class="r">{{ section.settings.label_right }}</div>
+            </div>
+            <div class="kv-sw">
+              <div class="kv-col l">
+                <div class="kv-chip c1">Red / R9</div>
+                <div class="kv-chip c2">Timber</div>
+                <div class="kv-chip c3">Foliage</div>
+                <div class="kv-chip c4">Skin tone</div>
+              </div>
+              <div class="kv-col r">
+                <div class="kv-chip c1">Red / R9</div>
+                <div class="kv-chip c2">Timber</div>
+                <div class="kv-chip c3">Foliage</div>
+                <div class="kv-chip c4">Skin tone</div>
+              </div>
+            </div>
+            <div class="kv-pnote">{{ section.settings.proof_note }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} COVERAGE (blocks: coverage_card) {%- endcomment -%}
+  <section class="kv-sec">
+    <div class="kv-wrap">
+      {% if section.settings.coverage_eyebrow != blank %}<p class="kv-eyebrow">{{ section.settings.coverage_eyebrow }}</p>{% endif %}
+      <h2>{{ section.settings.coverage_heading }}</h2>
+      <div>{{ section.settings.coverage_intro }}</div>
+      <div class="kv-grid3">
+        {% for block in section.blocks %}
+          {% if block.type == 'coverage_card' %}
+            <div class="kv-card{% if block.settings.muted %} muted{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.tag != blank %}<span class="kv-tag">{{ block.settings.tag }}</span>{% endif %}
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.body }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} SPECS (blocks: spec_row) {%- endcomment -%}
+  <section class="kv-band kv-sec">
+    <div class="kv-wrap">
+      {% if section.settings.specs_eyebrow != blank %}<p class="kv-eyebrow">{{ section.settings.specs_eyebrow }}</p>{% endif %}
+      <h2>{{ section.settings.specs_heading }}</h2>
+      <div>{{ section.settings.specs_intro }}</div>
+      <table>
+        <thead><tr><th>{{ section.settings.specs_col1 }}</th><th>{{ section.settings.specs_col2 }}</th><th>{{ section.settings.specs_col3 }}</th></tr></thead>
+        <tbody>
+          {% for block in section.blocks %}
+            {% if block.type == 'spec_row' %}
+              <tr {{ block.shopify_attributes }}>
+                <td>{{ block.settings.metric }}</td>
+                <td>{{ block.settings.standard }}</td>
+                <td>{{ block.settings.why }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if section.settings.report_link != blank %}
+        <p class="kv-verified">{{ section.settings.report_note }} <a href="{{ section.settings.report_link }}">{{ section.settings.report_label }} &rarr;</a></p>
+      {% else %}
+        <p class="kv-verified">{{ section.settings.report_note }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  {%- comment -%} STEPS (blocks: step) {%- endcomment -%}
+  <section class="kv-sec" id="request">
+    <div class="kv-wrap">
+      {% if section.settings.steps_eyebrow != blank %}<p class="kv-eyebrow">{{ section.settings.steps_eyebrow }}</p>{% endif %}
+      <h2>{{ section.settings.steps_heading }}</h2>
+      <div>{{ section.settings.steps_intro }}</div>
+      <div class="kv-steps">
+        {% for block in section.blocks %}
+          {% if block.type == 'step' %}
+            <div class="kv-step" {{ block.shopify_attributes }}>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.body }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} FINAL CTA {%- endcomment -%}
+  <section class="kv-final kv-sec">
+    <div class="kv-wrap">
+      <h2>{{ section.settings.final_heading }}</h2>
+      <p>{{ section.settings.final_body }}</p>
+      {% if section.settings.final_cta_label != blank %}<a href="{{ section.settings.final_cta_link | default: '#' }}" class="kv-cta">{{ section.settings.final_cta_label }}</a>{% endif %}
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "KAYVA Landing",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Hero eyebrow", "default": "Renovating your home" },
+    { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "The light that matters, at Ra95+." },
+    { "type": "richtext", "id": "hero_subheading", "label": "Hero subheading", "default": "<p>Most downlights render colour at around Ra80. Your walls, wood, skin and food all shift under them — quietly, but you feel it. KAYVA lights your ceilings and coves at Ra95+ with R9&gt;50, the standard galleries and studios use, so your finished home looks the way you chose it to.</p>" },
+    { "type": "text", "id": "cta1_label", "label": "Primary button label", "default": "Request a specification" },
+    { "type": "url", "id": "cta1_link", "label": "Primary button link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "See the difference" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary button link" },
+
+    { "type": "header", "content": "Proof" },
+    { "type": "text", "id": "proof_eyebrow", "label": "Eyebrow", "default": "Why your renovation photos look flat" },
+    { "type": "text", "id": "proof_heading", "label": "Heading", "default": "Ra80 is the industry default. It is not the standard your finishes deserve." },
+    { "type": "richtext", "id": "proof_body", "label": "Body", "default": "<p>Colour Rendering Index (Ra) measures how faithfully a light shows colour against daylight. Most residential downlights sit at Ra80 — and the one number that suffers most is R9, deep red. That is the tone of skin, timber, wine and food.</p><p>At Ra95+ with R9&gt;50, the same materials read true. It is the difference designers notice the moment the lights go on.</p>" },
+    { "type": "image_picker", "id": "comparison_image", "label": "Comparison image (real verified photo — leave blank to show illustrative diagram)" },
+    { "type": "text", "id": "label_left", "label": "Diagram left label", "default": "Typical Ra80 downlight" },
+    { "type": "text", "id": "label_right", "label": "Diagram right label", "default": "KAYVA Ra95+ · R9>50" },
+    { "type": "text", "id": "proof_note", "label": "Diagram caption", "default": "Illustrative comparison of colour rendering. Verified side-by-side photograph and measured spectrum to be added on publication." },
+
+    { "type": "header", "content": "Coverage intro" },
+    { "type": "text", "id": "coverage_eyebrow", "label": "Eyebrow", "default": "What KAYVA covers" },
+    { "type": "text", "id": "coverage_heading", "label": "Heading", "default": "We do the light that shapes a room — honestly, not everything." },
+    { "type": "richtext", "id": "coverage_intro", "label": "Intro", "default": "<p>Downlights and cove lighting are roughly the functional light in a modern Singapore home. That is where colour accuracy is felt every day, and that is what we make to a verified standard. For decorative pendants and feature fittings, keep your designer's choices — we are not trying to be your whole ceiling.</p>" },
+
+    { "type": "header", "content": "Specs intro" },
+    { "type": "text", "id": "specs_eyebrow", "label": "Eyebrow", "default": "The numbers, verified" },
+    { "type": "text", "id": "specs_heading", "label": "Heading", "default": "Every claim on this page is backed by an independent test report." },
+    { "type": "richtext", "id": "specs_intro", "label": "Intro", "default": "<p>We publish specifications rather than adjectives. If we cannot verify a number, we do not print it.</p>" },
+    { "type": "text", "id": "specs_col1", "label": "Column 1 header", "default": "Metric" },
+    { "type": "text", "id": "specs_col2", "label": "Column 2 header", "default": "KAYVA standard" },
+    { "type": "text", "id": "specs_col3", "label": "Column 3 header", "default": "Why it matters" },
+    { "type": "text", "id": "report_note", "label": "Report note", "default": "Independent laboratory test report available on request." },
+    { "type": "text", "id": "report_label", "label": "Report link label", "default": "View the report" },
+    { "type": "url", "id": "report_link", "label": "Report link (leave blank until report is issued)" },
+
+    { "type": "header", "content": "Steps intro" },
+    { "type": "text", "id": "steps_eyebrow", "label": "Eyebrow", "default": "Working with your designer" },
+    { "type": "text", "id": "steps_heading", "label": "Heading", "default": "Bring KAYVA into your renovation in three steps." },
+    { "type": "richtext", "id": "steps_intro", "label": "Intro", "default": "<p>You do not have to manage lighting yourself. Request a specification, hand it to your interior designer, and they install it like any other fitting — with a 30% trade margin built in for them, at no extra cost to you.</p>" },
+
+    { "type": "header", "content": "Final call to action" },
+    { "type": "text", "id": "final_heading", "label": "Heading", "default": "Get a specification for your home." },
+    { "type": "textarea", "id": "final_body", "label": "Body", "default": "Send us your floor plan or room list and your dimmer brand. We will come back with a KAYVA specification sheet and the verified test report — ready to hand to your designer." },
+    { "type": "text", "id": "final_cta_label", "label": "Button label", "default": "Request a specification on WhatsApp" },
+    { "type": "url", "id": "final_cta_link", "label": "Button link (WhatsApp / form)" }
+  ],
+  "blocks": [
+    {
+      "type": "coverage_card",
+      "name": "Coverage card",
+      "settings": [
+        { "type": "text", "id": "tag", "label": "Tag", "default": "Downlights" },
+        { "type": "text", "id": "title", "label": "Title", "default": "KAYVA GU10" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Ra95+ GU10 lamps for recessed downlights — including a 52mm deep-recess option for slim ceilings. Dimmable on standard TRIAC leading-edge dimmers." },
+        { "type": "checkbox", "id": "muted", "label": "Muted 'not our lane' style", "default": false }
+      ]
+    },
+    {
+      "type": "spec_row",
+      "name": "Spec row",
+      "settings": [
+        { "type": "text", "id": "metric", "label": "Metric", "default": "Colour rendering" },
+        { "type": "text", "id": "standard", "label": "KAYVA standard", "default": "Ra95+ with R9>50" },
+        { "type": "text", "id": "why", "label": "Why it matters", "default": "True skin, timber and food tones — the gallery/studio standard" }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Request a specification" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Tell us your rooms and dimmer type. We send a KAYVA specification sheet with the exact SKUs, quantities and verified test report." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Landing",
+      "blocks": [
+        { "type": "coverage_card", "settings": { "tag": "Downlights", "title": "KAYVA GU10", "body": "Ra95+ GU10 lamps for recessed downlights — including a 52mm deep-recess option for slim ceilings. Dimmable on standard TRIAC leading-edge dimmers.", "muted": false } },
+        { "type": "coverage_card", "settings": { "tag": "Cove & linear", "title": "KAYVA 480 Pro Strip", "body": "480 LED/m COB strip for cove and indirect lighting — a continuous, dot-free line of Ra95+ light, in 2700K or 4000K.", "muted": false } },
+        { "type": "coverage_card", "settings": { "tag": "Not our lane", "title": "Pendants & feature", "body": "Decorative and statement fittings stay with your designer. We would rather do two things to a verified standard than everything to none.", "muted": true } },
+        { "type": "spec_row", "settings": { "metric": "Colour rendering", "standard": "Ra95+ with R9>50", "why": "True skin, timber and food tones — the gallery/studio standard" } },
+        { "type": "spec_row", "settings": { "metric": "Colour temperature", "standard": "2700K ±100K · 4000K ±150K", "why": "Consistent warmth from fitting to fitting, no visible mismatch" } },
+        { "type": "spec_row", "settings": { "metric": "Colour consistency", "standard": "SDCM ≤5", "why": "Adjacent downlights render as one colour, not a patchy line" } },
+        { "type": "spec_row", "settings": { "metric": "Thermal (GU10)", "standard": "Surface ≤65°C after 2 hours", "why": "Runs cooler and holds colour and lifespan over years" } },
+        { "type": "spec_row", "settings": { "metric": "Dimming", "standard": "TRIAC leading-edge — Legrand, Schneider, MK", "why": "Works with the dimmers your electrician already fits" } },
+        { "type": "spec_row", "settings": { "metric": "Rated life", "standard": "25,000 hours at L70", "why": "At 8 hours a day, over 8 years before noticeable dimming" } },
+        { "type": "step", "settings": { "title": "Request a specification", "body": "Tell us your rooms and dimmer type. We send a KAYVA specification sheet with the exact SKUs, quantities and verified test report." } },
+        { "type": "step", "settings": { "title": "Give it to your ID", "body": "Your designer specifies KAYVA for your downlights and coves. Trade terms and a 30% margin are already included — nothing changes in how they work." } },
+        { "type": "step", "settings": { "title": "We supply, they install", "body": "We deliver to site to your renovation timeline. Your ceilings and coves render at a verified Ra95+ from day one." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
