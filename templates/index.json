@@ -24,7 +24,7 @@
         "btn1_label": "Shop Now",
         "btn1_url": "/collections/all",
         "btn2_label": "Learn About CRI",
-        "btn2_url": "",
+        "btn2_url": "shopify://pages/why-cri-matters",
         "min_height": 900
       }
     },
