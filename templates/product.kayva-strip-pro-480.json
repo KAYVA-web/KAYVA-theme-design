@@ -268,10 +268,12 @@
           "type": "gallery",
           "settings": {
             "heading": "In the home",
-            "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
-            "image_2": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_12_05_PM.png",
-            "image_3": "shopify://shop_images/CRI_Comparision_CRI80.png",
-            "image_4": "shopify://shop_images/CRI_Comparision_CRI95.png"
+            "image_1": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png",
+            "image_2": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
+            "image_3": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6295365.png",
+            "image_4": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6162606.png",
+            "image_5": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-7999412.png",
+            "image_6": "shopify://shop_images/ChatGPT_Image_Jun_27_2026_12_18_53_AM.png"
           }
         },
         "banner": {
@@ -304,14 +306,14 @@
           "type": "qa",
           "settings": {
             "question": "What is included in the box?",
-            "answer": "<p>Enter your answer here.</p>"
+            "answer": "<p>A 10m reel with both end wire connectors</p>"
           }
         },
         "qa_2": {
           "type": "qa",
           "settings": {
-            "question": "Is this product dimmable?",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Is KAYVA Strip Pro 480 dimmable?",
+            "answer": "<p>Yes, with a dimmer control. </p>"
           }
         }
       },
