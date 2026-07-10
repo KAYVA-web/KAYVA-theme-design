@@ -243,7 +243,7 @@
             "video_url": "",
             "eyebrow": "DIMMING",
             "title": "Dims without a separate driver.",
-            "text": "<p>Works on the standard TRIAC leading-edge wall dimmers already fitted in most homes. Smooth dimming with no visible flicker and no extra hardware to install.<br/>Image: A hand on a standard rotary or slide wall dimmer, a pendant lamp shown at full and low brightness in two side-by-side frames.</p>"
+            "text": "<p>Works on the standard TRIAC leading-edge wall dimmers already fitted in most homes. Smooth dimming with no visible flicker and no extra hardware to install.</p>"
           }
         },
         "feat_3": {
@@ -253,8 +253,8 @@
             "image": "shopify://shop_images/high_R9_above_50.png",
             "video_url": "",
             "eyebrow": "Fit",
-            "title": "Wide spread for open fittings.",
-            "text": "<p>A 160° beam and 1013 lumens make it suited to pendants, table lamps, and exposed fittings where light needs to spread rather than aim. Standard E27 screw base — a direct replacement.<br/>Image: A bare E27 pendant or table lamp lit warm at 2700K, showing the even, wide spread across the room. White balance fixed manual.</p>"
+            "title": "R9 above 50. The difference you see.",
+            "text": "<p>Ra95+ alone doesn't tell the full story. R9 measures deep red accuracy — skin tones, warm wood, rich fabric. KAYVA GU10 Switch scores R9=86. Most Ra90 bulbs score below 30.</p>"
           }
         },
         "specs": {
