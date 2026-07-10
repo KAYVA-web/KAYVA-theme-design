@@ -261,7 +261,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "CRI | Ra95+\nLumens | 1000 lm per meter\nPower | 12W per meter\nVoltage | 24V \nCCT | 2700K or 4000K\nDimmable | Yes, with dimmer controller\nBeam angle | 180°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
+            "rows": "LED density | 480 per meter\nLength | 10m\nCRI | Ra95+\nLumens | 1000 lm per meter\nPower | 12W per meter\nVoltage | 24V DC\nCuttable | Every 50mm\nColor temperature | 2700K or 4000K\nDimmable | Yes, with dimmer controller\nBeam angle | 180°\nLifespan | 20,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
           }
         },
         "gallery": {
