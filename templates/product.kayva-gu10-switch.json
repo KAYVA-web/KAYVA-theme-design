@@ -16,21 +16,21 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+  ·",
-            "text": "True colour rendering in both 2700K and 4000K modes."
+            "text": "True colour rendering at both warm and cool white. Most GU10s run Ra80."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
             "label": "Switch without rewiring ·",
-            "text": "Change colour temperature from your existing wall switch — no app, no dimmer."
+            "text": "Toggle between 2700K and 4000K from your existing wall switch. no app, no electrician."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
             "label": "Glass body ·",
-            "text": "Frosted lens, no visible chip, premium finish in any downlight fitting."
+            "text": "Frosted lens, no visible chip. 490 lumens from a 7W draw, 52mm deep"
           }
         },
         "bundle_option_xMe86y": {
@@ -351,7 +351,11 @@
       ],
       "settings": {
         "heading": "Frequently asked questions",
-        "background_color": "#FFFFFF"
+        "background_color": "#ffffff",
+        "heading_color": "#3d2a15",
+        "question_color": "#3d2a15",
+        "answer_color": "#6b4823",
+        "divider_color": "#e8e0d2"
       }
     },
     "product_recommendations": {
