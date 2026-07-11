@@ -149,7 +149,7 @@
           "type": "card",
           "settings": {
             "product": "aerotilt-gu10-holder",
-            "badge": "STRIP",
+            "badge": "GU10 Switch",
             "image": "shopify://shop_images/1_6509e96c-a4eb-4184-bb7f-c42f20e5df1b.jpg",
             "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves.",
             "view_label": "View"
@@ -158,8 +158,8 @@
         "c2": {
           "type": "card",
           "settings": {
-            "product": "controller-tri-tone",
-            "badge": "GU10",
+            "product": "kayva-cob-led-strip-480-cri95",
+            "badge": "Strip Light",
             "image": "shopify://shop_images/KAYVA_Pro_480.jpg",
             "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
             "view_label": "View"
@@ -168,8 +168,8 @@
         "c3": {
           "type": "card",
           "settings": {
-            "product": "gu10-bulbs",
-            "badge": "GU10",
+            "product": "gu10-dim",
+            "badge": "GU10 Dim",
             "image": "shopify://shop_images/2_f52320c2-569c-4dc2-a874-ace60a013c6c.jpg",
             "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth.",
             "view_label": "View"
@@ -178,8 +178,8 @@
         "c4": {
           "type": "card",
           "settings": {
-            "product": "24-led-driver",
-            "badge": "E27",
+            "product": "e27-dim",
+            "badge": "E27 Dim",
             "image": "shopify://shop_images/GU10_Dim_9be48fbf-631d-46ea-bad2-65225992dbb3.jpg",
             "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
             "view_label": "View"
