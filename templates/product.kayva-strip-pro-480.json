@@ -226,7 +226,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-7999412.png",
+            "image": "shopify://shop_images/HDB_bedroom_covelighting_highcri95_1.jpg",
             "video_url": "",
             "eyebrow": "DOTLESS. END TO END.",
             "title": "No dots. No shadows.",
@@ -237,7 +237,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6162606.png",
+            "image": "shopify://shop_images/HDB_Feature_TV_console_wall_lighting_CRI95_1.jpg",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -248,7 +248,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
+            "image": "shopify://shop_images/HDB_Livingroom_Cove_lighting_CRI95_1.jpg",
             "video_url": "",
             "eyebrow": "BUILT TO LAST",
             "title": "20,000 hours, no flicker, no fade.",
@@ -265,13 +265,7 @@
         "gallery": {
           "type": "gallery",
           "settings": {
-            "heading": "In the home",
-            "image_1": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png",
-            "image_2": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
-            "image_3": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6295365.png",
-            "image_4": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-6162606.png",
-            "image_5": "shopify://shop_images/kayva-24v-cob-led-strip-cri95-7999412.png",
-            "image_6": "shopify://shop_images/ChatGPT_Image_Jun_27_2026_12_18_53_AM.png"
+            "heading": "In the home"
           }
         },
         "banner": {
