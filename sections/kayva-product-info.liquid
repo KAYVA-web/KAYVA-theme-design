@@ -658,9 +658,8 @@
     window['kvPinfoSelectOption' + sectionId] = function(position, value){
       selected[position] = value;
       var match = product.variants.find(function(v){
-        return product.options_with_values.every(function(opt, i){
-          var key = 'option' + (i + 1);
-          return v[key] === selected[opt.position];
+        return Object.keys(selected).every(function(pos){
+          return v['option' + pos] === selected[pos];
         });
       });
       var input = document.getElementById('kv-pinfo-variant-id-' + sectionId);
