@@ -228,7 +228,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/E27_lumen_highlight.png",
+            "image": "shopify://shop_images/CRI95_Ra95__rendering_high_1.jpg",
             "video_url": "",
             "eyebrow": "1,013 LUMENS. RA95+",
             "title": "Bright and accurate.",
@@ -239,7 +239,6 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/CRI95_Ra95__rendering_high.png",
             "video_url": "",
             "eyebrow": "DIMMING",
             "title": "Dims without a separate driver.",
@@ -250,7 +249,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/high_R9_above_50.png",
+            "image": "shopify://shop_images/high_R9_above_50_1.jpg",
             "video_url": "",
             "eyebrow": "DEEP RED RENDERING",
             "title": "R9 above 50. The difference you see.",
@@ -268,9 +267,7 @@
           "type": "gallery",
           "disabled": true,
           "settings": {
-            "heading": "In the home",
-            "image_3": "shopify://shop_images/Singapore_HDB_open_kitchen_cove_lighting_CRI95.png",
-            "image_4": "shopify://shop_images/HDB_Student_room_cove_lighting_CRI95.png"
+            "heading": "In the home"
           }
         },
         "banner": {
