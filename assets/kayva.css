@@ -240,8 +240,9 @@
 .kayva-showcase-card {
   background: var(--kayva-white);
   border: 1px solid var(--kayva-line);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
   overflow: hidden;
   position: relative;
   transition: box-shadow 0.3s;
@@ -265,6 +266,7 @@
   background: var(--kayva-white);
 }
 .kayva-showcase-card__image {
+  grid-row: 1;
   position: relative;
   overflow: hidden;
   background: var(--kayva-cream);
@@ -287,14 +289,8 @@
 .kayva-showcase-card:hover .kayva-showcase-card__image img {
   transform: scale(1.06);
 }
-.kayva-showcase-card__body {
-  padding: 18px 18px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
 .kayva-showcase-card__title {
+  grid-row: 2;
   font-family: var(--kayva-font);
   font-weight: 600;
   font-size: 16px;
@@ -302,17 +298,32 @@
   line-height: 1.25;
   text-decoration: none;
   display: block;
+  padding: 18px 18px 0;
 }
 .kayva-showcase-card__desc {
+  grid-row: 3;
   font-family: var(--kayva-font);
   font-size: 13px;
   color: var(--kayva-warm-brown);
   line-height: 1.6;
+  padding: 8px 18px 0;
+  margin: 0;
+}
+.kayva-showcase-card__desc:empty {
+  padding: 0 18px;
+}
+.kayva-showcase-card__features {
+  grid-row: 4;
+  margin: 0;
+  padding: 8px 18px 0;
 }
 .kayva-showcase-card__variants {
+  grid-row: 5;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  padding: 8px 18px 12px;
+  align-content: flex-start;
 }
 .kayva-showcase-card__pill {
   font-family: var(--kayva-font);
@@ -327,6 +338,7 @@
 }
 .kayva-showcase-card__pill:hover { border-color: var(--kayva-warm-brown); }
 .kayva-showcase-card__footer {
+  grid-row: 6;
   display: flex;
   align-items: center;
   justify-content: space-between;
