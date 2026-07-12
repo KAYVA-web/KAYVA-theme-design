@@ -793,7 +793,12 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: [{ id: parseInt(mainVariantInput.value, 10), quantity: qty }] })
-      }).then(function(r){ return r.json(); }).then(function(){
+      }).then(function(r){
+        if (!r.ok) {
+          return r.json().then(function(err){
+            alert(err.description || err.message || 'Could not add to cart.');
+          });
+        }
         window.location.href = buyNow ? '/checkout' : '/cart';
       });
     }
