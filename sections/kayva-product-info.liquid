@@ -666,9 +666,12 @@
       var input = document.getElementById('kv-pinfo-variant-id-' + sectionId);
       if (match) {
         input.value = match.id;
-        if (match.featured_media) {
+        if (match.featured_image) {
           var img = document.getElementById('kv-pinfo-main-img-' + sectionId);
-          if (img) { img.src = match.featured_media.preview_image.src + '&width=1200'; }
+          if (img) {
+            var src = match.featured_image.src;
+            img.src = src + (src.indexOf('?') === -1 ? '?' : '&') + 'width=1200';
+          }
         }
       }
       syncFloatbar();
