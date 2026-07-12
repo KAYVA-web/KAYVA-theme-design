@@ -138,7 +138,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/KAYVA_GU10_Switch.png",
+            "image": "shopify://shop_images/KAYVA_GU10_Switch_1.jpg",
             "video_url": "",
             "eyebrow": "Switch, not rewire.",
             "title": "Switch, not rewire.",
@@ -149,7 +149,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/CRI80_vs_CRI95.png",
+            "image": "shopify://shop_images/GU10_CRI80_vs_CRI95_1.jpg",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
@@ -160,7 +160,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/GU10_R9_highlight.png",
+            "image": "shopify://shop_images/GU10_R9_highlight_1.jpg",
             "video_url": "",
             "eyebrow": "DEEP RED RENDERING",
             "title": "R9 above 50. The difference you see.",
@@ -176,6 +176,7 @@
         },
         "gallery": {
           "type": "gallery",
+          "disabled": true,
           "settings": {
             "heading": "In the home",
             "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
