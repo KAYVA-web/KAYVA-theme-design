@@ -310,9 +310,10 @@
         },
         "qa_2": {
           "type": "qa",
+          "disabled": true,
           "settings": {
-            "question": "Is KAYVA Strip Pro 480 dimmable?",
-            "answer": "<p>Yes, with a dimmer control. </p>"
+            "question": "",
+            "answer": ""
           }
         }
       },
