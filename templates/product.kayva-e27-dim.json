@@ -267,6 +267,7 @@
         },
         "specs": {
           "type": "spec_table",
+          "disabled": true,
           "settings": {
             "heading": "Specifications",
             "rows": "Fitting | E27\nCRI | Ra95+\nLumens | 1013 lm\nPower | 9W\nVoltage | 220–240V AC · 50Hz \nCCT | 2700K\nDimmable | Yes · TRIAC\nBeam angle | 160°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Polycarbonate\nWarranty | 2 years"
