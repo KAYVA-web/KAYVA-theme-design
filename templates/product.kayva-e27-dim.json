@@ -239,6 +239,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
+            "image": "shopify://shop_images/E27_lumen_highlight_1_6125f815-fda2-4fcd-a09c-ca9e06386f92.jpg",
             "video_url": "",
             "eyebrow": "DIMMING",
             "title": "Dims without a separate driver.",
@@ -307,7 +308,7 @@
           "type": "qa",
           "settings": {
             "question": "Is this product dimmable?",
-            "answer": "<p>Enter your answer here.</p>"
+            "answer": "<p>Yes</p>"
           }
         }
       },
