@@ -53,16 +53,6 @@
               {%- endfor -%}
             {%- endif -%}
           </ul>
-          <div class="kayva-showcase-card__variants">
-            {%- unless sp.has_only_default_variant -%}
-              {%- for v in sp.variants limit:4 -%}
-                <a href="{{sp.url}}?variant={{v.id}}" class="kayva-showcase-card__pill">{{v.title}}</a>
-              {%- endfor -%}
-              {%- if sp.variants.size > 4 -%}
-                <span class="kayva-showcase-card__pill" style="border-style:dashed;color:var(--kayva-soft-brown);">+{{sp.variants.size | minus:4}} more</span>
-              {%- endif -%}
-            {%- endunless -%}
-          </div>
           <div class="kayva-showcase-card__footer">
             <div>
               {%- if sp.price_varies -%}<span class="kayva-showcase-card__from">from</span>{%- endif -%}

@@ -242,7 +242,7 @@
   border: 1px solid var(--kayva-line);
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 6;
+  grid-row: span 5;
   overflow: hidden;
   position: relative;
   transition: box-shadow 0.3s;
@@ -315,15 +315,7 @@
 .kayva-showcase-card__features {
   grid-row: 4;
   margin: 0;
-  padding: 8px 18px 0;
-}
-.kayva-showcase-card__variants {
-  grid-row: 5;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
   padding: 8px 18px 12px;
-  align-content: flex-start;
 }
 .kayva-showcase-card__pill {
   font-family: var(--kayva-font);
@@ -338,7 +330,7 @@
 }
 .kayva-showcase-card__pill:hover { border-color: var(--kayva-warm-brown); }
 .kayva-showcase-card__footer {
-  grid-row: 6;
+  grid-row: 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
