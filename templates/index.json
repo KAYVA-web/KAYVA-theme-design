@@ -35,7 +35,7 @@
           "type": "tile",
           "settings": {
             "collection": "led-strip",
-            "title": "LED Strip",
+            "title": "Strip Light",
             "image": "shopify://shop_images/kayva_icon_lightstrips.svg",
             "url": ""
           }
@@ -43,7 +43,7 @@
         "t2": {
           "type": "tile",
           "settings": {
-            "collection": "",
+            "collection": "led-bulbs",
             "title": "Bulbs",
             "image": "shopify://shop_images/kayva_icon_bulbs.svg",
             "url": ""
@@ -70,7 +70,7 @@
         "t5": {
           "type": "tile",
           "settings": {
-            "collection": "",
+            "collection": "all-products",
             "title": "Accessories",
             "image": "shopify://shop_images/kayva_icon_accessories.svg",
             "url": ""
