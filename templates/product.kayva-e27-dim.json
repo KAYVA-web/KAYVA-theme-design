@@ -53,6 +53,13 @@
             "add_label": "Add bundle to cart"
           }
         },
+        "accordion_BXcgGc": {
+          "type": "accordion",
+          "settings": {
+            "title": "Product Specifications",
+            "content": "<p><strong>Fitting: </strong>E27<br/><strong>CRI</strong>: Ra95+<br/><strong>Lumens:</strong>1013 lm<br/><strong>Power</strong>: 9W<br/><strong>Voltage</strong>: 220–240V AC · 50Hz <br/><strong>CCT</strong>: 2700K<br/><strong>Dimmable: </strong>Yes<br/><strong>Beam angle</strong>: 160°<br/><strong>Lifespan</strong>: 25,000 hours<br/><strong>IP rating</strong>: IP20 (indoor use)<br/><strong>Body</strong>: Polycarbonate</p>"
+          }
+        },
         "acc1": {
           "type": "accordion",
           "settings": {
@@ -74,6 +81,7 @@
         "h3",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
+        "accordion_BXcgGc",
         "acc1",
         "acc2"
       ],
@@ -301,7 +309,7 @@
           "type": "qa",
           "settings": {
             "question": "What is included in the box?",
-            "answer": "<p>Enter your answer here.</p>"
+            "answer": "<p>A E27 Bulb</p>"
           }
         },
         "qa_2": {
