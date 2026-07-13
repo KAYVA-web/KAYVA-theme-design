@@ -69,6 +69,7 @@
         },
         "t5": {
           "type": "tile",
+          "disabled": true,
           "settings": {
             "collection": "all-products",
             "title": "Accessories",
@@ -89,7 +90,7 @@
         "heading": "Shop by category.",
         "text_align": "center",
         "bg": "#ffffff",
-        "columns": 3,
+        "columns": 2,
         "gap": 12,
         "icon_size": 104,
         "radius": 6,
