@@ -22,8 +22,8 @@
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Smooth TRIAC dimming ·",
-            "text": "Dims cleanly on standard leading-edge wall dimmers — no separate driver, no flicker."
+            "label": "Smooth dimming ·",
+            "text": "Recommended with trailing-edge (ELV) dimmers. Leading-edge (TRIAC) dimmers"
           }
         },
         "h3": {
