@@ -190,7 +190,7 @@
         "text_iQgqAA": {
           "type": "text",
           "settings": {
-            "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, choose a TRIAC-dimmable 24V driver and pair it with a compatible wall dimmer. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
+            "content": "<p>Use a 24V constant-voltage LED driver. For dimmable installations, use a phase-cut dimmable 24V driver rated for <strong>trailing-edge (ELV)</strong> dimming, paired with a trailing-edge wall dimmer. Leading-edge (TRIAC) dimmers commonly cause visible flicker on COB strip. KAYVA strip itself doesn't dim on its own — the driver controls dimming.</p>"
           }
         },
         "callout_NWXJcQ": {
