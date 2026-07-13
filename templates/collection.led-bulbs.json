@@ -187,10 +187,118 @@
         "padding-block-start": 100,
         "padding-block-end": 32
       }
+    },
+    "section_NE7NaG": {
+      "type": "section",
+      "blocks": {
+        "text_TndPDi": {
+          "type": "text",
+          "name": "t:names.heading",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>New arrivals</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_dFHkCh": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h2>Bulbs that render colour properly</h2><p>A bulb is the cheapest thing in a renovation and the one you look at every day. A six-dollar GU10 and a twenty-four-dollar GU10 both light the room. Only one of them makes the room look like the room.</p><p>Every KAYVA bulb runs at Ra95+ with R9 above 50 — the standard used in museums, galleries and the better restaurants. It is the same light that makes a painting look like a painting rather than a photocopy of one, and it costs less than most people assume.</p><h3>What you are actually paying for</h3><p>In Singapore, a genuine Ra95+ GU10 currently starts around S$32 and runs past S$50. Our GU10 Dim is S$18 and our GU10 Switch is S$24. We are not cheaper because we cut a corner — we are cheaper because we do not carry a distributor, a showroom or a European brand's overheads.</p><p>Below Ra90, you are in a different product category. The bulbs at S$6 are not competing with these; they are competing with each other.</p><h3>The range</h3><p><strong>GU10 Dim</strong> — 5.5W, 490 lumens, fixed 2700K or 4000K, glass body, dimmable. The everyday downlight and track bulb.</p><p><strong>GU10 Switch</strong> — 7W, two colour temperatures in one bulb. Switch on for 2700K, flip twice for 4000K. No app, no hub, no WiFi, nothing to update. For rooms that need warm light in the evening and neutral light for work.</p><p><strong>E27 Dim</strong> — 9W, 2700K, dimmable. For pendants, floor lamps and table lamps.</p><h3>On dimming</h3><p>All our dimmable bulbs work on standard phase-cut circuits. We recommend <strong>trailing-edge (ELV) dimmers</strong> — leading-edge (TRIAC) dimmers can cause visible flicker on LED, and it is the most common complaint after a renovation. If your dimmer is already installed and you are unsure which type it is, ask your electrician before you buy.</p><h3>How we know what we claim</h3><p>We test ten bulbs out of every hundred we ship — CRI, R9, colour temperature and SDCM binning — and we publish the results by batch. Not a golden sample from a marketing sheet. The actual bulbs in the actual box.</p><p><strong>Ra95+ · R9&gt;50 · SDCM ≤5 · Measured on every batch.</strong></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_A9pBkb": {
+          "type": "button",
+          "name": "t:names.button",
+          "disabled": true,
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_TndPDi",
+        "text_dFHkCh",
+        "button_A9pBkb"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
     "hero_banner_DWDeqw",
-    "main"
+    "main",
+    "section_NE7NaG"
   ]
 }
