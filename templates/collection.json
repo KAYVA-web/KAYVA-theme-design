@@ -78,7 +78,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Ra95+ COB LED Strip Singapore | Dotless Cove Lighting | KAYVA</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -187,73 +187,10 @@
         "padding-block-start": 100,
         "padding-block-end": 32
       }
-    },
-    "section_x6ExBc": {
-      "type": "section",
-      "blocks": {
-        "text_kj7mdn": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<h2>LED strip for Singapore coves</h2><p>Most LED strip sold in Singapore runs at Ra80. It works. It turns on, it fills the cove, and for the first month nobody thinks about it. Then you start noticing things — timber that looks flat, skin that reads slightly grey, a feature wall that never quite looks like it did in the showroom. The light is doing its job badly, and it is difficult to say why.</p><p>The reason is colour rendering. Ra80 means the light is reproducing roughly 80% of the colour information in a scene. The remaining 20% is not missing evenly — deep reds go first, which is why food, wood and skin suffer most. That is what R9 measures, and it is the number almost nobody publishes.</p><p>The KAYVA 480 Pro Strip runs at Ra95+ with R9 above 50. We measure it, and we publish what we measure.</p><h3>Why 480 LEDs per metre</h3><p>Standard strip runs 320 LEDs per metre. In a deep cove, viewed from across the room, that is usually fine. In a shallow cove, under a cabinet, or anywhere you can see the strip at close range, it is not — you get visible dots and banding, and the light looks cheap in a way that is hard to unsee.</p><p>At 480 per metre on a COB platform, the light source is continuous. No dots, no hot spots, no banding, even at close range. It is 50% denser than most of the market sells, and it is the difference between a cove that looks considered and one that looks like an afterthought.</p><h3>The trade-off, stated plainly</h3><p>High CRI costs you lumens. Our strip produces 1,000 lumens per metre at 12 watts — around 83 lumens per watt. A generic Ra80 strip will beat that on paper. It will also make your dining table look like a supermarket shelf.</p><p>We think that is a trade worth making. You should know you are making it.</p><h3>What you need to install it</h3><p>The strip runs on 24V DC, so it needs a constant-voltage driver — sized at your total wattage plus 20% headroom. Our driver sizing calculator does the arithmetic. For runs over six metres, feed the strip from both ends or split it into segments, or the far end will look dimmer than the near end.</p><p>The strip cuts every 50mm, fits standard 8mm aluminium channels, and is rated IP20 for indoor use. Mains connection should be done by a licensed electrician.</p><p><strong>Ra95+ · R9&gt;50 · SDCM ≤5 · 20,000 hours at L70 · 24V · Tested on every batch.</strong></p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_kj7mdn"
-      ],
-      "name": "t:names.rich_text_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
     }
   },
   "order": [
     "hero_banner_DWDeqw",
-    "main",
-    "section_x6ExBc"
+    "main"
   ]
 }
