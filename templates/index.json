@@ -150,6 +150,7 @@
           "settings": {
             "product": "kayva-gu10-switch",
             "badge": "GU10 Switch",
+            "image": "shopify://shop_images/KAYVA_GU10_Switch_Main_1.jpg",
             "desc": "Switch on for warm. Flip twice for crisp. Two colour temperatures, no app, no WiFi.",
             "view_label": "View"
           }
@@ -159,6 +160,7 @@
           "settings": {
             "product": "kayva-cob-led-strip-480-cri95",
             "badge": "Strip Light",
+            "image": "shopify://shop_images/KAYVA_Strip_Pro_480_1.jpg",
             "desc": "10-metre dotless COB at Ra95+. Warm, even, shadow-free. For coves, cabinets, and shelves.",
             "view_label": "View"
           }
@@ -168,6 +170,7 @@
           "settings": {
             "product": "kayva-gu10-dim",
             "badge": "GU10 Dim",
+            "image": "shopify://shop_images/KAYVA_GU10_Dim_2700K_Main_1.jpg",
             "desc": "Fixed colour temperature, fully dimmable. Glass body, Ra95+. Choose your warmth.",
             "view_label": "View"
           }
@@ -177,6 +180,7 @@
           "settings": {
             "product": "kayva-e27-dim-2700k",
             "badge": "E27 Dim",
+            "image": "shopify://shop_images/E27_Dim_Main_2700K_1.jpg",
             "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
             "view_label": "View"
           }
