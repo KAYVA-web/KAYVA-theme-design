@@ -129,6 +129,11 @@
   text-decoration: line-through;
   cursor: not-allowed;
 }
+.kv-pinfo__swatch.is-unavailable {
+  opacity: 0.45;
+  text-decoration: line-through;
+  border-style: dashed;
+}
 
 /* Quantity + add to cart */
 .kv-pinfo__buy-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
@@ -655,13 +660,33 @@
       selected[{{ option.position | json }}] = {{ option.selected_value | json }};
     {%- endfor -%}
 
-    window['kvPinfoSelectOption' + sectionId] = function(position, value){
-      selected[position] = value;
-      var match = product.variants.find(function(v){
-        return Object.keys(selected).every(function(pos){
-          return v['option' + pos] === selected[pos];
+    function findVariant(options){
+      return product.variants.find(function(v){
+        return Object.keys(options).every(function(pos){
+          return v['option' + pos] === options[pos];
         });
       });
+    }
+
+    /* Strike through option values whose combination with the other
+       selected options is sold out or does not exist */
+    function updateSwatchAvailability(){
+      Object.keys(selected).forEach(function(pos){
+        var radios = document.querySelectorAll('input[name="kv-option-' + sectionId + '-' + pos + '"]');
+        radios.forEach(function(radio){
+          var candidate = {};
+          Object.keys(selected).forEach(function(p){ candidate[p] = selected[p]; });
+          candidate[pos] = radio.value;
+          var v = findVariant(candidate);
+          var unavailable = !v || !v.available;
+          radio.closest('.kv-pinfo__swatch').classList.toggle('is-unavailable', unavailable);
+        });
+      });
+    }
+
+    window['kvPinfoSelectOption' + sectionId] = function(position, value){
+      selected[position] = value;
+      var match = findVariant(selected);
       var input = document.getElementById('kv-pinfo-variant-id-' + sectionId);
       if (match) {
         input.value = match.id;
@@ -673,8 +698,11 @@
           }
         }
       }
+      updateSwatchAvailability();
       syncFloatbar();
     };
+
+    updateSwatchAvailability();
 
     function moneyFmt(cents){
       return ({{ shop.money_format | json }}).replace(/\{\{\s*amount\s*\}\}/, (cents/100).toFixed(2));
