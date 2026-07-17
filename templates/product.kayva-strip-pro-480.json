@@ -83,7 +83,7 @@
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
-        "note": "Ships within 2–4 working days. Free delivery on orders over $150.",
+        "note": "Ships within 2–4 working days. Free delivery on orders over $80.",
         "description_label": "Description",
         "description_content": "<p>The KAYVA 480 Pro Strip runs 480 LEDs per metre on a COB platform — 50% denser than the 320/m strips most of the market sells. At that density the light source is continuous: no visible dots, no banding, no hot spots, even at close viewing distances or in narrow coves.<br/><br/><br/>Ra95+ with R9&gt;50. We test 10 units out of every 100 we ship and publish the numbers  — so timber, stone, and fabrics look the way they actually do rather than washed out or shifted. Tight SDCM ≤5 binning keeps colour consistent from one reel to the next.<br/><br/>The 24V supply runs cooler and holds up better over long runs than 12V alternatives, and the 8mm PCB fits standard aluminium LED channels. It comes in a fixed 2700K warm white or 4000K cool white — choose the temperature for the room.<br/><br/>Sold per 10m roll. A 24V constant-voltage driver sold separately.</p>"
       }
@@ -259,7 +259,7 @@
           "type": "spec_table",
           "settings": {
             "heading": "Specifications",
-            "rows": "LED density | 480 per meter\nLength | 10m\nCRI | Ra95+\nLumens | 1000 lm per meter\nPower | 12W per meter\nVoltage | 24V DC\nCuttable | Every 50mm\nColor temperature | 2700K or 4000K\nBeam angle | 180°\nLifespan | 20,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
+            "rows": "LED density | 480 per meter\nLength | 10m\nCRI | Ra95+\nLumens | 1000 lm per meter\nPower | 12W per meter\nVoltage | 24V DC\nCuttable | Every 50mm\nColor temperature | 2700K or 4000K\nDimmable | Yes, with dimmer controller\nBeam angle | 180°\nLifespan | 20,000 hours\nIP rating | IP20 (indoor use)\nWarranty | 2 years"
           }
         },
         "gallery": {
@@ -294,6 +294,20 @@
     "kayva_product_faq": {
       "type": "kayva-product-faq",
       "blocks": {
+        "qa_WC3imw": {
+          "type": "qa",
+          "settings": {
+            "question": "Why is this S$98 when I can find LED strip for S$20?",
+            "answer": "<p>The S$20 strip is usually 320 LEDs/m SMD at Ra80 — a different, lower-density product. At S$98 you are in the premium COB tier, where the comparable strips sit at a similar price. The difference is that we publish and guarantee our numbers — Ra95+, R9&gt;50, SDCM≤5, tested per batch — where most at this price publish no CRI figure at all.</p>"
+          }
+        },
+        "qa_rWyC7V": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
         "qa_dJyzdc": {
           "type": "qa",
           "settings": {
@@ -310,14 +324,15 @@
         },
         "qa_2": {
           "type": "qa",
-          "disabled": true,
           "settings": {
-            "question": "",
-            "answer": ""
+            "question": "Is KAYVA Strip Pro 480 dimmable?",
+            "answer": "<p>Yes, with a dimmer control. </p>"
           }
         }
       },
       "block_order": [
+        "qa_WC3imw",
+        "qa_rWyC7V",
         "qa_dJyzdc",
         "qa_1",
         "qa_2"
