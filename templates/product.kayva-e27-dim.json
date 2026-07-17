@@ -236,11 +236,11 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/CRI95_Ra95__rendering_high_1.jpg",
+            "image": "shopify://shop_images/kayva_e27_cri_80vs95_hands.jpg",
             "video_url": "",
-            "eyebrow": "1,013 LUMENS. RA95+",
-            "title": "Bright and accurate.",
-            "text": "<p>Most Ra95+ E27s sacrifice brightness for colour quality. KAYVA E27 Dim delivers 1,013 lumens at Ra96 — more light, better rendered, without the trade-off.</p>"
+            "eyebrow": "COLOUR ACCURACY",
+            "title": "Ra95+ rendering, true to life.",
+            "text": "<p>Most E27 sit around Ra80. KAYVA runs at Ra95+, which means skin tones, fabrics, and finishes look the way they actually do — not washed out or shifted cool.</p>"
           }
         },
         "feat_2": {
