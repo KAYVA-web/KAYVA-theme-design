@@ -310,14 +310,14 @@
           "type": "qa",
           "settings": {
             "question": "Where is this bulb meant to be used?",
-            "answer": "<p><br/>Pendants, floor lamps and table lamps — anything with a standard E27 screw fitting. It is a 9W bulb built for the fittings where you see the light directly, so colour accuracy matters most.</p>"
+            "answer": "<p>Pendants, floor lamps and table lamps — anything with a standard E27 screw fitting. It is a 9W bulb built for the fittings where you see the light directly, so colour accuracy matters most.</p>"
           }
         },
         "qa_G37U7r": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "How bright is it?",
+            "answer": "<p>9W, warm 2700K. It is a bright, everyday bulb suited to main-room pendants and lamps rather than task spotlighting.</p>"
           }
         },
         "qa_7kPKFt": {
