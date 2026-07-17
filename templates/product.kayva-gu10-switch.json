@@ -149,7 +149,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/GU10_CRI80_vs_CRI95_1.jpg",
+            "image": "shopify://shop_images/cri_comparison_80_vs_95.jpg",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
