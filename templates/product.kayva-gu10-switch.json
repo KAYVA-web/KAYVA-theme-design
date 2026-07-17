@@ -214,8 +214,8 @@
         "qa_ADU8wG": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "How does the two-colour switching work?",
+            "answer": "<p>Switch on for 2700K warm white. Flip the wall switch off and on again within a couple of seconds and it changes to 4000K neutral. No app, no hub, no WiFi — the colour is controlled by the light switch you already have.</p>"
           }
         },
         "qa_xN37ci": {
@@ -245,13 +245,6 @@
             "question": "What is included in the box?",
             "answer": "<p>Enter your answer here.</p>"
           }
-        },
-        "qa_2": {
-          "type": "qa",
-          "settings": {
-            "question": "Is this product dimmable?",
-            "answer": "<p>Enter your answer here.</p>"
-          }
         }
       },
       "block_order": [
@@ -259,8 +252,7 @@
         "qa_xN37ci",
         "qa_y8wpPK",
         "qa_A3NE8B",
-        "qa_1",
-        "qa_2"
+        "qa_1"
       ],
       "settings": {
         "heading": "Frequently asked questions",
