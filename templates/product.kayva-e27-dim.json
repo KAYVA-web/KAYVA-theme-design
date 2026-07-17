@@ -330,8 +330,8 @@
         "qa_1": {
           "type": "qa",
           "settings": {
-            "question": "What is included in the box?",
-            "answer": "<p>A E27 Bulb</p>"
+            "question": "Why only 2700K, no cool option?",
+            "answer": "<p>E27 bulbs live in pendants, floor and table lamps — decorative, relaxed spaces where warm 2700K light suits best. If you need neutral white for a work area, a GU10 downlight in 4000K is the better tool for that job.</p>"
           }
         },
         "qa_2": {
