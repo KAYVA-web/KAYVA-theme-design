@@ -310,8 +310,8 @@
         "qa_RRiC9V": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "How bright is it, and what wattage?",
+            "answer": "<p>5.5W, rated around 490 lumens — comparable to a 50W halogen, at a fraction of the power. It is Ra95+, so it will look richer than a higher-lumen Ra80 bulb even where the number is similar.</p>"
           }
         },
         "qa_RJ8KPq": {
