@@ -228,8 +228,8 @@
         "qa_y8wpPK": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Why choose this over a smart bulb?",
+            "answer": "<p>It gives you two useful colour temperatures — warm for evenings, neutral for tasks — with nothing to set up, no app to be discontinued, and nothing to fail when the WiFi is down. It works the day you install it and in ten years' time.</p>"
           }
         },
         "qa_A3NE8B": {
