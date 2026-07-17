@@ -242,8 +242,8 @@
         "qa_1": {
           "type": "qa",
           "settings": {
-            "question": "What is included in the box?",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Is the colour quality the same in both temperatures?",
+            "answer": "<p>Yes. Both 2700K and 4000K are Ra95+ with R9&gt;50 — the same colour accuracy, tested per batch. Only the warmth of the white changes when you switch.</p>"
           }
         }
       },
