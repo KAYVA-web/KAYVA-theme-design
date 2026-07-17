@@ -331,8 +331,8 @@
         "qa_2": {
           "type": "qa",
           "settings": {
-            "question": "Is this product dimmable?",
-            "answer": "<p>No. </p>"
+            "question": "Does it run hot?",
+            "answer": "<p>It is designed to stay at or below 65°C surface temperature after two hours — within safe limits for enclosed and downlight fittings. Heat is the main thing that shortens LED life, so this matters for how long it lasts.</p>"
           }
         }
       },
