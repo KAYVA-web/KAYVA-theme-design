@@ -53,6 +53,13 @@
             "add_label": "Add bundle to cart"
           }
         },
+        "accordion_9MUUfH": {
+          "type": "accordion",
+          "settings": {
+            "title": "PRODUCT SPECIFICATIONS",
+            "content": "<p>Fitting | GU10<br/>CRI | Ra95+<br/>Lumens | 510 lm<br/>Power | 7W<br/>Voltage | 220–240V AC · 50Hz <br/>Kelvin temperature | 2700K + 4000K<br/>Dimmable | No<br/>Beam angle | 36°<br/>Lifespan | 25,000 hours<br/>IP rating | IP20 (indoor use)<br/>Body | Glass<br/>Warranty | 2 years</p>"
+          }
+        },
         "acc1": {
           "type": "accordion",
           "settings": {
@@ -74,6 +81,7 @@
         "h3",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
+        "accordion_9MUUfH",
         "acc1",
         "acc2"
       ],
@@ -169,6 +177,7 @@
         },
         "specs": {
           "type": "spec_table",
+          "disabled": true,
           "settings": {
             "heading": "Specifications",
             "rows": "Fitting | GU10\nCRI | Ra95+\nLumens | 510 lm\nPower | 7W\nVoltage | 220–240V AC · 50Hz \nKelvin temperature | 2700K + 4000K\nDimmable | No\nBeam angle | 36°\nLifespan | 25,000 hours\nIP rating | IP20 (indoor use)\nBody | Glass\nWarranty | 2 years"
