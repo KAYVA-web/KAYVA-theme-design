@@ -73,6 +73,13 @@
             "title": "Warranty",
             "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
+        },
+        "accordion_xAVdjx": {
+          "type": "accordion",
+          "settings": {
+            "title": "Frequently asked questions",
+            "content": "<p><strong>What dimmer works best with it?</strong><br/>A trailing-edge (ELV) dimmer. Leading-edge (TRIAC) dimmers can cause visible flicker on LED — it is the most common post-renovation complaint, and it is avoidable. If your dimmer is already installed and you are unsure which type it is, ask your electrician before buying.</p><p><strong>How bright is it, and what wattage?</strong><br/>5.5W, rated around 490 lumens — comparable to a 50W halogen, at a fraction of the power. It is Ra95+, so it will look richer than a higher-lumen Ra80 bulb even where the number is similar.</p><p><strong>Will it fit my existing GU10 fittings?</strong><br/>Yes. It is a standard GU10 base and body, a direct replacement for any GU10 halogen or LED downlight or track head. Mains voltage, no transformer needed.</p><p><strong>2700K or 4000K — which should I choose?</strong><br/>2700K is warm and relaxed, best for living rooms and bedrooms. 4000K is a neutral white, better for kitchens, studies and workspaces. Both are the same Ra95+ quality; it is only the colour temperature that changes.</p><p><strong>Does it run hot?</strong><br/>It is designed to stay at or below 65°C surface temperature after two hours — within safe limits for enclosed and downlight fittings. Heat is the main thing that shortens LED life, so this matters for how long it lasts.</p>"
+          }
         }
       },
       "block_order": [
@@ -83,7 +90,8 @@
         "bundle_option_YCXqCr",
         "accordion_BXcgGc",
         "acc1",
-        "acc2"
+        "acc2",
+        "accordion_xAVdjx"
       ],
       "settings": {
         "background_color": "#ffffff",
