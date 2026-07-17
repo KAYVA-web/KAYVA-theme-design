@@ -53,6 +53,13 @@
             "add_label": "Add bundle to cart"
           }
         },
+        "accordion_6QWieg": {
+          "type": "accordion",
+          "settings": {
+            "title": "PRODUCT SPECIFICATIONS",
+            "content": "<p>LED density | 480 per meter<br/>Length | 10m<br/>CRI | Ra95+<br/>Lumens | 1000 lm per meter<br/>Power | 12W per meter<br/>Voltage | 24V DC<br/>Cuttable | Every 50mm<br/>Color temperature | 2700K or 4000K<br/>Dimmable | Yes, with dimmer controller<br/>Beam angle | 180°<br/>Lifespan | 20,000 hours<br/>IP rating | IP20 (indoor use)<br/>Warranty | 2 years</p>"
+          }
+        },
         "acc1": {
           "type": "accordion",
           "settings": {
@@ -74,6 +81,7 @@
         "h3",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
+        "accordion_6QWieg",
         "acc1",
         "acc2"
       ],
