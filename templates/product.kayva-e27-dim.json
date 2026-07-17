@@ -306,6 +306,27 @@
     "kayva_product_faq": {
       "type": "kayva-product-faq",
       "blocks": {
+        "qa_QY39k7": {
+          "type": "qa",
+          "settings": {
+            "question": "Where is this bulb meant to be used?",
+            "answer": "<p><br/>Pendants, floor lamps and table lamps — anything with a standard E27 screw fitting. It is a 9W bulb built for the fittings where you see the light directly, so colour accuracy matters most.</p>"
+          }
+        },
+        "qa_G37U7r": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
+        "qa_7kPKFt": {
+          "type": "qa",
+          "settings": {
+            "question": "Enter your question here",
+            "answer": "<p>Enter your answer here.</p>"
+          }
+        },
         "qa_1": {
           "type": "qa",
           "settings": {
@@ -322,6 +343,9 @@
         }
       },
       "block_order": [
+        "qa_QY39k7",
+        "qa_G37U7r",
+        "qa_7kPKFt",
         "qa_1",
         "qa_2"
       ],
