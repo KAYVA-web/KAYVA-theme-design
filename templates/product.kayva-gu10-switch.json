@@ -235,8 +235,8 @@
         "qa_A3NE8B": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "What wattage and fitting is it?",
+            "answer": "<p>7W, standard GU10 base, mains voltage. A direct replacement for any GU10 halogen or LED, in downlights or track heads. No transformer required.</p>"
           }
         },
         "qa_1": {
