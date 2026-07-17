@@ -73,6 +73,13 @@
             "title": "Warranty",
             "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
+        },
+        "accordion_iYjDTk": {
+          "type": "accordion",
+          "settings": {
+            "title": "Frequently asked questions",
+            "content": "<p><strong>How does the two-colour switching work?</strong><br/>Switch on for 2700K warm white. Flip the wall switch off and on again within a couple of seconds and it changes to 4000K neutral. No app, no hub, no WiFi — the colour is controlled by the light switch you already have.</p><p><strong>Is it dimmable?</strong><br/>No. The Switch is non-dimmable by design — the switching mechanism and dimming do not coexist cleanly. If you want dimming, choose the GU10 Dim instead; if you want two colour temperatures without an app, the Switch is the one.</p><p><strong>Why choose this over a smart bulb?</strong><br/>It gives you two useful colour temperatures — warm for evenings, neutral for tasks — with nothing to set up, no app to be discontinued, and nothing to fail when the WiFi is down. It works the day you install it and in ten years' time.</p><p><strong>What wattage and fitting is it?</strong><br/>7W, standard GU10 base, mains voltage. A direct replacement for any GU10 halogen or LED, in downlights or track heads. No transformer required.</p><p><strong>Is the colour quality the same in both temperatures?</strong><br/>Yes. Both 2700K and 4000K are Ra95+ with R9&gt;50 — the same colour accuracy, tested per batch. Only the warmth of the white changes when you switch.</p>"
+          }
         }
       },
       "block_order": [
@@ -83,7 +90,8 @@
         "bundle_option_YCXqCr",
         "accordion_EVFiKz",
         "acc1",
-        "acc2"
+        "acc2",
+        "accordion_iYjDTk"
       ],
       "settings": {
         "background_color": "#ffffff",
@@ -275,6 +283,7 @@
         },
         "gallery": {
           "type": "gallery",
+          "disabled": true,
           "settings": {
             "heading": "In the home",
             "image_1": "shopify://shop_images/CRI_Comparision_CRI95.png",
