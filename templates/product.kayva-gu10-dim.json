@@ -324,8 +324,8 @@
         "qa_1": {
           "type": "qa",
           "settings": {
-            "question": "What is included in the box?",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "2700K or 4000K — which should I choose?",
+            "answer": "<p>2700K is warm and relaxed, best for living rooms and bedrooms. 4000K is a neutral white, better for kitchens, studies and workspaces. Both are the same Ra95+ quality; it is only the colour temperature that changes.</p>"
           }
         },
         "qa_2": {
