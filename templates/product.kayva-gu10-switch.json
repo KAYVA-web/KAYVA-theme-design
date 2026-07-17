@@ -221,8 +221,8 @@
         "qa_xN37ci": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Is it dimmable?",
+            "answer": "<p>No. The Switch is non-dimmable by design — the switching mechanism and dimming do not coexist cleanly. If you want dimming, choose the GU10 Dim instead; if you want two colour temperatures without an app, the Switch is the one.</p>"
           }
         },
         "qa_y8wpPK": {
