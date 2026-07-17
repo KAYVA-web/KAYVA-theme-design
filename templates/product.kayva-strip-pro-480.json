@@ -73,6 +73,13 @@
             "title": "Warranty",
             "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
+        },
+        "accordion_3DQLpE": {
+          "type": "accordion",
+          "settings": {
+            "title": "Frequently asked questions",
+            "content": "<p><strong>Why is this S$98 when I can find LED strip for S$20?</strong><br/>The S$20 strip is usually 320 LEDs/m SMD at Ra80 — a different, lower-density product. At S$98 you are in the premium COB tier, where the comparable strips sit at a similar price. The difference is that we publish and guarantee our numbers — Ra95+, R9&gt;50, SDCM≤5, tested per batch — where most at this price publish no CRI figure at all.</p><p><strong>Is it dimmable?</strong><br/>Yes, but the dimming is done by the driver, not the strip. The strip is a passive 24V load. For a dimmable cove, use a dimmable 24V constant-voltage driver with a trailing-edge (ELV) wall dimmer, or a 24V controller for app control. We size the whole setup for you — just send your run length.</p><p><strong>Can I cut it, and where?</strong><br/>Every 50mm, on the marked cut points. Each 10m reel includes both end connectors. If you are cutting into more than two sections you will need clip-on connectors or to solder the joints.</p><p><strong>How long does it last?</strong><br/>20,000 hours at L70 — meaning it still holds at least 70% brightness at 20,000 hours. Running eight hours a day, that is close to seven years. It is covered by our warranty when installed with a compatible Safety Mark driver.</p><p><strong>Why does high CRI mean fewer lumens?</strong><br/>Rendering colour accurately uses more of the LED's output on the full spectrum rather than raw brightness. This strip produces around 1,000 lumens per metre at 12W — a generic Ra80 strip will read brighter on paper, and make timber, food and skin look flat. It is the trade-off quality spaces make, and we would rather you knew you were making it.</p>"
+          }
         }
       },
       "block_order": [
@@ -83,7 +90,8 @@
         "bundle_option_YCXqCr",
         "accordion_6QWieg",
         "acc1",
-        "acc2"
+        "acc2",
+        "accordion_3DQLpE"
       ],
       "settings": {
         "background_color": "#ffffff",
@@ -115,13 +123,22 @@
         },
         "nav_item_6q97qE": {
           "type": "nav_item",
+          "disabled": true,
           "settings": {
             "label": "Specifications",
             "anchor": "spec_table"
           }
         },
+        "nav_item_iRpJT4": {
+          "type": "nav_item",
+          "settings": {
+            "label": "",
+            "anchor": "feature"
+          }
+        },
         "nav_item_AfLc8d": {
           "type": "nav_item",
+          "disabled": true,
           "settings": {
             "label": "Gallery",
             "anchor": "gallery"
@@ -132,6 +149,7 @@
         "nav_item_Rrxkr9",
         "nav_item_dPypRB",
         "nav_item_6q97qE",
+        "nav_item_iRpJT4",
         "nav_item_AfLc8d"
       ],
       "name": "KAYVA Product Section Nav",
