@@ -323,8 +323,8 @@
         "qa_7kPKFt": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Is it dimmable, and on what?",
+            "answer": "<p>Yes, on standard phase-cut circuits. We recommend a trailing-edge (ELV) dimmer to avoid flicker; leading-edge (TRIAC) dimmers can cause visible flickering on LED.</p>"
           }
         },
         "qa_1": {
