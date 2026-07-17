@@ -317,8 +317,8 @@
         "qa_RJ8KPq": {
           "type": "qa",
           "settings": {
-            "question": "Enter your question here",
-            "answer": "<p>Enter your answer here.</p>"
+            "question": "Will it fit my existing GU10 fittings?",
+            "answer": "<p>Yes. It is a standard GU10 base and body, a direct replacement for any GU10 halogen or LED downlight or track head. Mains voltage, no transformer needed.</p>"
           }
         },
         "qa_1": {
