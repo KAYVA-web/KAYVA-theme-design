@@ -124,6 +124,7 @@
         },
         "nav_item_6q97qE": {
           "type": "nav_item",
+          "disabled": true,
           "settings": {
             "label": "Specifications",
             "anchor": "spec_table"
@@ -255,7 +256,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/kayva_kulaorou_split_fullbleed_4x3_2048x1536_1.jpg",
+            "image": "shopify://shop_images/kayva_kulaorou_split_fullbleed_4x3_2048x1536_1_1.jpg",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
