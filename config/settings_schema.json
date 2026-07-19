@@ -2284,5 +2284,28 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "KAYVA WhatsApp button",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "whatsapp_enabled",
+        "label": "Show WhatsApp button",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp number",
+        "info": "Country code + number, digits only. e.g. 6591234567"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_message",
+        "label": "Pre-filled message",
+        "default": "Hi KAYVA, I have a question about your lighting."
+      }
+    ]
   }
 ]
