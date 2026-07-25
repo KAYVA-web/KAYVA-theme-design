@@ -20,7 +20,7 @@
         "btn_anchor": "#rooms",
         "link_anchor": "",
         "link_label": "Why CRI matters",
-        "link_url": "shopify://pages/why-cri",
+        "link_url": "shopify://pages/why-cri-matters",
         "bg": "#100800",
         "glow": "#3d2a15",
         "strip_bg": "#160d02"
@@ -247,7 +247,7 @@
         "btn_label": "Shop the range",
         "btn_link": "shopify://collections/all",
         "link_label": "Why CRI matters",
-        "link_url": "shopify://pages/why-cri"
+        "link_url": "shopify://pages/why-cri-matters"
       }
     }
   },
