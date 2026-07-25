@@ -37,6 +37,22 @@
   margin: 0;
   padding-top: 6px;
 }
+.kv-ctrade-{{ section.id }} .kv-ctrade__col { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.kv-ctrade-{{ section.id }} .kv-ctrade__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  border: 1.5px solid var(--kayva-dark-brown, #3D2A15);
+  padding: 14px 26px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.kv-ctrade-{{ section.id }} .kv-ctrade__btn:hover { background: var(--kayva-dark-brown, #3D2A15); color: var(--kayva-white, #FFFFFF); }
 @media (max-width: 900px) {
   .kv-ctrade-{{ section.id }} { padding: 48px 0; }
   .kv-ctrade-{{ section.id }} .kv-ctrade__wrap { grid-template-columns: 1fr; gap: 24px; }
@@ -52,7 +68,12 @@
         {%- endif -%}
         <h2>{{ section.settings.heading }}</h2>
       </div>
-      <p class="kv-ctrade__text">{{ section.settings.text }}</p>
+      <div class="kv-ctrade__col">
+        <p class="kv-ctrade__text">{{ section.settings.text }}</p>
+        {%- if section.settings.btn_label != blank -%}
+          <a href="{{ section.settings.btn_link | default: '#' }}" class="kv-ctrade__btn">{{ section.settings.btn_label }}</a>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
@@ -64,6 +85,8 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Honest Trade-Off" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "High CRI costs lumens." },
     { "type": "textarea", "id": "text", "label": "Text", "default": "A Ra95+ bulb produces less raw brightness than a Ra80 bulb of the same wattage, because rendering colour faithfully takes energy that would otherwise go to raw output. We think the trade is worth making — you renovated for colour and texture, not for lux readings. But you should know it exists." },
+    { "type": "text", "id": "btn_label", "label": "Button label (optional)" },
+    { "type": "url", "id": "btn_link", "label": "Button link" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
   ],
   "presets": [

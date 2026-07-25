@@ -1,0 +1,126 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-kchoice-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-kchoice-{{ section.id }} .kv-kchoice__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-kchoice-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__copy { padding-top: 6px; display: flex; flex-direction: column; gap: 24px; }
+.kv-kchoice-{{ section.id }} .kv-kchoice__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__card {
+  background: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 24px;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__card-value {
+  font-family: var(--kayva-font);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0 0 6px;
+}
+.kv-kchoice-{{ section.id }} .kv-kchoice__card-text {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.7;
+  opacity: 0.8;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-kchoice-{{ section.id }} { padding: 56px 0; }
+  .kv-kchoice-{{ section.id }} .kv-kchoice__wrap { grid-template-columns: 1fr; gap: 28px; }
+  .kv-kchoice-{{ section.id }} .kv-kchoice__cards { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="kv-kchoice-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-kchoice__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-kchoice__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="kv-kchoice__copy">
+        {%- if section.settings.text != blank -%}
+          <p class="kv-kchoice__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="kv-kchoice__cards">
+            {%- for block in section.blocks -%}
+              <div class="kv-kchoice__card" {{ block.shopify_attributes }}>
+                <p class="kv-kchoice__card-value">{{ block.settings.value }}</p>
+                <p class="kv-kchoice__card-text">{{ block.settings.text }}</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Kelvin Choice",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Choice" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why KAYVA offers two, not four." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "2700K and 4000K cover the two jobs light does at home: rest and work. 3000K sits between them without doing either job better, and 6000K suits workplaces more than living spaces. Rather than stock four temperatures at varying quality, we chose two and hold both to Ra95+." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Temperature card",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "2700K" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Rest. Living, bedroom, dining." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Kelvin Choice",
+      "blocks": [
+        { "type": "card", "settings": { "value": "2700K", "text": "Rest. Living, bedroom, dining." } },
+        { "type": "card", "settings": { "value": "4000K", "text": "Work. Kitchen, study, bathroom." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

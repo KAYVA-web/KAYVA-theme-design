@@ -1,0 +1,274 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-kscale-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-kscale-{{ section.id }} .kv-kscale__intro {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 52px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-kscale-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__intro-text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+  padding-top: 6px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__strip-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 18px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__cards {
+  display: grid;
+  grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-kscale-{{ section.id }} .kv-kscale__card {
+  border: none;
+  border-right: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+  font-family: var(--kayva-font);
+}
+.kv-kscale-{{ section.id }} .kv-kscale__card:last-child { border-right: none; }
+.kv-kscale-{{ section.id }} .kv-kscale__swatch { height: 130px; position: relative; }
+.kv-kscale-{{ section.id }} .kv-kscale__flag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__card-meta { padding: 18px; background: var(--kayva-white, #FFFFFF); transition: background 0.15s; }
+.kv-kscale-{{ section.id }} .kv-kscale__card.is-active .kv-kscale__card-meta { background: var(--kayva-cream, #F5EFE5); }
+.kv-kscale-{{ section.id }} .kv-kscale__card-k {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0 0 4px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__card-name {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__detail {
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  border-top: none;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__panel {
+  padding: 36px 32px;
+  border-right: 1px solid var(--kayva-line, #E8E0D2);
+  flex-direction: column;
+  gap: 14px;
+  display: none;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__panel.is-active { display: flex; }
+.kv-kscale-{{ section.id }} .kv-kscale__panel-tag {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+}
+.kv-kscale-{{ section.id }} .kv-kscale__panel-tag--muted { color: var(--kayva-soft-brown, #8A5524); }
+.kv-kscale-{{ section.id }} .kv-kscale__panel h3 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.25;
+  margin: 0;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__panel-body {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__panel-note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 6px 0 0;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 14px;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__media {
+  position: relative;
+  min-height: 300px;
+  background: var(--kayva-cream, #F5EFE5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kv-kscale-{{ section.id }} .kv-kscale__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.kv-kscale-{{ section.id }} .kv-kscale__media-placeholder {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  padding: 24px;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .kv-kscale-{{ section.id }} { padding: 56px 0; }
+  .kv-kscale-{{ section.id }} .kv-kscale__intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 36px; }
+  .kv-kscale-{{ section.id }} .kv-kscale__cards { grid-template-columns: repeat(2, 1fr); }
+  .kv-kscale-{{ section.id }} .kv-kscale__card { border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
+  .kv-kscale-{{ section.id }} .kv-kscale__detail { grid-template-columns: 1fr; }
+  .kv-kscale-{{ section.id }} .kv-kscale__panel { border-right: none; }
+}
+</style>
+
+<section class="kv-kscale-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-kscale__intro">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-kscale__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <p class="kv-kscale__intro-text">{{ section.settings.intro }}</p>
+    </div>
+
+    {%- if section.settings.strip_label != blank -%}
+      <p class="kv-kscale__strip-label">{{ section.settings.strip_label }}</p>
+    {%- endif -%}
+    <div class="kv-kscale__cards">
+      {%- for block in section.blocks -%}
+        <button type="button" class="kv-kscale__card{% if forloop.first %} is-active{% endif %}" data-kv-k="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="kv-kscale__swatch" style="background: {{ block.settings.swatch }};">
+            {%- if block.settings.flag != blank -%}
+              <span class="kv-kscale__flag">{{ block.settings.flag }}</span>
+            {%- endif -%}
+          </div>
+          <div class="kv-kscale__card-meta">
+            <p class="kv-kscale__card-k">{{ block.settings.kelvin }}</p>
+            <p class="kv-kscale__card-name">{{ block.settings.name }}</p>
+          </div>
+        </button>
+      {%- endfor -%}
+    </div>
+
+    <div class="kv-kscale__detail">
+      <div>
+        {%- for block in section.blocks -%}
+          <div class="kv-kscale__panel{% if forloop.first %} is-active{% endif %}" data-kv-panel="{{ forloop.index0 }}">
+            <span class="kv-kscale__panel-tag{% unless block.settings.in_range %} kv-kscale__panel-tag--muted{% endunless %}">{{ block.settings.tag }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p class="kv-kscale__panel-body">{{ block.settings.body }}</p>
+            {%- if block.settings.note != blank -%}
+              <p class="kv-kscale__panel-note">{{ block.settings.note }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="kv-kscale__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}" loading="lazy">
+        {%- else -%}
+          <span class="kv-kscale__media-placeholder">Add an interior photo — the same room shot at each temperature</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    var root = document.querySelector('.kv-kscale-{{ section.id }}');
+    if (!root) { return; }
+    var cards = root.querySelectorAll('[data-kv-k]');
+    var panels = root.querySelectorAll('[data-kv-panel]');
+    cards.forEach(function(card){
+      card.addEventListener('click', function(){
+        cards.forEach(function(c){ c.classList.toggle('is-active', c === card); });
+        panels.forEach(function(p){ p.classList.toggle('is-active', p.dataset.kvPanel === card.dataset.kvK); });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KAYVA Kelvin Scale",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Scale" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Nothing to do with brightness." },
+    { "type": "textarea", "id": "intro", "label": "Intro paragraph", "default": "Colour temperature is measured in Kelvin (K). Lower numbers are warmer and more orange; higher numbers are cooler and more blue. It has nothing to do with brightness — a 2700K bulb and a 6000K bulb can produce the same lumens. It only describes the colour of the white." },
+    { "type": "text", "id": "strip_label", "label": "Cards label", "default": "The four you will see on listings" },
+    { "type": "image_picker", "id": "image", "label": "Detail panel photo" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "temp",
+      "name": "Temperature",
+      "settings": [
+        { "type": "text", "id": "kelvin", "label": "Kelvin", "default": "2700K" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Warm white" },
+        { "type": "color", "id": "swatch", "label": "Swatch colour", "default": "#F7DFB6" },
+        { "type": "text", "id": "flag", "label": "Corner flag (optional)", "info": "e.g. KAYVA range" },
+        { "type": "checkbox", "id": "in_range", "label": "In KAYVA range (amber tag)", "default": true },
+        { "type": "text", "id": "tag", "label": "Panel tag", "default": "In the KAYVA range" },
+        { "type": "text", "id": "title", "label": "Panel title", "default": "2700K — Warm white" },
+        { "type": "textarea", "id": "body", "label": "Panel body", "default": "The colour of traditional halogen and incandescent light. Relaxed, warm, flattering to wood, fabric and skin." },
+        { "type": "text", "id": "note", "label": "Panel note", "default": "Available across GU10, E27 A60 and 480 Pro COB strip." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Kelvin Scale",
+      "blocks": [
+        { "type": "temp", "settings": { "kelvin": "2700K", "name": "Warm white", "swatch": "#F7DFB6", "flag": "KAYVA range", "in_range": true, "tag": "In the KAYVA range", "title": "2700K — Warm white", "body": "The colour of traditional halogen and incandescent light. Relaxed, warm, flattering to wood, fabric and skin. The default choice for living rooms, bedrooms and dining — anywhere you unwind.", "note": "Available across GU10, E27 A60 and 480 Pro COB strip." } },
+        { "type": "temp", "settings": { "kelvin": "3000K", "name": "Soft white", "swatch": "#FBEAC9", "flag": "", "in_range": false, "tag": "Not stocked by KAYVA", "title": "3000K — Soft white", "body": "A step cooler than 2700K, still on the warm side. Common in hotels and F&B. In practice most people cannot tell 2700K and 3000K apart in isolation — which is why we chose one, not both.", "note": "Not stocked. Specify 2700K instead." } },
+        { "type": "temp", "settings": { "kelvin": "4000K", "name": "Cool white", "swatch": "#F6F3EA", "flag": "KAYVA range", "in_range": true, "tag": "In the KAYVA range", "title": "4000K — Cool white", "body": "Neutral white — neither warm nor blue. Crisp and clear without feeling clinical. Suits task areas: kitchens, studies, home offices, bathrooms where you do makeup or shave.", "note": "Available across GU10 Dual-CCT and 480 Pro COB strip." } },
+        { "type": "temp", "settings": { "kelvin": "6000K", "name": "Daylight", "swatch": "#E7EEF4", "flag": "", "in_range": false, "tag": "Not stocked by KAYVA", "title": "6000K — Daylight", "body": "A distinctly blue-white, close to overcast daylight. Common in offices, workshops and hospitals. Very few homes benefit from it — it tends to make interiors feel cold and flatten warm materials.", "note": "Not stocked. Specify 4000K instead." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
