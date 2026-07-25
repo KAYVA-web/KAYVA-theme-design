@@ -106,9 +106,9 @@
           "type": "pillar",
           "settings": {
             "title": "Properly Specified",
-            "text": "We publish the real numbers — CRI, R9, CCT tolerance, lumens. No hidden specs, no vague claims.",
-            "link_label": "",
-            "link_url": ""
+            "text": "We publish the real numbers — CRI, CCT tolerance, lumens. No hidden specs, no vague claims.",
+            "link_label": "VIEW FULL SPECS",
+            "link_url": "shopify://collections/all"
           }
         },
         "p2": {
