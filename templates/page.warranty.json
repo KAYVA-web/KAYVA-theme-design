@@ -53,6 +53,8 @@
         "subheading": "Every KAYVA product carries a written warranty against premature failure, colour shift beyond ±150K, and driver fault. Keep your order number — that is the whole registration process.",
         "btn_label": "Start a claim",
         "btn_link": "",
+        "btn_anchor": "",
+        "link_anchor": "",
         "link_label": "What's covered",
         "link_url": "",
         "bg": "#100800",
@@ -80,28 +82,36 @@
           "type": "step",
           "settings": {
             "title": "Send the details",
-            "text": "Order number, what failed, and a short video of the fault under normal use."
+            "text": "Order number, what failed, and a short video of the fault under normal use.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s2": {
           "type": "step",
           "settings": {
             "title": "We assess",
-            "text": "Two working days. If it's a driver or dimming issue we usually diagnose from the video."
+            "text": "Two working days. If it's a driver or dimming issue we usually diagnose from the video.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s3": {
           "type": "step",
           "settings": {
             "title": "Replacement ships",
-            "text": "Batch-matched where possible, so the replacement reads the same as the rest of the run."
+            "text": "Batch-matched where possible, so the replacement reads the same as the rest of the run.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s4": {
           "type": "step",
           "settings": {
             "title": "Return the faulty part",
-            "text": "Prepaid label included. We test every returned unit and publish the failure rate."
+            "text": "Prepaid label included. We test every returned unit and publish the failure rate.",
+            "link_label": "",
+            "link_url": ""
           }
         }
       },
@@ -114,6 +124,9 @@
       "settings": {
         "eyebrow": "Making A Claim",
         "heading": "Four steps. Most are settled in a week.",
+        "columns": 4,
+        "label_prefix": "Step",
+        "anchor": "",
         "bg": "#f5efe5"
       }
     },
@@ -186,17 +199,23 @@
       "settings": {
         "eyebrow": "Questions",
         "heading": "Common ones.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "before_install": {
       "type": "kayva-trade-program",
-      "disabled": true,
       "settings": {
         "eyebrow": "Before You Install",
         "heading": "Most claims are avoidable. Size the driver properly.",
         "text": "Our driver sizing guide covers per-feed run lengths, 80% load headroom, and which dimmers we've tested on TRIAC.",
-        "bg": "#3d2a15",
+        "bg": "#FFFFFF",
+        "style": "light",
+        "eyebrow_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "link_color": "",
         "btn_label": "Read the sizing guide",
         "btn_link": "",
         "link_label": "Download warranty terms (PDF)",
