@@ -116,8 +116,8 @@
           "settings": {
             "title": "Tested, Not Just Sourced",
             "text": "Every 3,000 m batch of strip and every 1,000 bulbs is CRI-tested before it ships — R9, CCT tolerance, SDCM.",
-            "link_label": "",
-            "link_url": ""
+            "link_label": "OUR STORY",
+            "link_url": "shopify://pages/about-us"
           }
         },
         "p3": {
@@ -125,7 +125,7 @@
           "settings": {
             "title": "Ra95+ Throughout",
             "text": "One quality standard across every product — strip, GU10, and E27. Museum-grade colour accuracy.",
-            "link_label": "",
+            "link_label": "WHY RA95+",
             "link_url": ""
           }
         }
