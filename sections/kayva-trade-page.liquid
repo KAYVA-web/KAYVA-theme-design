@@ -318,6 +318,7 @@
       {%- endif -%}
 
       {%- form 'contact' -%}
+        <input type="hidden" name="contact[form]" value="Trade page enquiry">
 
         {%- if form.posted_successfully? -%}
           <div class="kv-trade__success">

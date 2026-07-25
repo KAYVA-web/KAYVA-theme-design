@@ -175,6 +175,7 @@
 
       <div class="kv-tapp__form-box">
         {%- form 'contact', class: 'kv-tapp__form', id: 'kv-trade-apply-form' -%}
+          <input type="hidden" name="contact[form]" value="Trade application">
           {%- if form.posted_successfully? -%}
             <div class="kv-tapp__success kv-tapp__field--full">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8753A" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
