@@ -1,47 +1,93 @@
 {
   "sections": {
-    "main-about": {
-      "type": "main-about",
+    "hero": {
+      "type": "kayva-warranty-hero",
       "settings": {
-        "eyebrow": "Our Story",
-        "hero_heading": "Honest light for Singapore homes.",
-        "hero_subtext": "We exist to close the gap between premium renovation and generic Ra80 lighting.",
-        "story_label": "Why KAYVA Exists",
-        "story_heading": "Homeowners spend significant sums on renovation, then light their spaces with Ra80 bulbs.",
-        "story_body": "<p>Most never realise the light is the problem. Wood looks flat, skin looks grey, and food looks dull — not because of the renovation, but because of the bulbs.</p><p>KAYVA was founded to close that gap. We offer properly specified, properly documented Ra95+ lighting designed for the way Singapore homes actually live.</p>",
-        "story_cta_label": "Shop the Range",
-        "story_cta_url": "/collections/all",
-        "values_label": "Brand Values",
-        "values_heading": "What we stand for."
-      },
+        "eyebrow": "About KAYVA",
+        "heading": "The light was wrong.",
+        "subheading": "KAYVA exists because we could not buy the light we wanted. So we built it.",
+        "btn_label": "",
+        "link_label": "",
+        "bg": "#100800",
+        "glow": "#3D2A15",
+        "strip_bg": "#160D02"
+      }
+    },
+    "story": {
+      "type": "kayva-about-story",
       "blocks": {
-        "val-1": {
-          "type": "value",
-          "settings": {
-            "icon": "—",
-            "title": "Honest",
-            "text": "We state real numbers and admit trade-offs. Never overclaim."
-          }
-        },
-        "val-2": {
-          "type": "value",
-          "settings": {
-            "icon": "—",
-            "title": "Precise",
-            "text": "We care about specifications and get them right. Details matter."
-          }
-        },
-        "val-3": {
-          "type": "value",
-          "settings": {
-            "icon": "—",
-            "title": "Local",
-            "text": "Proudly Singaporean, with genuine knowledge of local homes and conditions."
-          }
-        }
+        "p1": { "type": "paragraph", "settings": { "text": "We had just finished renovating our home. Warm oak floors, a leather sofa we had saved for, paint colours chosen over three weekends. Under the downlights, all of it looked flat. The oak went grey. The leather lost its depth." } },
+        "p2": { "type": "paragraph", "settings": { "text": "The bulbs were the problem. They were labelled CRI 90. We tested them — CRI 80." } },
+        "p3": { "type": "paragraph", "settings": { "text": "So we went looking for the real thing." } }
       },
-      "block_order": ["val-1", "val-2", "val-3"]
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "How It Started",
+        "heading": "Labelled CRI 90. Measured CRI 80.",
+        "card_label": "What we found",
+        "card_text": "Bulb after bulb, strip after strip, the pattern repeated: \"high CRI\" on the listing, Ra80-something on the meter. In a market where nobody checks, nobody has to tell the truth.",
+        "quote": "KAYVA exists because we could not buy the light we wanted. So we built it.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "room_image": {
+      "type": "kayva-about-image",
+      "settings": {
+        "placeholder": "Add the room that started it — oak floor, leather, warm interior",
+        "height": 440,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "bg": "#FFFFFF"
+      }
+    },
+    "standard": {
+      "type": "kayva-about-standard",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "Ra95+", "label": "Every product" } },
+        "s2": { "type": "stat", "settings": { "value": "R9 > 50", "label": "Published, not hidden" } },
+        "s3": { "type": "stat", "settings": { "value": "Every batch", "label": "Tested, not sampled" } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "The Standard",
+        "heading": "What Ra95+ actually means.",
+        "text1": "CRI measures how faithfully light renders colour, on a scale to 100. Most LED lighting sold in Singapore sits at Ra80 — the point where reds dull, wood flattens and skin tones turn grey. Ra95+ is the standard museums and galleries specify, because at that level, things look the way they actually are.",
+        "text2": "Every KAYVA product is Ra95+ with R9 above 50 — R9 being the red rendering most brands leave unpublished, because it is the hardest to get right. We publish it, and every spec we publish is tested on every batch — factory reports plus our own spectrometer. If we cannot measure it, we do not print it.",
+        "bg": "#F5EFE5"
+      }
+    },
+    "tradeoff": {
+      "type": "kayva-cri-tradeoff",
+      "settings": {
+        "eyebrow": "The Honest Trade-Off",
+        "heading": "High CRI costs lumens.",
+        "text": "A Ra95+ bulb produces less raw brightness than a Ra80 bulb of the same wattage. We think that trade is worth making — you renovated for colour and texture, not for lux readings. But you should know it exists. That is the kind of brand we are trying to be.",
+        "btn_label": "Read why CRI matters",
+        "btn_link": "shopify://pages/why-cri",
+        "bg": "#FFFFFF"
+      }
+    },
+    "range_cta": {
+      "type": "kayva-trade-program",
+      "settings": {
+        "eyebrow": "The Range",
+        "heading": "Your home deserves light that tells the truth.",
+        "text": "",
+        "bg": "#F5EFE5",
+        "style": "light",
+        "btn_label": "Shop the range",
+        "btn_link": "shopify://collections/all",
+        "link_label": "Trade program",
+        "link_url": "shopify://pages/trade-program"
+      }
     }
   },
-  "order": ["main-about"]
+  "order": [
+    "hero",
+    "story",
+    "room_image",
+    "standard",
+    "tradeoff",
+    "range_cta"
+  ]
 }

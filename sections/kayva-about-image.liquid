@@ -1,0 +1,55 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-aimg-{{ section.id }} { background: {{ section.settings.bg }}; padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px; }
+.kv-aimg-{{ section.id }} .kv-aimg__frame {
+  position: relative;
+  width: 100%;
+  height: {{ section.settings.height }}px;
+  background: var(--kayva-cream, #F5EFE5);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.kv-aimg-{{ section.id }} .kv-aimg__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.kv-aimg-{{ section.id }} .kv-aimg__placeholder {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  padding: 24px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .kv-aimg-{{ section.id }} .kv-aimg__frame { height: {{ section.settings.height | times: 0.6 | round }}px; }
+}
+</style>
+
+<section class="kv-aimg-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-aimg__frame">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy">
+      {%- else -%}
+        <span class="kv-aimg__placeholder">{{ section.settings.placeholder }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Image Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder text", "default": "Add an image" },
+    { "type": "range", "id": "height", "label": "Height (px)", "min": 200, "max": 700, "step": 20, "default": 440 },
+    { "type": "range", "id": "padding_top", "label": "Top padding (px)", "min": 0, "max": 120, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (px)", "min": 0, "max": 120, "step": 4, "default": 80 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "KAYVA Image Banner" }
+  ]
+}
+{% endschema %}

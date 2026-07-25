@@ -1,0 +1,129 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-astd-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-astd-{{ section.id }} .kv-astd__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-astd-{{ section.id }} .kv-astd__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-astd-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-astd-{{ section.id }} .kv-astd__copy { padding-top: 6px; display: flex; flex-direction: column; gap: 22px; }
+.kv-astd-{{ section.id }} .kv-astd__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-astd-{{ section.id }} .kv-astd__stats {
+  display: grid;
+  grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 24px;
+}
+.kv-astd-{{ section.id }} .kv-astd__stat-value {
+  font-family: var(--kayva-font);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0 0 6px;
+}
+.kv-astd-{{ section.id }} .kv-astd__stat-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-astd-{{ section.id }} { padding: 56px 0; }
+  .kv-astd-{{ section.id }} .kv-astd__wrap { grid-template-columns: 1fr; gap: 28px; }
+  .kv-astd-{{ section.id }} .kv-astd__stats { grid-template-columns: 1fr; gap: 16px; }
+}
+</style>
+
+<section class="kv-astd-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-astd__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-astd__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="kv-astd__copy">
+        {%- if section.settings.text1 != blank -%}
+          <p class="kv-astd__text">{{ section.settings.text1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.text2 != blank -%}
+          <p class="kv-astd__text">{{ section.settings.text2 }}</p>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="kv-astd__stats">
+            {%- for block in section.blocks -%}
+              <div {{ block.shopify_attributes }}>
+                <p class="kv-astd__stat-value">{{ block.settings.value }}</p>
+                <p class="kv-astd__stat-label">{{ block.settings.label }}</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA About Standard",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Standard" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Ra95+ actually means." },
+    { "type": "textarea", "id": "text1", "label": "Paragraph 1", "default": "CRI measures how faithfully light renders colour, on a scale to 100. Most LED lighting sold in Singapore sits at Ra80 — the point where reds dull, wood flattens and skin tones turn grey. Ra95+ is the standard museums and galleries specify, because at that level, things look the way they actually are." },
+    { "type": "textarea", "id": "text2", "label": "Paragraph 2", "default": "Every KAYVA product is Ra95+ with R9 above 50 — R9 being the red rendering most brands leave unpublished, because it is the hardest to get right. We publish it, and every spec we publish is tested on every batch — factory reports plus our own spectrometer. If we cannot measure it, we do not print it." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "Ra95+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Every product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA About Standard",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "Ra95+", "label": "Every product" } },
+        { "type": "stat", "settings": { "value": "R9 > 50", "label": "Published, not hidden" } },
+        { "type": "stat", "settings": { "value": "Every batch", "label": "Tested, not sampled" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
