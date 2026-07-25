@@ -64,8 +64,8 @@
         "b2": {
           "type": "benefit",
           "settings": {
-            "title": "Sample packs at cost",
-            "text": "Every product, both CCTs, in a client-presentable box. S$29 delivered, credited back on your first order."
+            "title": "Sample at cost",
+            "text": "Every product, both CCTs, S$35 delivered, credited back on your first order."
           }
         },
         "b3": {
