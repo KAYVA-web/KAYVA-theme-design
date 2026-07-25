@@ -1,64 +1,148 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "kayva-trade-hero",
       "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
-          "disabled": true,
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
+        "stat1": { "type": "stat", "settings": { "value": "40+", "label": "Studios & contractors supplied" } },
+        "stat2": { "type": "stat", "settings": { "value": "≤5 SDCM", "label": "Batch colour consistency" } },
+        "stat3": { "type": "stat", "settings": { "value": "24h", "label": "Quotation turnaround" } }
       },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
+      "block_order": ["stat1", "stat2", "stat3"],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "eyebrow": "Trade Program",
+        "heading": "Specify Ra95+ without hedging your name on it.",
+        "subheading": "Trade pricing, sample packs at cost, batch-matched stock held for your project, and a WhatsApp line that answers within the working day. Currently supplying 40+ studios and contractors across Singapore.",
+        "btn_label": "Apply for a trade account",
+        "link_label": "WhatsApp us",
+        "bg": "#100800",
+        "glow": "#3D2A15"
+      }
+    },
+    "benefits": {
+      "type": "kayva-trade-benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "title": "Tiered trade pricing", "text": "15–30% off retail depending on annual volume. Published rates — no negotiating, no quote roulette." } },
+        "b2": { "type": "benefit", "settings": { "title": "Sample packs at cost", "text": "Every product, both CCTs, in a client-presentable box. S$29 delivered, credited back on your first order." } },
+        "b3": { "type": "benefit", "settings": { "title": "Batch reservation", "text": "We hold one production batch for your project so the strip in the kitchen matches the strip in the hallway." } },
+        "b4": { "type": "benefit", "settings": { "title": "Spec sheets on request", "text": "LM-79 reports, driver sizing, and cut-out dimensions issued as PDF for your tender documents." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "What You Get",
+        "heading": "Four things that make specifying easier.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "pricing": {
+      "type": "kayva-trade-pricing",
+      "blocks": {
+        "t1": { "type": "tier", "settings": { "tier": "Specifier", "discount": "15%", "condition": "off retail · no minimum", "features": "Sample pack at cost\nSpec sheets on request\nEmail support", "footnote": "For independent designers and first projects.", "style": "light", "badge": "" } },
+        "t2": { "type": "tier", "settings": { "tier": "Studio", "discount": "22%", "condition": "off retail · S$6,000 / year", "features": "Everything in Specifier\nBatch reservation per project\nDedicated WhatsApp line\n30-day payment terms", "footnote": "For ID firms running several renovations at once.", "style": "featured", "badge": "Most common" } },
+        "t3": { "type": "tier", "settings": { "tier": "Contractor", "discount": "30%", "condition": "off retail · S$25,000 / year", "features": "Everything in Studio\nStock held on consignment\nSite delivery, next working day\nNamed account manager", "footnote": "For fit-out contractors and lighting installers.", "style": "dark", "badge": "" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "eyebrow": "Pricing Tiers",
+        "heading": "Published rates. Reviewed every six months.",
+        "note": "Tier assessed on trailing 12-month spend. We move you up automatically.",
+        "bg": "#F5EFE5"
+      }
+    },
+    "sample_pack": {
+      "type": "kayva-trade-sample-pack",
+      "settings": {
+        "eyebrow": "Sample Pack",
+        "heading": "Put it in front of the client before you specify it.",
+        "text1": "One box: a 300mm cut of 480 Pro COB in 2700K and 4000K, both GU10 variants, and the E27 A60. Enough to hold against timber, stone, and paint under the client's own daylight.",
+        "text2": "S$29 delivered anywhere in Singapore, credited back in full on your first trade order.",
+        "btn_label": "Request a sample pack",
+        "link_label": "See what's inside",
+        "bg": "#FFFFFF"
+      }
+    },
+    "steps": {
+      "type": "kayva-trade-steps",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Apply", "text": "Company name, UEN, and the kind of work you do. Two minutes." } },
+        "s2": { "type": "step", "settings": { "title": "We verify", "text": "We check the UEN against ACRA and confirm your tier by email." } },
+        "s3": { "type": "step", "settings": { "title": "Sample", "text": "Sample pack ships the same day your account is approved." } },
+        "s4": { "type": "step", "settings": { "title": "Order", "text": "Trade prices show on the site when you're signed in. Quotes on WhatsApp." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "eyebrow": "How It Works",
+        "heading": "Approved in two working days.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "voices": {
+      "type": "kayva-trade-voices",
+      "blocks": {
+        "v1": { "type": "voice", "settings": { "quote": "The batch reservation is the part that matters. Three units, one project, and the cove light reads identical in all of them.", "name": "Marcus Teo", "role": "Principal, Atelier Nine · 14 projects" } },
+        "v2": { "type": "voice", "settings": { "quote": "I hand the sample box to clients and the conversation about CRI takes thirty seconds instead of ten minutes.", "name": "Priya Raman", "role": "Interior designer, independent" } },
+        "v3": { "type": "voice", "settings": { "quote": "Next-day site delivery and stock on consignment. We stopped carrying two other strip brands.", "name": "Lim Wei Sheng", "role": "Director, Northgate Fit-Out" } }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {
+        "eyebrow": "On The Ground",
+        "heading": "What the trade says.",
+        "bg": "#F5EFE5"
+      }
+    },
+    "apply": {
+      "type": "kayva-trade-apply",
+      "settings": {
+        "eyebrow": "Apply",
+        "heading": "Open a trade account.",
+        "text": "We reply within one working day with your tier, price list, and sample pack link. No deposit, no annual fee, no minimum first order.",
+        "contact_label": "Prefer to talk",
+        "whatsapp_display": "WhatsApp +65 8123 4567",
+        "email": "trade@kayva.sg",
+        "hours": "Mon–Fri, 9am–6pm SGT.",
+        "submit_label": "Submit application",
+        "privacy_note": "We use your details to verify the account and send pricing. Nothing else.",
+        "success_title": "Application received.",
+        "success_text": "We'll confirm your tier and send the trade price list within one working day. Check your spam folder if nothing arrives by then.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "faq": {
+      "type": "kayva-trade-faq",
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Do I need a registered company?", "answer": "<p>Yes — a Singapore UEN is required for trade pricing. Freelance designers registered as sole proprietors qualify for the Specifier tier.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Is there a minimum order?", "answer": "<p>No minimum per order. Tiers are assessed on trailing 12-month spend, so a quiet quarter doesn't cost you your rate.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "How long is stock held for a project?", "answer": "<p>Batch reservation runs 90 days from confirmation, extendable once. We hold the same production batch so CCT stays within ±100K and SDCM ≤5 across the whole job.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "What about warranty on installed goods?", "answer": "<p>Five years on strip and drivers, three years on GU10 and E27, from invoice date. We replace to your site, not to the end client, so you keep the relationship.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Can I buy on Shopee at trade prices?", "answer": "<p>No. Trade pricing applies on kayva.sg when signed in, or by invoice through WhatsApp. Shopee runs retail pricing only.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {
+        "eyebrow": "Questions",
+        "heading": "Before you apply.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "next_step": {
+      "type": "kayva-trade-program",
+      "settings": {
+        "eyebrow": "Next Step",
+        "heading": "Send us the project. We'll send back a specification.",
+        "text": "Drawings, a room list, or a photo of the cove detail is enough to start. Quantities, driver sizing, and price within 24 hours.",
+        "bg": "#3D2A15",
+        "btn_label": "Request a specification",
+        "link_label": "Download the price list"
       }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "benefits",
+    "pricing",
+    "sample_pack",
+    "steps",
+    "voices",
+    "apply",
+    "faq",
+    "next_step"
   ]
 }

@@ -1,0 +1,117 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-tvoi-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-tvoi-{{ section.id }} .kv-tvoi__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-tvoi-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0 0 40px;
+}
+.kv-tvoi-{{ section.id }} .kv-tvoi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.kv-tvoi-{{ section.id }} .kv-tvoi__card {
+  background: var(--kayva-white, #FFFFFF);
+  padding: 32px 28px;
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kv-tvoi-{{ section.id }} .kv-tvoi__quote {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+.kv-tvoi-{{ section.id }} .kv-tvoi__name {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.kv-tvoi-{{ section.id }} .kv-tvoi__role {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 2px 0 0;
+}
+@media (max-width: 900px) {
+  .kv-tvoi-{{ section.id }} { padding: 56px 0; }
+  .kv-tvoi-{{ section.id }} .kv-tvoi__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="kv-tvoi-{{ section.id }}">
+  <div class="kayva-page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="kv-tvoi__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="kv-tvoi__grid">
+      {%- for block in section.blocks -%}
+        <div class="kv-tvoi__card" {{ block.shopify_attributes }}>
+          <p class="kv-tvoi__quote">"{{ block.settings.quote }}"</p>
+          <div>
+            <p class="kv-tvoi__name">{{ block.settings.name }}</p>
+            {%- if block.settings.role != blank -%}
+              <p class="kv-tvoi__role">{{ block.settings.role }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Voices",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "On The Ground" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What the trade says." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "voice",
+      "name": "Quote",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "The batch reservation is the part that matters." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Marcus Teo" },
+        { "type": "text", "id": "role", "label": "Role", "default": "Principal, Atelier Nine · 14 projects" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Trade Voices",
+      "blocks": [
+        { "type": "voice", "settings": { "quote": "The batch reservation is the part that matters. Three units, one project, and the cove light reads identical in all of them.", "name": "Marcus Teo", "role": "Principal, Atelier Nine · 14 projects" } },
+        { "type": "voice", "settings": { "quote": "I hand the sample box to clients and the conversation about CRI takes thirty seconds instead of ten minutes.", "name": "Priya Raman", "role": "Interior designer, independent" } },
+        { "type": "voice", "settings": { "quote": "Next-day site delivery and stock on consignment. We stopped carrying two other strip brands.", "name": "Lim Wei Sheng", "role": "Director, Northgate Fit-Out" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

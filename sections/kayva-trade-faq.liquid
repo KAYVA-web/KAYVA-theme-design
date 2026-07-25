@@ -1,0 +1,127 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-tfaq-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; border-top: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-tfaq-{{ section.id }} .kv-tfaq__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-tfaq-{{ section.id }} .kv-tfaq__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-tfaq-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-tfaq-{{ section.id }} .kv-tfaq__list { border-top: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-tfaq-{{ section.id }} .kv-tfaq__item { border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-tfaq-{{ section.id }} .kv-tfaq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.kv-tfaq-{{ section.id }} .kv-tfaq__item summary::-webkit-details-marker { display: none; }
+.kv-tfaq-{{ section.id }} .kv-tfaq__q {
+  font-family: var(--kayva-font);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-tfaq-{{ section.id }} .kv-tfaq__sign {
+  font-family: var(--kayva-font);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--kayva-amber, #B8753A);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.kv-tfaq-{{ section.id }} .kv-tfaq__item[open] .kv-tfaq__sign::before { content: '−'; }
+.kv-tfaq-{{ section.id }} .kv-tfaq__item:not([open]) .kv-tfaq__sign::before { content: '+'; }
+.kv-tfaq-{{ section.id }} .kv-tfaq__a {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+  padding: 0 0 22px;
+  max-width: 620px;
+}
+@media (max-width: 900px) {
+  .kv-tfaq-{{ section.id }} { padding: 56px 0; }
+  .kv-tfaq-{{ section.id }} .kv-tfaq__wrap { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+
+<section class="kv-tfaq-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-tfaq__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-tfaq__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="kv-tfaq__list">
+        {%- for block in section.blocks -%}
+          <details class="kv-tfaq__item" {{ block.shopify_attributes }}>
+            <summary>
+              <span class="kv-tfaq__q">{{ block.settings.question }}</span>
+              <span class="kv-tfaq__sign" aria-hidden="true"></span>
+            </summary>
+            <div class="kv-tfaq__a">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Before you apply." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Q&A Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Do I need a registered company?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes — a Singapore UEN is required for trade pricing.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Trade FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "Do I need a registered company?", "answer": "<p>Yes — a Singapore UEN is required for trade pricing. Freelance designers registered as sole proprietors qualify for the Specifier tier.</p>" } },
+        { "type": "qa", "settings": { "question": "Is there a minimum order?", "answer": "<p>No minimum per order. Tiers are assessed on trailing 12-month spend, so a quiet quarter doesn't cost you your rate.</p>" } },
+        { "type": "qa", "settings": { "question": "How long is stock held for a project?", "answer": "<p>Batch reservation runs 90 days from confirmation, extendable once. We hold the same production batch so CCT stays within ±100K and SDCM ≤5 across the whole job.</p>" } },
+        { "type": "qa", "settings": { "question": "What about warranty on installed goods?", "answer": "<p>Five years on strip and drivers, three years on GU10 and E27, from invoice date. We replace to your site, not to the end client, so you keep the relationship.</p>" } },
+        { "type": "qa", "settings": { "question": "Can I buy on Shopee at trade prices?", "answer": "<p>No. Trade pricing applies on kayva.sg when signed in, or by invoice through WhatsApp. Shopee runs retail pricing only.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,139 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-tsam-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-tsam-{{ section.id }} .kv-tsam__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__media {
+  background: var(--kayva-cream, #F5EFE5);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__media img { width: 100%; height: 100%; object-fit: cover; }
+.kv-tsam-{{ section.id }} .kv-tsam__copy { display: flex; flex-direction: column; gap: 20px; }
+.kv-tsam-{{ section.id }} .kv-tsam__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+}
+.kv-tsam-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__actions { display: flex; gap: 24px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+.kv-tsam-{{ section.id }} .kv-tsam__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-dark-brown, #3D2A15);
+  padding: 15px 28px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__btn:hover { background: var(--kayva-amber, #B8753A); border-color: var(--kayva-amber, #B8753A); }
+.kv-tsam-{{ section.id }} .kv-tsam__link {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kayva-warm-brown, #6B4823);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.kv-tsam-{{ section.id }} .kv-tsam__link:hover { opacity: 0.7; }
+@media (max-width: 900px) {
+  .kv-tsam-{{ section.id }} { padding: 56px 0; }
+  .kv-tsam-{{ section.id }} .kv-tsam__wrap { grid-template-columns: 1fr; gap: 36px; }
+}
+</style>
+
+<section class="kv-tsam-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-tsam__wrap">
+      <div class="kv-tsam__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}" loading="lazy">
+        {%- else -%}
+          <svg width="320" height="240" viewBox="0 0 320 240" fill="none" aria-hidden="true">
+            <rect x="34" y="58" width="252" height="126" stroke="#3D2A15" stroke-width="1.5" opacity=".35"></rect>
+            <rect x="34" y="58" width="252" height="26" fill="#3D2A15" opacity=".08"></rect>
+            <circle cx="94" cy="128" r="22" stroke="#B8753A" stroke-width="1.5" opacity=".55"></circle>
+            <circle cx="160" cy="128" r="22" stroke="#B8753A" stroke-width="1.5" opacity=".55"></circle>
+            <rect x="204" y="120" width="58" height="16" stroke="#B8753A" stroke-width="1.5" opacity=".55"></rect>
+            <text x="160" y="76" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" letter-spacing="3" fill="#3D2A15" opacity=".5">KAYVA SAMPLE PACK</text>
+          </svg>
+        {%- endif -%}
+      </div>
+      <div class="kv-tsam__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-tsam__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text1 != blank -%}
+          <p class="kv-tsam__text">{{ section.settings.text1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.text2 != blank -%}
+          <p class="kv-tsam__text">{{ section.settings.text2 }}</p>
+        {%- endif -%}
+        <div class="kv-tsam__actions">
+          {%- if section.settings.btn_label != blank -%}
+            <a href="{{ section.settings.btn_link | default: '#apply' }}" class="kv-tsam__btn">{{ section.settings.btn_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.link_label != blank -%}
+            <a href="{{ section.settings.link_url | default: '#' }}" class="kv-tsam__link">{{ section.settings.link_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Sample Pack",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image (placeholder shown if blank)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Sample Pack" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Put it in front of the client before you specify it." },
+    { "type": "textarea", "id": "text1", "label": "Paragraph 1", "default": "One box: a 300mm cut of 480 Pro COB in 2700K and 4000K, both GU10 variants, and the E27 A60. Enough to hold against timber, stone, and paint under the client's own daylight." },
+    { "type": "textarea", "id": "text2", "label": "Paragraph 2", "default": "S$29 delivered anywhere in Singapore, credited back in full on your first trade order." },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Request a sample pack" },
+    { "type": "url", "id": "btn_link", "label": "Button link (default #apply)" },
+    { "type": "text", "id": "link_label", "label": "Text link label", "default": "See what's inside" },
+    { "type": "url", "id": "link_url", "label": "Text link URL" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "KAYVA Trade Sample Pack" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-thero-{{ section.id }} {
+  background: {{ section.settings.bg }};
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+}
+.kv-thero-{{ section.id }}::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 24% 60%, {{ section.settings.glow }} 0%, {{ section.settings.bg }} 58%);
+}
+.kv-thero-{{ section.id }} .kv-thero__copy {
+  position: relative;
+  z-index: 1;
+  padding: 96px 56px 96px 0;
+}
+.kv-thero-{{ section.id }} .kv-thero__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 22px;
+}
+.kv-thero-{{ section.id }} h1 {
+  font-family: var(--kayva-font);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 200;
+  color: var(--kayva-cream, #F5EFE5);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin: 0 0 26px;
+  max-width: 620px;
+}
+.kv-thero-{{ section.id }} .kv-thero__sub {
+  font-family: var(--kayva-font);
+  font-size: 17px;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.5;
+  line-height: 1.65;
+  margin: 0 0 40px;
+  max-width: 460px;
+}
+.kv-thero-{{ section.id }} .kv-thero__actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.kv-thero-{{ section.id }} .kv-thero__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  border: 1px solid rgba(245, 239, 229, 0.6);
+  padding: 15px 28px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.kv-thero-{{ section.id }} .kv-thero__btn:hover { background: var(--kayva-cream, #F5EFE5); color: var(--kayva-dark-brown, #3D2A15); }
+.kv-thero-{{ section.id }} .kv-thero__link {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.6;
+  border-bottom: 1px solid rgba(245, 239, 229, 0.28);
+  padding-bottom: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.kv-thero-{{ section.id }} .kv-thero__link:hover { opacity: 1; }
+.kv-thero-{{ section.id }} .kv-thero__stats {
+  position: relative;
+  z-index: 1;
+  border-left: 1px solid rgba(245, 239, 229, 0.09);
+  padding: 96px 0 96px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.kv-thero-{{ section.id }} .kv-thero__stat { padding: 26px 0; border-bottom: 1px solid rgba(245, 239, 229, 0.1); }
+.kv-thero-{{ section.id }} .kv-thero__stat:first-child { padding-top: 0; }
+.kv-thero-{{ section.id }} .kv-thero__stat:last-child { padding-bottom: 0; border-bottom: none; }
+.kv-thero-{{ section.id }} .kv-thero__stat-value {
+  font-family: var(--kayva-font);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--kayva-cream, #F5EFE5);
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin: 0 0 8px;
+}
+.kv-thero-{{ section.id }} .kv-thero__stat-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.38;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-thero-{{ section.id }} { grid-template-columns: 1fr; }
+  .kv-thero-{{ section.id }} .kv-thero__copy { padding: 64px 0 40px; }
+  .kv-thero-{{ section.id }} .kv-thero__stats { border-left: none; border-top: 1px solid rgba(245,239,229,0.09); padding: 40px 0 64px; }
+}
+</style>
+
+<section class="kv-thero-{{ section.id }}-outer" style="background: {{ section.settings.bg }};">
+  <div class="kayva-page-width">
+    <div class="kv-thero-{{ section.id }}">
+      <div class="kv-thero__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-thero__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h1>{{ section.settings.heading }}</h1>
+        {%- if section.settings.subheading != blank -%}
+          <p class="kv-thero__sub">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+        <div class="kv-thero__actions">
+          {%- if section.settings.btn_label != blank -%}
+            <a href="{{ section.settings.btn_link | default: '#apply' }}" class="kv-thero__btn">{{ section.settings.btn_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.link_label != blank -%}
+            <a href="{{ section.settings.link_url | default: '#' }}" class="kv-thero__link">{{ section.settings.link_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="kv-thero__stats">
+        {%- for block in section.blocks -%}
+          <div class="kv-thero__stat" {{ block.shopify_attributes }}>
+            <p class="kv-thero__stat-value">{{ block.settings.value }}</p>
+            <p class="kv-thero__stat-label">{{ block.settings.label }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Hero",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trade Program" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Specify Ra95+ without hedging your name on it." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Trade pricing, sample packs at cost, batch-matched stock held for your project, and a WhatsApp line that answers within the working day. Currently supplying 40+ studios and contractors across Singapore." },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Apply for a trade account" },
+    { "type": "url", "id": "btn_link", "label": "Button link (default #apply)" },
+    { "type": "text", "id": "link_label", "label": "Text link label", "default": "WhatsApp us" },
+    { "type": "url", "id": "link_url", "label": "Text link URL" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#100800" },
+    { "type": "color", "id": "glow", "label": "Glow colour", "default": "#3D2A15" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "40+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Studios & contractors supplied" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Trade Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "40+", "label": "Studios & contractors supplied" } },
+        { "type": "stat", "settings": { "value": "≤5 SDCM", "label": "Batch colour consistency" } },
+        { "type": "stat", "settings": { "value": "24h", "label": "Quotation turnaround" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

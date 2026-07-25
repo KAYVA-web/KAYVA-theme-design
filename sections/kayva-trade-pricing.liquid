@@ -1,0 +1,210 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-tpri-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-tpri-{{ section.id }} .kv-tpri__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-tpri-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 280px;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__card {
+  background: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__card--featured { border: 1.5px solid var(--kayva-dark-brown, #3D2A15); }
+.kv-tpri-{{ section.id }} .kv-tpri__badge {
+  position: absolute;
+  top: -1.5px;
+  right: -1.5px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  font-family: var(--kayva-font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__tier {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 14px;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__pct {
+  font-family: var(--kayva-font);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__sub {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-warm-brown, #6B4823);
+  margin: 8px 0 0;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__features {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-tpri-{{ section.id }} .kv-tpri__features li {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.6;
+  opacity: 0.85;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__foot {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: auto 0 0;
+}
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark { background: var(--kayva-dark-brown, #3D2A15); border-color: var(--kayva-dark-brown, #3D2A15); }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__tier { color: var(--kayva-amber, #B8753A); }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__pct { color: var(--kayva-cream, #F5EFE5); }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__sub { color: var(--kayva-cream, #F5EFE5); opacity: 0.55; }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__features { border-top-color: rgba(245, 239, 229, 0.14); }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__features li { color: var(--kayva-cream, #F5EFE5); opacity: 0.75; }
+.kv-tpri-{{ section.id }} .kv-tpri__card--dark .kv-tpri__foot { color: var(--kayva-cream, #F5EFE5); opacity: 0.45; }
+@media (max-width: 900px) {
+  .kv-tpri-{{ section.id }} { padding: 56px 0; }
+  .kv-tpri-{{ section.id }} .kv-tpri__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="kv-tpri-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-tpri__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-tpri__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.note != blank -%}
+        <p class="kv-tpri__note">{{ section.settings.note }}</p>
+      {%- endif -%}
+    </div>
+    <div class="kv-tpri__grid">
+      {%- for block in section.blocks -%}
+        <div class="kv-tpri__card kv-tpri__card--{{ block.settings.style }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.badge != blank -%}
+            <span class="kv-tpri__badge">{{ block.settings.badge }}</span>
+          {%- endif -%}
+          <div>
+            <p class="kv-tpri__tier">{{ block.settings.tier }}</p>
+            <p class="kv-tpri__pct">{{ block.settings.discount }}</p>
+            <p class="kv-tpri__sub">{{ block.settings.condition }}</p>
+          </div>
+          <ul class="kv-tpri__features">
+            {%- assign feats = block.settings.features | newline_to_br | split: '<br />' -%}
+            {%- for feat in feats -%}
+              {%- assign f = feat | strip -%}
+              {%- if f != blank -%}<li>{{ f }}</li>{%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <p class="kv-tpri__foot">{{ block.settings.footnote }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Pricing",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Pricing Tiers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Published rates. Reviewed every six months." },
+    { "type": "textarea", "id": "note", "label": "Side note", "default": "Tier assessed on trailing 12-month spend. We move you up automatically." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Pricing tier",
+      "settings": [
+        { "type": "text", "id": "tier", "label": "Tier name", "default": "Specifier" },
+        { "type": "text", "id": "discount", "label": "Discount", "default": "15%" },
+        { "type": "text", "id": "condition", "label": "Condition line", "default": "off retail · no minimum" },
+        { "type": "textarea", "id": "features", "label": "Features (one per line)", "default": "Sample pack at cost\nSpec sheets on request\nEmail support" },
+        { "type": "text", "id": "footnote", "label": "Footnote", "default": "For independent designers and first projects." },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Card style",
+          "options": [
+            { "value": "light", "label": "Light" },
+            { "value": "featured", "label": "Featured (dark border)" },
+            { "value": "dark", "label": "Dark" }
+          ],
+          "default": "light"
+        },
+        { "type": "text", "id": "badge", "label": "Corner badge (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Trade Pricing",
+      "blocks": [
+        { "type": "tier", "settings": { "tier": "Specifier", "discount": "15%", "condition": "off retail · no minimum", "features": "Sample pack at cost\nSpec sheets on request\nEmail support", "footnote": "For independent designers and first projects.", "style": "light" } },
+        { "type": "tier", "settings": { "tier": "Studio", "discount": "22%", "condition": "off retail · S$6,000 / year", "features": "Everything in Specifier\nBatch reservation per project\nDedicated WhatsApp line\n30-day payment terms", "footnote": "For ID firms running several renovations at once.", "style": "featured", "badge": "Most common" } },
+        { "type": "tier", "settings": { "tier": "Contractor", "discount": "30%", "condition": "off retail · S$25,000 / year", "features": "Everything in Studio\nStock held on consignment\nSite delivery, next working day\nNamed account manager", "footnote": "For fit-out contractors and lighting installers.", "style": "dark" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
