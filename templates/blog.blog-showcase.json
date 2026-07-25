@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,18 +16,24 @@
         "heading": "Everything we know about specifying light properly.",
         "subheading": "Numbers, test reports and installation detail — written for homeowners mid-renovation and the people specifying for them.",
         "btn_label": "",
+        "btn_link": "",
+        "btn_anchor": "",
+        "link_anchor": "",
         "link_label": "",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "featured": {
       "type": "kayva-blog-featured",
       "settings": {
+        "article": "lighting-guides/cob-led-strip-singapore-what-to-buy",
         "label": "Featured",
+        "meta_override": "",
         "read_label": "Read the guide",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "grid": {
@@ -28,7 +43,7 @@
         "show_filters": true,
         "posts_per_page": 9,
         "empty_text": "Guides are on the way. Check back soon.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "newsletter": {
@@ -40,7 +55,7 @@
         "placeholder": "you@email.com",
         "btn_label": "Subscribe",
         "success_text": "Subscribed. See you next month.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     }
   },
