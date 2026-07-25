@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,12 +16,14 @@
         "heading": "Size the driver properly. It is the part that fails first.",
         "subheading": "Enter your run length and the strip's watts per metre. We add 20% headroom and tell you which 24V driver to buy.",
         "btn_label": "Start sizing",
+        "btn_link": "",
         "btn_anchor": "#calc",
-        "link_label": "Quick reference",
         "link_anchor": "#reference",
+        "link_label": "Quick reference",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "rule": {
@@ -21,61 +32,152 @@
         "eyebrow": "The Simple Rule",
         "heading": "Length × watts per metre, plus 20%.",
         "text": "Multiply your strip length by its rated watts per metre — 12W/m on KAYVA 480 Pro — then add 20% headroom so the driver isn't running at full capacity. A driver running flat-out runs hot and fails early. Check the W/m figure on your strip's spec sheet; generic strip is often rated optimistically.",
-        "bg": "#FFFFFF"
+        "btn_label": "",
+        "btn_link": "",
+        "bg": "#ffffff"
       }
     },
     "calculator": {
       "type": "kayva-driver-calculator",
       "blocks": {
-        "p12": { "type": "preset", "settings": { "label": "12 — 480 Pro", "value": 12 } },
-        "p14": { "type": "preset", "settings": { "label": "14", "value": 14 } },
-        "p18": { "type": "preset", "settings": { "label": "18", "value": 18 } }
+        "p12": {
+          "type": "preset",
+          "settings": {
+            "label": "12 — 480 Pro",
+            "value": 12
+          }
+        },
+        "p14": {
+          "type": "preset",
+          "settings": {
+            "label": "14",
+            "value": 14
+          }
+        },
+        "p18": {
+          "type": "preset",
+          "settings": {
+            "label": "18",
+            "value": 18
+          }
+        }
       },
-      "block_order": ["p12", "p14", "p18"],
+      "block_order": [
+        "p12",
+        "p14",
+        "p18"
+      ],
       "settings": {
         "headroom": 20,
         "default_length": 10,
         "default_wpm": 12,
         "wpm_hint": "Printed on the reel or the spec sheet. If a listing quotes only total watts for a 5 m reel, divide by 5.",
         "result_tag": "Buy this driver",
-        "btn_label": "Shop drivers",
-        "bg": "#FFFFFF"
+        "btn_label": "",
+        "btn_link": "",
+        "bg": "#ffffff"
       }
     },
     "reference": {
       "type": "kayva-driver-reference",
       "blocks": {
-        "l3": { "type": "run", "settings": { "length": 3 } },
-        "l5": { "type": "run", "settings": { "length": 5 } },
-        "l8": { "type": "run", "settings": { "length": 8 } },
-        "l10": { "type": "run", "settings": { "length": 10 } },
-        "l15": { "type": "run", "settings": { "length": 15 } },
-        "l20": { "type": "run", "settings": { "length": 20 } }
+        "l3": {
+          "type": "run",
+          "settings": {
+            "length": 3
+          }
+        },
+        "l5": {
+          "type": "run",
+          "settings": {
+            "length": 5
+          }
+        },
+        "l8": {
+          "type": "run",
+          "settings": {
+            "length": 8
+          }
+        },
+        "l10": {
+          "type": "run",
+          "settings": {
+            "length": 10
+          }
+        },
+        "l15": {
+          "type": "run",
+          "settings": {
+            "length": 15
+          }
+        },
+        "l20": {
+          "type": "run",
+          "settings": {
+            "length": 20
+          }
+        }
       },
-      "block_order": ["l3", "l5", "l8", "l10", "l15", "l20"],
+      "block_order": [
+        "l3",
+        "l5",
+        "l8",
+        "l10",
+        "l15",
+        "l20"
+      ],
       "settings": {
         "eyebrow": "Quick Reference",
         "note": "Recalculates with the watts per metre you set above.",
         "default_wpm": 12,
         "headroom": 20,
         "footnote": "For runs 6 m and longer, power the strip from both ends or split it into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "buying": {
       "type": "kayva-trade-steps",
       "blocks": {
-        "b1": { "type": "step", "settings": { "title": "24V constant voltage", "text": "Not constant current, not 12V. Constant-current drivers will not run strip correctly." } },
-        "b2": { "type": "step", "settings": { "title": "TRIAC-dimmable, if dimming", "text": "The strip does not dim on its own — the driver does. Pair it with a compatible wall dimmer." } },
-        "b3": { "type": "step", "settings": { "title": "Licensed electrician for mains", "text": "Required in Singapore. The low-voltage side — driver to strip — is safe to handle unpowered." } }
+        "b1": {
+          "type": "step",
+          "settings": {
+            "title": "24V constant voltage",
+            "text": "Not constant current, not 12V. Constant-current drivers will not run strip correctly.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "title": "TRIAC-dimmable, if dimming",
+            "text": "The strip does not dim on its own — the driver does. Pair it with a compatible wall dimmer.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "title": "Licensed electrician for mains",
+            "text": "Required in Singapore. The low-voltage side — driver to strip — is safe to handle unpowered.",
+            "link_label": "",
+            "link_url": ""
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
       "settings": {
         "eyebrow": "What Driver To Buy",
         "heading": "Three things to get right.",
         "columns": 3,
         "label_prefix": "none",
-        "bg": "#FFFFFF"
+        "anchor": "",
+        "bg": "#ffffff"
       }
     },
     "not_sure": {
@@ -84,7 +186,7 @@
         "eyebrow": "Not Sure",
         "heading": "Send us the cove length. We will spec the driver.",
         "text": "Message us on WhatsApp with your run lengths and whether it is on a dimmer. No obligation.",
-        "bg": "#F5EFE5",
+        "bg": "#f5efe5",
         "style": "light",
         "btn_label": "Shop the range",
         "btn_link": "shopify://collections/all",
