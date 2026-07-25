@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,30 +16,65 @@
         "heading": "Same room. Same bulb wattage. Different light.",
         "subheading": "CRI is the spec most lighting brands hope you never ask about.",
         "btn_label": "See the R9 gap",
+        "btn_link": "",
         "btn_anchor": "#r9",
-        "link_label": "How to buy",
         "link_anchor": "#buying",
+        "link_label": "How to buy",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "scale": {
       "type": "kayva-cri-scale",
       "blocks": {
-        "r1": { "type": "row", "settings": { "label": "Sunlight", "value": "Ra100", "style": "default" } },
-        "r2": { "type": "row", "settings": { "label": "Candle flame", "value": "Ra99", "style": "default" } },
-        "r3": { "type": "row", "settings": { "label": "Every KAYVA product", "value": "Ra95+", "style": "accent" } },
-        "r4": { "type": "row", "settings": { "label": "Typical LED sold in Singapore", "value": "Ra80", "style": "muted" } }
+        "r1": {
+          "type": "row",
+          "settings": {
+            "label": "Sunlight",
+            "value": "Ra100",
+            "style": "default"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "label": "Candle flame",
+            "value": "Ra99",
+            "style": "default"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "label": "Every KAYVA product",
+            "value": "Ra95+",
+            "style": "accent"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "label": "Typical LED sold in Singapore",
+            "value": "Ra80",
+            "style": "muted"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
       "settings": {
         "eyebrow": "The Spec",
         "heading": "A scale to 100. Most LEDs stop at 80.",
         "text1": "CRI — Colour Rendering Index — measures how faithfully a light source shows colour compared with natural light, on a scale to 100. Sunlight scores 100. A candle scores close to 100. Most LED lighting sold in Singapore scores around 80.",
         "text2": "At Ra80, roughly a fifth of colour fidelity is gone — and it is not lost evenly. Reds fade first. Wood turns grey-brown, leather goes flat, skin looks tired, food looks less fresh. The room is bright, but everything in it is slightly wrong.",
         "highlight": "Nothing in the room changed. Only the light did.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "compare": {
@@ -38,22 +82,42 @@
       "settings": {
         "eyebrow": "Side By Side",
         "heading": "See it on the same room.",
+        "image": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_20_40_PM.png",
         "low_label": "Ra80",
         "high_label": "Ra95+",
         "low_badge": "Ra80 — R9 below 20",
         "high_badge": "Ra95+ — R9 above 50",
         "low_filter": "saturate(0.62) contrast(0.94) hue-rotate(-6deg) brightness(1.06)",
         "caption": "Illustration of the effect. Colour rendering varies by object and light source.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "r9": {
       "type": "kayva-cri-r9",
       "blocks": {
-        "bar1": { "type": "bar", "settings": { "label": "Typical Ra80 LED", "note": "R9 often below 20", "percent": 18, "accent": false } },
-        "bar2": { "type": "bar", "settings": { "label": "Every KAYVA product", "note": "R9 above 50", "percent": 56, "accent": true } }
+        "bar1": {
+          "type": "bar",
+          "settings": {
+            "label": "Typical Ra80 LED",
+            "note": "R9 often below 20",
+            "percent": 18,
+            "accent": false
+          }
+        },
+        "bar2": {
+          "type": "bar",
+          "settings": {
+            "label": "Every KAYVA product",
+            "note": "R9 above 50",
+            "percent": 56,
+            "accent": true
+          }
+        }
       },
-      "block_order": ["bar1", "bar2"],
+      "block_order": [
+        "bar1",
+        "bar2"
+      ],
       "settings": {
         "eyebrow": "The Number Inside The Number",
         "heading": "R9: the one nobody publishes.",
@@ -61,7 +125,7 @@
         "text2": "Red matters more than any other colour at home. It is in skin tones, timber, leather, brick, tomatoes, a glass of wine. Low R9 is why food photographs badly in some kitchens and why faces look washed out in some mirrors.",
         "card1": "Every KAYVA product is Ra95+ with R9 above 50, and both numbers are backed by an independent test report. If we cannot verify a spec, we do not print it.",
         "card2": "Ra95+ is the standard museums and galleries specify. Your home holds the things you chose — it deserves the same standard.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "tradeoff": {
@@ -70,24 +134,52 @@
         "eyebrow": "The Honest Trade-Off",
         "heading": "High CRI costs lumens.",
         "text": "A Ra95+ bulb produces less raw brightness than a Ra80 bulb of the same wattage, because rendering colour faithfully takes energy that would otherwise go to raw output. We think the trade is worth making — you renovated for colour and texture, not for lux readings. But you should know it exists.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "buying": {
       "type": "kayva-trade-steps",
       "blocks": {
-        "q1": { "type": "step", "settings": { "title": "Ask for the test report", "text": "Not the listing claim. The report names the lab, the sample, and the date." } },
-        "q2": { "type": "step", "settings": { "title": "Read Ra and R9 separately", "text": "If a brand publishes only \"high CRI\" with no number, or a number with no report, treat it as Ra80 until proven otherwise." } },
-        "q3": { "type": "step", "settings": { "title": "Then choose colour temperature", "text": "CRI is half the decision. Our Kelvin guide covers the other half.", "link_label": "Kelvin guide →" } }
+        "q1": {
+          "type": "step",
+          "settings": {
+            "title": "Ask for the test report",
+            "text": "Not the listing claim. The report names the lab, the sample, and the date.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "q2": {
+          "type": "step",
+          "settings": {
+            "title": "Read Ra and R9 separately",
+            "text": "If a brand publishes only \"high CRI\" with no number, or a number with no report, treat it as Ra80 until proven otherwise.",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "q3": {
+          "type": "step",
+          "settings": {
+            "title": "Then choose colour temperature",
+            "text": "CRI is half the decision. Our Kelvin guide covers the other half.",
+            "link_label": "Kelvin guide →",
+            "link_url": ""
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ],
       "settings": {
         "eyebrow": "How To Buy With This In Mind",
         "heading": "Three questions worth asking.",
         "columns": 3,
         "label_prefix": "none",
         "anchor": "buying",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "range_cta": {
@@ -96,10 +188,11 @@
         "eyebrow": "The Range",
         "heading": "Ra95+ with R9 above 50. Verified, published, every product.",
         "text": "",
-        "bg": "#3D2A15",
+        "bg": "#3d2a15",
         "btn_label": "Shop the range",
         "btn_link": "shopify://collections/all-products",
-        "link_label": "Download test reports (PDF)"
+        "link_label": "Download test reports (PDF)",
+        "link_url": ""
       }
     }
   },
