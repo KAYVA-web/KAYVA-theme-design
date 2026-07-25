@@ -1,151 +1,66 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "kayva-warranty-hero",
       "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "name": "t:names.content",
-          "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
+        "c1": { "type": "stat", "settings": { "value": "WhatsApp", "label": "Fastest · same day" } },
+        "c2": { "type": "stat", "settings": { "value": "Email", "label": "One working day" } },
+        "c3": { "type": "stat", "settings": { "value": "Trade", "label": "Account manager, direct" } }
       },
-      "block_order": [
-        "title",
-        "content"
-      ],
+      "block_order": ["c1", "c2", "c3"],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 0
+        "eyebrow": "Contact",
+        "heading": "Ask us the specification questions.",
+        "subheading": "Send your run lengths, your ceiling type, or a photo of the fixture you are replacing. A real person answers, usually within a working day.",
+        "btn_label": "",
+        "link_label": "",
+        "bg": "#100800",
+        "glow": "#3D2A15",
+        "strip_bg": "#160D02"
       }
     },
-    "form": {
-      "type": "section",
+    "contact": {
+      "type": "kayva-contact",
       "blocks": {
-        "contact_form_UwiCkQ": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
+        "ch1": { "type": "channel", "settings": { "label": "WhatsApp", "value": "+65 8807 4359", "note": "Mon–Sat, 10am–7pm. Photos and voice notes welcome." } },
+        "ch2": { "type": "channel", "settings": { "label": "Email", "value": "hello@kayva.sg", "note": "Specification questions, quotes and test reports." } },
+        "ch3": { "type": "channel", "settings": { "label": "Warranty claims", "value": "support@kayva.sg", "note": "Use the claim form — it gets you a reference number.", "link": "shopify://pages/warranty" } },
+        "ch4": { "type": "channel", "settings": { "label": "Trade accounts", "value": "trade@kayva.sg", "note": "Existing accounts: go through your account manager.", "link": "shopify://pages/trade-program" } }
       },
-      "block_order": [
-        "contact_form_UwiCkQ"
-      ],
-      "name": "t:names.contact_form",
+      "block_order": ["ch1", "ch2", "ch3", "ch4"],
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 84
+        "eyebrow": "Direct",
+        "heading": "Reach us here.",
+        "card_label": "How we work",
+        "card_text": "We sell online only. Send your run lengths, ceiling type and a photo of what you are replacing, and we will spec the product and the driver before you order.",
+        "card_strong": "Every spec we quote is backed by a test report",
+        "card_note": "Ask for it — we send the Ra and R9 figures for the batch you are buying.",
+        "topics": "Specification help\nOrder or delivery\nTrade enquiry\nSomething else",
+        "form_hint": "Run lengths and a photo of the ceiling get you a faster, more useful answer. Attach photos when we reply by email.",
+        "submit_label": "Send message",
+        "success_title": "Message received.",
+        "success_text": "We reply within one working day — faster on WhatsApp if it is urgent.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "guides_cta": {
+      "type": "kayva-trade-program",
+      "settings": {
+        "eyebrow": "Before You Write",
+        "heading": "Most questions are answered in the guides.",
+        "text": "Driver sizing, colour temperature and how to read a test report — all written out, with the numbers.",
+        "bg": "#F5EFE5",
+        "style": "light",
+        "btn_label": "Read the guides",
+        "btn_link": "shopify://blogs/lighting-guides",
+        "link_label": "Driver sizing calculator",
+        "link_url": "shopify://pages/driver-sizing"
       }
     }
   },
   "order": [
-    "main",
-    "form"
+    "hero",
+    "contact",
+    "guides_cta"
   ]
 }

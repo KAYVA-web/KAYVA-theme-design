@@ -1,0 +1,322 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-contact-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-contact-{{ section.id }} .kv-contact__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-contact-{{ section.id }} .kv-contact__left { display: flex; flex-direction: column; gap: 28px; }
+.kv-contact-{{ section.id }} .kv-contact__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-contact-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.kv-contact-{{ section.id }} .kv-contact__channels { border-top: 1px solid var(--kayva-line, #E8E0D2); display: flex; flex-direction: column; }
+.kv-contact-{{ section.id }} .kv-contact__channel {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.kv-contact-{{ section.id }} .kv-contact__channel:last-child { border-bottom: none; }
+.kv-contact-{{ section.id }} .kv-contact__channel-label {
+  font-family: var(--kayva-font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0;
+}
+.kv-contact-{{ section.id }} .kv-contact__channel-value {
+  font-family: var(--kayva-font);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+  text-decoration: none;
+}
+.kv-contact-{{ section.id }} .kv-contact__channel-value:hover { color: var(--kayva-amber, #B8753A); }
+.kv-contact-{{ section.id }} .kv-contact__channel-note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+}
+.kv-contact-{{ section.id }} .kv-contact__card {
+  background: var(--kayva-cream, #F5EFE5);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 28px;
+}
+.kv-contact-{{ section.id }} .kv-contact__card-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 12px;
+}
+.kv-contact-{{ section.id }} .kv-contact__card-text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0 0 14px;
+}
+.kv-contact-{{ section.id }} .kv-contact__card-strong {
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 500;
+}
+.kv-contact-{{ section.id }} .kv-contact__card-note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+.kv-contact-{{ section.id }} .kv-contact__form-box { border: 1px solid var(--kayva-line, #E8E0D2); padding: 36px; }
+.kv-contact-{{ section.id }} .kv-contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.kv-contact-{{ section.id }} .kv-contact__field { display: flex; flex-direction: column; gap: 7px; }
+.kv-contact-{{ section.id }} .kv-contact__field--full { grid-column: span 2; }
+.kv-contact-{{ section.id }} .kv-contact__field label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-contact-{{ section.id }} .kv-contact__field input,
+.kv-contact-{{ section.id }} .kv-contact__field select,
+.kv-contact-{{ section.id }} .kv-contact__field textarea {
+  font-family: var(--kayva-font);
+  padding: 12px 16px;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  font-size: 14px;
+  color: var(--kayva-ink, #1F1B16);
+  background: var(--kayva-white, #FFFFFF);
+  outline: none;
+  border-radius: 0;
+  width: 100%;
+}
+.kv-contact-{{ section.id }} .kv-contact__field textarea { resize: vertical; line-height: 1.6; }
+.kv-contact-{{ section.id }} .kv-contact__field input:focus,
+.kv-contact-{{ section.id }} .kv-contact__field select:focus,
+.kv-contact-{{ section.id }} .kv-contact__field textarea:focus { border-color: var(--kayva-dark-brown, #3D2A15); }
+.kv-contact-{{ section.id }} .kv-contact__footer {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 22px;
+  flex-wrap: wrap;
+}
+.kv-contact-{{ section.id }} .kv-contact__hint {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 320px;
+}
+.kv-contact-{{ section.id }} .kv-contact__submit {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-dark-brown, #3D2A15);
+  padding: 15px 28px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.kv-contact-{{ section.id }} .kv-contact__submit:hover { background: var(--kayva-amber, #B8753A); border-color: var(--kayva-amber, #B8753A); }
+.kv-contact-{{ section.id }} .kv-contact__success { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px 0; }
+.kv-contact-{{ section.id }} .kv-contact__success-title {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0;
+}
+.kv-contact-{{ section.id }} .kv-contact__success-text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-contact-{{ section.id }} .kv-contact__errors {
+  grid-column: span 2;
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: #A94438;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-contact-{{ section.id }} { padding: 56px 0; }
+  .kv-contact-{{ section.id }} .kv-contact__wrap { grid-template-columns: 1fr; gap: 40px; }
+  .kv-contact-{{ section.id }} .kv-contact__form-box { padding: 24px; }
+  .kv-contact-{{ section.id }} .kv-contact__form { grid-template-columns: 1fr; }
+  .kv-contact-{{ section.id }} .kv-contact__field--full, .kv-contact-{{ section.id }} .kv-contact__footer { grid-column: span 1; }
+}
+</style>
+
+<section class="kv-contact-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-contact__wrap">
+      <div class="kv-contact__left">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="kv-contact__eyebrow">{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+          <h2>{{ section.settings.heading }}</h2>
+          <div class="kv-contact__channels">
+            {%- for block in section.blocks -%}
+              <div class="kv-contact__channel" {{ block.shopify_attributes }}>
+                <p class="kv-contact__channel-label">{{ block.settings.label }}</p>
+                <a href="{{ block.settings.link | default: '#' }}" class="kv-contact__channel-value">{{ block.settings.value }}</a>
+                {%- if block.settings.note != blank -%}
+                  <p class="kv-contact__channel-note">{{ block.settings.note }}</p>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- if section.settings.card_text != blank -%}
+          <div class="kv-contact__card">
+            {%- if section.settings.card_label != blank -%}
+              <p class="kv-contact__card-label">{{ section.settings.card_label }}</p>
+            {%- endif -%}
+            <p class="kv-contact__card-text">{{ section.settings.card_text }}</p>
+            {%- if section.settings.card_strong != blank -%}
+              <p class="kv-contact__card-strong">{{ section.settings.card_strong }}</p>
+            {%- endif -%}
+            {%- if section.settings.card_note != blank -%}
+              <p class="kv-contact__card-note">{{ section.settings.card_note }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="kv-contact__form-box">
+        {%- form 'contact', class: 'kv-contact__form', id: 'kv-contact-form' -%}
+          <input type="hidden" name="contact[form]" value="Contact page">
+          {%- if form.posted_successfully? -%}
+            <div class="kv-contact__success kv-contact__field--full">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8753A" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+              <p class="kv-contact__success-title">{{ section.settings.success_title }}</p>
+              <p class="kv-contact__success-text">{{ section.settings.success_text }}</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="kv-contact__errors">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+            <div class="kv-contact__field kv-contact__field--full">
+              <label for="kv-ct-topic-{{ section.id }}">What is this about</label>
+              <select id="kv-ct-topic-{{ section.id }}" name="contact[topic]">
+                {%- assign topics = section.settings.topics | newline_to_br | split: '<br />' -%}
+                {%- for t in topics -%}
+                  {%- assign tv = t | strip -%}
+                  {%- if tv != blank -%}<option>{{ tv }}</option>{%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            <div class="kv-contact__field">
+              <label for="kv-ct-name-{{ section.id }}">Full name</label>
+              <input type="text" id="kv-ct-name-{{ section.id }}" name="contact[name]" placeholder="Your name" required>
+            </div>
+            <div class="kv-contact__field">
+              <label for="kv-ct-email-{{ section.id }}">Email</label>
+              <input type="email" id="kv-ct-email-{{ section.id }}" name="contact[email]" placeholder="you@email.com" required>
+            </div>
+            <div class="kv-contact__field kv-contact__field--full">
+              <label for="kv-ct-phone-{{ section.id }}">Mobile (optional)</label>
+              <input type="tel" id="kv-ct-phone-{{ section.id }}" name="contact[phone]" placeholder="+65">
+            </div>
+            <div class="kv-contact__field kv-contact__field--full">
+              <label for="kv-ct-msg-{{ section.id }}">Message</label>
+              <textarea id="kv-ct-msg-{{ section.id }}" name="contact[body]" rows="4" placeholder="Room, cove or run lengths, ceiling type, whether it is on a dimmer." required></textarea>
+            </div>
+            <div class="kv-contact__footer">
+              <p class="kv-contact__hint">{{ section.settings.form_hint }}</p>
+              <button type="submit" class="kv-contact__submit">{{ section.settings.submit_label }}</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Contact",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Direct" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Reach us here." },
+    { "type": "header", "content": "How we work card" },
+    { "type": "text", "id": "card_label", "label": "Card label", "default": "How we work" },
+    { "type": "textarea", "id": "card_text", "label": "Card text", "default": "We sell online only. Send your run lengths, ceiling type and a photo of what you are replacing, and we will spec the product and the driver before you order." },
+    { "type": "text", "id": "card_strong", "label": "Card bold line", "default": "Every spec we quote is backed by a test report" },
+    { "type": "textarea", "id": "card_note", "label": "Card note", "default": "Ask for it — we send the Ra and R9 figures for the batch you are buying." },
+    { "type": "header", "content": "Form" },
+    { "type": "textarea", "id": "topics", "label": "Topic options (one per line)", "default": "Specification help\nOrder or delivery\nTrade enquiry\nSomething else" },
+    { "type": "textarea", "id": "form_hint", "label": "Hint beside submit", "default": "Run lengths and a photo of the ceiling get you a faster, more useful answer. Attach photos when we reply by email." },
+    { "type": "text", "id": "submit_label", "label": "Submit label", "default": "Send message" },
+    { "type": "text", "id": "success_title", "label": "Success title", "default": "Message received." },
+    { "type": "textarea", "id": "success_text", "label": "Success text", "default": "We reply within one working day — faster on WhatsApp if it is urgent." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "channel",
+      "name": "Contact channel",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "WhatsApp" },
+        { "type": "text", "id": "value", "label": "Display value", "default": "+65 8123 4567" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "textarea", "id": "note", "label": "Note", "default": "Mon–Sat, 10am–7pm. Photos and voice notes welcome." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Contact",
+      "blocks": [
+        { "type": "channel", "settings": { "label": "WhatsApp", "value": "+65 8123 4567", "note": "Mon–Sat, 10am–7pm. Photos and voice notes welcome." } },
+        { "type": "channel", "settings": { "label": "Email", "value": "hello@kayva.sg", "note": "Specification questions, quotes and test reports." } },
+        { "type": "channel", "settings": { "label": "Warranty claims", "value": "support@kayva.sg", "note": "Use the claim form — it gets you a reference number." } },
+        { "type": "channel", "settings": { "label": "Trade accounts", "value": "trade@kayva.sg", "note": "Existing accounts: go through your account manager." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
