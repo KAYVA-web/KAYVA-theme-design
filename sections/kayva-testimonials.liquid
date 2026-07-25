@@ -1,0 +1,112 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-testimonials-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-testimonials-{{ section.id }} .kv-testi__head { text-align: center; margin-bottom: 44px; }
+.kv-testimonials-{{ section.id }} .kv-testi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.kv-testimonials-{{ section.id }} .kv-testi__card {
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  background: {{ section.settings.card_bg }};
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+.kv-testimonials-{{ section.id }} .kv-testi__stars {
+  color: var(--kayva-amber, #B8753A);
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.kv-testimonials-{{ section.id }} .kv-testi__quote {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.7;
+  margin: 0 0 24px;
+  flex: 1;
+}
+.kv-testimonials-{{ section.id }} .kv-testi__name {
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0;
+}
+.kv-testimonials-{{ section.id }} .kv-testi__role {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-amber, #B8753A);
+  margin: 2px 0 0;
+}
+@media (max-width: 820px) {
+  .kv-testimonials-{{ section.id }} .kv-testi__grid { grid-template-columns: 1fr; }
+  .kv-testimonials-{{ section.id }} { padding: 56px 0; }
+}
+</style>
+
+<section class="kv-testimonials-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-testi__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="kayva-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="kayva-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="kv-testi__grid">
+      {%- for block in section.blocks -%}
+        <div class="kv-testi__card" {{ block.shopify_attributes }}>
+          <div class="kv-testi__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+            {%- for i in (1..block.settings.rating) -%}&#9733;{%- endfor -%}
+          </div>
+          <p class="kv-testi__quote">"{{ block.settings.quote }}"</p>
+          <p class="kv-testi__name">{{ block.settings.name }}</p>
+          {%- if block.settings.role != blank -%}
+            <p class="kv-testi__role">{{ block.settings.role }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Testimonials",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From customers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What homeowners and designers say." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "The difference is obvious to every guest — the living room just feels warmer and more considered." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Mei Lin T." },
+        { "type": "text", "id": "role", "label": "Role / location", "default": "HDB homeowner, Bishan" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Replaced our old cove lighting during the reno. The difference is obvious to every guest — the living room just feels warmer and more considered.", "name": "Mei Lin T.", "role": "HDB homeowner, Bishan" } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "I specify KAYVA on every residential project now. Clients can't put their finger on it — they just say the home feels different. It's the CRI.", "name": "Sarah K.", "role": "Interior Designer, Singapore" } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Set up the Dual-CCT GU10 in our study. Warm for evenings, cool for work — one bulb covers it all. Genuinely useful and noticeably better light.", "name": "Raj M.", "role": "Contractor, 40+ projects" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

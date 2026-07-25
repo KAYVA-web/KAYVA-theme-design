@@ -1,0 +1,122 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-trade-{{ section.id }} { background: {{ section.settings.bg }}; padding: 88px 0; }
+.kv-trade-{{ section.id }} .kv-trade__wrap {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+.kv-trade-{{ section.id }} .kv-trade__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin: 0 0 18px;
+}
+.kv-trade-{{ section.id }} .kv-trade__heading {
+  font-family: var(--kayva-font);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin: 0 0 20px;
+  max-width: 20ch;
+}
+.kv-trade-{{ section.id }} .kv-trade__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(245, 239, 229, 0.78);
+  margin: 0;
+  max-width: 56ch;
+}
+.kv-trade-{{ section.id }} .kv-trade__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.kv-trade-{{ section.id }} .kv-trade__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  border: 1px solid rgba(245, 239, 229, 0.6);
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.kv-trade-{{ section.id }} .kv-trade__btn:hover {
+  background: #FFFFFF;
+  color: {{ section.settings.bg }};
+  border-color: #FFFFFF;
+}
+.kv-trade-{{ section.id }} .kv-trade__link {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 229, 0.85);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+  transition: color 0.2s;
+}
+.kv-trade-{{ section.id }} .kv-trade__link:hover { color: #FFFFFF; }
+@media (max-width: 820px) {
+  .kv-trade-{{ section.id }} { padding: 60px 0; }
+  .kv-trade-{{ section.id }} .kv-trade__wrap { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+
+<section class="kv-trade-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-trade__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="kv-trade__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="kv-trade__heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}
+          <p class="kv-trade__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+      </div>
+      <div class="kv-trade__actions">
+        {%- if section.settings.btn_label != blank -%}
+          <a href="{{ section.settings.btn_link | default: '#' }}" class="kv-trade__btn">{{ section.settings.btn_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank -%}
+          <a href="{{ section.settings.link_url | default: '#' }}" class="kv-trade__link">{{ section.settings.link_label }} &rarr;</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Trade Program",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trade program" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Designers and contractors — work with us directly." },
+    { "type": "textarea", "id": "text", "label": "Body text", "default": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#3D2A15" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Apply for trade access" },
+    { "type": "url", "id": "btn_link", "label": "Button link" },
+    { "type": "text", "id": "link_label", "label": "Text link label", "default": "WhatsApp us" },
+    { "type": "url", "id": "link_url", "label": "Text link URL" }
+  ],
+  "presets": [
+    { "name": "KAYVA Trade Program" }
+  ]
+}
+{% endschema %}
