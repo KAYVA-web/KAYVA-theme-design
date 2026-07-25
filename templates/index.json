@@ -203,6 +203,64 @@
         "image_ratio": "4 / 3"
       }
     },
+    "kayva_testimonials_itHPDc": {
+      "type": "kayva-testimonials",
+      "blocks": {
+        "testimonial_VHAV73": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Replaced our old cove lighting during the reno. The difference is obvious to every guest — the living room just feels warmer and more considered.",
+            "name": "Mei Lin T.",
+            "role": "HDB homeowner, Bishan"
+          }
+        },
+        "testimonial_NidU73": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I specify KAYVA on every residential project now. Clients can't put their finger on it — they just say the home feels different. It's the CRI.",
+            "name": "Sarah K.",
+            "role": "Interior Designer, Singapore"
+          }
+        },
+        "testimonial_wpjHt8": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Set up the Dual-CCT GU10 in our study. Warm for evenings, cool for work — one bulb covers it all. Genuinely useful and noticeably better light.",
+            "name": "Raj M.",
+            "role": "Contractor, 40+ projects"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_VHAV73",
+        "testimonial_NidU73",
+        "testimonial_wpjHt8"
+      ],
+      "name": "KAYVA Testimonials",
+      "settings": {
+        "eyebrow": "From customers",
+        "heading": "What homeowners and designers say.",
+        "bg": "#F5EFE5",
+        "card_bg": "#F5EFE5"
+      }
+    },
+    "kayva_trade_program_WNHbQr": {
+      "type": "kayva-trade-program",
+      "name": "KAYVA Trade Program",
+      "settings": {
+        "eyebrow": "Trade program",
+        "heading": "Designers and contractors — work with us directly.",
+        "text": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore.",
+        "bg": "#3D2A15",
+        "btn_label": "Apply for trade access",
+        "btn_link": "",
+        "link_label": "WhatsApp us",
+        "link_url": ""
+      }
+    },
     "cri": {
       "type": "kayva-cri",
       "settings": {
@@ -265,6 +323,8 @@
     "collections",
     "pillars",
     "showcase",
+    "kayva_testimonials_itHPDc",
+    "kayva_trade_program_WNHbQr",
     "cri",
     "imgtext",
     "newsletter"
