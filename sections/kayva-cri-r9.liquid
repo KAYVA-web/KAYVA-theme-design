@@ -1,0 +1,179 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-cr9-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; scroll-margin-top: 16px; }
+.kv-cr9-{{ section.id }} .kv-cr9__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-cr9-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__text:last-child { margin-bottom: 0; }
+.kv-cr9-{{ section.id }} .kv-cr9__chart { border: 1px solid var(--kayva-line, #E8E0D2); padding: 36px 32px; }
+.kv-cr9-{{ section.id }} .kv-cr9__bars { display: flex; flex-direction: column; gap: 30px; }
+.kv-cr9-{{ section.id }} .kv-cr9__bar-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__bar-label {
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-cr9-{{ section.id }} .kv-cr9__bar-note {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  letter-spacing: 0.04em;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__bar-note--accent { color: var(--kayva-amber, #B8753A); }
+.kv-cr9-{{ section.id }} .kv-cr9__track { height: 14px; background: var(--kayva-cream, #F5EFE5); position: relative; }
+.kv-cr9-{{ section.id }} .kv-cr9__fill { position: absolute; left: 0; top: 0; bottom: 0; }
+.kv-cr9-{{ section.id }} .kv-cr9__fill--muted { background: var(--kayva-soft-brown, #8A5524); opacity: 0.55; }
+.kv-cr9-{{ section.id }} .kv-cr9__fill--accent { background: var(--kayva-amber, #B8753A); }
+.kv-cr9-{{ section.id }} .kv-cr9__axis {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 10px;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__axis span {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-cr9-{{ section.id }} .kv-cr9__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.kv-cr9-{{ section.id }} .kv-cr9__card { border: 1px solid var(--kayva-line, #E8E0D2); padding: 32px; }
+.kv-cr9-{{ section.id }} .kv-cr9__card--cream { background: var(--kayva-cream, #F5EFE5); }
+.kv-cr9-{{ section.id }} .kv-cr9__card p {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-cr9-{{ section.id }} { padding: 56px 0; }
+  .kv-cr9-{{ section.id }} .kv-cr9__wrap { grid-template-columns: 1fr; gap: 36px; }
+  .kv-cr9-{{ section.id }} .kv-cr9__cards { grid-template-columns: 1fr; margin-top: 32px; }
+}
+</style>
+
+<section class="kv-cr9-{{ section.id }}" id="r9">
+  <div class="kayva-page-width">
+    <div class="kv-cr9__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-cr9__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text1 != blank -%}
+          <p class="kv-cr9__text">{{ section.settings.text1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.text2 != blank -%}
+          <p class="kv-cr9__text">{{ section.settings.text2 }}</p>
+        {%- endif -%}
+      </div>
+      <div class="kv-cr9__chart">
+        <div class="kv-cr9__bars">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <div class="kv-cr9__bar-head">
+                <span class="kv-cr9__bar-label">{{ block.settings.label }}</span>
+                <span class="kv-cr9__bar-note{% if block.settings.accent %} kv-cr9__bar-note--accent{% endif %}">{{ block.settings.note }}</span>
+              </div>
+              <div class="kv-cr9__track">
+                <div class="kv-cr9__fill kv-cr9__fill--{% if block.settings.accent %}accent{% else %}muted{% endif %}" style="width: {{ block.settings.percent }}%;"></div>
+              </div>
+            </div>
+          {%- endfor -%}
+          <div class="kv-cr9__axis">
+            <span>0</span><span>50</span><span>100</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- if section.settings.card1 != blank or section.settings.card2 != blank -%}
+      <div class="kv-cr9__cards">
+        {%- if section.settings.card1 != blank -%}
+          <div class="kv-cr9__card"><p>{{ section.settings.card1 }}</p></div>
+        {%- endif -%}
+        {%- if section.settings.card2 != blank -%}
+          <div class="kv-cr9__card kv-cr9__card--cream"><p>{{ section.settings.card2 }}</p></div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA CRI R9 Gap",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Number Inside The Number" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "R9: the one nobody publishes." },
+    { "type": "textarea", "id": "text1", "label": "Paragraph 1", "default": "Here is the part most brands leave out. The general CRI score (Ra) averages only eight pastel test colours — none of them a saturated red. Red rendering is measured separately, as R9. A bulb can score Ra80 while its R9 sits near zero." },
+    { "type": "textarea", "id": "text2", "label": "Paragraph 2", "default": "Red matters more than any other colour at home. It is in skin tones, timber, leather, brick, tomatoes, a glass of wine. Low R9 is why food photographs badly in some kitchens and why faces look washed out in some mirrors." },
+    { "type": "textarea", "id": "card1", "label": "Bottom card 1", "default": "Every KAYVA product is Ra95+ with R9 above 50, and both numbers are backed by an independent test report. If we cannot verify a spec, we do not print it." },
+    { "type": "textarea", "id": "card2", "label": "Bottom card 2 (cream)", "default": "Ra95+ is the standard museums and galleries specify. Your home holds the things you chose — it deserves the same standard." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "bar",
+      "name": "Chart bar",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Typical Ra80 LED" },
+        { "type": "text", "id": "note", "label": "Note", "default": "R9 often below 20" },
+        { "type": "range", "id": "percent", "label": "Bar width (%)", "min": 0, "max": 100, "step": 1, "default": 18 },
+        { "type": "checkbox", "id": "accent", "label": "Amber bar", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA CRI R9 Gap",
+      "blocks": [
+        { "type": "bar", "settings": { "label": "Typical Ra80 LED", "note": "R9 often below 20", "percent": 18, "accent": false } },
+        { "type": "bar", "settings": { "label": "Every KAYVA product", "note": "R9 above 50", "percent": 56, "accent": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

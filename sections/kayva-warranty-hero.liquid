@@ -116,10 +116,10 @@
       {%- endif -%}
       <div class="kv-whero__actions">
         {%- if section.settings.btn_label != blank -%}
-          <a href="{{ section.settings.btn_link | default: '#claim' }}" class="kv-whero__btn">{{ section.settings.btn_label }}</a>
+          <a href="{{ section.settings.btn_link | default: section.settings.btn_anchor | default: '#claim' }}" class="kv-whero__btn">{{ section.settings.btn_label }}</a>
         {%- endif -%}
         {%- if section.settings.link_label != blank -%}
-          <a href="{{ section.settings.link_url | default: '#coverage' }}" class="kv-whero__link">{{ section.settings.link_label }}</a>
+          <a href="{{ section.settings.link_url | default: section.settings.link_anchor | default: '#coverage' }}" class="kv-whero__link">{{ section.settings.link_label }}</a>
         {%- endif -%}
       </div>
     </div>
@@ -150,6 +150,8 @@
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Every KAYVA product carries a written warranty against premature failure, colour shift beyond ±150K, and driver fault. Keep your order number — that is the whole registration process." },
     { "type": "text", "id": "btn_label", "label": "Button label", "default": "Start a claim" },
     { "type": "url", "id": "btn_link", "label": "Button link (default #claim)" },
+    { "type": "text", "id": "btn_anchor", "label": "Button anchor fallback", "info": "Used when button link is empty, e.g. #r9" },
+    { "type": "text", "id": "link_anchor", "label": "Text link anchor fallback", "info": "Used when text link URL is empty, e.g. #buying" },
     { "type": "text", "id": "link_label", "label": "Text link label", "default": "What's covered" },
     { "type": "url", "id": "link_url", "label": "Text link URL (default #coverage)" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#100800" },

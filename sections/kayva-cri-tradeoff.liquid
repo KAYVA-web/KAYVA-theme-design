@@ -1,0 +1,73 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-ctrade-{{ section.id }} {
+  background: {{ section.settings.bg }};
+  padding: 72px 0;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-ctrade-{{ section.id }} .kv-ctrade__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-ctrade-{{ section.id }} .kv-ctrade__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-ctrade-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-ctrade-{{ section.id }} .kv-ctrade__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+  padding-top: 6px;
+}
+@media (max-width: 900px) {
+  .kv-ctrade-{{ section.id }} { padding: 48px 0; }
+  .kv-ctrade-{{ section.id }} .kv-ctrade__wrap { grid-template-columns: 1fr; gap: 24px; }
+}
+</style>
+
+<section class="kv-ctrade-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-ctrade__wrap">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-ctrade__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <p class="kv-ctrade__text">{{ section.settings.text }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA CRI Trade-off",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Honest Trade-Off" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "High CRI costs lumens." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "A Ra95+ bulb produces less raw brightness than a Ra80 bulb of the same wattage, because rendering colour faithfully takes energy that would otherwise go to raw output. We think the trade is worth making — you renovated for colour and texture, not for lux readings. But you should know it exists." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "presets": [
+    { "name": "KAYVA CRI Trade-off" }
+  ]
+}
+{% endschema %}

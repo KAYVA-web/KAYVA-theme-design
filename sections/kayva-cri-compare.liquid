@@ -1,0 +1,168 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-ccomp-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; }
+.kv-ccomp-{{ section.id }} .kv-ccomp__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-ccomp-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__toggle { display: flex; border: 1.5px solid var(--kayva-dark-brown, #3D2A15); flex-shrink: 0; }
+.kv-ccomp-{{ section.id }} .kv-ccomp__toggle button {
+  font-family: var(--kayva-font);
+  padding: 12px 24px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--kayva-dark-brown, #3D2A15);
+  transition: background 0.15s, color 0.15s;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__toggle button.is-active { background: var(--kayva-dark-brown, #3D2A15); color: var(--kayva-cream, #F5EFE5); }
+.kv-ccomp-{{ section.id }} .kv-ccomp__stage {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  background: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  overflow: hidden;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__img {
+  position: absolute;
+  inset: 0;
+  transition: filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kv-ccomp-{{ section.id }} .kv-ccomp__img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--kayva-cream, #F5EFE5);
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  padding: 24px;
+  text-align: center;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  padding: 10px 18px;
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.kv-ccomp-{{ section.id }} .kv-ccomp__caption {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 16px 0 0;
+  max-width: 640px;
+}
+@media (max-width: 700px) {
+  .kv-ccomp-{{ section.id }} { padding: 56px 0; }
+  .kv-ccomp-{{ section.id }} .kv-ccomp__stage { height: 300px; }
+}
+</style>
+
+<section class="kv-ccomp-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-ccomp__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-ccomp__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="kv-ccomp__toggle">
+        <button type="button" data-kv-mode="80">{{ section.settings.low_label }}</button>
+        <button type="button" data-kv-mode="95" class="is-active">{{ section.settings.high_label }}</button>
+      </div>
+    </div>
+    <div class="kv-ccomp__stage">
+      <div class="kv-ccomp__img{% if section.settings.image == blank %} kv-ccomp__img--placeholder{% endif %}" data-kv-img>
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}" loading="lazy">
+        {%- else -%}
+          <span>Add a warm interior photo — timber, textured wall, skin tone in frame</span>
+        {%- endif -%}
+      </div>
+      <div class="kv-ccomp__label" data-kv-label>{{ section.settings.high_badge }}</div>
+    </div>
+    {%- if section.settings.caption != blank -%}
+      <p class="kv-ccomp__caption">{{ section.settings.caption }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function(){
+    var root = document.querySelector('.kv-ccomp-{{ section.id }}');
+    if (!root) { return; }
+    var img = root.querySelector('[data-kv-img]');
+    var label = root.querySelector('[data-kv-label]');
+    var buttons = root.querySelectorAll('[data-kv-mode]');
+    var lowFilter = {{ section.settings.low_filter | json }};
+    var lowBadge = {{ section.settings.low_badge | json }};
+    var highBadge = {{ section.settings.high_badge | json }};
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var low = btn.dataset.kvMode === '80';
+        buttons.forEach(function(b){ b.classList.toggle('is-active', b === btn); });
+        img.style.filter = low ? lowFilter : 'none';
+        label.textContent = low ? lowBadge : highBadge;
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KAYVA CRI Compare",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Side By Side" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See it on the same room." },
+    { "type": "image_picker", "id": "image", "label": "Room photo" },
+    { "type": "text", "id": "low_label", "label": "Low toggle label", "default": "Ra80" },
+    { "type": "text", "id": "high_label", "label": "High toggle label", "default": "Ra95+" },
+    { "type": "text", "id": "low_badge", "label": "Low corner badge", "default": "Ra80 — R9 below 20" },
+    { "type": "text", "id": "high_badge", "label": "High corner badge", "default": "Ra95+ — R9 above 50" },
+    { "type": "text", "id": "low_filter", "label": "Low CSS filter", "info": "Applied to the photo in Ra80 mode.", "default": "saturate(0.62) contrast(0.94) hue-rotate(-6deg) brightness(1.06)" },
+    { "type": "textarea", "id": "caption", "label": "Caption", "default": "Illustration of the effect. Colour rendering varies by object and light source." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "presets": [
+    { "name": "KAYVA CRI Compare" }
+  ]
+}
+{% endschema %}
