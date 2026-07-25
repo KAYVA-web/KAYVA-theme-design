@@ -1,0 +1,133 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-bfeat-{{ section.id }} { background: {{ section.settings.bg }}; padding: 72px 0 0; }
+.kv-bfeat-{{ section.id }} .kv-bfeat__label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 20px;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__card {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__card:hover { border-color: var(--kayva-amber, #B8753A); }
+.kv-bfeat-{{ section.id }} .kv-bfeat__media {
+  position: relative;
+  min-height: 380px;
+  background: var(--kayva-cream, #F5EFE5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.kv-bfeat-{{ section.id }} .kv-bfeat__media-placeholder {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  padding: 24px;
+  text-align: center;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__copy {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__meta {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__title {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__excerpt {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-bfeat-{{ section.id }} .kv-bfeat__read {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+  padding-bottom: 3px;
+  align-self: flex-start;
+  margin-top: 6px;
+}
+@media (max-width: 900px) {
+  .kv-bfeat-{{ section.id }} { padding: 48px 0 0; }
+  .kv-bfeat-{{ section.id }} .kv-bfeat__card { grid-template-columns: 1fr; }
+  .kv-bfeat-{{ section.id }} .kv-bfeat__media { min-height: 240px; }
+  .kv-bfeat-{{ section.id }} .kv-bfeat__copy { padding: 28px 24px; }
+}
+</style>
+
+{%- assign fa = section.settings.article -%}
+{%- if fa != blank -%}
+<section class="kv-bfeat-{{ section.id }}">
+  <div class="kayva-page-width">
+    {%- if section.settings.label != blank -%}
+      <p class="kv-bfeat__label">{{ section.settings.label }}</p>
+    {%- endif -%}
+    <a href="{{ fa.url }}" class="kv-bfeat__card">
+      <div class="kv-bfeat__media">
+        {%- if fa.image -%}
+          <img src="{{ fa.image | image_url: width: 1400 }}" alt="{{ fa.image.alt | default: fa.title | escape }}" loading="lazy">
+        {%- else -%}
+          <span class="kv-bfeat__media-placeholder">Add a featured image to this article</span>
+        {%- endif -%}
+      </div>
+      <div class="kv-bfeat__copy">
+        <span class="kv-bfeat__meta">
+          {%- if section.settings.meta_override != blank -%}
+            {{ section.settings.meta_override }}
+          {%- else -%}
+            {{ fa.tags | join: ' · ' | default: fa.published_at | date: '%d %b %Y' }}
+          {%- endif -%}
+        </span>
+        <h2 class="kv-bfeat__title">{{ fa.title }}</h2>
+        <p class="kv-bfeat__excerpt">{{ fa.excerpt_or_content | strip_html | truncate: 180 }}</p>
+        <span class="kv-bfeat__read">{{ section.settings.read_label }}</span>
+      </div>
+    </a>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "KAYVA Blog Featured",
+  "settings": [
+    { "type": "article", "id": "article", "label": "Featured article" },
+    { "type": "text", "id": "label", "label": "Section label", "default": "Featured" },
+    { "type": "text", "id": "meta_override", "label": "Meta line override", "info": "e.g. Colour Quality · 6 min read. Leave blank to show the article's tags." },
+    { "type": "text", "id": "read_label", "label": "Read link label", "default": "Read the guide" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "KAYVA Blog Featured" }
+  ]
+}
+{% endschema %}

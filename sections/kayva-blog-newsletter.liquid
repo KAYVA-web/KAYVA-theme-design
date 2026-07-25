@@ -1,0 +1,122 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-bnews-{{ section.id }} {
+  background: {{ section.settings.bg }};
+  padding: 80px 0;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-bnews-{{ section.id }} .kv-bnews__inner {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+.kv-bnews-{{ section.id }} .kv-bnews__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+}
+.kv-bnews-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-bnews-{{ section.id }} .kv-bnews__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-warm-brown, #6B4823);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-bnews-{{ section.id }} .kv-bnews__form { display: flex; width: 100%; max-width: 400px; margin-top: 8px; }
+.kv-bnews-{{ section.id }} .kv-bnews__form input[type=email] {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  border: 1.5px solid var(--kayva-warm-brown, #6B4823);
+  border-right: none;
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  background: transparent;
+  outline: none;
+  border-radius: 0;
+}
+.kv-bnews-{{ section.id }} .kv-bnews__form button {
+  padding: 13px 18px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-cream, #F5EFE5);
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  border-radius: 0;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.kv-bnews-{{ section.id }} .kv-bnews__form button:hover { background: var(--kayva-amber, #B8753A); border-color: var(--kayva-amber, #B8753A); }
+.kv-bnews-{{ section.id }} .kv-bnews__msg {
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  margin: 0;
+  color: var(--kayva-warm-brown, #6B4823);
+}
+.kv-bnews-{{ section.id }} .kv-bnews__msg--error { color: #A94438; }
+</style>
+
+<section class="kv-bnews-{{ section.id }}">
+  <div class="kv-bnews__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="kv-bnews__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}
+      <p class="kv-bnews__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+    {%- form 'customer', class: 'kv-bnews__form-wrap' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="kv-bnews__msg">{{ section.settings.success_text }}</p>
+      {%- else -%}
+        {%- if form.errors -%}
+          <p class="kv-bnews__msg kv-bnews__msg--error">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="kv-bnews__form">
+          <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" aria-label="Email address" required>
+          <button type="submit">{{ section.settings.btn_label }}</button>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Blog Newsletter",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Short List" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One guide a month. No promotions." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "New test reports, installation notes, and what we got wrong. Unsubscribe in one click." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "you@email.com" },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "success_text", "label": "Success message", "default": "Subscribed. See you next month." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "presets": [
+    { "name": "KAYVA Blog Newsletter" }
+  ]
+}
+{% endschema %}
