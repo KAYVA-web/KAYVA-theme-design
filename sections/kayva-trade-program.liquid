@@ -71,6 +71,23 @@
   transition: color 0.2s;
 }
 .kv-trade-{{ section.id }} .kv-trade__link:hover { color: #FFFFFF; }
+{%- if section.settings.style == 'light' -%}
+.kv-trade-{{ section.id }} { border-top: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-trade-{{ section.id }} .kv-trade__heading { color: var(--kayva-dark-brown, #3D2A15); }
+.kv-trade-{{ section.id }} .kv-trade__text { color: var(--kayva-warm-brown, #6B4823); }
+.kv-trade-{{ section.id }} .kv-trade__btn {
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border-color: var(--kayva-dark-brown, #3D2A15);
+}
+.kv-trade-{{ section.id }} .kv-trade__btn:hover {
+  background: var(--kayva-amber, #B8753A);
+  color: var(--kayva-white, #FFFFFF);
+  border-color: var(--kayva-amber, #B8753A);
+}
+.kv-trade-{{ section.id }} .kv-trade__link { color: var(--kayva-soft-brown, #8A5524); }
+.kv-trade-{{ section.id }} .kv-trade__link:hover { color: var(--kayva-dark-brown, #3D2A15); }
+{%- endif -%}
 @media (max-width: 820px) {
   .kv-trade-{{ section.id }} { padding: 60px 0; }
   .kv-trade-{{ section.id }} .kv-trade__wrap { grid-template-columns: 1fr; gap: 32px; }
@@ -109,6 +126,16 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Designers and contractors — work with us directly." },
     { "type": "textarea", "id": "text", "label": "Body text", "default": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore." },
     { "type": "color", "id": "bg", "label": "Background", "default": "#3D2A15" },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Text style",
+      "options": [
+        { "value": "dark", "label": "Light text (dark background)" },
+        { "value": "light", "label": "Dark text (light background)" }
+      ],
+      "default": "dark"
+    },
     { "type": "header", "content": "Buttons" },
     { "type": "text", "id": "btn_label", "label": "Button label", "default": "Apply for trade access" },
     { "type": "url", "id": "btn_link", "label": "Button link" },

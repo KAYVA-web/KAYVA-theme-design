@@ -1,0 +1,331 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-dcalc-{{ section.id }} { background: {{ section.settings.bg }}; padding: 44px 0 80px; scroll-margin-top: 16px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__box {
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__inputs {
+  padding: 40px;
+  border-right: 1px solid var(--kayva-line, #E8E0D2);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  font-family: var(--kayva-font);
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__len-value { font-size: 22px; font-weight: 500; color: var(--kayva-dark-brown, #3D2A15); }
+.kv-dcalc-{{ section.id }} input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  display: block;
+  height: 2px;
+  background: var(--kayva-line, #E8E0D2);
+  outline: none;
+}
+.kv-dcalc-{{ section.id }} input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  border-radius: 0;
+}
+.kv-dcalc-{{ section.id }} input[type=range]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__scale { display: flex; justify-content: space-between; margin-top: 10px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__scale span { font-size: 11px; letter-spacing: 0.14em; color: var(--kayva-soft-brown, #8A5524); }
+.kv-dcalc-{{ section.id }} .kv-dcalc__wpm-row { border-top: 1px solid var(--kayva-line, #E8E0D2); padding-top: 28px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__wpm-controls { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__wpm-field {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  padding: 0 16px;
+  width: 150px;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__wpm-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--kayva-ink, #1F1B16);
+  background: transparent;
+  font-family: var(--kayva-font);
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__wpm-unit { font-size: 13px; color: var(--kayva-soft-brown, #8A5524); white-space: nowrap; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__presets { display: flex; gap: 8px; flex-wrap: wrap; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__preset {
+  padding: 10px 14px;
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  cursor: pointer;
+  background: transparent;
+  color: var(--kayva-dark-brown, #3D2A15);
+  transition: background 0.15s, color 0.15s;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__preset.is-active { background: var(--kayva-dark-brown, #3D2A15); color: var(--kayva-cream, #F5EFE5); }
+.kv-dcalc-{{ section.id }} .kv-dcalc__hint { font-size: 13px; color: var(--kayva-soft-brown, #8A5524); line-height: 1.6; margin: 14px 0 0; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__stats {
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 8px;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__stat-value { font-size: 20px; font-weight: 500; color: var(--kayva-dark-brown, #3D2A15); margin: 0; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__result {
+  padding: 40px;
+  background: var(--kayva-cream, #F5EFE5);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family: var(--kayva-font);
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__result-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin: 0;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__driver {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 300;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__result-text { font-size: 14px; color: var(--kayva-ink, #1F1B16); line-height: 1.7; margin: 0; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__advice {
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__advice-item { display: flex; gap: 10px; align-items: flex-start; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__advice-item svg { flex: none; margin-top: 4px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__advice-item span { font-size: 14px; color: var(--kayva-ink, #1F1B16); line-height: 1.7; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__cta { margin-top: auto; padding-top: 24px; }
+.kv-dcalc-{{ section.id }} .kv-dcalc__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-dark-brown, #3D2A15);
+  padding: 15px 28px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.kv-dcalc-{{ section.id }} .kv-dcalc__btn:hover { background: var(--kayva-amber, #B8753A); border-color: var(--kayva-amber, #B8753A); }
+@media (max-width: 900px) {
+  .kv-dcalc-{{ section.id }} { padding: 32px 0 56px; }
+  .kv-dcalc-{{ section.id }} .kv-dcalc__box { grid-template-columns: 1fr; }
+  .kv-dcalc-{{ section.id }} .kv-dcalc__inputs { border-right: none; border-bottom: 1px solid var(--kayva-line, #E8E0D2); padding: 24px; }
+  .kv-dcalc-{{ section.id }} .kv-dcalc__result { padding: 24px; }
+  .kv-dcalc-{{ section.id }} .kv-dcalc__stats { grid-template-columns: 1fr; gap: 14px; }
+}
+</style>
+
+<section class="kv-dcalc-{{ section.id }}" id="calc">
+  <div class="kayva-page-width">
+    <div class="kv-dcalc__box">
+      <div class="kv-dcalc__inputs">
+        <div>
+          <div class="kv-dcalc__row-head">
+            <label class="kv-dcalc__label" for="kv-dcalc-len-{{ section.id }}">Strip length</label>
+            <span class="kv-dcalc__len-value" data-kv-len-label>{{ section.settings.default_length }} m</span>
+          </div>
+          <input type="range" id="kv-dcalc-len-{{ section.id }}" min="1" max="30" step="1" value="{{ section.settings.default_length }}" data-kv-len>
+          <div class="kv-dcalc__scale"><span>1 m</span><span>30 m</span></div>
+        </div>
+
+        <div class="kv-dcalc__wpm-row">
+          <label class="kv-dcalc__label" for="kv-dcalc-wpm-{{ section.id }}">Watts per metre</label>
+          <div class="kv-dcalc__wpm-controls">
+            <div class="kv-dcalc__wpm-field">
+              <input type="number" id="kv-dcalc-wpm-{{ section.id }}" min="1" max="40" step="0.5" value="{{ section.settings.default_wpm }}" data-kv-wpm>
+              <span class="kv-dcalc__wpm-unit">W/m</span>
+            </div>
+            <div class="kv-dcalc__presets">
+              {%- for block in section.blocks -%}
+                <button type="button" class="kv-dcalc__preset" data-kv-preset="{{ block.settings.value }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- if section.settings.wpm_hint != blank -%}
+            <p class="kv-dcalc__hint">{{ section.settings.wpm_hint }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="kv-dcalc__stats">
+          <div>
+            <p class="kv-dcalc__stat-label">Power draw</p>
+            <p class="kv-dcalc__stat-value" data-kv-draw>—</p>
+          </div>
+          <div>
+            <p class="kv-dcalc__stat-label">Minimum with headroom</p>
+            <p class="kv-dcalc__stat-value" data-kv-min>—</p>
+          </div>
+          <div>
+            <p class="kv-dcalc__stat-label">Current at 24V</p>
+            <p class="kv-dcalc__stat-value" data-kv-amp>—</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kv-dcalc__result">
+        <p class="kv-dcalc__result-tag">{{ section.settings.result_tag }}</p>
+        <p class="kv-dcalc__driver" data-kv-driver>—</p>
+        <p class="kv-dcalc__result-text">Constant-voltage 24V. Nearest standard size above your <span data-kv-min-inline>—</span> minimum. TRIAC-dimmable version if the run is on a wall dimmer.</p>
+        <div class="kv-dcalc__advice">
+          <div class="kv-dcalc__advice-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6.25" stroke="#6B4823" stroke-width="1.2"></circle><path d="M4.4 7.2 6.2 9l3.4-3.6" stroke="#6B4823" stroke-width="1.2" stroke-linecap="round"></path></svg>
+            <span data-kv-feed>—</span>
+          </div>
+          <div class="kv-dcalc__advice-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6.25" stroke="#6B4823" stroke-width="1.2"></circle><path d="M4.4 7.2 6.2 9l3.4-3.6" stroke="#6B4823" stroke-width="1.2" stroke-linecap="round"></path></svg>
+            <span data-kv-load>—</span>
+          </div>
+        </div>
+        {%- if section.settings.btn_label != blank -%}
+          <div class="kv-dcalc__cta">
+            <a href="{{ section.settings.btn_link | default: '#' }}" class="kv-dcalc__btn">{{ section.settings.btn_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    var root = document.querySelector('.kv-dcalc-{{ section.id }}');
+    if (!root) { return; }
+    var headroom = {{ section.settings.headroom | default: 20 }};
+    var ladder = [30, 45, 60, 75, 100, 120, 150, 200, 240, 300, 360, 480];
+    var lenInput = root.querySelector('[data-kv-len]');
+    var wpmInput = root.querySelector('[data-kv-wpm]');
+    var presets = root.querySelectorAll('[data-kv-preset]');
+    var el = function(sel){ return root.querySelector(sel); };
+    var round1 = function(n){ return Math.round(n * 10) / 10; };
+
+    function driverFor(watts){
+      var min = watts * (1 + headroom / 100);
+      for (var i = 0; i < ladder.length; i++) {
+        if (ladder[i] >= min) { return ladder[i] + 'W (24V)'; }
+      }
+      return Math.ceil(min / 10) * 10 + 'W (24V), or split feeds';
+    }
+
+    function update(){
+      var len = Number(lenInput.value) || 0;
+      var wpm = Number(wpmInput.value) || 0;
+      var draw = round1(len * wpm);
+      var min = round1(draw * (1 + headroom / 100));
+      el('[data-kv-len-label]').textContent = len + ' m';
+      el('[data-kv-draw]').textContent = draw + 'W';
+      el('[data-kv-min]').textContent = min + 'W';
+      el('[data-kv-min-inline]').textContent = min + 'W';
+      el('[data-kv-amp]').textContent = round1(draw / 24) + 'A';
+      el('[data-kv-driver]').textContent = driverFor(draw);
+      el('[data-kv-feed]').textContent = len >= 6
+        ? 'At ' + len + ' m, feed the run from both ends or split it into segments — otherwise the far end reads dimmer.'
+        : 'At ' + len + ' m a single feed is fine. Voltage drop is not a concern below 6 m.';
+      el('[data-kv-load]').textContent = 'Sized so the driver sits at roughly ' + Math.round(100 / (1 + headroom / 100)) + '% load. Never run a driver at 100%.';
+      presets.forEach(function(p){ p.classList.toggle('is-active', Number(p.dataset.kvPreset) === wpm); });
+      document.dispatchEvent(new CustomEvent('kayva:driver-wpm', { detail: { wpm: wpm, headroom: headroom } }));
+    }
+
+    lenInput.addEventListener('input', update);
+    wpmInput.addEventListener('input', update);
+    presets.forEach(function(p){
+      p.addEventListener('click', function(){
+        wpmInput.value = p.dataset.kvPreset;
+        update();
+      });
+    });
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KAYVA Driver Calculator",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "range", "id": "headroom", "label": "Headroom (%)", "min": 10, "max": 40, "step": 5, "default": 20 },
+    { "type": "range", "id": "default_length", "label": "Default length (m)", "min": 1, "max": 30, "step": 1, "default": 10 },
+    { "type": "number", "id": "default_wpm", "label": "Default watts per metre", "default": 12 },
+    { "type": "textarea", "id": "wpm_hint", "label": "Watts-per-metre hint", "default": "Printed on the reel or the spec sheet. If a listing quotes only total watts for a 5 m reel, divide by 5." },
+    { "type": "text", "id": "result_tag", "label": "Result tag", "default": "Buy this driver" },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Shop drivers" },
+    { "type": "url", "id": "btn_link", "label": "Button link" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "preset",
+      "name": "W/m preset button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "12 — 480 Pro" },
+        { "type": "number", "id": "value", "label": "Watts per metre", "default": 12 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Driver Calculator",
+      "blocks": [
+        { "type": "preset", "settings": { "label": "12 — 480 Pro", "value": 12 } },
+        { "type": "preset", "settings": { "label": "14", "value": 14 } },
+        { "type": "preset", "settings": { "label": "18", "value": 18 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

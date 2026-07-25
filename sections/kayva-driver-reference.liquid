@@ -1,0 +1,184 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-dref-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; scroll-margin-top: 16px; }
+.kv-dref-{{ section.id }} .kv-dref__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.kv-dref-{{ section.id }} .kv-dref__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-dref-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-dref-{{ section.id }} .kv-dref__note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 280px;
+  text-align: right;
+}
+.kv-dref-{{ section.id }} .kv-dref__table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.4fr;
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  border-bottom: none;
+  background: var(--kayva-white, #FFFFFF);
+}
+.kv-dref-{{ section.id }} .kv-dref__cell {
+  font-family: var(--kayva-font);
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-dref-{{ section.id }} .kv-dref__cell--head {
+  padding: 14px 24px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-dref-{{ section.id }} .kv-dref__cell--len { font-size: 15px; font-weight: 500; color: var(--kayva-dark-brown, #3D2A15); }
+.kv-dref-{{ section.id }} .kv-dref__cell--draw { font-size: 15px; color: var(--kayva-ink, #1F1B16); }
+.kv-dref-{{ section.id }} .kv-dref__cell--driver { font-size: 15px; font-weight: 600; color: var(--kayva-amber, #B8753A); }
+.kv-dref-{{ section.id }} .kv-dref__cell--feed { font-size: 14px; color: var(--kayva-ink, #1F1B16); line-height: 1.6; }
+.kv-dref-{{ section.id }} .kv-dref__footnote {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.7;
+  margin: 20px 0 0;
+  max-width: 760px;
+}
+@media (max-width: 800px) {
+  .kv-dref-{{ section.id }} { padding: 56px 0; }
+  .kv-dref-{{ section.id }} .kv-dref__note { text-align: left; }
+  .kv-dref-{{ section.id }} .kv-dref__table { grid-template-columns: 1fr 1fr 1.4fr; }
+  .kv-dref-{{ section.id }} .kv-dref__cell--feed, .kv-dref-{{ section.id }} .kv-dref__cell--head-feed { display: none; }
+}
+</style>
+
+<section class="kv-dref-{{ section.id }}" id="reference">
+  <div class="kayva-page-width">
+    <div class="kv-dref__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-dref__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>Common runs at <span data-kv-ref-wpm>{{ section.settings.default_wpm }}</span>W per metre.</h2>
+      </div>
+      {%- if section.settings.note != blank -%}
+        <p class="kv-dref__note">{{ section.settings.note }}</p>
+      {%- endif -%}
+    </div>
+    <div class="kv-dref__table">
+      <div class="kv-dref__cell kv-dref__cell--head">Strip length</div>
+      <div class="kv-dref__cell kv-dref__cell--head">Power draw</div>
+      <div class="kv-dref__cell kv-dref__cell--head">Recommended driver</div>
+      <div class="kv-dref__cell kv-dref__cell--head kv-dref__cell--head-feed">Feeds</div>
+      {%- for block in section.blocks -%}
+        <div class="kv-dref__cell kv-dref__cell--len" data-kv-row-len="{{ block.settings.length }}" {{ block.shopify_attributes }}>{{ block.settings.length }} m</div>
+        <div class="kv-dref__cell kv-dref__cell--draw" data-kv-row-draw="{{ block.settings.length }}">—</div>
+        <div class="kv-dref__cell kv-dref__cell--driver" data-kv-row-driver="{{ block.settings.length }}">—</div>
+        <div class="kv-dref__cell kv-dref__cell--feed" data-kv-row-feed="{{ block.settings.length }}">—</div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footnote != blank -%}
+      <p class="kv-dref__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function(){
+    var root = document.querySelector('.kv-dref-{{ section.id }}');
+    if (!root) { return; }
+    var wpm = {{ section.settings.default_wpm | default: 12 }};
+    var headroom = {{ section.settings.headroom | default: 20 }};
+    var ladder = [30, 45, 60, 75, 100, 120, 150, 200, 240, 300, 360, 480];
+    var round1 = function(n){ return Math.round(n * 10) / 10; };
+
+    function driverFor(watts){
+      var min = watts * (1 + headroom / 100);
+      for (var i = 0; i < ladder.length; i++) {
+        if (ladder[i] >= min) { return ladder[i] + 'W (24V)'; }
+      }
+      return Math.ceil(min / 10) * 10 + 'W (24V), or split feeds';
+    }
+
+    function render(){
+      root.querySelector('[data-kv-ref-wpm]').textContent = wpm;
+      root.querySelectorAll('[data-kv-row-len]').forEach(function(cell){
+        var m = Number(cell.dataset.kvRowLen);
+        var draw = round1(m * wpm);
+        root.querySelector('[data-kv-row-draw="' + m + '"]').textContent = draw + 'W';
+        root.querySelector('[data-kv-row-driver="' + m + '"]').textContent = driverFor(draw);
+        root.querySelector('[data-kv-row-feed="' + m + '"]').textContent = m >= 6 ? 'Feed both ends, or split into segments' : 'Single feed is fine';
+      });
+    }
+
+    document.addEventListener('kayva:driver-wpm', function(e){
+      if (e.detail && e.detail.wpm) {
+        wpm = e.detail.wpm;
+        if (e.detail.headroom) { headroom = e.detail.headroom; }
+        render();
+      }
+    });
+    render();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KAYVA Driver Reference",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Quick Reference" },
+    { "type": "textarea", "id": "note", "label": "Side note", "default": "Recalculates with the watts per metre you set above." },
+    { "type": "number", "id": "default_wpm", "label": "Default watts per metre", "default": 12 },
+    { "type": "range", "id": "headroom", "label": "Headroom (%)", "min": 10, "max": 40, "step": 5, "default": 20 },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "For runs 6 m and longer, power the strip from both ends or split it into segments with separate feeds. This prevents voltage drop, where the far end of a long run appears dimmer than the start." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#F5EFE5" }
+  ],
+  "blocks": [
+    {
+      "type": "run",
+      "name": "Run length",
+      "settings": [
+        { "type": "number", "id": "length", "label": "Length (m)", "default": 5 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Driver Reference",
+      "blocks": [
+        { "type": "run", "settings": { "length": 3 } },
+        { "type": "run", "settings": { "length": 5 } },
+        { "type": "run", "settings": { "length": 8 } },
+        { "type": "run", "settings": { "length": 10 } },
+        { "type": "run", "settings": { "length": 15 } },
+        { "type": "run", "settings": { "length": 20 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
