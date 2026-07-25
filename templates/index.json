@@ -256,7 +256,7 @@
         "text": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore.",
         "bg": "#3d2a15",
         "btn_label": "Apply for trade access",
-        "btn_link": "",
+        "btn_link": "shopify://pages/trade-program",
         "link_label": "WhatsApp us",
         "link_url": ""
       }
