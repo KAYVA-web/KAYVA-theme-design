@@ -186,11 +186,12 @@
       "settings": {
         "eyebrow": "Questions",
         "heading": "Common ones.",
-        "bg": "#ffffff"
+        "bg": "#F5EFE5"
       }
     },
     "before_install": {
       "type": "kayva-trade-program",
+      "disabled": true,
       "settings": {
         "eyebrow": "Before You Install",
         "heading": "Most claims are avoidable. Size the driver properly.",
