@@ -150,7 +150,8 @@
     "sample_pack": {
       "type": "kayva-trade-sample-pack",
       "settings": {
-        "eyebrow": "Sample Pack",
+        "image": "shopify://shop_images/gu10-switch-5055926.png",
+        "eyebrow": "Sample",
         "heading": "Put it in front of the client before you specify it.",
         "text1": "One box: a 300mm cut of 480 Pro COB in 2700K and 4000K, both GU10 variants, and the E27 A60. Enough to hold against timber, stone, and paint under the client's own daylight.",
         "text2": "S$29 delivered anywhere in Singapore, credited back in full on your first trade order.",
