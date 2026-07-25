@@ -164,7 +164,7 @@
             "title": "Then choose colour temperature",
             "text": "CRI is half the decision. Our Kelvin guide covers the other half.",
             "link_label": "Kelvin guide →",
-            "link_url": ""
+            "link_url": "shopify://pages/kelvin-guide"
           }
         }
       },
@@ -190,7 +190,7 @@
         "text": "",
         "bg": "#3d2a15",
         "btn_label": "Shop the range",
-        "btn_link": "shopify://collections/all-products",
+        "btn_link": "shopify://collections/all",
         "link_label": "Download test reports (PDF)",
         "link_url": ""
       }
