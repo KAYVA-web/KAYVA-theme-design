@@ -72,11 +72,14 @@
   z-index: 1;
   background: {{ section.settings.strip_bg }};
   border-top: 1px solid rgba(245, 239, 229, 0.07);
+}
+.kv-whero-{{ section.id }} .kv-whero__strip-grid {
   display: grid;
   grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr);
 }
 .kv-whero-{{ section.id }} .kv-whero__cell { padding: 26px 32px; border-right: 1px solid rgba(245, 239, 229, 0.07); }
-.kv-whero-{{ section.id }} .kv-whero__cell:last-child { border-right: none; }
+.kv-whero-{{ section.id }} .kv-whero__cell:first-child { padding-left: 0; }
+.kv-whero-{{ section.id }} .kv-whero__cell:last-child { border-right: none; padding-right: 0; }
 .kv-whero-{{ section.id }} .kv-whero__cell-value {
   font-family: var(--kayva-font);
   font-size: 28px;
@@ -123,12 +126,16 @@
   </div>
   {%- if section.blocks.size > 0 -%}
     <div class="kv-whero__strip">
-      {%- for block in section.blocks -%}
-        <div class="kv-whero__cell" {{ block.shopify_attributes }}>
-          <p class="kv-whero__cell-value">{{ block.settings.value }}</p>
-          <p class="kv-whero__cell-label">{{ block.settings.label }}</p>
+      <div class="kayva-page-width">
+        <div class="kv-whero__strip-grid">
+          {%- for block in section.blocks -%}
+            <div class="kv-whero__cell" {{ block.shopify_attributes }}>
+              <p class="kv-whero__cell-value">{{ block.settings.value }}</p>
+              <p class="kv-whero__cell-label">{{ block.settings.label }}</p>
+            </div>
+          {%- endfor -%}
         </div>
-      {%- endfor -%}
+      </div>
     </div>
   {%- endif -%}
 </section>
