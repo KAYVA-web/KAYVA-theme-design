@@ -126,7 +126,7 @@
             "title": "Ra95+ Throughout",
             "text": "One quality standard across every product — strip, GU10, and E27. Museum-grade colour accuracy.",
             "link_label": "WHY RA95+",
-            "link_url": ""
+            "link_url": "shopify://pages/why-cri-matters"
           }
         }
       },
@@ -243,8 +243,8 @@
       "settings": {
         "eyebrow": "From customers",
         "heading": "What homeowners and designers say.",
-        "bg": "#F5EFE5",
-        "card_bg": "#F5EFE5"
+        "bg": "#f5efe5",
+        "card_bg": "#f5efe5"
       }
     },
     "kayva_trade_program_WNHbQr": {
@@ -254,7 +254,7 @@
         "eyebrow": "Trade program",
         "heading": "Designers and contractors — work with us directly.",
         "text": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore.",
-        "bg": "#3D2A15",
+        "bg": "#3d2a15",
         "btn_label": "Apply for trade access",
         "btn_link": "",
         "link_label": "WhatsApp us",
