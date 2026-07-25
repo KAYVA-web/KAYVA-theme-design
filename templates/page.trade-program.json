@@ -317,6 +317,7 @@
     },
     "next_step": {
       "type": "kayva-trade-program",
+      "disabled": true,
       "settings": {
         "eyebrow": "Next Step",
         "heading": "Send us the project. We'll send back a specification.",
