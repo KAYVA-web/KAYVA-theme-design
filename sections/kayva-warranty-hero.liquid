@@ -1,0 +1,174 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-whero-{{ section.id }} { background: {{ section.settings.bg }}; position: relative; overflow: hidden; }
+.kv-whero-{{ section.id }}::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 28% 60%, {{ section.settings.glow }} 0%, {{ section.settings.bg }} 58%);
+}
+.kv-whero-{{ section.id }} .kv-whero__inner { position: relative; z-index: 1; padding: 88px 0 72px; }
+.kv-whero-{{ section.id }} .kv-whero__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 22px;
+}
+.kv-whero-{{ section.id }} h1 {
+  font-family: var(--kayva-font);
+  font-size: clamp(2.3rem, 4.7vw, 3.75rem);
+  font-weight: 200;
+  color: var(--kayva-cream, #F5EFE5);
+  line-height: 1.04;
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+  max-width: 760px;
+}
+.kv-whero-{{ section.id }} .kv-whero__sub {
+  font-family: var(--kayva-font);
+  font-size: 17px;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.5;
+  line-height: 1.65;
+  margin: 0 0 44px;
+  max-width: 520px;
+}
+.kv-whero-{{ section.id }} .kv-whero__actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.kv-whero-{{ section.id }} .kv-whero__btn {
+  display: inline-block;
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  border: 1px solid rgba(245, 239, 229, 0.6);
+  padding: 15px 28px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.kv-whero-{{ section.id }} .kv-whero__btn:hover { background: var(--kayva-cream, #F5EFE5); color: var(--kayva-dark-brown, #3D2A15); }
+.kv-whero-{{ section.id }} .kv-whero__link {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.6;
+  border-bottom: 1px solid rgba(245, 239, 229, 0.28);
+  padding-bottom: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.kv-whero-{{ section.id }} .kv-whero__link:hover { opacity: 1; }
+.kv-whero-{{ section.id }} .kv-whero__strip {
+  position: relative;
+  z-index: 1;
+  background: {{ section.settings.strip_bg }};
+  border-top: 1px solid rgba(245, 239, 229, 0.07);
+  display: grid;
+  grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr);
+}
+.kv-whero-{{ section.id }} .kv-whero__cell { padding: 26px 32px; border-right: 1px solid rgba(245, 239, 229, 0.07); }
+.kv-whero-{{ section.id }} .kv-whero__cell:last-child { border-right: none; }
+.kv-whero-{{ section.id }} .kv-whero__cell-value {
+  font-family: var(--kayva-font);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--kayva-cream, #F5EFE5);
+  margin: 0 0 6px;
+}
+.kv-whero-{{ section.id }} .kv-whero__cell-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-cream, #F5EFE5);
+  opacity: 0.38;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-whero-{{ section.id }} .kv-whero__inner { padding: 60px 0 48px; }
+  .kv-whero-{{ section.id }} .kv-whero__strip { grid-template-columns: repeat(2, 1fr); }
+  .kv-whero-{{ section.id }} .kv-whero__cell { padding: 20px 24px; border-bottom: 1px solid rgba(245,239,229,0.07); }
+}
+</style>
+
+<section class="kv-whero-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-whero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="kv-whero__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h1>{{ section.settings.heading }}</h1>
+      {%- if section.settings.subheading != blank -%}
+        <p class="kv-whero__sub">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      <div class="kv-whero__actions">
+        {%- if section.settings.btn_label != blank -%}
+          <a href="{{ section.settings.btn_link | default: '#claim' }}" class="kv-whero__btn">{{ section.settings.btn_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank -%}
+          <a href="{{ section.settings.link_url | default: '#coverage' }}" class="kv-whero__link">{{ section.settings.link_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- if section.blocks.size > 0 -%}
+    <div class="kv-whero__strip">
+      {%- for block in section.blocks -%}
+        <div class="kv-whero__cell" {{ block.shopify_attributes }}>
+          <p class="kv-whero__cell-value">{{ block.settings.value }}</p>
+          <p class="kv-whero__cell-label">{{ block.settings.label }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Warranty Hero",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Warranty" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Five years on strip. Three on lamps. Replaced, not argued about." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Every KAYVA product carries a written warranty against premature failure, colour shift beyond ±150K, and driver fault. Keep your order number — that is the whole registration process." },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Start a claim" },
+    { "type": "url", "id": "btn_link", "label": "Button link (default #claim)" },
+    { "type": "text", "id": "link_label", "label": "Text link label", "default": "What's covered" },
+    { "type": "url", "id": "link_url", "label": "Text link URL (default #coverage)" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#100800" },
+    { "type": "color", "id": "glow", "label": "Glow colour", "default": "#3D2A15" },
+    { "type": "color", "id": "strip_bg", "label": "Stat strip background", "default": "#160D02" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Warranty term",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "5 years" },
+        { "type": "text", "id": "label", "label": "Label", "default": "480 Pro COB strip" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Warranty Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "5 years", "label": "480 Pro COB strip" } },
+        { "type": "stat", "settings": { "value": "5 years", "label": "Drivers & dimmers" } },
+        { "type": "stat", "settings": { "value": "3 years", "label": "GU10 downlights" } },
+        { "type": "stat", "settings": { "value": "3 years", "label": "E27 A60 bulbs" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

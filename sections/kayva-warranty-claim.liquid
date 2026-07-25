@@ -1,0 +1,265 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-wclaim-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; scroll-margin-top: 16px; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 80px;
+  align-items: start;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__copy { display: flex; flex-direction: column; gap: 20px; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+}
+.kv-wclaim-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__text {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.75;
+  margin: 0;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__contact {
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__contact-label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__contact a {
+  font-family: var(--kayva-font);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--kayva-dark-brown, #3D2A15);
+  text-decoration: none;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__contact a:hover { color: var(--kayva-amber, #B8753A); }
+.kv-wclaim-{{ section.id }} .kv-wclaim__note {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__form-box { border: 1px solid var(--kayva-line, #E8E0D2); padding: 36px; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__field { display: flex; flex-direction: column; gap: 7px; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__field--full { grid-column: span 2; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__field label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__field input,
+.kv-wclaim-{{ section.id }} .kv-wclaim__field select,
+.kv-wclaim-{{ section.id }} .kv-wclaim__field textarea {
+  font-family: var(--kayva-font);
+  padding: 12px 14px;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  font-size: 14px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  background: var(--kayva-white, #FFFFFF);
+  outline: none;
+  border-radius: 0;
+  width: 100%;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__field textarea { resize: vertical; line-height: 1.6; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__field input:focus,
+.kv-wclaim-{{ section.id }} .kv-wclaim__field select:focus,
+.kv-wclaim-{{ section.id }} .kv-wclaim__field textarea:focus { border-color: var(--kayva-dark-brown, #3D2A15); }
+.kv-wclaim-{{ section.id }} .kv-wclaim__footer {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--kayva-line, #E8E0D2);
+  padding-top: 22px;
+  flex-wrap: wrap;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__privacy {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 320px;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__submit {
+  font-family: var(--kayva-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--kayva-dark-brown, #3D2A15);
+  color: var(--kayva-white, #FFFFFF);
+  border: 1px solid var(--kayva-dark-brown, #3D2A15);
+  padding: 15px 28px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__submit:hover { background: var(--kayva-amber, #B8753A); border-color: var(--kayva-amber, #B8753A); }
+.kv-wclaim-{{ section.id }} .kv-wclaim__success { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px 0; }
+.kv-wclaim-{{ section.id }} .kv-wclaim__success-title {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0;
+}
+.kv-wclaim-{{ section.id }} .kv-wclaim__errors {
+  grid-column: span 2;
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: #A94438;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-wclaim-{{ section.id }} { padding: 56px 0; }
+  .kv-wclaim-{{ section.id }} .kv-wclaim__wrap { grid-template-columns: 1fr; gap: 40px; }
+  .kv-wclaim-{{ section.id }} .kv-wclaim__form-box { padding: 24px; }
+  .kv-wclaim-{{ section.id }} .kv-wclaim__form { grid-template-columns: 1fr; }
+  .kv-wclaim-{{ section.id }} .kv-wclaim__field--full, .kv-wclaim-{{ section.id }} .kv-wclaim__footer { grid-column: span 1; }
+}
+</style>
+
+<section class="kv-wclaim-{{ section.id }}" id="claim">
+  <div class="kayva-page-width">
+    <div class="kv-wclaim__wrap">
+      <div class="kv-wclaim__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-wclaim__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}
+          <p class="kv-wclaim__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+        <div class="kv-wclaim__contact">
+          <p class="kv-wclaim__contact-label">{{ section.settings.contact_label }}</p>
+          {%- if section.settings.whatsapp_display != blank -%}
+            <a href="{{ section.settings.whatsapp_link | default: '#' }}">{{ section.settings.whatsapp_display }}</a>
+          {%- endif -%}
+          {%- if section.settings.email != blank -%}
+            <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          {%- endif -%}
+          {%- if section.settings.contact_note != blank -%}
+            <p class="kv-wclaim__note">{{ section.settings.contact_note }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="kv-wclaim__form-box">
+        {%- form 'contact', class: 'kv-wclaim__form', id: 'kv-warranty-claim-form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="kv-wclaim__success kv-wclaim__field--full">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8753A" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m8 12.5 2.5 2.5L16 9.5"></path></svg>
+              <p class="kv-wclaim__success-title">{{ section.settings.success_title }}</p>
+              <p class="kv-wclaim__text">{{ section.settings.success_text }}</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="kv-wclaim__errors">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+            <div class="kv-wclaim__field">
+              <label for="kv-wclaim-order-{{ section.id }}">Order number</label>
+              <input type="text" id="kv-wclaim-order-{{ section.id }}" name="contact[order_number]" placeholder="KAY-10482 or Shopee ID" required>
+            </div>
+            <div class="kv-wclaim__field">
+              <label for="kv-wclaim-date-{{ section.id }}">Purchase date</label>
+              <input type="date" id="kv-wclaim-date-{{ section.id }}" name="contact[purchase_date]" required>
+            </div>
+            <div class="kv-wclaim__field">
+              <label for="kv-wclaim-name-{{ section.id }}">Full name</label>
+              <input type="text" id="kv-wclaim-name-{{ section.id }}" name="contact[name]" placeholder="Your name" required>
+            </div>
+            <div class="kv-wclaim__field">
+              <label for="kv-wclaim-email-{{ section.id }}">Email</label>
+              <input type="email" id="kv-wclaim-email-{{ section.id }}" name="contact[email]" placeholder="you@email.com" required>
+            </div>
+            <div class="kv-wclaim__field kv-wclaim__field--full">
+              <label for="kv-wclaim-product-{{ section.id }}">Product</label>
+              <select id="kv-wclaim-product-{{ section.id }}" name="contact[product]">
+                {%- assign products = section.settings.product_options | newline_to_br | split: '<br />' -%}
+                {%- for p in products -%}
+                  {%- assign pv = p | strip -%}
+                  {%- if pv != blank -%}<option>{{ pv }}</option>{%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            <div class="kv-wclaim__field kv-wclaim__field--full">
+              <label for="kv-wclaim-fault-{{ section.id }}">What's happening</label>
+              <select id="kv-wclaim-fault-{{ section.id }}" name="contact[fault]">
+                {%- assign faults = section.settings.fault_options | newline_to_br | split: '<br />' -%}
+                {%- for f in faults -%}
+                  {%- assign fv = f | strip -%}
+                  {%- if fv != blank -%}<option>{{ fv }}</option>{%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            <div class="kv-wclaim__field kv-wclaim__field--full">
+              <label for="kv-wclaim-detail-{{ section.id }}">Detail</label>
+              <textarea id="kv-wclaim-detail-{{ section.id }}" name="contact[body]" rows="3" placeholder="Where it's installed, how long since install, driver model if known."></textarea>
+            </div>
+            <div class="kv-wclaim__footer">
+              <p class="kv-wclaim__privacy">{{ section.settings.privacy_note }}</p>
+              <button type="submit" class="kv-wclaim__submit">{{ section.settings.submit_label }}</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Warranty Claim",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Claim Form" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Tell us what failed." },
+    { "type": "textarea", "id": "text", "label": "Intro text", "default": "No receipt needed if you ordered from kayva.sg — the order number is enough. Shopee buyers, use the Shopee order ID." },
+    { "type": "header", "content": "Contact details" },
+    { "type": "text", "id": "contact_label", "label": "Contact label", "default": "Faster on WhatsApp" },
+    { "type": "text", "id": "whatsapp_display", "label": "WhatsApp display text", "default": "+65 8123 4567" },
+    { "type": "url", "id": "whatsapp_link", "label": "WhatsApp link" },
+    { "type": "text", "id": "email", "label": "Email address", "default": "support@kayva.sg" },
+    { "type": "textarea", "id": "contact_note", "label": "Contact note", "default": "Trade accounts: claims go through your account manager, not this form." },
+    { "type": "header", "content": "Form" },
+    { "type": "textarea", "id": "product_options", "label": "Product options (one per line)", "default": "KAYVA 480 Pro COB Strip\nKAYVA GU10 Dual-CCT\nKAYVA GU10 Fixed CCT\nKAYVA E27 A60\nDriver / dimmer" },
+    { "type": "textarea", "id": "fault_options", "label": "Fault options (one per line)", "default": "Dead section\nFlicker\nColour shift\nWon't dim\nAdhesive lifting\nOther" },
+    { "type": "text", "id": "submit_label", "label": "Submit button label", "default": "Submit claim" },
+    { "type": "textarea", "id": "privacy_note", "label": "Note beside submit", "default": "Attach a video on the reply email — it usually saves a round trip." },
+    { "type": "text", "id": "success_title", "label": "Success title", "default": "Claim logged." },
+    { "type": "textarea", "id": "success_text", "label": "Success text", "default": "We'll assess and reply within two working days — check for our email before opening a second claim." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "KAYVA Warranty Claim" }
+  ]
+}
+{% endschema %}

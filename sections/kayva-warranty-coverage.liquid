@@ -1,0 +1,131 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-wcov-{{ section.id }} { background: {{ section.settings.bg }}; padding: 80px 0; scroll-margin-top: 16px; }
+.kv-wcov-{{ section.id }} .kv-wcov__eyebrow {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  display: block;
+  margin-bottom: 10px;
+}
+.kv-wcov-{{ section.id }} h2 {
+  font-family: var(--kayva-font);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  line-height: 1.2;
+  margin: 0 0 40px;
+}
+.kv-wcov-{{ section.id }} .kv-wcov__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.kv-wcov-{{ section.id }} .kv-wcov__card { border: 1px solid var(--kayva-line, #E8E0D2); padding: 36px 32px; }
+.kv-wcov-{{ section.id }} .kv-wcov__card--excluded { background: var(--kayva-cream, #F5EFE5); }
+.kv-wcov-{{ section.id }} .kv-wcov__label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  margin: 0 0 20px;
+}
+.kv-wcov-{{ section.id }} .kv-wcov__card--excluded .kv-wcov__label { color: var(--kayva-soft-brown, #8A5524); }
+.kv-wcov-{{ section.id }} .kv-wcov__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.kv-wcov-{{ section.id }} .kv-wcov__list li { display: flex; gap: 12px; align-items: flex-start; }
+.kv-wcov-{{ section.id }} .kv-wcov__list svg { flex: none; margin-top: 4px; }
+.kv-wcov-{{ section.id }} .kv-wcov__list span {
+  font-family: var(--kayva-font);
+  font-size: 14px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.7;
+}
+.kv-wcov-{{ section.id }} .kv-wcov__card--excluded .kv-wcov__list span { opacity: 0.85; }
+.kv-wcov-{{ section.id }} .kv-wcov__footnote {
+  font-family: var(--kayva-font);
+  font-size: 13px;
+  color: var(--kayva-soft-brown, #8A5524);
+  line-height: 1.7;
+  margin: 20px 0 0;
+  max-width: 760px;
+}
+@media (max-width: 900px) {
+  .kv-wcov-{{ section.id }} { padding: 56px 0; }
+  .kv-wcov-{{ section.id }} .kv-wcov__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<section class="kv-wcov-{{ section.id }}" id="coverage">
+  <div class="kayva-page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="kv-wcov__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="kv-wcov__grid">
+      <div class="kv-wcov__card">
+        <p class="kv-wcov__label">{{ section.settings.covered_label }}</p>
+        <ul class="kv-wcov__list">
+          {%- assign covered = section.settings.covered_items | newline_to_br | split: '<br />' -%}
+          {%- for item in covered -%}
+            {%- assign it = item | strip -%}
+            {%- if it != blank -%}
+              <li>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6.25" stroke="#6B4823" stroke-width="1.2"></circle><path d="M4.4 7.2 6.2 9l3.4-3.6" stroke="#6B4823" stroke-width="1.2" stroke-linecap="round"></path></svg>
+                <span>{{ it }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="kv-wcov__card kv-wcov__card--excluded">
+        <p class="kv-wcov__label">{{ section.settings.excluded_label }}</p>
+        <ul class="kv-wcov__list">
+          {%- assign excluded = section.settings.excluded_items | newline_to_br | split: '<br />' -%}
+          {%- for item in excluded -%}
+            {%- assign it = item | strip -%}
+            {%- if it != blank -%}
+              <li>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6.25" stroke="#8A5524" stroke-width="1.2" opacity=".6"></circle><path d="M5 5l4 4M9 5l-4 4" stroke="#8A5524" stroke-width="1.2" stroke-linecap="round" opacity=".6"></path></svg>
+                <span>{{ it }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    {%- if section.settings.footnote != blank -%}
+      <p class="kv-wcov__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Warranty Coverage",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Coverage" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The terms, in full." },
+    { "type": "text", "id": "covered_label", "label": "Covered column label", "default": "Covered" },
+    { "type": "textarea", "id": "covered_items", "label": "Covered items (one per line)", "default": "LED failure — dead segments, flicker, or output below 70% of rated lumens\nColour shift beyond ±150K from the stated CCT within the warranty term\nDriver fault, including buzz, dropout, and failure to strike on TRIAC dimmers\nAdhesive backing lifting on strip installed to a clean, dry, primed surface\nSolder joint or connector failure on factory-terminated runs" },
+    { "type": "text", "id": "excluded_label", "label": "Not covered column label", "default": "Not covered" },
+    { "type": "textarea", "id": "excluded_items", "label": "Not covered items (one per line)", "default": "Strip run beyond its rated length per feed, or driven above 80% driver load\nInstallation in an unventilated channel without the specified aluminium profile\nWater ingress on IP20 products, including bathrooms and external soffits\nThird-party drivers, dimmer modules, or controllers we did not supply\nPhysical damage, cutting outside the marked points, and mains voltage faults" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Warranty runs from invoice date and covers the original purchaser. Replacement is like-for-like; where a model is discontinued we supply the closest current equivalent at the same CCT and CRI." },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "KAYVA Warranty Coverage" }
+  ]
+}
+{% endschema %}
