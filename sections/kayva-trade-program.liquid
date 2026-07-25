@@ -88,6 +88,24 @@
 .kv-trade-{{ section.id }} .kv-trade__link { color: var(--kayva-soft-brown, #8A5524); }
 .kv-trade-{{ section.id }} .kv-trade__link:hover { color: var(--kayva-dark-brown, #3D2A15); }
 {%- endif -%}
+{%- if section.settings.eyebrow_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__eyebrow { color: {{ section.settings.eyebrow_color }}; }
+{%- endif -%}
+{%- if section.settings.heading_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__heading { color: {{ section.settings.heading_color }}; }
+{%- endif -%}
+{%- if section.settings.text_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__text { color: {{ section.settings.text_color }}; }
+{%- endif -%}
+{%- if section.settings.btn_text_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__btn { color: {{ section.settings.btn_text_color }}; }
+{%- endif -%}
+{%- if section.settings.btn_border_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__btn { border-color: {{ section.settings.btn_border_color }}; }
+{%- endif -%}
+{%- if section.settings.link_color != blank -%}
+.kv-trade-{{ section.id }} .kv-trade__link { color: {{ section.settings.link_color }}; }
+{%- endif -%}
 @media (max-width: 820px) {
   .kv-trade-{{ section.id }} { padding: 60px 0; }
   .kv-trade-{{ section.id }} .kv-trade__wrap { grid-template-columns: 1fr; gap: 32px; }
@@ -136,6 +154,13 @@
       ],
       "default": "dark"
     },
+    { "type": "header", "content": "Colour overrides (leave blank to use text style)" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow colour" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour" },
+    { "type": "color", "id": "text_color", "label": "Body text colour" },
+    { "type": "color", "id": "btn_text_color", "label": "Button text colour" },
+    { "type": "color", "id": "btn_border_color", "label": "Button border colour" },
+    { "type": "color", "id": "link_color", "label": "Text link colour" },
     { "type": "header", "content": "Buttons" },
     { "type": "text", "id": "btn_label", "label": "Button label", "default": "Apply for trade access" },
     { "type": "url", "id": "btn_link", "label": "Button link" },
