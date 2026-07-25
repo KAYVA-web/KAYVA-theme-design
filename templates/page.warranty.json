@@ -1,23 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "kayva-warranty-hero",
       "blocks": {
-        "stat1": { "type": "stat", "settings": { "value": "5 years", "label": "480 Pro COB strip" } },
-        "stat2": { "type": "stat", "settings": { "value": "5 years", "label": "Drivers & dimmers" } },
-        "stat3": { "type": "stat", "settings": { "value": "3 years", "label": "GU10 downlights" } },
-        "stat4": { "type": "stat", "settings": { "value": "3 years", "label": "E27 A60 bulbs" } }
+        "stat1": {
+          "type": "stat",
+          "settings": {
+            "value": "5 years",
+            "label": "480 Pro COB strip"
+          }
+        },
+        "stat2": {
+          "type": "stat",
+          "settings": {
+            "value": "5 years",
+            "label": "Drivers & dimmers"
+          }
+        },
+        "stat3": {
+          "type": "stat",
+          "settings": {
+            "value": "3 years",
+            "label": "GU10 downlights"
+          }
+        },
+        "stat4": {
+          "type": "stat",
+          "settings": {
+            "value": "3 years",
+            "label": "E27 A60 bulbs"
+          }
+        }
       },
-      "block_order": ["stat1", "stat2", "stat3", "stat4"],
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3",
+        "stat4"
+      ],
       "settings": {
         "eyebrow": "Warranty",
         "heading": "Five years on strip. Three on lamps. Replaced, not argued about.",
         "subheading": "Every KAYVA product carries a written warranty against premature failure, colour shift beyond ±150K, and driver fault. Keep your order number — that is the whole registration process.",
         "btn_label": "Start a claim",
+        "btn_link": "",
         "link_label": "What's covered",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "coverage": {
@@ -30,22 +70,51 @@
         "excluded_label": "Not covered",
         "excluded_items": "Strip run beyond its rated length per feed, or driven above 80% driver load\nInstallation in an unventilated channel without the specified aluminium profile\nWater ingress on IP20 products, including bathrooms and external soffits\nThird-party drivers, dimmer modules, or controllers we did not supply\nPhysical damage, cutting outside the marked points, and mains voltage faults",
         "footnote": "Warranty runs from invoice date and covers the original purchaser. Replacement is like-for-like; where a model is discontinued we supply the closest current equivalent at the same CCT and CRI.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "claim_steps": {
       "type": "kayva-trade-steps",
       "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Send the details", "text": "Order number, what failed, and a short video of the fault under normal use." } },
-        "s2": { "type": "step", "settings": { "title": "We assess", "text": "Two working days. If it's a driver or dimming issue we usually diagnose from the video." } },
-        "s3": { "type": "step", "settings": { "title": "Replacement ships", "text": "Batch-matched where possible, so the replacement reads the same as the rest of the run." } },
-        "s4": { "type": "step", "settings": { "title": "Return the faulty part", "text": "Prepaid label included. We test every returned unit and publish the failure rate." } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Send the details",
+            "text": "Order number, what failed, and a short video of the fault under normal use."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "We assess",
+            "text": "Two working days. If it's a driver or dimming issue we usually diagnose from the video."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Replacement ships",
+            "text": "Batch-matched where possible, so the replacement reads the same as the rest of the run."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Return the faulty part",
+            "text": "Prepaid label included. We test every returned unit and publish the failure rate."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "eyebrow": "Making A Claim",
         "heading": "Four steps. Most are settled in a week.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "claim_form": {
@@ -55,7 +124,8 @@
         "heading": "Tell us what failed.",
         "text": "No receipt needed if you ordered from kayva.sg — the order number is enough. Shopee buyers, use the Shopee order ID.",
         "contact_label": "Faster on WhatsApp",
-        "whatsapp_display": "+65 8123 4567",
+        "whatsapp_display": "+65 8807 4359",
+        "whatsapp_link": "",
         "email": "support@kayva.sg",
         "contact_note": "Trade accounts: claims go through your account manager, not this form.",
         "product_options": "KAYVA 480 Pro COB Strip\nKAYVA GU10 Dual-CCT\nKAYVA GU10 Fixed CCT\nKAYVA E27 A60\nDriver / dimmer",
@@ -64,23 +134,59 @@
         "privacy_note": "Attach a video on the reply email — it usually saves a round trip.",
         "success_title": "Claim logged.",
         "success_text": "We'll assess and reply within two working days — check for our email before opening a second claim.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "faq": {
       "type": "kayva-trade-faq",
       "blocks": {
-        "q1": { "type": "qa", "settings": { "question": "Do I need to register the product?", "answer": "<p>No. The order record is the registration. If you bought through a contractor, ask them for the invoice number and the warranty transfers with it.</p>" } },
-        "q2": { "type": "qa", "settings": { "question": "Do you cover the cost of re-installation?", "answer": "<p>We supply replacement product free, including delivery. Labour to remove and refit is not covered — for cove installations we recommend budgeting an access allowance at design stage.</p>" } },
-        "q3": { "type": "qa", "settings": { "question": "My replacement strip looks slightly different. Why?", "answer": "<p>We hold batch records against every order and match where stock allows. Across a batch change the tolerance is ±100K and SDCM ≤5 — visible only side by side on a white wall. Tell us if it reads wrong and we'll swap it again.</p>" } },
-        "q4": { "type": "qa", "settings": { "question": "Does the warranty survive if I sell the property?", "answer": "<p>Yes. The warranty follows the installation, not the buyer. Pass on the order number and the remaining term stands.</p>" } },
-        "q5": { "type": "qa", "settings": { "question": "What if the fault is my installer's, not the product's?", "answer": "<p>We'll say so plainly and explain what went wrong — usually overloaded drivers or strip run past its per-feed length. Replacement product is then available at trade cost.</p>" } }
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "Do I need to register the product?",
+            "answer": "<p>No. The order record is the registration. If you bought through a contractor, ask them for the invoice number and the warranty transfers with it.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you cover the cost of re-installation?",
+            "answer": "<p>We supply replacement product free, including delivery. Labour to remove and refit is not covered — for cove installations we recommend budgeting an access allowance at design stage.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "My replacement strip looks slightly different. Why?",
+            "answer": "<p>We hold batch records against every order and match where stock allows. Across a batch change the tolerance is ±100K and SDCM ≤5 — visible only side by side on a white wall. Tell us if it reads wrong and we'll swap it again.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Does the warranty survive if I sell the property?",
+            "answer": "<p>Yes. The warranty follows the installation, not the buyer. Pass on the order number and the remaining term stands.</p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "What if the fault is my installer's, not the product's?",
+            "answer": "<p>We'll say so plainly and explain what went wrong — usually overloaded drivers or strip run past its per-feed length. Replacement product is then available at trade cost.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {
         "eyebrow": "Questions",
         "heading": "Common ones.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "before_install": {
@@ -89,9 +195,11 @@
         "eyebrow": "Before You Install",
         "heading": "Most claims are avoidable. Size the driver properly.",
         "text": "Our driver sizing guide covers per-feed run lengths, 80% load headroom, and which dimmers we've tested on TRIAC.",
-        "bg": "#3D2A15",
+        "bg": "#3d2a15",
         "btn_label": "Read the sizing guide",
-        "link_label": "Download warranty terms (PDF)"
+        "btn_link": "",
+        "link_label": "Download warranty terms (PDF)",
+        "link_url": ""
       }
     }
   },
