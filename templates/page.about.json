@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,53 +16,99 @@
         "heading": "The light was wrong.",
         "subheading": "KAYVA exists because we could not buy the light we wanted. So we built it.",
         "btn_label": "",
+        "btn_link": "",
+        "btn_anchor": "",
+        "link_anchor": "",
         "link_label": "",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "story": {
       "type": "kayva-about-story",
       "blocks": {
-        "p1": { "type": "paragraph", "settings": { "text": "We had just finished renovating our home. Warm oak floors, a leather sofa we had saved for, paint colours chosen over three weekends. Under the downlights, all of it looked flat. The oak went grey. The leather lost its depth." } },
-        "p2": { "type": "paragraph", "settings": { "text": "The bulbs were the problem. They were labelled CRI 90. We tested them — CRI 80." } },
-        "p3": { "type": "paragraph", "settings": { "text": "So we went looking for the real thing." } }
+        "p1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "We had just finished renovating our home. Warm oak floors, a leather sofa we had saved for, paint colours chosen over three weekends. Under the downlights, all of it looked flat. The oak went grey. The leather lost its depth."
+          }
+        },
+        "p2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "The bulbs were the problem. They were labelled CRI 90. We tested them — CRI 80."
+          }
+        },
+        "p3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "So we went looking for the real thing."
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "eyebrow": "How It Started",
         "heading": "Labelled CRI 90. Measured CRI 80.",
         "card_label": "What we found",
         "card_text": "Bulb after bulb, strip after strip, the pattern repeated: \"high CRI\" on the listing, Ra80-something on the meter. In a market where nobody checks, nobody has to tell the truth.",
         "quote": "KAYVA exists because we could not buy the light we wanted. So we built it.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "room_image": {
       "type": "kayva-about-image",
       "settings": {
+        "image": "shopify://shop_images/A_HDB_living_with_cove_lighting_in_warm_white_3000K._A_singapore_style_living_room.jpg",
         "placeholder": "Add the room that started it — oak floor, leather, warm interior",
         "height": 440,
         "padding_top": 0,
         "padding_bottom": 80,
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "standard": {
       "type": "kayva-about-standard",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "Ra95+", "label": "Every product" } },
-        "s2": { "type": "stat", "settings": { "value": "R9 > 50", "label": "Published, not hidden" } },
-        "s3": { "type": "stat", "settings": { "value": "Every batch", "label": "Tested, not sampled" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "Ra95+",
+            "label": "Every product"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "R9 > 50",
+            "label": "Published, not hidden"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Every batch",
+            "label": "Tested, not sampled"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "eyebrow": "The Standard",
         "heading": "What Ra95+ actually means.",
         "text1": "CRI measures how faithfully light renders colour, on a scale to 100. Most LED lighting sold in Singapore sits at Ra80 — the point where reds dull, wood flattens and skin tones turn grey. Ra95+ is the standard museums and galleries specify, because at that level, things look the way they actually are.",
         "text2": "Every KAYVA product is Ra95+ with R9 above 50 — R9 being the red rendering most brands leave unpublished, because it is the hardest to get right. We publish it, and every spec we publish is tested on every batch — factory reports plus our own spectrometer. If we cannot measure it, we do not print it.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "tradeoff": {
@@ -63,8 +118,8 @@
         "heading": "High CRI costs lumens.",
         "text": "A Ra95+ bulb produces less raw brightness than a Ra80 bulb of the same wattage. We think that trade is worth making — you renovated for colour and texture, not for lux readings. But you should know it exists. That is the kind of brand we are trying to be.",
         "btn_label": "Read why CRI matters",
-        "btn_link": "shopify://pages/why-cri",
-        "bg": "#FFFFFF"
+        "btn_link": "shopify://pages/why-cri-matters",
+        "bg": "#ffffff"
       }
     },
     "range_cta": {
@@ -73,8 +128,14 @@
         "eyebrow": "The Range",
         "heading": "Your home deserves light that tells the truth.",
         "text": "",
-        "bg": "#F5EFE5",
+        "bg": "#f5efe5",
         "style": "light",
+        "eyebrow_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "link_color": "",
         "btn_label": "Shop the range",
         "btn_link": "shopify://collections/all",
         "link_label": "Trade program",
