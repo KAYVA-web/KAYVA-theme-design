@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,57 +16,195 @@
         "heading": "What colour temperature actually means",
         "subheading": "2700K, 3000K, 4000K, 6000K — explained plainly, so you choose once and choose right.",
         "btn_label": "Room by room",
+        "btn_link": "",
         "btn_anchor": "#rooms",
+        "link_anchor": "",
         "link_label": "Why CRI matters",
         "link_url": "shopify://pages/why-cri",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "scale": {
       "type": "kayva-kelvin-scale",
       "blocks": {
-        "k2700": { "type": "temp", "settings": { "kelvin": "2700K", "name": "Warm white", "swatch": "#F7DFB6", "flag": "KAYVA range", "in_range": true, "tag": "In the KAYVA range", "title": "2700K — Warm white", "body": "The colour of traditional halogen and incandescent light. Relaxed, warm, flattering to wood, fabric and skin. The default choice for living rooms, bedrooms and dining — anywhere you unwind.", "note": "Available across GU10, E27 A60 and 480 Pro COB strip." } },
-        "k3000": { "type": "temp", "settings": { "kelvin": "3000K", "name": "Soft white", "swatch": "#FBEAC9", "flag": "", "in_range": false, "tag": "Not stocked by KAYVA", "title": "3000K — Soft white", "body": "A step cooler than 2700K, still on the warm side. Common in hotels and F&B. In practice most people cannot tell 2700K and 3000K apart in isolation — which is why we chose one, not both.", "note": "Not stocked. Specify 2700K instead." } },
-        "k4000": { "type": "temp", "settings": { "kelvin": "4000K", "name": "Cool white", "swatch": "#F6F3EA", "flag": "KAYVA range", "in_range": true, "tag": "In the KAYVA range", "title": "4000K — Cool white", "body": "Neutral white — neither warm nor blue. Crisp and clear without feeling clinical. Suits task areas: kitchens, studies, home offices, bathrooms where you do makeup or shave.", "note": "Available across GU10 Dual-CCT and 480 Pro COB strip." } },
-        "k6000": { "type": "temp", "settings": { "kelvin": "6000K", "name": "Daylight", "swatch": "#E7EEF4", "flag": "", "in_range": false, "tag": "Not stocked by KAYVA", "title": "6000K — Daylight", "body": "A distinctly blue-white, close to overcast daylight. Common in offices, workshops and hospitals. Very few homes benefit from it — it tends to make interiors feel cold and flatten warm materials.", "note": "Not stocked. Specify 4000K instead." } }
+        "k2700": {
+          "type": "temp",
+          "settings": {
+            "kelvin": "2700K",
+            "name": "Warm white",
+            "swatch": "#f7dfb6",
+            "flag": "KAYVA range",
+            "in_range": true,
+            "tag": "In the KAYVA range",
+            "title": "2700K — Warm white",
+            "body": "The colour of traditional halogen and incandescent light. Relaxed, warm, flattering to wood, fabric and skin. The default choice for living rooms, bedrooms and dining — anywhere you unwind.",
+            "note": "Available across GU10, E27 A60 and 480 Pro COB strip."
+          }
+        },
+        "k3000": {
+          "type": "temp",
+          "settings": {
+            "kelvin": "3000K",
+            "name": "Soft white",
+            "swatch": "#fbeac9",
+            "flag": "",
+            "in_range": false,
+            "tag": "Not stocked by KAYVA",
+            "title": "3000K — Soft white",
+            "body": "A step cooler than 2700K, still on the warm side. Common in hotels and F&B. In practice most people cannot tell 2700K and 3000K apart in isolation — which is why we chose one, not both.",
+            "note": "Not stocked. Specify 2700K instead."
+          }
+        },
+        "k4000": {
+          "type": "temp",
+          "settings": {
+            "kelvin": "4000K",
+            "name": "Cool white",
+            "swatch": "#f6f3ea",
+            "flag": "KAYVA range",
+            "in_range": true,
+            "tag": "In the KAYVA range",
+            "title": "4000K — Cool white",
+            "body": "Neutral white — neither warm nor blue. Crisp and clear without feeling clinical. Suits task areas: kitchens, studies, home offices, bathrooms where you do makeup or shave.",
+            "note": "Available across GU10 Dual-CCT and 480 Pro COB strip."
+          }
+        },
+        "k6000": {
+          "type": "temp",
+          "settings": {
+            "kelvin": "6000K",
+            "name": "Daylight",
+            "swatch": "#e7eef4",
+            "flag": "",
+            "in_range": false,
+            "tag": "Not stocked by KAYVA",
+            "title": "6000K — Daylight",
+            "body": "A distinctly blue-white, close to overcast daylight. Common in offices, workshops and hospitals. Very few homes benefit from it — it tends to make interiors feel cold and flatten warm materials.",
+            "note": "Not stocked. Specify 4000K instead."
+          }
+        }
       },
-      "block_order": ["k2700", "k3000", "k4000", "k6000"],
+      "block_order": [
+        "k2700",
+        "k3000",
+        "k4000",
+        "k6000"
+      ],
       "settings": {
         "eyebrow": "The Scale",
         "heading": "Nothing to do with brightness.",
         "intro": "Colour temperature is measured in Kelvin (K). Lower numbers are warmer and more orange; higher numbers are cooler and more blue. It has nothing to do with brightness — a 2700K bulb and a 6000K bulb can produce the same lumens. It only describes the colour of the white.",
         "strip_label": "The four you will see on listings",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "choice": {
       "type": "kayva-kelvin-choice",
       "blocks": {
-        "c1": { "type": "card", "settings": { "value": "2700K", "text": "Rest. Living, bedroom, dining." } },
-        "c2": { "type": "card", "settings": { "value": "4000K", "text": "Work. Kitchen, study, bathroom." } }
+        "c1": {
+          "type": "card",
+          "settings": {
+            "value": "2700K",
+            "text": "Rest. Living, bedroom, dining."
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "value": "4000K",
+            "text": "Work. Kitchen, study, bathroom."
+          }
+        }
       },
-      "block_order": ["c1", "c2"],
+      "block_order": [
+        "c1",
+        "c2"
+      ],
       "settings": {
         "eyebrow": "Our Choice",
         "heading": "Why KAYVA offers two, not four.",
         "text": "2700K and 4000K cover the two jobs light does at home: rest and work. 3000K sits between them without doing either job better, and 6000K suits workplaces more than living spaces. Rather than stock four temperatures at varying quality, we chose two and hold both to Ra95+.",
-        "bg": "#F5EFE5"
+        "bg": "#f5efe5"
       }
     },
     "rooms": {
       "type": "kayva-kelvin-rooms",
       "blocks": {
-        "row1": { "type": "row", "settings": { "room": "Living room", "choose": "2700K", "accent": true, "why": "Warmth suits wood, fabric and evening wind-down." } },
-        "row2": { "type": "row", "settings": { "room": "Bedroom", "choose": "2700K", "accent": true, "why": "Warmer light supports relaxation before sleep." } },
-        "row3": { "type": "row", "settings": { "room": "Dining", "choose": "2700K", "accent": true, "why": "Food and faces look best under warm light." } },
-        "row4": { "type": "row", "settings": { "room": "Kitchen", "choose": "4000K", "accent": false, "why": "Neutral white for prep work and judging food colour." } },
-        "row5": { "type": "row", "settings": { "room": "Study / home office", "choose": "4000K", "accent": false, "why": "Crisp light aids focus and reading." } },
-        "row6": { "type": "row", "settings": { "room": "Bathroom (grooming)", "choose": "4000K", "accent": false, "why": "Neutral light for accurate skin tones at the mirror." } },
-        "row7": { "type": "row", "settings": { "room": "Wardrobe / dressing", "choose": "4000K", "accent": false, "why": "Neutral light shows fabric colours as they will appear outdoors." } }
+        "row1": {
+          "type": "row",
+          "settings": {
+            "room": "Living room",
+            "choose": "2700K",
+            "accent": true,
+            "why": "Warmth suits wood, fabric and evening wind-down."
+          }
+        },
+        "row2": {
+          "type": "row",
+          "settings": {
+            "room": "Bedroom",
+            "choose": "2700K",
+            "accent": true,
+            "why": "Warmer light supports relaxation before sleep."
+          }
+        },
+        "row3": {
+          "type": "row",
+          "settings": {
+            "room": "Dining",
+            "choose": "2700K",
+            "accent": true,
+            "why": "Food and faces look best under warm light."
+          }
+        },
+        "row4": {
+          "type": "row",
+          "settings": {
+            "room": "Kitchen",
+            "choose": "4000K",
+            "accent": false,
+            "why": "Neutral white for prep work and judging food colour."
+          }
+        },
+        "row5": {
+          "type": "row",
+          "settings": {
+            "room": "Study / home office",
+            "choose": "4000K",
+            "accent": false,
+            "why": "Crisp light aids focus and reading."
+          }
+        },
+        "row6": {
+          "type": "row",
+          "settings": {
+            "room": "Bathroom (grooming)",
+            "choose": "4000K",
+            "accent": false,
+            "why": "Neutral light for accurate skin tones at the mirror."
+          }
+        },
+        "row7": {
+          "type": "row",
+          "settings": {
+            "room": "Wardrobe / dressing",
+            "choose": "4000K",
+            "accent": false,
+            "why": "Neutral light shows fabric colours as they will appear outdoors."
+          }
+        }
       },
-      "block_order": ["row1", "row2", "row3", "row4", "row5", "row6", "row7"],
+      "block_order": [
+        "row1",
+        "row2",
+        "row3",
+        "row4",
+        "row5",
+        "row6",
+        "row7"
+      ],
       "settings": {
         "eyebrow": "Room By Room",
         "heading": "Where each temperature belongs.",
@@ -65,7 +212,7 @@
         "col2": "Choose",
         "col3": "Why",
         "anchor": "rooms",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "one_rule": {
@@ -74,7 +221,9 @@
         "eyebrow": "One Rule",
         "heading": "Never mix temperatures in one sightline.",
         "text": "A 2700K downlight next to a 4000K downlight is the fastest way to make a good renovation look cheap. The eye forgives many things; it does not forgive two different whites side by side. Pick one temperature per zone, and switch temperatures only where a wall or doorway breaks the line of sight — warm in the living room, cool in the kitchen is fine if you cannot see both at once.",
-        "bg": "#F5EFE5"
+        "btn_label": "",
+        "btn_link": "",
+        "bg": "#f5efe5"
       }
     },
     "other_half": {
@@ -84,8 +233,8 @@
         "heading": "Kelvin is only half the story.",
         "text": "Colour temperature tells you the shade of white. It says nothing about how faithfully that light renders colour. A warm 2700K bulb at Ra80 will still turn oak grey and dull every red in the room. That is what CRI measures — and it is the reason KAYVA exists.",
         "btn_label": "Read why CRI matters",
-        "btn_link": "shopify://pages/why-cri",
-        "bg": "#FFFFFF"
+        "btn_link": "shopify://pages/why-cri-matters",
+        "bg": "#ffffff"
       }
     },
     "range_cta": {
@@ -94,7 +243,7 @@
         "eyebrow": "The Range",
         "heading": "Two temperatures. One standard: Ra95+.",
         "text": "",
-        "bg": "#3D2A15",
+        "bg": "#3d2a15",
         "btn_label": "Shop the range",
         "btn_link": "shopify://collections/all",
         "link_label": "Why CRI matters",
