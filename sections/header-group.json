@@ -38,6 +38,7 @@
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
+            "learn_descriptions": "Why CRI Matter | Learn about colour quality and accuracy\nKelvin Guide | Pick the right colour temperature for every room\nDriver Sizing | Size the driver properly.\nKAYVA Lighting Blog | Articles on lighting done properly",
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
             "drawer_accordion": false,
