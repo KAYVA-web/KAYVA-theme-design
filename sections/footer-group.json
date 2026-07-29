@@ -14,6 +14,13 @@
     "kayva_footer_tEJgmi": {
       "type": "kayva-footer",
       "blocks": {
+        "nav_column_TUzpji": {
+          "type": "nav_column",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
         "nav_column_Lq7bkM": {
           "type": "nav_column",
           "settings": {
@@ -27,33 +34,26 @@
             "title": "Learn",
             "menu": "kayva-footer-learn"
           }
-        },
-        "nav_column_zKbdAV": {
-          "type": "nav_column",
-          "settings": {
-            "title": "Help",
-            "menu": "kavya-footer-company"
-          }
         }
       },
       "block_order": [
+        "nav_column_TUzpji",
         "nav_column_Lq7bkM",
-        "nav_column_6QYgXj",
-        "nav_column_zKbdAV"
+        "nav_column_6QYgXj"
       ],
       "name": "KAYVA Footer",
       "settings": {
-        "logo_width": 120,
+        "logo_width": 60,
         "tagline": "Ra95+ lighting, properly specified, designed for Singapore homes.",
         "tagline_short": "Designed in Singapore.",
-        "instagram": "",
+        "instagram": "https://www.instagram.com/kayva_lighting/",
         "facebook": "",
         "tiktok": "",
-        "shopee": "",
+        "shopee": "https://shopee.sg/KAYVA-480-Pro-Strip-Premium-Ra95-COB-Dotless-480-LEDs-m-24V-10m-Roll-2700K-4000K-White-8mm-i.1293505003.48963579828?extraParams=%7B%22display_model_id%22%3A411174295109%2C%22model_selection_logic%22%3A3%7D",
         "privacy_url": "",
         "terms_url": "",
-        "bg": "#1F1B16",
-        "text_color": "#F5EFE5"
+        "bg": "#1f1b16",
+        "text_color": "#f5efe5"
       }
     }
   },
