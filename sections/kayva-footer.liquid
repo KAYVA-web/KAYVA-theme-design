@@ -48,6 +48,35 @@
   }
   .kv-footer__social-link:hover { opacity: 1; }
 
+  /* Company details */
+  .kv-footer__details {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .kv-footer__detail {
+    font-size: 13px;
+    color: {{ section.settings.text_color }};
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.75;
+  }
+  .kv-footer__detail-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+  }
+  .kv-footer__detail a {
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .kv-footer__detail a:hover { opacity: 1; }
+
   /* Nav columns */
   .kv-footer__col-title {
     font-size: 10px;
@@ -171,6 +200,38 @@
             </a>
           {%- endif -%}
         </div>
+
+        <!-- Company details -->
+        {%- if section.settings.company_address != blank or section.settings.company_whatsapp != blank or section.settings.company_phone != blank or section.settings.company_email != blank -%}
+          <div class="kv-footer__details">
+            {%- if section.settings.company_address != blank -%}
+              <p class="kv-footer__detail">
+                <span class="kv-footer__detail-label">Address</span>
+                {{ section.settings.company_address | newline_to_br }}
+              </p>
+            {%- endif -%}
+            {%- if section.settings.company_whatsapp != blank -%}
+              {%- assign wa_digits = section.settings.company_whatsapp | remove: '+' | remove: ' ' | remove: '-' -%}
+              <p class="kv-footer__detail">
+                <span class="kv-footer__detail-label">WhatsApp</span>
+                <a href="https://wa.me/{{ wa_digits }}" target="_blank" rel="noopener">{{ section.settings.company_whatsapp }}</a>
+              </p>
+            {%- endif -%}
+            {%- if section.settings.company_phone != blank -%}
+              {%- assign tel_digits = section.settings.company_phone | remove: ' ' | remove: '-' -%}
+              <p class="kv-footer__detail">
+                <span class="kv-footer__detail-label">Contact</span>
+                <a href="tel:{{ tel_digits }}">{{ section.settings.company_phone }}</a>
+              </p>
+            {%- endif -%}
+            {%- if section.settings.company_email != blank -%}
+              <p class="kv-footer__detail">
+                <span class="kv-footer__detail-label">Email</span>
+                <a href="mailto:{{ section.settings.company_email }}">{{ section.settings.company_email }}</a>
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
       </div>
 
       <!-- Menu columns from blocks -->
@@ -251,6 +312,31 @@
       "id": "tagline_short",
       "label": "Copyright line suffix",
       "default": "Designed in Singapore."
+    },
+    {
+      "type": "header",
+      "content": "Company details"
+    },
+    {
+      "type": "textarea",
+      "id": "company_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "company_whatsapp",
+      "label": "WhatsApp number",
+      "info": "e.g. +65 8807 4359 — links to wa.me automatically"
+    },
+    {
+      "type": "text",
+      "id": "company_phone",
+      "label": "Contact number"
+    },
+    {
+      "type": "text",
+      "id": "company_email",
+      "label": "Email address"
     },
     {
       "type": "header",
