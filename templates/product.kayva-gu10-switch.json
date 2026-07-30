@@ -113,6 +113,9 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
             "star_rating": "all",
             "show_review_media": true,
             "display_order": "media_first",
@@ -232,7 +235,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/kayva_gu10_apple_fullbleed_4x3_2048x1536_1.jpg",
+            "image": "shopify://shop_images/kayva_gu10_apple_fullbleed_4x3_2048x1536_1_3a783b16-12b2-40ae-988d-5a63e9278d5e.jpg",
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
