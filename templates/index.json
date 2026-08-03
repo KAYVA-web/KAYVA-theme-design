@@ -254,8 +254,14 @@
         "eyebrow": "Trade program",
         "heading": "Designers and contractors — work with us directly.",
         "text": "Trade pricing, sample packs, and dedicated WhatsApp support. Currently working with 40+ IDs and contractors across Singapore.",
-        "bg": "#FFFFFF",
+        "bg": "#ffffff",
         "style": "light",
+        "eyebrow_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "link_color": "",
         "btn_label": "Apply for trade access",
         "btn_link": "shopify://pages/trade-program",
         "link_label": "WhatsApp us",
@@ -286,22 +292,6 @@
         "body_color": "#1f1b16"
       }
     },
-    "imgtext": {
-      "type": "kayva-image-text",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/echo-bluetooth-ceiling-speaker-6872699.jpg",
-        "ratio": "4 / 5",
-        "image_side": "right",
-        "eyebrow": "Our Products",
-        "heading": "Fewer lumens, better light.",
-        "text": "<p>Ra95+ means your colours render the way they should. Skin looks alive, wood shows its grain, and food looks like food.</p>",
-        "btn_label": "Shop GU10",
-        "btn_url": "/collections/all",
-        "bg": "#ffffff",
-        "text_color": "#3d2a15"
-      }
-    },
     "newsletter": {
       "type": "kayva-newsletter",
       "settings": {
@@ -327,7 +317,6 @@
     "kayva_testimonials_itHPDc",
     "kayva_trade_program_WNHbQr",
     "cri",
-    "imgtext",
     "newsletter"
   ]
 }
