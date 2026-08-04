@@ -452,10 +452,8 @@
         <h1 class="kv-pinfo__title">{{ product.title }}</h1>
 
         <div class="kv-pinfo__price">
-          {{ current_variant.price | money }}
-          {%- if current_variant.compare_at_price > current_variant.price -%}
-            <span class="kv-pinfo__price-compare">{{ current_variant.compare_at_price | money }}</span>
-          {%- endif -%}
+          <span id="kv-pinfo-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+          <span class="kv-pinfo__price-compare" id="kv-pinfo-compare-{{ section.id }}"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</span>
         </div>
 
         {%- if section.blocks.size > 0 -%}
@@ -794,11 +792,23 @@
     var mainVariantInput = document.getElementById('kv-pinfo-variant-id-' + sectionId);
     var mainQtyInput = mainForm ? mainForm.querySelector('input[name="quantity"]') : null;
 
+    var mainPriceEl = document.getElementById('kv-pinfo-price-' + sectionId);
+    var mainCompareEl = document.getElementById('kv-pinfo-compare-' + sectionId);
+
     function syncFloatbar(){
-      if (!floatPriceEl || !mainVariantInput) { return; }
+      if (!mainVariantInput) { return; }
       var match = product.variants.find(function(v){ return v.id == mainVariantInput.value; });
       if (match) {
-        floatPriceEl.textContent = moneyFmt(match.price);
+        if (mainPriceEl) { mainPriceEl.textContent = moneyFmt(match.price); }
+        if (mainCompareEl) {
+          if (match.compare_at_price > match.price) {
+            mainCompareEl.textContent = moneyFmt(match.compare_at_price);
+            mainCompareEl.hidden = false;
+          } else {
+            mainCompareEl.hidden = true;
+          }
+        }
+        if (floatPriceEl) { floatPriceEl.textContent = moneyFmt(match.price); }
         if (floatVariantEl) { floatVariantEl.textContent = match.title; }
         if (floatCompareEl) {
           if (match.compare_at_price > match.price) {
