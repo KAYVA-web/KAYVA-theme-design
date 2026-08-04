@@ -115,11 +115,6 @@
           assign attributes = ''
           if variant_images contains media.src
             assign attributes = 'variant-image'
-
-            if forloop.first == false
-              # hide all variant images that aren't the first one
-              assign hidden = true
-            endif
           endif
 
           # Performance improvement: don't render more than 5 visible images into the slideshow
