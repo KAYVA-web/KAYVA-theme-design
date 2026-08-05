@@ -71,7 +71,7 @@
           "type": "accordion",
           "settings": {
             "title": "Warranty",
-            "content": "<p>2-year manufacturer warranty covering defects in materials and workmanship.</p>"
+            "content": "<p>3-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
         },
         "accordion_xAVdjx": {
@@ -113,6 +113,9 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
             "star_rating": "4_to_5_star",
             "show_review_media": true,
             "display_order": "media_first",
