@@ -17,12 +17,12 @@
         "announcement_VYFKXH": {
           "type": "_announcement",
           "settings": {
-            "text": "FREE SHIPPING For order above $80",
+            "text": "FREE SHIPPING For order above $80 (Singapore only), for shipping outside of Singapore. Please contact us via whatsapp to check on the shipping cost.",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "weight": "",
-            "letter_spacing": "loose",
+            "letter_spacing": "normal",
             "case": "none"
           },
           "blocks": {}
