@@ -169,28 +169,36 @@
           "type": "step",
           "settings": {
             "title": "Apply",
-            "text": "Company name, UEN, and the kind of work you do. Two minutes."
+            "text": "Company name, UEN, and the kind of work you do. Two minutes.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s2": {
           "type": "step",
           "settings": {
             "title": "We verify",
-            "text": "We check the UEN against ACRA and confirm your tier by email."
+            "text": "We check the UEN against ACRA and confirm your tier by email.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s3": {
           "type": "step",
           "settings": {
             "title": "Sample",
-            "text": "Sample pack ships the same day your account is approved."
+            "text": "Sample pack ships the same day your account is approved.",
+            "link_label": "",
+            "link_url": ""
           }
         },
         "s4": {
           "type": "step",
           "settings": {
             "title": "Order",
-            "text": "Trade prices show on the site when you're signed in. Quotes on WhatsApp."
+            "text": "Trade prices show on the site when you're signed in. Quotes on WhatsApp.",
+            "link_label": "",
+            "link_url": ""
           }
         }
       },
@@ -203,6 +211,9 @@
       "settings": {
         "eyebrow": "How It Works",
         "heading": "Approved in two working days.",
+        "columns": 4,
+        "label_prefix": "Step",
+        "anchor": "",
         "bg": "#ffffff"
       }
     },
@@ -253,7 +264,7 @@
         "text": "We reply within one working day with your tier, price list, and sample pack link. No deposit, no annual fee, no minimum first order.",
         "contact_label": "Prefer to talk",
         "whatsapp_display": "WhatsApp +65 8123 4567",
-        "whatsapp_link": "",
+        "whatsapp_link": "https://api.whatsapp.com/send/?phone=88074359&text=Hi+KAYVA%2C+I+am+interested+in+your+trade+program",
         "email": "trade@kayva.sg",
         "hours": "Mon–Fri, 10am–7pm SGT.",
         "submit_label": "Submit application",
@@ -323,6 +334,13 @@
         "heading": "Send us the project. We'll send back a specification.",
         "text": "Drawings, a room list, or a photo of the cove detail is enough to start. Quantities, driver sizing, and price within 24 hours.",
         "bg": "#3d2a15",
+        "style": "dark",
+        "eyebrow_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "link_color": "",
         "btn_label": "Request a specification",
         "btn_link": "",
         "link_label": "Download the price list",
