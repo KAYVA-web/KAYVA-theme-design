@@ -1,33 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "kayva-warranty-hero",
       "blocks": {
-        "c1": { "type": "stat", "settings": { "value": "WhatsApp", "label": "Fastest · same day" } },
-        "c2": { "type": "stat", "settings": { "value": "Email", "label": "One working day" } },
-        "c3": { "type": "stat", "settings": { "value": "Trade", "label": "Account manager, direct" } }
+        "c1": {
+          "type": "stat",
+          "settings": {
+            "value": "WhatsApp",
+            "label": "Fastest · same day"
+          }
+        },
+        "c2": {
+          "type": "stat",
+          "settings": {
+            "value": "Email",
+            "label": "One working day"
+          }
+        },
+        "c3": {
+          "type": "stat",
+          "settings": {
+            "value": "Trade",
+            "label": "Account manager, direct"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "eyebrow": "Contact",
         "heading": "Ask us the specification questions.",
         "subheading": "Send your run lengths, your ceiling type, or a photo of the fixture you are replacing. A real person answers, usually within a working day.",
         "btn_label": "",
+        "btn_link": "",
+        "btn_anchor": "",
+        "link_anchor": "",
         "link_label": "",
+        "link_url": "",
         "bg": "#100800",
-        "glow": "#3D2A15",
-        "strip_bg": "#160D02"
+        "glow": "#3d2a15",
+        "strip_bg": "#160d02"
       }
     },
     "contact": {
       "type": "kayva-contact",
       "blocks": {
-        "ch1": { "type": "channel", "settings": { "label": "WhatsApp", "value": "+65 8807 4359", "note": "Mon–Sat, 10am–7pm. Photos and voice notes welcome." } },
-        "ch2": { "type": "channel", "settings": { "label": "Email", "value": "hello@kayva.sg", "note": "Specification questions, quotes and test reports." } },
-        "ch3": { "type": "channel", "settings": { "label": "Warranty claims", "value": "support@kayva.sg", "note": "Use the claim form — it gets you a reference number.", "link": "shopify://pages/warranty" } },
-        "ch4": { "type": "channel", "settings": { "label": "Trade accounts", "value": "trade@kayva.sg", "note": "Existing accounts: go through your account manager.", "link": "shopify://pages/trade-program" } }
+        "ch1": {
+          "type": "channel",
+          "settings": {
+            "label": "WhatsApp",
+            "value": "+65 8807 4359",
+            "link": "https://api.whatsapp.com/send/?phone=88074359&text=Hi+KAYVA%2C+I+have+a+question+about+your+lighting",
+            "note": "Mon–Sat, 10am–7pm. Photos and voice notes welcome."
+          }
+        },
+        "ch2": {
+          "type": "channel",
+          "settings": {
+            "label": "Email",
+            "value": "hello@kayva.sg",
+            "link": "",
+            "note": "Specification questions, quotes and test reports."
+          }
+        },
+        "ch3": {
+          "type": "channel",
+          "settings": {
+            "label": "Warranty claims",
+            "value": "support@kayva.sg",
+            "link": "shopify://pages/warranty",
+            "note": "Use the claim form — it gets you a reference number."
+          }
+        },
+        "ch4": {
+          "type": "channel",
+          "settings": {
+            "label": "Trade accounts",
+            "value": "trade@kayva.sg",
+            "link": "shopify://pages/trade-program",
+            "note": "Existing accounts: go through your account manager."
+          }
+        }
       },
-      "block_order": ["ch1", "ch2", "ch3", "ch4"],
+      "block_order": [
+        "ch1",
+        "ch2",
+        "ch3",
+        "ch4"
+      ],
       "settings": {
         "eyebrow": "Direct",
         "heading": "Reach us here.",
@@ -40,7 +112,7 @@
         "submit_label": "Send message",
         "success_title": "Message received.",
         "success_text": "We reply within one working day — faster on WhatsApp if it is urgent.",
-        "bg": "#FFFFFF"
+        "bg": "#ffffff"
       }
     },
     "guides_cta": {
@@ -49,8 +121,14 @@
         "eyebrow": "Before You Write",
         "heading": "Most questions are answered in the guides.",
         "text": "Driver sizing, colour temperature and how to read a test report — all written out, with the numbers.",
-        "bg": "#F5EFE5",
+        "bg": "#f5efe5",
         "style": "light",
+        "eyebrow_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "link_color": "",
         "btn_label": "Read the guides",
         "btn_link": "shopify://blogs/lighting-guides",
         "link_label": "Driver sizing calculator",
