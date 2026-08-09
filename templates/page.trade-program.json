@@ -46,7 +46,7 @@
         "btn_label": "Apply for a trade account",
         "btn_link": "",
         "link_label": "WhatsApp us",
-        "link_url": "",
+        "link_url": "https://api.whatsapp.com/send/?phone=88074359&text=Hi+KAYVA%2C+I+am+interested+in+your+trade+program",
         "bg": "#100800",
         "glow": "#3d2a15"
       }
