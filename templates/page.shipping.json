@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "hero": {
+      "type": "kayva-warranty-hero",
+      "settings": {
+        "eyebrow": "Shipping & Delivery",
+        "heading": "Delivered across Singapore in one to three working days.",
+        "subheading": "Every order ships from our local warehouse. Rates are shown at checkout, tracking is sent by email, and self collection is available if you would rather pick up.",
+        "btn_label": "",
+        "link_label": "",
+        "bg": "#3D2A15",
+        "glow": "#3D2A15",
+        "strip_bg": "#160D02"
+      }
+    },
+    "stats": {
+      "type": "kayva-stats-strip",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "label": "Processing", "value": "1–2 working days" } },
+        "s2": { "type": "stat", "settings": { "label": "Delivery", "value": "1–3 working days" } },
+        "s3": { "type": "stat", "settings": { "label": "Coverage", "value": "Singapore only" } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": { "bg": "#FFFFFF" }
+    },
+    "pillars": {
+      "type": "kayva-split-pillars",
+      "blocks": {
+        "p1": { "type": "pillar", "settings": { "title": "Processing time", "text": "Orders are typically processed within 1–2 working days of payment confirmation." } },
+        "p2": { "type": "pillar", "settings": { "title": "Delivery time", "text": "Once shipped, your order arrives within 1–3 working days via our trusted local courier partners." } },
+        "p3": { "type": "pillar", "settings": { "title": "Self collection", "text": "Available at our warehouse. Select the option at checkout and we will notify you when your order is ready for pickup." } }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Local Shipping",
+        "heading": "How your order reaches you.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "details": {
+      "type": "kayva-split-details",
+      "blocks": {
+        "d1": { "type": "detail", "settings": { "label": "Shipping Fees", "text": "Standard delivery is charged at a flat rate, and is free for orders above the qualifying spend.", "note": "Fees are shown clearly at checkout. No hidden charges." } },
+        "d2": { "type": "detail", "settings": { "label": "Delivery Areas", "text": "We currently deliver across Singapore only, including HDB, condominium and commercial addresses.", "note": "No international shipping at this time." } },
+        "d3": { "type": "detail", "settings": { "label": "Order Tracking", "text": "Once your order ships, a tracking link is sent by email so you can follow its journey to your doorstep.", "note": "Check your spam folder if it has not arrived within 48 hours of dispatch." } },
+        "d4": { "type": "detail", "settings": { "label": "Delivery Issues", "text": "Delays, a wrong item, or a damaged package: contact us within 48 hours of delivery and we will make it right.", "note": "Photographs of the packaging help us resolve claims faster." } }
+      },
+      "block_order": ["d1", "d2", "d3", "d4"],
+      "settings": {
+        "eyebrow": "The Details",
+        "heading": "Fees, tracking and coverage.",
+        "bg": "#F5EFE5"
+      }
+    },
+    "bulk_cta": {
+      "type": "kayva-cta-box",
+      "settings": {
+        "eyebrow": "Bulk & Wholesale",
+        "heading": "Custom delivery for large and wholesale orders.",
+        "text": "For project quantities and trade supply we arrange delivery around your site schedule. Contact us directly for scheduling and logistics support.",
+        "btn1_label": "Contact Us",
+        "btn1_link": "shopify://pages/contact",
+        "btn2_label": "Trade Program",
+        "btn2_link": "shopify://pages/trade-program",
+        "bg": "#FFFFFF"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "stats",
+    "pillars",
+    "details",
+    "bulk_cta"
+  ]
+}

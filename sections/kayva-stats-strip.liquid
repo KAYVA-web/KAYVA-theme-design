@@ -1,0 +1,79 @@
+{{ 'kayva.css' | asset_url | stylesheet_tag }}
+<style>
+.kv-sstrip-{{ section.id }} { background: {{ section.settings.bg }}; border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
+.kv-sstrip-{{ section.id }} .kv-sstrip__grid {
+  display: grid;
+  grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr);
+}
+.kv-sstrip-{{ section.id }} .kv-sstrip__cell {
+  padding: 40px 32px;
+  border-right: 1px solid var(--kayva-line, #E8E0D2);
+}
+.kv-sstrip-{{ section.id }} .kv-sstrip__cell:first-child { padding-left: 0; }
+.kv-sstrip-{{ section.id }} .kv-sstrip__cell:last-child { padding-right: 0; border-right: none; }
+.kv-sstrip-{{ section.id }} .kv-sstrip__label {
+  font-family: var(--kayva-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0 0 12px;
+}
+.kv-sstrip-{{ section.id }} .kv-sstrip__value {
+  font-family: var(--kayva-font);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .kv-sstrip-{{ section.id }} .kv-sstrip__grid { grid-template-columns: 1fr; }
+  .kv-sstrip-{{ section.id }} .kv-sstrip__cell { padding: 24px 0; border-right: none; border-bottom: 1px solid var(--kayva-line, #E8E0D2); }
+  .kv-sstrip-{{ section.id }} .kv-sstrip__cell:last-child { border-bottom: none; }
+}
+</style>
+
+<section class="kv-sstrip-{{ section.id }}">
+  <div class="kayva-page-width">
+    <div class="kv-sstrip__grid">
+      {%- for block in section.blocks -%}
+        <div class="kv-sstrip__cell" {{ block.shopify_attributes }}>
+          <p class="kv-sstrip__label">{{ block.settings.label }}</p>
+          <p class="kv-sstrip__value">{{ block.settings.value }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KAYVA Stats Strip",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Processing" },
+        { "type": "text", "id": "value", "label": "Value", "default": "1–2 working days" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KAYVA Stats Strip",
+      "blocks": [
+        { "type": "stat", "settings": { "label": "Processing", "value": "1–2 working days" } },
+        { "type": "stat", "settings": { "label": "Delivery", "value": "1–3 working days" } },
+        { "type": "stat", "settings": { "label": "Coverage", "value": "Singapore only" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
