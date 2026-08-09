@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "hero": {
+      "type": "kayva-warranty-hero",
+      "settings": {
+        "eyebrow": "Returns & Exchanges",
+        "heading": "Seven days to return anything unopened and unused.",
+        "subheading": "If a product arrives faulty, damaged or incorrect, we replace it at our cost. Change-of-mind returns are accepted in original condition within seven days of delivery.",
+        "btn_label": "",
+        "link_label": "",
+        "bg": "#3D2A15",
+        "glow": "#3D2A15",
+        "strip_bg": "#160D02"
+      }
+    },
+    "stats": {
+      "type": "kayva-stats-strip",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "label": "Return Window", "value": "7 days from delivery" } },
+        "s2": { "type": "stat", "settings": { "label": "Faulty Items", "value": "Report within 48 hours" } },
+        "s3": { "type": "stat", "settings": { "label": "Refunds", "value": "5–7 working days" } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": { "bg": "#FFFFFF" }
+    },
+    "process": {
+      "type": "kayva-split-pillars",
+      "blocks": {
+        "p1": { "type": "pillar", "settings": { "title": "Contact us", "text": "Email or WhatsApp us with your order number, the item concerned, and photographs if the product is faulty or damaged." } },
+        "p2": { "type": "pillar", "settings": { "title": "We confirm", "text": "We reply within one working day with approval and return instructions, including the collection or drop-off arrangement." } },
+        "p3": { "type": "pillar", "settings": { "title": "Refund or replace", "text": "Once the item is received and inspected, we issue a replacement or refund the original payment method within 5–7 working days." } }
+      },
+      "block_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "The Process",
+        "heading": "How to start a return.",
+        "bg": "#FFFFFF"
+      }
+    },
+    "details": {
+      "type": "kayva-split-details",
+      "blocks": {
+        "d1": { "type": "detail", "settings": { "label": "Condition", "text": "Change-of-mind returns must be unused, uninstalled and in the original packaging with all accessories included.", "note": "Installed or cut LED strip cannot be returned for change of mind." } },
+        "d2": { "type": "detail", "settings": { "label": "Return Costs", "text": "Faulty, damaged or incorrect items are returned at our cost. Change-of-mind returns are at the customer's cost.", "note": "Original shipping fees are not refunded on change-of-mind returns." } },
+        "d3": { "type": "detail", "settings": { "label": "Exchanges", "text": "Ordered 2700K instead of 4000K, or the wrong recess depth? We exchange for an equivalent item subject to stock.", "note": "Price differences are settled before dispatch." } },
+        "d4": { "type": "detail", "settings": { "label": "Not Returnable", "text": "Cut-to-length strip, custom or project quantities, and clearance items are final sale unless faulty.", "note": "Manufacturing faults remain covered by the product warranty." } }
+      },
+      "block_order": ["d1", "d2", "d3", "d4"],
+      "settings": {
+        "eyebrow": "The Details",
+        "heading": "Conditions, costs and exclusions.",
+        "bg": "#F5EFE5"
+      }
+    },
+    "warranty_cta": {
+      "type": "kayva-cta-box",
+      "settings": {
+        "eyebrow": "Warranty",
+        "heading": "Outside the return window but still faulty?",
+        "text": "Manufacturing defects are covered by warranty well beyond the seven-day return period. Send us your order number and a short description of the fault and we will assess it.",
+        "btn1_label": "Start a Return",
+        "btn1_link": "shopify://pages/contact",
+        "btn2_label": "Warranty Terms",
+        "btn2_link": "shopify://pages/warranty",
+        "bg": "#FFFFFF"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "stats",
+    "process",
+    "details",
+    "warranty_cta"
+  ]
+}
