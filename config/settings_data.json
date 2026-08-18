@@ -77,7 +77,7 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "whatsapp_enabled": true,
-    "whatsapp_number": "88074359",
+    "whatsapp_number": "6588074359",
     "content_for_index": [],
     "blocks": {
       "14060646107696862457": {
@@ -341,7 +341,7 @@
       },
       "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7": {
         "settings": {
-          "background": "#F5EFE5",
+          "background": "#f5efe5",
           "foreground_heading": "#000000",
           "foreground": "#000000",
           "primary": "#000000",
