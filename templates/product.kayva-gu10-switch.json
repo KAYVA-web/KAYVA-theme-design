@@ -15,7 +15,7 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Premium Ra95+·",
+            "label": "Premium Ra95+ R9>80 ·",
             "text": "with two useful colour temperatures—controlled by the wall switch you already have."
           }
         },
@@ -239,7 +239,7 @@
             "video_url": "",
             "eyebrow": "COLOUR ACCURACY",
             "title": "Ra95+ rendering, true to life.",
-            "text": "<p>Most GU10s sit around Ra80. KAYVA runs at Ra95+, which means skin tones, fabrics, and finishes look the way they actually do — not washed out or shifted cool.</p>"
+            "text": "<p>Most GU10s sit around Ra80. KAYVA runs at Ra95+ R9&gt;80, which means skin tones, fabrics, and finishes look the way they actually do — not washed out or shifted cool.</p>"
           }
         },
         "feat_3": {
@@ -249,7 +249,7 @@
             "image": "shopify://shop_images/GU10_R9_highlight_1.jpg",
             "video_url": "",
             "eyebrow": "DEEP RED RENDERING",
-            "title": "R9 above 50. The difference you see.",
+            "title": "R9 above 80. The difference you see.",
             "text": "<p>Ra95+ alone doesn't tell the full story. R9 measures deep red accuracy — skin tones, warm wood, rich fabric. KAYVA GU10 Switch scores R9=86. Most Ra90 bulbs score below 30.</p>"
           }
         },
