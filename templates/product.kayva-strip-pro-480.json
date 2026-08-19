@@ -15,7 +15,7 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+, R9>50 ·",
+            "label": "Ra95+, R9>80 ·",
             "text": "Skin tones, timber, and fabrics render accurately. Most strip lights run Ra80."
           }
         },
@@ -57,7 +57,7 @@
           "type": "accordion",
           "settings": {
             "title": "PRODUCT SPECIFICATIONS",
-            "content": "<p>LED density | 480 per meter<br/>Length | 10m<br/>CRI | Ra95+<br/>Lumens | 1000 lm per meter<br/>Power | 12W per meter<br/>Voltage | 24V DC<br/>Cuttable | Every 50mm<br/>Color temperature | 2700K or 4000K<br/>Dimmable | Yes, with dimmer controller<br/>Beam angle | 180°<br/>Lifespan | 20,000 hours<br/>IP rating | IP20 (indoor use)<br/>Warranty | 2 years</p>"
+            "content": "<p><strong>LED density:</strong> 480 per meter<br/><strong>Length:</strong> 10m<br/><strong>CRI:</strong> Ra95+<br/><strong>R9:</strong> &gt;80<br/><strong>SDCM: </strong>1.6<br/><strong>Lumens:</strong> 1000 lm per meter<br/><strong>Power:</strong> 12W per meter<br/><strong>Voltage:</strong> 24V DC<br/><strong>Cuttable:</strong> Every 50mm<br/><strong>Color temperature</strong>:<strong> </strong>2700K or 4000K<br/><strong>Dimmable:</strong> Yes, with dimmer controller<br/><strong>Beam angle:</strong> 180°<br/><strong>Lifespan:</strong> 20,000 hours<br/><strong>IP rating:</strong> IP20 (indoor use)<br/><strong>Warranty:</strong> 5 years</p>"
           }
         },
         "acc1": {
@@ -78,7 +78,7 @@
           "type": "accordion",
           "settings": {
             "title": "Frequently asked questions",
-            "content": "<p><strong>Why is this S$98 when I can find LED strip for S$20?</strong><br/>The S$20 strip is usually 320 LEDs/m SMD at Ra80 — a different, lower-density product. At S$98 you are in the premium COB tier, where the comparable strips sit at a similar price. The difference is that we publish and guarantee our numbers — Ra95+, R9&gt;50, SDCM≤5, tested per batch — where most at this price publish no CRI figure at all.</p><p><strong>Is it dimmable?</strong><br/>Yes, but the dimming is done by the driver, not the strip. The strip is a passive 24V load. For a dimmable cove, use a dimmable 24V constant-voltage driver with a trailing-edge (ELV) wall dimmer, or a 24V controller for app control. We size the whole setup for you — just send your run length.</p><p><strong>Can I cut it, and where?</strong><br/>Every 50mm, on the marked cut points. Each 10m reel includes both end connectors. If you are cutting into more than two sections you will need clip-on connectors or to solder the joints.</p><p><strong>How long does it last?</strong><br/>20,000 hours at L70 — meaning it still holds at least 70% brightness at 20,000 hours. Running eight hours a day, that is close to seven years. It is covered by our warranty when installed with a compatible Safety Mark driver.</p><p><strong>Why does high CRI mean fewer lumens?</strong><br/>Rendering colour accurately uses more of the LED's output on the full spectrum rather than raw brightness. This strip produces around 1,000 lumens per metre at 12W — a generic Ra80 strip will read brighter on paper, and make timber, food and skin look flat. It is the trade-off quality spaces make, and we would rather you knew you were making it.</p>"
+            "content": "<p><strong>Why is this S$98 when I can find LED strip for S$20?</strong><br/>The S$20 strip is usually 320 LEDs/m SMD at Ra80 — a different, lower-density product. At S$98 you are in the premium COB tier, where the comparable strips sit at a similar price. The difference is that we publish and guarantee our numbers — Ra95+, R9&gt;80, SDCM≤2, tested per batch — where most at this price publish no CRI figure at all.</p><p><strong>Is it dimmable?</strong><br/>Yes, but the dimming is done by the driver, not the strip. The strip is a passive 24V load. For a dimmable cove, use a dimmable 24V constant-voltage driver with a trailing-edge (ELV) wall dimmer, or a 24V controller for app control. We size the whole setup for you — just send your run length.</p><p><strong>Can I cut it, and where?</strong><br/>Every 50mm, on the marked cut points. Each 10m reel includes both end connectors. If you are cutting into more than two sections you will need clip-on connectors or to solder the joints.</p><p><strong>How long does it last?</strong><br/>20,000 hours at L70 — meaning it still holds at least 70% brightness at 20,000 hours. Running eight hours a day, that is close to seven years. It is covered by our warranty when installed with a compatible Safety Mark driver.</p><p><strong>Why does high CRI mean fewer lumens?</strong><br/>Rendering colour accurately uses more of the LED's output on the full spectrum rather than raw brightness. This strip produces around 1,000 lumens per metre at 12W — a generic Ra80 strip will read brighter on paper, and make timber, food and skin look flat. It is the trade-off quality spaces make, and we would rather you knew you were making it.</p>"
           }
         }
       },
