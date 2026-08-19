@@ -15,7 +15,7 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Ra95+ rendering ·",
+            "label": "Ra95+ R9>60 rendering ·",
             "text": "True colour at 2700K and 4000K. Most GU10s run Ra80."
           }
         },
