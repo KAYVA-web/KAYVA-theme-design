@@ -57,7 +57,7 @@
           "type": "accordion",
           "settings": {
             "title": "PRODUCT SPECIFICATIONS",
-            "content": "<p>Fitting | GU10<br/>CRI | Ra95+<br/>Lumens | 490 lm<br/>Power | 7W<br/>Voltage | 220–240V AC · 50Hz <br/>Kelvin temperature | 2700K + 4000K<br/>Dimmable | No<br/>Beam angle | 36°<br/>Lifespan | 25,000 hours<br/>IP rating | IP20 (indoor use)<br/>Body | Glass</p>"
+            "content": "<p><strong>Fitting:</strong> GU10<br/><strong>CRI:</strong> Ra95+<br/><strong>R9: </strong>&gt;80<strong><br/>SDCM: </strong>4.2<br/><strong>Lumens:</strong> 490 lm<br/><strong>Power:</strong> 7W<br/><strong>Voltage:</strong> 220–240V AC · 50Hz <br/><strong>Kelvin temperature:</strong> 2700K + 4000K<br/><strong>Dimmable:</strong> No<br/><strong>Beam angle:</strong> 36°<br/><strong>Lifespan:</strong> 25,000 hours<br/><strong>IP rating:</strong> IP20 (indoor use)<br/><strong>Body:</strong> Glass</p>"
           }
         },
         "acc1": {
