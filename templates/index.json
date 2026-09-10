@@ -15,7 +15,7 @@
         "image": "shopify://shop_images/ChatGPT_Image_Jun_5_2026_02_20_40_PM.png",
         "focal_point": "top center",
         "overlay_color": "#000000",
-        "overlay_opacity": 35,
+        "overlay_opacity": 0,
         "eyebrow": "KAYVA makes Ra95+ LED strips and bulbs for Singapore homes, with published specifications and batch-level testing to help you choose lighting that renders colours more accurately.",
         "heading": "Ra95+ lighting for Singapore homes",
         "subtext": "Most homes are lit at Ra80. Yours doesn't have to be.",
