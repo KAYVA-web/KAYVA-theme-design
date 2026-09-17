@@ -33,6 +33,13 @@
             "text": "50% denser than the 320/m strips most of the market sells. No visible dots, no hot spots — even at close range or in shallow coves."
           }
         },
+        "highlight_DNk7fY": {
+          "type": "highlight",
+          "settings": {
+            "label": "Warranty ·",
+            "text": "5 Years Warranty"
+          }
+        },
         "bundle_option_xMe86y": {
           "type": "bundle_option",
           "disabled": true,
@@ -57,7 +64,7 @@
           "type": "accordion",
           "settings": {
             "title": "PRODUCT SPECIFICATIONS",
-            "content": "<p><strong>LED density:</strong> 480 per meter<br/><strong>Length:</strong> 10m<br/><strong>CRI:</strong> Ra95+<br/><strong>R9:</strong> &gt;80<br/><strong>SDCM: </strong>1.6<br/><strong>Lumens:</strong> 1000 lm per meter<br/><strong>Power:</strong> 12W per meter<br/><strong>Voltage:</strong> 24V DC<br/><strong>Cuttable:</strong> Every 50mm<br/><strong>Color temperature</strong>:<strong> </strong>2700K or 4000K<br/><strong>Dimmable:</strong> Yes, with dimmer controller<br/><strong>Beam angle:</strong> 180°<br/><strong>Lifespan:</strong> 20,000 hours<br/><strong>IP rating:</strong> IP20 (indoor use)<br/><strong>Warranty:</strong> 5 years</p>"
+            "content": "<p><strong>LED density:</strong> 480 per meter<br/><strong>Length:</strong> 10m<br/><strong>CRI:</strong> Ra95+<br/><strong>R9:</strong> &gt;80<br/><strong>SDCM: </strong>1.6<br/><strong>Lumens:</strong> 1000 lm per meter<br/><strong>Power:</strong> 12W per meter<br/><strong>Voltage:</strong> 24V DC<br/><strong>Cuttable:</strong> Every 50mm<br/><strong>Color temperature</strong>:<strong> </strong>2700K or 4000K<br/><strong>Dimmable:</strong> Yes, with dimmer controller<br/><strong>Beam angle:</strong> 180°<br/><strong>Lifespan:</strong> 20,000 hours<br/><strong>IP rating:</strong> IP20 (indoor use)</p>"
           }
         },
         "acc1": {
@@ -86,6 +93,7 @@
         "h1",
         "h2",
         "h3",
+        "highlight_DNk7fY",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
         "accordion_6QWieg",
