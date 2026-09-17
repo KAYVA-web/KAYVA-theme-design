@@ -33,6 +33,13 @@
             "text": "Glass body, 36° beam, 25,000 hours rated at L70."
           }
         },
+        "highlight_q6nmVW": {
+          "type": "highlight",
+          "settings": {
+            "label": "Warranty ·",
+            "text": "3 Years warranty"
+          }
+        },
         "bundle_option_xMe86y": {
           "type": "bundle_option",
           "disabled": true,
@@ -86,6 +93,7 @@
         "h1",
         "h2",
         "h3",
+        "highlight_q6nmVW",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
         "accordion_EVFiKz",
