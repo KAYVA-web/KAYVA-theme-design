@@ -33,6 +33,13 @@
             "text": "Wide 160° spread for pendants, table lamps, and open fittings."
           }
         },
+        "highlight_t34pby": {
+          "type": "highlight",
+          "settings": {
+            "label": "Warranty ·",
+            "text": "3 Years Warranty"
+          }
+        },
         "bundle_option_xMe86y": {
           "type": "bundle_option",
           "disabled": true,
@@ -86,6 +93,7 @@
         "h1",
         "h2",
         "h3",
+        "highlight_t34pby",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
         "accordion_BXcgGc",
