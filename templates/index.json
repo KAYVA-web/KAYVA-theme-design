@@ -249,6 +249,7 @@
     },
     "kayva_trade_program_WNHbQr": {
       "type": "kayva-trade-program",
+      "disabled": true,
       "name": "KAYVA Trade Program",
       "settings": {
         "eyebrow": "Trade program",
