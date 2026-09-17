@@ -33,6 +33,13 @@
             "text": "Frosted lens, no visible chip. 490 lumens from a 7W draw."
           }
         },
+        "highlight_RDNnhA": {
+          "type": "highlight",
+          "settings": {
+            "label": "Warranty ·",
+            "text": "3 Years Warranty"
+          }
+        },
         "bundle_option_xMe86y": {
           "type": "bundle_option",
           "disabled": true,
@@ -86,6 +93,7 @@
         "h1",
         "h2",
         "h3",
+        "highlight_RDNnhA",
         "bundle_option_xMe86y",
         "bundle_option_YCXqCr",
         "accordion_9MUUfH",
