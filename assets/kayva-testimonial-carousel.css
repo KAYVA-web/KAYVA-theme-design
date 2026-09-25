@@ -1,0 +1,182 @@
+/* KAYVA Testimonial Carousel */
+
+.kv-tstm__heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.kv-tstm__root {
+  display: block;
+}
+
+/* Track — carousel mode (scroll snap) */
+.kv-tstm__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 87%;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.kv-tstm__track::-webkit-scrollbar { display: none; }
+.kv-tstm__track > * { scroll-snap-align: start; }
+.kv-tstm__track:focus-visible {
+  outline: 2px solid var(--kayva-amber, #B8753A);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kv-tstm__track { scroll-behavior: smooth; }
+}
+
+@media (min-width: 750px) {
+  .kv-tstm__track { grid-auto-columns: calc(50% - 10px); }
+}
+@media (min-width: 990px) {
+  .kv-tstm__track { grid-auto-columns: calc(33.333% - 14px); }
+}
+
+/* Static grid mode (few cards) */
+.kv-tstm__root--static .kv-tstm__track {
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-columns: unset;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+/* Card */
+.kv-tstm__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  background: var(--kayva-white, #FFFFFF);
+  overflow: hidden;
+}
+.kv-tstm__photo {
+  aspect-ratio: 4 / 3;
+  background: var(--kayva-cream, #F5EFE5);
+  flex-shrink: 0;
+}
+.kv-tstm__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.kv-tstm__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  flex: 1;
+}
+
+/* Stars */
+.kv-tstm__stars { display: flex; gap: 3px; }
+.kv-tstm__star { color: var(--kayva-line, #E8E0D2); }
+.kv-tstm__star--filled { color: var(--kayva-amber, #B8753A); }
+
+/* Body text with 5-line clamp */
+.kv-tstm__text-wrap { flex: 1; }
+.kv-tstm__text {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 14px;
+  color: var(--kayva-ink, #1F1B16);
+  line-height: 1.7;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.kv-tstm__text.is-expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+.kv-tstm__more {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kayva-amber, #B8753A);
+  background: none;
+  border: none;
+  padding: 6px 0 0;
+  cursor: pointer;
+}
+
+/* Meta */
+.kv-tstm__meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.kv-tstm__name {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0;
+}
+.kv-tstm__date {
+  font-weight: 400;
+  color: var(--kayva-soft-brown, #8A5524);
+}
+.kv-tstm__badge {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kayva-warm-brown, #6B4823);
+  border: 1px solid var(--kayva-line, #E8E0D2);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.kv-tstm__product {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 12px;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: 0;
+}
+.kv-tstm__product a {
+  color: var(--kayva-warm-brown, #6B4823);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.kv-tstm__product a:hover { color: var(--kayva-amber, #B8753A); }
+.kv-tstm__product-more { opacity: 0.8; }
+
+/* Controls */
+.kv-tstm__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+  min-height: 40px;
+}
+.kv-tstm__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  background: transparent;
+  color: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.kv-tstm__arrow:hover:not(:disabled) { border-color: var(--kayva-amber, #B8753A); }
+.kv-tstm__arrow:disabled { opacity: 0.35; cursor: default; }
+.kv-tstm__counter {
+  font-family: var(--kayva-font, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--kayva-soft-brown, #8A5524);
+  min-width: 48px;
+  text-align: center;
+}

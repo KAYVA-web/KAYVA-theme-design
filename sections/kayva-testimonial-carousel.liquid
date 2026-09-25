@@ -1,0 +1,212 @@
+{% comment %}
+  KAYVA Testimonial Carousel — metaobject-driven (type: testimonial).
+  Reviews are imported from Google / Shopee / Lazada, so deliberately
+  NO review structured data (JSON-LD / microdata) is emitted here.
+  Sorting: Liquid cannot reliably sort metaobject entries by a date
+  field (sort on field drops risks a runtime comparison error), so
+  entries render in metaobject entry order. Reorder them in
+  Admin > Content > Metaobjects if needed.
+{% endcomment %}
+
+{%- paginate shop.metaobjects.testimonial.values by 250 -%}
+  {%- liquid
+    assign all_t = shop.metaobjects.testimonial.values
+    assign total_count = all_t.size
+    assign mode = section.settings.mode
+    assign min_reviews = section.settings.min_reviews
+    assign max_reviews = section.settings.max_reviews
+
+    if mode == 'product' and product == blank
+      assign mode = 'all'
+    endif
+
+    assign featured_count = 0
+    if mode == 'featured'
+      for t in all_t
+        if t.featured.value
+          assign featured_count = featured_count | plus: 1
+        endif
+      endfor
+      if featured_count == 0
+        assign mode = 'all'
+      endif
+    endif
+
+    # products field may be a single product_reference (current store
+    # definition) or list.product_reference — handle both shapes.
+    assign matched_count = 0
+    if mode == 'product'
+      for t in all_t
+        assign tp = t.products.value
+        assign is_match = false
+        if tp.first
+          for p in tp
+            if p.id == product.id
+              assign is_match = true
+              break
+            endif
+          endfor
+        elsif tp != blank and tp.id == product.id
+          assign is_match = true
+        endif
+        if is_match
+          assign matched_count = matched_count | plus: 1
+        endif
+      endfor
+    endif
+
+    assign use_fallback_heading = false
+    case mode
+      when 'featured'
+        assign pool_size = featured_count
+      when 'product'
+        if matched_count >= min_reviews
+          assign pool_size = matched_count
+        else
+          assign pool_size = total_count
+          assign use_fallback_heading = true
+        endif
+      else
+        assign pool_size = total_count
+    endcase
+
+    assign shown_count = pool_size | at_most: max_reviews
+
+    assign section_heading = section.settings.heading
+    if use_fallback_heading and section.settings.fallback_heading != blank
+      assign section_heading = section.settings.fallback_heading
+    endif
+  -%}
+
+  {%- if pool_size >= min_reviews and shown_count > 0 -%}
+    {{ 'kayva-testimonial-carousel.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'kayva-testimonial-carousel.js' | asset_url }}" defer></script>
+
+    <section
+      class="kv-tstm"
+      style="background: {{ section.settings.bg }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+    >
+      <div class="kayva-page-width">
+        {%- if section_heading != blank -%}
+          <h2 class="kv-tstm__heading kayva-heading">{{ section_heading | escape }}</h2>
+        {%- endif -%}
+
+        <kayva-testimonials class="kv-tstm__root{% if shown_count <= 3 %} kv-tstm__root--static{% endif %}">
+          <div
+            class="kv-tstm__track"
+            {% if shown_count > 3 %}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="{{ section_heading | default: 'Customer testimonials' | escape }}"
+              tabindex="0"
+            {% endif %}
+          >
+            {%- liquid
+              assign rendered = 0
+
+              # Pass 1 — product-matched testimonials first (product mode only)
+              if mode == 'product'
+                for t in all_t
+                  if rendered >= max_reviews
+                    break
+                  endif
+                  assign tp = t.products.value
+                  assign is_match = false
+                  if tp.first
+                    for p in tp
+                      if p.id == product.id
+                        assign is_match = true
+                        break
+                      endif
+                    endfor
+                  elsif tp != blank and tp.id == product.id
+                    assign is_match = true
+                  endif
+                  if is_match
+                    render 'kayva-testimonial-card', testimonial: t, show_product_link: section.settings.show_product_link, current_product: product
+                    assign rendered = rendered | plus: 1
+                  endif
+                endfor
+              endif
+
+              # Pass 2 — remaining pool
+              for t in all_t
+                if rendered >= max_reviews
+                  break
+                endif
+                if mode == 'featured'
+                  unless t.featured.value
+                    continue
+                  endunless
+                elsif mode == 'product'
+                  if use_fallback_heading == false
+                    break
+                  endif
+                  assign tp = t.products.value
+                  assign is_match = false
+                  if tp.first
+                    for p in tp
+                      if p.id == product.id
+                        assign is_match = true
+                        break
+                      endif
+                    endfor
+                  elsif tp != blank and tp.id == product.id
+                    assign is_match = true
+                  endif
+                  if is_match
+                    continue
+                  endif
+                endif
+                render 'kayva-testimonial-card', testimonial: t, show_product_link: section.settings.show_product_link, current_product: product
+                assign rendered = rendered | plus: 1
+              endfor
+            -%}
+          </div>
+
+          {%- if shown_count > 3 -%}
+            <div class="kv-tstm__controls">
+              <button type="button" class="kv-tstm__arrow" data-kv-prev aria-label="Previous testimonials" disabled>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="kv-tstm__counter" data-kv-counter aria-live="polite">1 / {{ shown_count }}</span>
+              <button type="button" class="kv-tstm__arrow" data-kv-next aria-label="Next testimonials">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          {%- endif -%}
+        </kayva-testimonials>
+      </div>
+    </section>
+  {%- endif -%}
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "KAYVA Review Carousel",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What customers say" },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Which testimonials",
+      "options": [
+        { "value": "all", "label": "All testimonials" },
+        { "value": "featured", "label": "Featured only" },
+        { "value": "product", "label": "Current product (product pages)" }
+      ],
+      "default": "all"
+    },
+    { "type": "range", "id": "min_reviews", "label": "Minimum reviews to show section", "min": 1, "max": 10, "step": 1, "default": 1 },
+    { "type": "range", "id": "max_reviews", "label": "Maximum reviews", "min": 3, "max": 30, "step": 1, "default": 12 },
+    { "type": "checkbox", "id": "show_product_link", "label": "Show purchased product link", "default": true },
+    { "type": "text", "id": "fallback_heading", "label": "Fallback heading (product mode, few matches)", "default": "What customers say about KAYVA" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "range", "id": "padding_top", "label": "Top padding (px)", "min": 0, "max": 120, "step": 4, "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding (px)", "min": 0, "max": 120, "step": 4, "default": 80 }
+  ],
+  "presets": [
+    { "name": "KAYVA Review Carousel" }
+  ]
+}
+{% endschema %}

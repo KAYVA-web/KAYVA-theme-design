@@ -1,0 +1,92 @@
+{%- doc -%}
+  Renders one testimonial card from a `testimonial` metaobject entry.
+
+  @param {object} testimonial - The testimonial metaobject entry
+  @param {boolean} show_product_link - Show "Purchased: <product>" link
+  @param {object} [current_product] - Product page context; its own link is skipped
+{%- enddoc -%}
+
+{%- liquid
+  assign t_name = testimonial.name.value
+  assign t_source = testimonial.source.value
+  assign t_body = testimonial.body.value
+  assign t_photo = testimonial.photo.value
+  assign t_products = testimonial.products.value
+  assign t_date = testimonial.review_date.value
+  assign t_rating = testimonial.rating.value.rating | default: 0 | round
+  if t_rating > 5
+    assign t_rating = 5
+  endif
+
+  assign link_product = blank
+  assign extra_products = 0
+  if show_product_link and t_products != blank
+    if t_products.first
+      for p in t_products
+        if current_product != blank and p.id == current_product.id
+          continue
+        endif
+        if link_product == blank
+          assign link_product = p
+        else
+          assign extra_products = extra_products | plus: 1
+        endif
+      endfor
+    elsif current_product == blank or t_products.id != current_product.id
+      assign link_product = t_products
+    endif
+  endif
+-%}
+
+<article class="kv-tstm__card">
+  {%- if t_photo != blank -%}
+    <div class="kv-tstm__photo">
+      <img
+        src="{{ t_photo | image_url: width: 600 }}"
+        srcset="{{ t_photo | image_url: width: 300 }} 300w, {{ t_photo | image_url: width: 600 }} 600w"
+        sizes="(min-width: 990px) 33vw, (min-width: 750px) 50vw, 87vw"
+        alt="{{ t_photo.alt | default: t_name | escape }}"
+        loading="lazy"
+        width="600"
+        height="450"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="kv-tstm__card-body">
+    {%- if t_rating > 0 -%}
+      <div class="kv-tstm__stars" role="img" aria-label="Rated {{ t_rating }} out of 5">
+        {%- for i in (1..5) -%}
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" class="kv-tstm__star{% if i <= t_rating %} kv-tstm__star--filled{% endif %}">
+            <path d="M7 1.2l1.72 3.66 3.83.5-2.82 2.66.73 3.78L7 9.94 3.54 11.8l.73-3.78L1.45 5.36l3.83-.5z" stroke="currentColor" stroke-width="1" stroke-linejoin="round" fill="{% if i <= t_rating %}currentColor{% else %}none{% endif %}"/>
+          </svg>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if t_body != blank -%}
+      <div class="kv-tstm__text-wrap">
+        <p class="kv-tstm__text" data-kv-body>{{ t_body | escape | newline_to_br }}</p>
+        <button type="button" class="kv-tstm__more" data-kv-more aria-expanded="false" hidden>Read more</button>
+      </div>
+    {%- endif -%}
+
+    <div class="kv-tstm__meta">
+      <p class="kv-tstm__name">
+        {{ t_name | escape }}
+        {%- if t_date != blank -%}
+          <span class="kv-tstm__date">· {{ t_date | date: '%b %Y' }}</span>
+        {%- endif -%}
+      </p>
+      {%- if t_source != blank -%}
+        <span class="kv-tstm__badge">{{ t_source | escape }} review</span>
+      {%- endif -%}
+      {%- if link_product != blank -%}
+        <p class="kv-tstm__product">
+          Purchased: <a href="{{ link_product.url }}">{{ link_product.title | escape }}</a>
+          {%- if extra_products > 0 %} <span class="kv-tstm__product-more">+{{ extra_products }} more</span>{% endif -%}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</article>
