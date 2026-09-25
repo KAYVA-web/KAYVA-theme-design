@@ -104,62 +104,62 @@
             {%- liquid
               assign rendered = 0
 
-              # Pass 1 — product-matched testimonials first (product mode only)
-              if mode == 'product'
-                for t in all_t
-                  if rendered >= max_reviews
-                    break
-                  endif
-                  assign tp = t.products.value
-                  assign is_match = false
-                  if tp.first
-                    for p in tp
-                      if p.id == product.id
+              # group 1 = product-matched (product mode only), group 2 = rest of pool.
+              # Within each group, reviews with a photo render before text-only ones.
+              for group in (1..2)
+                if group == 1 and mode != 'product'
+                  continue
+                endif
+                if group == 2 and mode == 'product' and use_fallback_heading == false
+                  continue
+                endif
+
+                for photo_pass in (1..2)
+                  for t in all_t
+                    if rendered >= max_reviews
+                      break
+                    endif
+
+                    assign has_photo = false
+                    if t.photo.value != blank
+                      assign has_photo = true
+                    endif
+                    if photo_pass == 1 and has_photo == false
+                      continue
+                    endif
+                    if photo_pass == 2 and has_photo
+                      continue
+                    endif
+
+                    if mode == 'featured'
+                      unless t.featured.value
+                        continue
+                      endunless
+                    elsif mode == 'product'
+                      assign tp = t.products.value
+                      assign is_match = false
+                      if tp.first
+                        for p in tp
+                          if p.id == product.id
+                            assign is_match = true
+                            break
+                          endif
+                        endfor
+                      elsif tp != blank and tp.id == product.id
                         assign is_match = true
-                        break
                       endif
-                    endfor
-                  elsif tp != blank and tp.id == product.id
-                    assign is_match = true
-                  endif
-                  if is_match
+                      if group == 1 and is_match == false
+                        continue
+                      endif
+                      if group == 2 and is_match
+                        continue
+                      endif
+                    endif
+
                     render 'kayva-testimonial-card', testimonial: t, show_product_link: section.settings.show_product_link, current_product: product
                     assign rendered = rendered | plus: 1
-                  endif
+                  endfor
                 endfor
-              endif
-
-              # Pass 2 — remaining pool
-              for t in all_t
-                if rendered >= max_reviews
-                  break
-                endif
-                if mode == 'featured'
-                  unless t.featured.value
-                    continue
-                  endunless
-                elsif mode == 'product'
-                  if use_fallback_heading == false
-                    break
-                  endif
-                  assign tp = t.products.value
-                  assign is_match = false
-                  if tp.first
-                    for p in tp
-                      if p.id == product.id
-                        assign is_match = true
-                        break
-                      endif
-                    endfor
-                  elsif tp != blank and tp.id == product.id
-                    assign is_match = true
-                  endif
-                  if is_match
-                    continue
-                  endif
-                endif
-                render 'kayva-testimonial-card', testimonial: t, show_product_link: section.settings.show_product_link, current_product: product
-                assign rendered = rendered | plus: 1
               endfor
             -%}
           </div>

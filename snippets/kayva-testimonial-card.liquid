@@ -61,12 +61,13 @@
         height="450"
       >
     </button>
+  {%- else -%}
+    <div class="kv-tstm__placeholder" aria-hidden="true">
+      <span class="kv-tstm__quote">&ldquo;</span>
+    </div>
   {%- endif -%}
 
   <div class="kv-tstm__card-body">
-    {%- if t_photo == blank -%}
-      <span class="kv-tstm__quote" aria-hidden="true">&ldquo;</span>
-    {%- endif -%}
     {%- if t_rating > 0 -%}
       <div class="kv-tstm__stars" role="img" aria-label="Rated {{ t_rating }} out of 5">
         {%- for i in (1..5) -%}
