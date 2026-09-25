@@ -203,48 +203,19 @@
         "image_ratio": "4 / 3"
       }
     },
-    "kayva_testimonials_itHPDc": {
-      "type": "kayva-testimonials",
-      "blocks": {
-        "testimonial_VHAV73": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "Replaced our old cove lighting during the reno. The difference is obvious to every guest — the living room just feels warmer and more considered.",
-            "name": "Mei Lin T.",
-            "role": "HDB homeowner, Bishan"
-          }
-        },
-        "testimonial_NidU73": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "I specify KAYVA on every residential project now. Clients can't put their finger on it — they just say the home feels different. It's the CRI.",
-            "name": "Sarah K.",
-            "role": "Interior Designer, Singapore"
-          }
-        },
-        "testimonial_wpjHt8": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "Set up the Dual-CCT GU10 in our study. Warm for evenings, cool for work — one bulb covers it all. Genuinely useful and noticeably better light.",
-            "name": "Raj M.",
-            "role": "Contractor, 40+ projects"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_VHAV73",
-        "testimonial_NidU73",
-        "testimonial_wpjHt8"
-      ],
-      "name": "KAYVA Testimonials",
+    "kayva_testimonial_carousel_GP4kkf": {
+      "type": "kayva-testimonial-carousel",
+      "name": "KAYVA Review Carousel",
       "settings": {
-        "eyebrow": "From customers",
-        "heading": "What homeowners and designers say.",
-        "bg": "#f5efe5",
-        "card_bg": "#f5efe5"
+        "heading": "What customers say",
+        "mode": "all",
+        "min_reviews": 1,
+        "max_reviews": 12,
+        "show_product_link": true,
+        "fallback_heading": "What customers say about KAYVA",
+        "bg": "#FFFFFF",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "kayva_trade_program_WNHbQr": {
@@ -315,7 +286,7 @@
     "collections",
     "pillars",
     "showcase",
-    "kayva_testimonials_itHPDc",
+    "kayva_testimonial_carousel_GP4kkf",
     "kayva_trade_program_WNHbQr",
     "cri",
     "newsletter"
