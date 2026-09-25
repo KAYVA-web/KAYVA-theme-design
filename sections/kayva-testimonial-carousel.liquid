@@ -104,10 +104,18 @@
             {%- liquid
               assign rendered = 0
 
-              # group 1 = product-matched (product mode only), group 2 = rest of pool.
+              # "all" mode on a product page also lists the current product's reviews first
+              assign match_first = false
+              if product != blank
+                if mode == 'product' or mode == 'all'
+                  assign match_first = true
+                endif
+              endif
+
+              # group 1 = product-matched, group 2 = rest of pool.
               # Within each group, reviews with a photo render before text-only ones.
               for group in (1..2)
-                if group == 1 and mode != 'product'
+                if group == 1 and match_first == false
                   continue
                 endif
                 if group == 2 and mode == 'product' and use_fallback_heading == false
@@ -135,7 +143,9 @@
                       unless t.featured.value
                         continue
                       endunless
-                    elsif mode == 'product'
+                    endif
+
+                    if match_first
                       assign tp = t.products.value
                       assign is_match = false
                       if tp.first
