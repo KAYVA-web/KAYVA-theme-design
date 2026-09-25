@@ -40,20 +40,33 @@
 
 <article class="kv-tstm__card">
   {%- if t_photo != blank -%}
-    <div class="kv-tstm__photo">
+    {%- assign t_alt = t_photo.alt | default: t_name | default: 'Customer photo' -%}
+    <button
+      type="button"
+      class="kv-tstm__photo"
+      data-kv-photo
+      data-kv-full="{{ t_photo | image_url: width: 1600 }}"
+      data-kv-alt="{{ t_alt | escape }}"
+      data-kv-w="{{ t_photo.width }}"
+      data-kv-h="{{ t_photo.height }}"
+      aria-label="View full photo from {{ t_name | default: 'customer' | escape }}"
+    >
       <img
-        src="{{ t_photo | image_url: width: 600 }}"
-        srcset="{{ t_photo | image_url: width: 300 }} 300w, {{ t_photo | image_url: width: 600 }} 600w"
-        sizes="(min-width: 990px) 33vw, (min-width: 750px) 50vw, 87vw"
-        alt="{{ t_photo.alt | default: t_name | escape }}"
+        src="{{ t_photo | image_url: width: 600, height: 450, crop: 'center' }}"
+        srcset="{{ t_photo | image_url: width: 400, height: 300, crop: 'center' }} 400w, {{ t_photo | image_url: width: 600, height: 450, crop: 'center' }} 600w, {{ t_photo | image_url: width: 800, height: 600, crop: 'center' }} 800w"
+        sizes="(min-width: 1200px) 360px, (min-width: 750px) 340px, 85vw"
+        alt="{{ t_alt | escape }}"
         loading="lazy"
         width="600"
         height="450"
       >
-    </div>
+    </button>
   {%- endif -%}
 
   <div class="kv-tstm__card-body">
+    {%- if t_photo == blank -%}
+      <span class="kv-tstm__quote" aria-hidden="true">&ldquo;</span>
+    {%- endif -%}
     {%- if t_rating > 0 -%}
       <div class="kv-tstm__stars" role="img" aria-label="Rated {{ t_rating }} out of 5">
         {%- for i in (1..5) -%}

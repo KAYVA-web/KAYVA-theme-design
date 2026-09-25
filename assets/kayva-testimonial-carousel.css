@@ -7,13 +7,21 @@
 
 .kv-tstm__root {
   display: block;
+  --kv-tstm-card-w: min(85%, 360px);
+}
+@media (min-width: 750px) {
+  .kv-tstm__root { --kv-tstm-card-w: 340px; }
+}
+@media (min-width: 1200px) {
+  .kv-tstm__root { --kv-tstm-card-w: 360px; }
 }
 
-/* Track — carousel mode (scroll snap) */
+/* Track — carousel mode (scroll snap, fixed card width) */
 .kv-tstm__track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 87%;
+  grid-auto-columns: var(--kv-tstm-card-w);
+  align-items: start;
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -32,47 +40,82 @@
   .kv-tstm__track { scroll-behavior: smooth; }
 }
 
-@media (min-width: 750px) {
-  .kv-tstm__track { grid-auto-columns: calc(50% - 10px); }
-}
-@media (min-width: 990px) {
-  .kv-tstm__track { grid-auto-columns: calc(33.333% - 14px); }
-}
-
-/* Static grid mode (few cards) */
+/* Static grid mode (few cards) — fixed-width cards, centred */
 .kv-tstm__root--static .kv-tstm__track {
   grid-auto-flow: row;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  grid-auto-columns: unset;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 360px));
+  justify-content: center;
+  align-items: start;
   overflow: visible;
   scroll-snap-type: none;
 }
 
-/* Card */
+/* Card — equal heights come from JS (--kv-tstm-row-h), so an expanded
+   card grows alone instead of stretching its neighbours. */
 .kv-tstm__card {
   display: flex;
   flex-direction: column;
+  min-height: var(--kv-tstm-row-h, 0);
   border: 1px solid var(--kayva-line, #E8E0D2);
   background: var(--kayva-white, #FFFFFF);
   overflow: hidden;
 }
-.kv-tstm__photo {
+
+/* Photo — fixed 4:3 crop, click opens lightbox */
+.kv-tstm__card .kv-tstm__photo {
+  position: relative;
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
-  background: var(--kayva-cream, #F5EFE5);
+  overflow: hidden;
   flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--kayva-cream, #F5EFE5);
+  cursor: zoom-in;
 }
-.kv-tstm__photo img {
+.kv-tstm__card .kv-tstm__photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
   object-fit: cover;
+  object-position: center;
   display: block;
+  transition: transform 0.4s ease;
 }
+.kv-tstm__card .kv-tstm__photo:hover img { transform: scale(1.03); }
+.kv-tstm__card .kv-tstm__photo:focus-visible {
+  outline: 2px solid var(--kayva-amber, #B8753A);
+  outline-offset: -2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kv-tstm__card .kv-tstm__photo img { transition: none; }
+  .kv-tstm__card .kv-tstm__photo:hover img { transform: none; }
+}
+
 .kv-tstm__card-body {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
-  flex: 1;
+}
+
+/* Decorative quote for text-only cards */
+.kv-tstm__quote {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 72px;
+  line-height: 0.6;
+  height: 32px;
+  color: var(--kayva-amber, #B8753A);
+  opacity: 0.2;
+  user-select: none;
 }
 
 /* Stars */
@@ -81,7 +124,6 @@
 .kv-tstm__star--filled { color: var(--kayva-amber, #B8753A); }
 
 /* Body text with 5-line clamp */
-.kv-tstm__text-wrap { flex: 1; }
 .kv-tstm__text {
   font-family: var(--kayva-font, 'Inter', sans-serif);
   font-size: 14px;
@@ -110,8 +152,14 @@
   cursor: pointer;
 }
 
-/* Meta */
-.kv-tstm__meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+/* Meta — sits directly under the review text */
+.kv-tstm__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 2px; /* + 14px body gap = 16px */
+}
 .kv-tstm__name {
   font-family: var(--kayva-font, 'Inter', sans-serif);
   font-size: 13px;
@@ -179,4 +227,45 @@
   color: var(--kayva-soft-brown, #8A5524);
   min-width: 48px;
   text-align: center;
+}
+
+/* Lightbox */
+.kv-tstm__lightbox {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: 94vw;
+  max-height: 94vh;
+  overflow: visible;
+}
+.kv-tstm__lightbox::backdrop {
+  background: rgba(31, 27, 22, 0.88);
+}
+.kv-tstm__lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.kv-tstm__lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--kayva-dark-brown, #3D2A15);
+  cursor: pointer;
+}
+.kv-tstm__lightbox-close:focus-visible {
+  outline: 2px solid var(--kayva-amber, #B8753A);
+  outline-offset: 2px;
 }
