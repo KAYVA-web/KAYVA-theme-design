@@ -64,7 +64,7 @@
           "type": "accordion",
           "settings": {
             "title": "Product Specifications",
-            "content": "<p><strong>Fitting: </strong>E27<br/><strong>CRI</strong>: Ra95+<br/><strong>R9: </strong>&gt;70<strong><br/>SDCM:</strong> 5.5<br/><strong>Lumens:</strong>1013 lm<br/><strong>Power</strong>: 9W<br/><strong>Voltage</strong>: 220–240V AC · 50Hz <br/><strong>CCT</strong>: 2700K<br/><strong>Dimmable: </strong>Yes<br/><strong>Beam angle</strong>: 160°<br/><strong>Lifespan</strong>: 25,000 hours<br/><strong>IP rating</strong>: IP20 (indoor use)<br/><strong>Body</strong>: Polycarbonate</p>"
+            "content": "<p><strong>Fitting: </strong>E27<br/><strong>CRI</strong>: Ra95+<br/><strong>R9: </strong>&gt;70<strong><br/>SDCM:</strong> 5.5<br/><strong>Lumens:</strong>1013 lm<br/><strong>Power</strong>: 9W<br/><strong>Voltage</strong>: 220–240V AC · 50Hz&nbsp;<br/><strong>CCT</strong>: 2700K<br/><strong>Dimmable: </strong>Yes<br/><strong>Beam angle</strong>: 160°<br/><strong>Lifespan</strong>: 25,000 hours<br/><strong>IP rating</strong>: IP20 (indoor use)<br/><strong>Body</strong>: Polycarbonate</p>"
           }
         },
         "acc1": {
@@ -107,7 +107,7 @@
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
-        "note": "Ships within 2–4 working days. Free delivery on orders over $80.",
+        "note": "Ships within 2–4 working days. Free delivery on orders over $70.",
         "description_label": "Description",
         "description_content": ""
       }
