@@ -12,6 +12,12 @@
     "main": {
       "type": "kayva-product-info",
       "blocks": {
+        "option_note_MLRcJU": {
+          "type": "option_note",
+          "settings": {
+            "content": "<p>Measure your total cove run. Up to 10m → Single. 10–20m → Pack of 2. 20–40m → Pack of 4. Add 10% for cuts and corners.</p>"
+          }
+        },
         "h3": {
           "type": "highlight",
           "settings": {
@@ -90,6 +96,7 @@
         }
       },
       "block_order": [
+        "option_note_MLRcJU",
         "h3",
         "h1",
         "h2",
@@ -109,7 +116,11 @@
         "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $70.",
         "description_label": "Description",
-        "description_content": ""
+        "description_content": "",
+        "show_unit_price": true,
+        "unit_label": "reel",
+        "show_rating_line": true,
+        "rating_anchor": "reviews"
       }
     },
     "kayva_testimonial_carousel_KyymFH": {
