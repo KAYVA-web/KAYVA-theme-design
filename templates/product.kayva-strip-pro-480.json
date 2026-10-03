@@ -14,12 +14,11 @@
       "blocks": {
         "install_callout_hByM3Q": {
           "type": "install_callout",
-          "disabled": true,
           "settings": {
             "heading": "Complete the install",
-            "text": "",
+            "text": "<p>Test</p>",
             "button_label": "Size your driver",
-            "button_url": ""
+            "button_url": "shopify://pages/driver-sizing"
           }
         },
         "option_note_MLRcJU": {
