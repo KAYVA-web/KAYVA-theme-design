@@ -12,6 +12,16 @@
     "main": {
       "type": "kayva-product-info",
       "blocks": {
+        "install_callout_hByM3Q": {
+          "type": "install_callout",
+          "disabled": true,
+          "settings": {
+            "heading": "Complete the install",
+            "text": "",
+            "button_label": "Size your driver",
+            "button_url": ""
+          }
+        },
         "option_note_MLRcJU": {
           "type": "option_note",
           "settings": {
@@ -96,6 +106,7 @@
         }
       },
       "block_order": [
+        "install_callout_hByM3Q",
         "option_note_MLRcJU",
         "h3",
         "h1",
