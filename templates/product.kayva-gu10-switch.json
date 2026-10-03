@@ -109,7 +109,26 @@
         "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $70.",
         "description_label": "Description",
-        "description_content": ""
+        "description_content": "",
+        "show_unit_price": true,
+        "unit_label": "bulb",
+        "show_rating_line": true,
+        "rating_anchor": "reviews"
+      }
+    },
+    "kayva_testimonial_carousel_yA3VNF": {
+      "type": "kayva-testimonial-carousel",
+      "name": "KAYVA Review Carousel",
+      "settings": {
+        "heading": "What customers say",
+        "mode": "all",
+        "min_reviews": 1,
+        "max_reviews": 12,
+        "show_product_link": true,
+        "fallback_heading": "What customers say about KAYVA",
+        "bg": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "kayva_product_section_nav_3mLRdp": {
@@ -427,21 +446,6 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "kayva_testimonial_carousel_yA3VNF": {
-      "type": "kayva-testimonial-carousel",
-      "name": "KAYVA Review Carousel",
-      "settings": {
-        "heading": "What customers say",
-        "mode": "all",
-        "min_reviews": 1,
-        "max_reviews": 12,
-        "show_product_link": true,
-        "fallback_heading": "What customers say about KAYVA",
-        "bg": "#FFFFFF",
-        "padding_top": 80,
-        "padding_bottom": 80
       }
     }
   },
