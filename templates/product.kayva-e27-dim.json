@@ -109,7 +109,11 @@
         "buy_now_label": "Buy now",
         "note": "Ships within 2–4 working days. Free delivery on orders over $70.",
         "description_label": "Description",
-        "description_content": ""
+        "description_content": "",
+        "show_unit_price": true,
+        "unit_label": "bulb",
+        "show_rating_line": true,
+        "rating_anchor": "reviews"
       }
     },
     "kayva_testimonial_carousel_y7ne9g": {
@@ -122,7 +126,7 @@
         "max_reviews": 30,
         "show_product_link": true,
         "fallback_heading": "What customers say about KAYVA",
-        "bg": "#FFFFFF",
+        "bg": "#ffffff",
         "padding_top": 80,
         "padding_bottom": 80
       }
