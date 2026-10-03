@@ -89,7 +89,23 @@
   margin-bottom: 16px;
 }
 .kv-pinfo__rating:hover { text-decoration: underline; }
-.kv-pinfo__rating-star { color: var(--kayva-amber, #B8753A); }
+.kv-pinfo__rating-stars {
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--kayva-line, #E8E0D2);
+  margin-right: 4px;
+}
+.kv-pinfo__rating-stars-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--kayva-amber, #B8753A);
+}
 
 /* Option note (block, inside the product form) */
 .kv-pinfo__option-note {
@@ -555,8 +571,9 @@
           {%- endpaginate -%}
           {%- if rating_count > 0 -%}
             {%- assign rating_avg = rating_sum | times: 1.0 | divided_by: rating_count | round: 1 -%}
-            <a class="kv-pinfo__rating" href="#{{ section.settings.rating_anchor | escape }}">
-              <span class="kv-pinfo__rating-star" aria-hidden="true">★</span> {{ rating_avg }} · {{ rating_count }} {% if rating_count == 1 %}review{% else %}reviews{% endif %}
+            {%- assign rating_fill = rating_avg | divided_by: 5.0 | times: 100 | at_most: 100 -%}
+            <a class="kv-pinfo__rating" href="#{{ section.settings.rating_anchor | escape }}" aria-label="Rated {{ rating_avg }} out of 5 from {{ rating_count }} {% if rating_count == 1 %}review{% else %}reviews{% endif %}">
+              <span class="kv-pinfo__rating-stars" aria-hidden="true">★★★★★<span class="kv-pinfo__rating-stars-fill" style="width: {{ rating_fill }}%;">★★★★★</span></span> {{ rating_avg }} · {{ rating_count }} {% if rating_count == 1 %}review{% else %}reviews{% endif %}
             </a>
           {%- endif -%}
         {%- endif -%}
