@@ -73,6 +73,69 @@
   text-decoration: line-through;
   margin-left: 10px;
 }
+.kv-pinfo__price .kv-pinfo__price-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin-left: 10px;
+}
+
+/* Rating line under price */
+.kv-pinfo__rating {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--kayva-dark-brown, #3D2A15);
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.kv-pinfo__rating:hover { text-decoration: underline; }
+.kv-pinfo__rating-star { color: var(--kayva-amber, #B8753A); }
+
+/* Option note (block, inside the product form) */
+.kv-pinfo__option-note {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--kayva-warm-brown, #6B4823);
+  background: var(--kayva-cream, #F5EFE5);
+  padding: 12px 14px;
+  border-radius: 4px;
+  margin: -6px 0 22px;
+}
+.kv-pinfo__option-note p { margin: 0 0 6px; }
+.kv-pinfo__option-note p:last-child { margin-bottom: 0; }
+.kv-pinfo__option-note strong { color: var(--kayva-dark-brown, #3D2A15); }
+
+/* Install callout (block, under the add-to-cart row) */
+.kv-pinfo__install {
+  border: 1.5px solid var(--kayva-line, #E8E0D2);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+}
+.kv-pinfo__install-heading {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kayva-dark-brown, #3D2A15);
+  margin: 0 0 8px;
+}
+.kv-pinfo__install-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--kayva-warm-brown, #6B4823);
+}
+.kv-pinfo__install-text p { margin: 0 0 6px; }
+.kv-pinfo__install-text p:last-child { margin-bottom: 0; }
+.kv-pinfo__install-btn {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kayva-amber, #B8753A);
+  text-decoration: none;
+}
+.kv-pinfo__install-btn:hover { text-decoration: underline; }
 /* Highlight bullets (Govee-style "key features" list) */
 .kv-pinfo__highlights {
   list-style: none;
@@ -332,6 +395,7 @@
   white-space: nowrap;
 }
 .kv-pinfo__floatbar-compare { font-size: 15px; font-weight: 400; color: var(--kayva-soft-brown, #8A5524); text-decoration: line-through; }
+.kv-pinfo__floatbar-unit { font-size: 13px; font-weight: 400; color: var(--kayva-soft-brown, #8A5524); }
 .kv-pinfo__floatbar-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
 .kv-pinfo__floatbar-btn {
   height: 66px;
@@ -359,6 +423,7 @@
   .kv-pinfo__floatbar-actions { gap: 10px; }
   .kv-pinfo__floatbar-price { font-size: 17px; }
   .kv-pinfo__floatbar-compare { font-size: 12px; }
+  .kv-pinfo__floatbar-unit { display: none; }
 }
 
 /* Accordion (description / shipping / etc) */
@@ -451,10 +516,50 @@
 
         <h1 class="kv-pinfo__title">{{ product.title }}</h1>
 
+        {%- liquid
+          # Pack quantity from the variant title ("Pack of 2", "Pack of 4 (40m)"); mirrors packQty() in the JS below
+          assign pack_qty = 1
+          assign pack_parts = current_variant.title | downcase | split: 'pack of '
+          if pack_parts.size > 1
+            assign pack_qty = pack_parts[1] | split: ' ' | first | split: '(' | first | plus: 0
+          endif
+          assign unit_cents = 0
+          if pack_qty > 1
+            assign unit_cents = current_variant.price | times: 1.0 | divided_by: pack_qty | round
+          endif
+        -%}
         <div class="kv-pinfo__price">
           <span id="kv-pinfo-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+          {%- if section.settings.show_unit_price %}
+            <span class="kv-pinfo__price-unit" id="kv-pinfo-unit-{{ section.id }}"{% if pack_qty <= 1 %} hidden{% endif %}>
+              {%- if pack_qty > 1 -%}· {{ unit_cents | money }} per {{ section.settings.unit_label | escape }}{%- endif -%}
+            </span>
+          {%- endif %}
           <span class="kv-pinfo__price-compare" id="kv-pinfo-compare-{{ section.id }}"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</span>
         </div>
+
+        {%- if section.settings.show_rating_line -%}
+          {%- liquid
+            # Average over ALL testimonial metaobjects. No review structured data here (reviews are imported from Google/Shopee).
+            assign rating_count = 0
+            assign rating_sum = 0.0
+          -%}
+          {%- paginate shop.metaobjects.testimonial.values by 250 -%}
+            {%- for t in shop.metaobjects.testimonial.values -%}
+              {%- assign t_rating = t.rating.value.rating -%}
+              {%- if t_rating != blank -%}
+                {%- assign rating_sum = rating_sum | plus: t_rating -%}
+                {%- assign rating_count = rating_count | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endpaginate -%}
+          {%- if rating_count > 0 -%}
+            {%- assign rating_avg = rating_sum | times: 1.0 | divided_by: rating_count | round: 1 -%}
+            <a class="kv-pinfo__rating" href="#{{ section.settings.rating_anchor | escape }}">
+              <span class="kv-pinfo__rating-star" aria-hidden="true">★</span> {{ rating_avg }} · {{ rating_count }} {% if rating_count == 1 %}review{% else %}reviews{% endif %}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
 
         {%- if section.blocks.size > 0 -%}
           <ul class="kv-pinfo__highlights">
@@ -495,6 +600,12 @@
             {%- endfor -%}
           {%- endunless -%}
 
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'option_note' -%}
+              <div class="kv-pinfo__option-note" {{ block.shopify_attributes }}>{{ block.settings.content }}</div>
+            {%- endif -%}
+          {%- endfor -%}
+
           <div class="kv-pinfo__buy-row">
             <span class="kv-pinfo__qty-label">Quantity</span>
             <div class="kv-pinfo__qty">
@@ -504,6 +615,18 @@
             </div>
           </div>
         {%- endform -%}
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'install_callout' -%}
+            <div class="kv-pinfo__install" {{ block.shopify_attributes }}>
+              <p class="kv-pinfo__install-heading">{{ block.settings.heading | escape }}</p>
+              <div class="kv-pinfo__install-text">{{ block.settings.text }}</div>
+              {%- if block.settings.button_url != blank and block.settings.button_label != blank -%}
+                <a class="kv-pinfo__install-btn" href="{{ block.settings.button_url }}">{{ block.settings.button_label | escape }} →</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
 
         <!-- Bundle picker (Govee-style: tabs + frequently-bought-together rows, adds as one cart action) -->
         {%- assign bundle_blocks = section.blocks | where: 'type', 'bundle_option' -%}
@@ -636,6 +759,11 @@
       <div class="kv-pinfo__floatbar-actions">
         <p class="kv-pinfo__floatbar-price">
           <span id="kv-floatbar-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+          {%- if section.settings.show_unit_price %}
+            <span class="kv-pinfo__floatbar-unit" id="kv-floatbar-unit-{{ section.id }}"{% if pack_qty <= 1 %} hidden{% endif %}>
+              {%- if pack_qty > 1 -%}· {{ unit_cents | money }} per {{ section.settings.unit_label | escape }}{%- endif -%}
+            </span>
+          {%- endif %}
           <s id="kv-floatbar-compare-{{ section.id }}" class="kv-pinfo__floatbar-compare"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
         </p>
         <button type="button" class="kv-pinfo__floatbar-btn kv-pinfo__floatbar-btn--ghost" id="kv-floatbar-add-{{ section.id }}">
@@ -794,6 +922,25 @@
 
     var mainPriceEl = document.getElementById('kv-pinfo-price-' + sectionId);
     var mainCompareEl = document.getElementById('kv-pinfo-compare-' + sectionId);
+    var mainUnitEl = document.getElementById('kv-pinfo-unit-' + sectionId);
+    var floatUnitEl = document.getElementById('kv-floatbar-unit-' + sectionId);
+    var unitLabel = {{ section.settings.unit_label | json }};
+
+    function packQty(title){
+      var m = /Pack of (\d+)/i.exec(title || '');
+      return m ? parseInt(m[1], 10) : 1;
+    }
+
+    function setUnit(el, priceCents, qty){
+      if (!el) { return; }
+      if (qty > 1) {
+        el.textContent = '· ' + moneyFmt(Math.round(priceCents / qty)) + ' per ' + unitLabel;
+        el.hidden = false;
+      } else {
+        el.textContent = '';
+        el.hidden = true;
+      }
+    }
 
     function syncFloatbar(){
       if (!mainVariantInput) { return; }
@@ -809,6 +956,9 @@
           }
         }
         if (floatPriceEl) { floatPriceEl.textContent = moneyFmt(match.price); }
+        var qty = packQty(match.title);
+        setUnit(mainUnitEl, match.price, qty);
+        setUnit(floatUnitEl, match.price, qty);
         if (floatVariantEl) { floatVariantEl.textContent = match.title; }
         if (floatCompareEl) {
           if (match.compare_at_price > match.price) {
@@ -924,7 +1074,12 @@
       "id": "description_content",
       "label": "Description content",
       "info": "Overrides the product description. Leave blank to use the default product description."
-    }
+    },
+    { "type": "header", "content": "Price & reviews" },
+    { "type": "checkbox", "id": "show_unit_price", "label": "Show per-unit price for packs", "default": true },
+    { "type": "text", "id": "unit_label", "label": "Unit word", "default": "reel", "info": "e.g. reel, bulb" },
+    { "type": "checkbox", "id": "show_rating_line", "label": "Show rating line under price", "default": true },
+    { "type": "text", "id": "rating_anchor", "label": "Reviews anchor id", "default": "reviews" }
   ],
   "blocks": [
     {
@@ -973,6 +1128,23 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Title", "default": "Shipping & returns" },
         { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    },
+    {
+      "type": "option_note",
+      "name": "Option note",
+      "settings": [
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    },
+    {
+      "type": "install_callout",
+      "name": "Install callout",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Complete the install" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Size your driver" },
+        { "type": "url", "id": "button_url", "label": "Button link" }
       ]
     }
   ],

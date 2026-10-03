@@ -3,7 +3,7 @@
 
   @param {object} testimonial - The testimonial metaobject entry
   @param {boolean} show_product_link - Show "Purchased: <product>" link
-  @param {object} [current_product] - Product page context; its own link is skipped
+  @param {object} [current_product] - Product page context; that product is shown as "this product" without a link
 {%- enddoc -%}
 
 {%- liquid
@@ -23,18 +23,20 @@
   if show_product_link and t_products != blank
     if t_products.first
       for p in t_products
-        if current_product != blank and p.id == current_product.id
-          continue
-        endif
         if link_product == blank
           assign link_product = p
         else
           assign extra_products = extra_products | plus: 1
         endif
       endfor
-    elsif current_product == blank or t_products.id != current_product.id
+    else
       assign link_product = t_products
     endif
+  endif
+
+  assign is_current = false
+  if link_product != blank and current_product != blank and link_product.id == current_product.id
+    assign is_current = true
   endif
 -%}
 
@@ -97,7 +99,11 @@
       {%- endif -%}
       {%- if link_product != blank -%}
         <p class="kv-tstm__product">
-          Purchased: <a href="{{ link_product.url }}">{{ link_product.title | escape }}</a>
+          {%- if is_current %}
+            Purchased: <span class="kv-tstm__product-current">{{ link_product.title | escape }}</span> <span class="kv-tstm__product-this">· this product</span>
+          {%- else %}
+            Purchased: <a href="{{ link_product.url }}">{{ link_product.title | escape }}</a>
+          {%- endif -%}
           {%- if extra_products > 0 %} <span class="kv-tstm__product-more">+{{ extra_products }} more</span>{% endif -%}
         </p>
       {%- endif -%}
