@@ -16,7 +16,7 @@
           "type": "install_callout",
           "settings": {
             "heading": "Complete the install",
-            "text": "<p>This strip is 24V — it needs a 24V constant-voltage driver, sized to your run length. 10m = 150W. Dimmable installs need a trailing-edge (ELV) driver and dimmer. KAYVA 24V drivers launching in October.</p>",
+            "text": "<p>This strip is 24V and needs a constant-voltage driver sized to your run length (add 20% headroom).</p><p>Dimmable setups need a trailing-edge (ELV) driver + dimmer.</p>",
             "button_label": "Size your driver",
             "button_url": "shopify://pages/driver-sizing"
           }
