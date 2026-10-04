@@ -108,12 +108,12 @@
 </section>
 
 <script>
-  (function(){
+    (function(){
     var root = document.querySelector('.kv-dref-{{ section.id }}');
     if (!root) { return; }
     var wpm = {{ section.settings.default_wpm | default: 12 }};
     var headroom = {{ section.settings.headroom | default: 20 }};
-    var ladder = [30, 45, 60, 75, 100, 120, 150, 200, 240, 300, 360, 480];
+    var ladder = [80, 160];
     var round1 = function(n){ return Math.round(n * 10) / 10; };
 
     function driverFor(watts){
@@ -121,8 +121,17 @@
       for (var i = 0; i < ladder.length; i++) {
         if (ladder[i] >= min) { return ladder[i] + 'W (24V)'; }
       }
-      return Math.ceil(min / 10) * 10 + 'W (24V), or split feeds';
+      var zones = Math.ceil(min / 160);
+      return zones + ' × 160W (24V), split into ' + zones + ' zones';
     }
+
+    function render(){
+      ...unchanged...
+    }
+
+    document.addEventListener('kayva:driver-wpm', function(e){ ...unchanged... });
+    render();
+  })();
 
     function render(){
       root.querySelector('[data-kv-ref-wpm]').textContent = wpm;
