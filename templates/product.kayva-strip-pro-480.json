@@ -31,14 +31,14 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+, R9>80 ·",
-            "text": "Skin tones, timber and fabrics render accurately. Most strips sold in Singapore are only Ra80."
+            "text": "Skin, timber and fabrics look accurate. Most strips are only Ra80."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
             "label": "480 LEDs/m dotless COB ·",
-            "text": "50% denser than the typical 320/m strips. No visible dots, even at close range or in shallow coves."
+            "text": "50% denser than typical strips. No visible dots, even in shallow coves."
           }
         },
         "h2": {
