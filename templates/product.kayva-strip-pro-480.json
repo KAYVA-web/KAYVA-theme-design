@@ -44,7 +44,7 @@
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "24V dotless COB ·",
+            "label": "24V·",
             "text": "Runs cooler and more stable on long runs than 12V. 8 mm PCB fits standard aluminium channels."
           }
         },
