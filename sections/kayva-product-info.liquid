@@ -60,6 +60,14 @@
   color: var(--kayva-dark-brown, #3D2A15);
   margin-bottom: 12px;
 }
+.kv-pinfo__subheadline {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--kayva-warm-brown, #6B4823);
+  margin: -4px 0 16px;
+}
+.kv-pinfo__subheadline strong { color: var(--kayva-dark-brown, #3D2A15); font-weight: 600; }
 .kv-pinfo__price {
   font-size: 22px;
   font-weight: 600;
@@ -531,6 +539,10 @@
         {%- endif -%}
 
         <h1 class="kv-pinfo__title">{{ product.title }}</h1>
+
+        {%- if section.settings.subheadline != blank -%}
+          <p class="kv-pinfo__subheadline">{{ section.settings.subheadline }}</p>
+        {%- endif -%}
 
         {%- liquid
           # Pack quantity from the variant title ("Pack of 2", "Pack of 4 (40m)"); mirrors packQty() in the JS below
@@ -1051,6 +1063,12 @@
       "id": "eyebrow",
       "label": "Eyebrow",
       "info": "e.g. STRIP LIGHTING · RA95+"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheadline",
+      "label": "Sub-headline",
+      "info": "Shown under the product title. Leave blank to hide."
     },
     {
       "type": "header",
