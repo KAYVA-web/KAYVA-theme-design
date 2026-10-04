@@ -254,13 +254,18 @@
     var el = function(sel){ return root.querySelector(sel); };
     var round1 = function(n){ return Math.round(n * 10) / 10; };
 
-    function driverFor(watts){
+        function driverFor(watts){
       var min = watts * (1 + headroom / 100);
-      for (var i = 0; i < ladder.length; i++) {
-        if (ladder[i] >= min) { return ladder[i] + 'W (24V)'; }
-      }
-      var zones = Math.ceil(min / 160);
-      return zones + ' × 160W (24V), split into ' + zones + ' zones';
+      if (min <= 80)  { return '80W (24V)'; }
+      if (min <= 160) { return '160W (24V)'; }
+      var n160 = Math.floor(min / 160);
+      var rem  = min - n160 * 160;
+      var n80  = 0;
+      if (rem > 0) { if (rem <= 80) { n80 = 1; } else { n160 += 1; } }
+      var parts = [];
+      if (n160) { parts.push(n160 + ' × 160W'); }
+      if (n80)  { parts.push('80W'); }
+      return parts.join(' + ') + ' (24V), split into ' + (n160 + n80) + ' zones';
     }
 
     function update(){
