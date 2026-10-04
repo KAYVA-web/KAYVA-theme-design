@@ -12,6 +12,12 @@
     "main": {
       "type": "kayva-product-info",
       "blocks": {
+        "option_note_MLRcJU": {
+          "type": "option_note",
+          "settings": {
+            "content": "<p>Higher CRI costs more to produce and we test every batch. You get accurate colour and a proper warranty instead of a strip that looks dull after installation.</p>"
+          }
+        },
         "install_callout_hByM3Q": {
           "type": "install_callout",
           "settings": {
@@ -19,12 +25,6 @@
             "text": "<p>This strip is 24V and needs a constant-voltage driver sized to your run length (add 20% headroom).</p><p>Dimmable setups need a trailing-edge (ELV) driver + dimmer.</p>",
             "button_label": "Size your driver",
             "button_url": "shopify://pages/driver-sizing"
-          }
-        },
-        "option_note_MLRcJU": {
-          "type": "option_note",
-          "settings": {
-            "content": "<p>Higher CRI costs more to produce and we test every batch. You get accurate colour and a proper warranty instead of a strip that looks dull after installation.</p>"
           }
         },
         "h3": {
@@ -105,8 +105,8 @@
         }
       },
       "block_order": [
-        "install_callout_hByM3Q",
         "option_note_MLRcJU",
+        "install_callout_hByM3Q",
         "h3",
         "h1",
         "h2",
