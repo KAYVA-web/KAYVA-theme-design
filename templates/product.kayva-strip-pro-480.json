@@ -27,18 +27,18 @@
             "button_url": "shopify://pages/driver-sizing"
           }
         },
-        "h3": {
-          "type": "highlight",
-          "settings": {
-            "label": "480 LEDs/m ·",
-            "text": "50% denser than the typical 320/m strips. No visible dots, even at close range or in shallow coves."
-          }
-        },
         "h1": {
           "type": "highlight",
           "settings": {
             "label": "Ra95+, R9>80 ·",
             "text": "Skin tones, timber and fabrics render accurately. Most strips sold in Singapore are only Ra80."
+          }
+        },
+        "h3": {
+          "type": "highlight",
+          "settings": {
+            "label": "480 LEDs/m dotless COB ·",
+            "text": "50% denser than the typical 320/m strips. No visible dots, even at close range or in shallow coves."
           }
         },
         "h2": {
@@ -107,8 +107,8 @@
       "block_order": [
         "option_note_MLRcJU",
         "install_callout_hByM3Q",
-        "h3",
         "h1",
+        "h3",
         "h2",
         "highlight_DNk7fY",
         "bundle_option_xMe86y",
