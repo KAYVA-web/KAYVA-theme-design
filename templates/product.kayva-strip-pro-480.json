@@ -31,7 +31,7 @@
           "type": "highlight",
           "settings": {
             "label": "480 LEDs/m ·",
-            "text": "50% denser than the 320/m strips most of the market sells. No visible dots, no hot spots — even at close range or in shallow coves."
+            "text": "50% denser than the typical 320/m strips. No visible dots, even at close range or in shallow coves."
           }
         },
         "h1": {
@@ -45,7 +45,7 @@
           "type": "highlight",
           "settings": {
             "label": "24V dotless COB ·",
-            "text": "50% denser than the typical 320/m strips. No visible dots, even at close range or in shallow coves."
+            "text": "Runs cooler and more stable on long runs than 12V. 8 mm PCB fits standard aluminium channels."
           }
         },
         "highlight_DNk7fY": {
