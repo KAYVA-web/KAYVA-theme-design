@@ -15,22 +15,22 @@
         "h1": {
           "type": "highlight",
           "settings": {
-            "label": "Premium Ra95+ R9>80 ·",
-            "text": "with two useful colour temperatures—controlled by the wall switch you already have."
+            "label": "SAFETY Mark registered ·",
+            "text": "Tested to IEC 61347-2-13 by TÜV Rheinland."
           }
         },
         "h2": {
           "type": "highlight",
           "settings": {
-            "label": "Switch without rewiring ·",
-            "text": "Toggle between 2700K and 4000K from your existing wall switch. no app, no electrician."
+            "label": "Sized for strip runs ·",
+            "text": "80W drives up to 5 m of 480 Pro strip, 160W up to 10 m, both at a comfortable 80% load."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
-            "label": "Glass body ·",
-            "text": "Frosted lens, no visible chip. 490 lumens from a 7W draw."
+            "label": "Screw terminals both ends ·",
+            "text": "Mains in, 24V out. Hinged clear covers, no soldering, two output pairs for two strips."
           }
         },
         "highlight_RDNnhA": {
@@ -103,7 +103,8 @@
       ],
       "settings": {
         "background_color": "#ffffff",
-        "eyebrow": "GU10 Switch · RA95+",
+        "eyebrow": "SAFETY Mark · 80W and 160W",
+        "subheadline": "",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
