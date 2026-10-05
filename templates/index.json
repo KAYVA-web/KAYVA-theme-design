@@ -71,7 +71,7 @@
           "type": "tile",
           "settings": {
             "collection": "all-products",
-            "title": "Accessories",
+            "title": "LED Driver",
             "image": "shopify://shop_images/kayva_icon_accessories.svg",
             "url": "shopify://collections/accessories"
           }
