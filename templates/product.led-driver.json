@@ -64,7 +64,7 @@
           "type": "accordion",
           "settings": {
             "title": "PRODUCT SPECIFICATIONS",
-            "content": "<p><strong>Fitting:</strong> GU10<br/><strong>CRI:</strong> Ra95+<br/><strong>R9: </strong>&gt;80<strong><br/>SDCM: </strong>4.2<br/><strong>Lumens:</strong> 490 lm<br/><strong>Power:</strong> 7W<br/><strong>Voltage:</strong> 220–240V AC · 50Hz <br/><strong>Kelvin temperature:</strong> 2700K + 4000K<br/><strong>Dimmable:</strong> No<br/><strong>Beam angle:</strong> 36°<br/><strong>Lifespan:</strong> 25,000 hours<br/><strong>IP rating:</strong> IP20 (indoor use)<br/><strong>Body:</strong> Glass</p>"
+            "content": "<p><strong>Model: </strong>KYV-24V-CV-DVR-80W | KYV-24V-CV-DVR-160W<strong><br/>SAFETY Mark:</strong> 260198-15 | 260199-15<br/><strong>Input:</strong> 220–240V AC, 50/60Hz<br/><strong>Input current: </strong>0.5A max | 0.8A max<strong><br/>Output: </strong>24V DC constant voltage<br/><strong>Output current:</strong> 3.33A max | 6.66A max<br/><strong>Max load:</strong> 80W | 160W<br/><strong>Power factor: </strong>&gt; 0.9&nbsp;<br/><strong>Protection class:</strong> Class I (earthed)<br/><strong>IP rating: </strong>IP20<br/><strong>Dimming:</strong> Non-dimmable<br/><strong>Terminals: </strong>Screw, both ends<br/><strong>Size:</strong> 179 × 52 × 26 mm | 209 × 52 × 26 mm<br/><strong>Warranty:</strong> 5 Years</p>"
           }
         },
         "acc1": {
