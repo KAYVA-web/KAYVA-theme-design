@@ -69,7 +69,6 @@
         },
         "t5": {
           "type": "tile",
-          "disabled": true,
           "settings": {
             "collection": "all-products",
             "title": "Accessories",
@@ -90,7 +89,7 @@
         "heading": "Shop by category.",
         "text_align": "center",
         "bg": "#ffffff",
-        "columns": 2,
+        "columns": 3,
         "gap": 12,
         "icon_size": 104,
         "radius": 6,
@@ -213,7 +212,7 @@
         "max_reviews": 12,
         "show_product_link": true,
         "fallback_heading": "What customers say about KAYVA",
-        "bg": "#FFFFFF",
+        "bg": "#ffffff",
         "padding_top": 80,
         "padding_bottom": 80
       }
