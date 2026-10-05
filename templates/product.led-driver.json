@@ -78,7 +78,7 @@
           "type": "accordion",
           "settings": {
             "title": "Warranty",
-            "content": "<p>-year manufacturer warranty covering defects in materials and workmanship.</p>"
+            "content": "<p>5-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
         },
         "accordion_hHjUgk": {
@@ -182,33 +182,33 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/KAYVA_GU10_Switch_1.jpg",
+            "image": "shopify://shop_images/02_UNIT_160W.png",
             "video_url": "",
-            "eyebrow": "Switch, not rewire.",
-            "title": "Switch, not rewire.",
-            "text": "<p>Change colour temperature from your existing wall switch. No dimmer required, no electrician needed.</p>"
+            "eyebrow": "Safety",
+            "title": "Registered, not just claimed.",
+            "text": "<p>Every KAYVA driver carries its own SAFETY Mark registration number, issued after testing to IEC 61347-2-13 by TÜV Rheinland. The number on the label is the number on the certificate.</p>"
           }
         },
         "feat_2": {
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/kayva_gu10_apple_fullbleed_4x3_2048x1536_1_3a783b16-12b2-40ae-988d-5a63e9278d5e.jpg",
+            "image": "shopify://shop_images/05_SIZING_GUIDE_bc8b43c1-06a6-448e-ae9a-a09a53ca6548.png",
             "video_url": "",
-            "eyebrow": "COLOUR ACCURACY",
-            "title": "Ra95+ rendering, true to life.",
-            "text": "<p>Most GU10s sit around Ra80. KAYVA runs at Ra95+ R9&gt;80, which means skin tones, fabrics, and finishes look the way they actually do — not washed out or shifted cool.</p>"
+            "eyebrow": "Sizing",
+            "title": "Pick by metres, not maths.",
+            "text": "<p>480 Pro strip draws 12W per metre. Up to 5 m, take the 80W. Up to 10 m, take the 160W. Both leave the driver at 80% load or less, which is where it runs cool and lasts.</p>"
           }
         },
         "feat_3": {
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/GU10_R9_highlight_1.jpg",
+            "image": "shopify://shop_images/KAYVA_Driver_TERMINAL_OUTPUT_2000.png",
             "video_url": "",
-            "eyebrow": "DEEP RED RENDERING",
-            "title": "R9 above 80. The difference you see.",
-            "text": "<p>Ra95+ alone doesn't tell the full story. R9 measures deep red accuracy — skin tones, warm wood, rich fabric. KAYVA GU10 Switch scores R9=86. Most Ra90 bulbs score below 30.</p>"
+            "eyebrow": "Installation",
+            "title": "Screw in. Close the cover. Done.",
+            "text": "<p>Mains in one end, 24V out the other, all on screw terminals under hinged clear covers. Two output pairs let one driver feed two strips. No soldering, no connectors to buy.</p>"
           }
         },
         "specs": {
