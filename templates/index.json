@@ -73,7 +73,7 @@
             "collection": "all-products",
             "title": "Accessories",
             "image": "shopify://shop_images/kayva_icon_accessories.svg",
-            "url": ""
+            "url": "shopify://collections/accessories"
           }
         }
       },
