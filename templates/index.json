@@ -70,7 +70,7 @@
         "t5": {
           "type": "tile",
           "settings": {
-            "collection": "all-products",
+            "collection": "accessories",
             "title": "LED Driver",
             "image": "shopify://shop_images/kayva_icon_accessories.svg",
             "url": "shopify://products/kayva-24v-led-driver"
