@@ -175,6 +175,48 @@
         "background_color": "#ffffff"
       }
     },
+    "kayva_driver_calculator_MpRDhq": {
+      "type": "kayva-driver-calculator",
+      "blocks": {
+        "preset_iQLxKW": {
+          "type": "preset",
+          "settings": {
+            "label": "12 — 480 Pro",
+            "value": 12
+          }
+        },
+        "preset_niYYQw": {
+          "type": "preset",
+          "settings": {
+            "label": "14",
+            "value": 14
+          }
+        },
+        "preset_rJJmr4": {
+          "type": "preset",
+          "settings": {
+            "label": "18",
+            "value": 18
+          }
+        }
+      },
+      "block_order": [
+        "preset_iQLxKW",
+        "preset_niYYQw",
+        "preset_rJJmr4"
+      ],
+      "name": "KAYVA Driver Calculator",
+      "settings": {
+        "headroom": 20,
+        "default_length": 10,
+        "default_wpm": 12,
+        "wpm_hint": "Printed on the reel or the spec sheet. If a listing quotes only total watts for a 5 m reel, divide by 5.",
+        "result_tag": "Buy this driver",
+        "btn_label": "",
+        "btn_link": "",
+        "bg": "#FFFFFF"
+      }
+    },
     "spotlight": {
       "type": "kayva-product-spotlight",
       "blocks": {
@@ -455,6 +497,7 @@
     "main",
     "kayva_testimonial_carousel_yA3VNF",
     "kayva_product_section_nav_3mLRdp",
+    "kayva_driver_calculator_MpRDhq",
     "spotlight",
     "kayva_product_faq",
     "product_recommendations"
