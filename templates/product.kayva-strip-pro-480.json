@@ -23,8 +23,8 @@
           "settings": {
             "heading": "Complete the install",
             "text": "<p>This strip is 24V and needs a constant-voltage driver.</p><p>Add 20% headroom when sizing (example: 10 m ≈ 150 W).</p><p>Dimmable setups need a trailing-edge (ELV) driver + dimmer.</p>",
-            "button_label": "Size your driver",
-            "button_url": "shopify://pages/driver-sizing"
+            "button_label": "Get your driver",
+            "button_url": "shopify://products/kayva-24v-led-driver"
           }
         },
         "h1": {
