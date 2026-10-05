@@ -182,7 +182,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/02_UNIT_160W.png",
+            "image": "shopify://shop_images/feature_1_registered_4x3_2048x1536_39deba28-e128-49e2-86b2-57a499095b4f.jpg",
             "video_url": "",
             "eyebrow": "Safety",
             "title": "Registered, not just claimed.",
@@ -193,7 +193,7 @@
           "type": "feature",
           "settings": {
             "layout": "reverse",
-            "image": "shopify://shop_images/05_SIZING_GUIDE_bc8b43c1-06a6-448e-ae9a-a09a53ca6548.png",
+            "image": "shopify://shop_images/feature_2_sizing_4x3_2048x1536_81b7b3be-2048-405b-a9b4-4b04d0608997.png",
             "video_url": "",
             "eyebrow": "Sizing",
             "title": "Pick by metres, not maths.",
@@ -204,7 +204,7 @@
           "type": "feature",
           "settings": {
             "layout": "default",
-            "image": "shopify://shop_images/KAYVA_Driver_TERMINAL_OUTPUT_2000.png",
+            "image": "shopify://shop_images/feature_3_terminals_4x3_2048x1536_86044e13-eb43-42f6-ad01-6847fff28317.jpg",
             "video_url": "",
             "eyebrow": "Installation",
             "title": "Screw in. Close the cover. Done.",
