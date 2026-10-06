@@ -370,7 +370,7 @@
         "qa_WC3imw": {
           "type": "qa",
           "settings": {
-            "question": "Why is this S$98 when I can find LED strip for S$20?",
+            "question": "Why is this S$79 when I can find LED strip for S$20?",
             "answer": "<p>The S$20 strip is usually 320 LEDs/m SMD at Ra80 — a different, lower-density product. At S$79 you are in the premium COB tier, where the comparable strips sit at a similar price. The difference is that we publish and guarantee our numbers — Ra95+, R9&gt;80, SDCM≤2, tested per batch — where most at this price publish no CRI figure at all.</p>"
           }
         },
