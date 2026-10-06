@@ -51,7 +51,7 @@
         "highlight_DNk7fY": {
           "type": "highlight",
           "settings": {
-            "label": "5-year warranty ·",
+            "label": "3-year warranty ·",
             "text": "Every batch is tested. We publish the real numbers"
           }
         },
@@ -93,7 +93,7 @@
           "type": "accordion",
           "settings": {
             "title": "Warranty",
-            "content": "<p>5-year manufacturer warranty covering defects in materials and workmanship.</p>"
+            "content": "<p>3-year manufacturer warranty covering defects in materials and workmanship.</p>"
           }
         },
         "accordion_3DQLpE": {
@@ -125,7 +125,7 @@
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
-        "note": "Free delivery over $70 · 5-year warranty · Ships in 2–4 working days",
+        "note": "Free delivery over $70 · 3-year warranty · Ships in 2–4 working days",
         "description_label": "Description",
         "description_content": "",
         "show_unit_price": true,
