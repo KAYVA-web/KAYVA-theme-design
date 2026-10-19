@@ -178,10 +178,10 @@
         "c4": {
           "type": "card",
           "settings": {
-            "product": "kayva-e27-dim-2700k",
-            "badge": "E27 Dim",
-            "image": "shopify://shop_images/E27_Dim_Main_2700K_1.jpg",
-            "desc": "For pendants, floor lamps, and table lamps. 9W, Ra95+, dimmable.",
+            "product": "kayva-24v-led-driver",
+            "badge": "LED Driver",
+            "image": "shopify://shop_images/KAYVA_Driver_24V_Homepage_Card_2048x1536_20770c91-0fb9-4bf1-8dd1-c3f22decab3b.jpg",
+            "desc": "24V constant voltage, 80W or 160W. SAFETY Mark certified. Sized for 1–10 m of strip.",
             "view_label": "View"
           }
         }
