@@ -31,14 +31,14 @@
           "type": "highlight",
           "settings": {
             "label": "Ra95+, R9>80 ·",
-            "text": "Skin, timber and fabrics look accurate. Most strips are only Ra80."
+            "text": "Better colour rendering for timber, fabrics and everyday interiors."
           }
         },
         "h3": {
           "type": "highlight",
           "settings": {
             "label": "480 LEDs/m dotless COB ·",
-            "text": "50% denser than typical strips. No visible dots, even in shallow coves."
+            "text": "A continuous line of light for coves, cabinets and shelves."
           }
         },
         "h2": {
@@ -121,7 +121,7 @@
       "settings": {
         "background_color": "#ffffff",
         "eyebrow": "RA95+ · BATCH TESTED · SINGAPORE STOCK",
-        "subheadline": "Most LED strips in Singapore are Ra80 — colours look flat and grey. This one is Ra95+ with R9 > 80 so skin, timber and fabrics look the way they should.&nbsp;",
+        "subheadline": "Continuous dotless light. Colours that look true to life.&nbsp;",
         "atc_label": "Add to cart",
         "sold_out_label": "Sold out",
         "buy_now_label": "Buy now",
