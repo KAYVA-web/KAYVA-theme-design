@@ -646,7 +646,35 @@
         </div>
 
         {%- if section.settings.price_note != blank -%}
-          <p class="kv-pinfo__price-note">{{ section.settings.price_note }}</p>
+          {%- liquid
+            # [length] = metres in the variant title ("Single 10m", "Pack of 4 (40m)"); mirrors variantLength() in the JS below
+            assign note_tpl = section.settings.price_note
+            assign note_len = 0
+            assign title_words = current_variant.title | replace: '(', ' ' | replace: ')', ' ' | split: ' '
+            for w in title_words
+              assign w_last = w | slice: -1 | downcase
+              if w_last == 'm'
+                assign w_num = w | remove_last: 'm' | remove_last: 'M'
+                assign w_val = w_num | plus: 0
+                assign w_check = w_val | append: ''
+                if w_val > 0 and w_check == w_num
+                  assign note_len = w_val
+                endif
+              endif
+            endfor
+            assign note_has_tokens = false
+            if note_tpl contains '[length]' or note_tpl contains '[price]'
+              assign note_has_tokens = true
+            endif
+            assign note_html = note_tpl
+            if note_has_tokens and note_len > 0
+              assign per_len_cents = current_variant.price | times: 1.0 | divided_by: note_len | round
+              assign per_len_fmt = per_len_cents | money_without_currency
+              assign note_len_str = note_len | append: ''
+              assign note_html = note_tpl | replace: '[length]', note_len_str | replace: '[price]', per_len_fmt
+            endif
+          -%}
+          <p class="kv-pinfo__price-note" id="kv-pinfo-note-{{ section.id }}" data-template="{{ note_tpl | escape }}"{% if note_has_tokens and note_len == 0 %} hidden{% endif %}>{{ note_html }}</p>
         {%- endif -%}
 
         {%- if section.settings.show_rating_line -%}
@@ -1084,6 +1112,25 @@
       }
     }
 
+    var noteEl = document.getElementById('kv-pinfo-note-' + sectionId);
+
+    function variantLength(title){
+      var m = /(\d+(?:\.\d+)?)m\b/i.exec(title || '');
+      return m ? parseFloat(m[1]) : 0;
+    }
+
+    /* Price note with [length] / [price] placeholders, e.g. "[length] metres · S$[price] per metre" */
+    function updatePriceNote(variant){
+      if (!noteEl) { return; }
+      var tpl = noteEl.dataset.template || '';
+      if (tpl.indexOf('[length]') === -1 && tpl.indexOf('[price]') === -1) { return; }
+      var len = variantLength(variant.title);
+      if (!len) { noteEl.hidden = true; return; }
+      var perCents = Math.round(variant.price / len);
+      noteEl.innerHTML = tpl.split('[length]').join(String(len)).split('[price]').join((perCents / 100).toFixed(2));
+      noteEl.hidden = false;
+    }
+
     function syncFloatbar(){
       if (!mainVariantInput) { return; }
       var match = product.variants.find(function(v){ return v.id == mainVariantInput.value; });
@@ -1101,6 +1148,7 @@
         var qty = packQty(match.title);
         setUnit(mainUnitEl, match.price, qty);
         setUnit(floatUnitEl, match.price, qty);
+        updatePriceNote(match);
         if (floatVariantEl) { floatVariantEl.textContent = match.title; }
         if (floatCompareEl) {
           if (match.compare_at_price > match.price) {
@@ -1228,7 +1276,7 @@
       "type": "inline_richtext",
       "id": "price_note",
       "label": "Price note",
-      "info": "Line under the price, e.g. 10 metres · S$7.90 per metre. Leave blank to hide."
+      "info": "Line under the price. Use [length] and [price] to fill in automatically from the selected variant (length = the 10m / 20m / 40m in the variant name), e.g. [length] metres · S$[price] per metre. Leave blank to hide."
     },
     { "type": "checkbox", "id": "show_unit_price", "label": "Show per-unit price for packs", "default": true },
     { "type": "text", "id": "unit_label", "label": "Unit word", "default": "reel", "info": "e.g. reel, bulb" },
