@@ -74,6 +74,13 @@
   color: var(--kayva-dark-brown, #3D2A15);
   margin-bottom: 8px;
 }
+.kv-pinfo__price-note {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--kayva-soft-brown, #8A5524);
+  margin: -2px 0 10px;
+}
+.kv-pinfo__price-note strong { color: var(--kayva-dark-brown, #3D2A15); font-weight: 600; }
 .kv-pinfo__price .kv-pinfo__price-compare {
   font-size: 16px;
   font-weight: 400;
@@ -568,6 +575,10 @@
           {%- endif %}
           <span class="kv-pinfo__price-compare" id="kv-pinfo-compare-{{ section.id }}"{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</span>
         </div>
+
+        {%- if section.settings.price_note != blank -%}
+          <p class="kv-pinfo__price-note">{{ section.settings.price_note }}</p>
+        {%- endif -%}
 
         {%- if section.settings.show_rating_line -%}
           {%- liquid
@@ -1114,6 +1125,12 @@
       "info": "Overrides the product description. Leave blank to use the default product description."
     },
     { "type": "header", "content": "Price & reviews" },
+    {
+      "type": "inline_richtext",
+      "id": "price_note",
+      "label": "Price note",
+      "info": "Line under the price, e.g. 10 metres · S$7.90 per metre. Leave blank to hide."
+    },
     { "type": "checkbox", "id": "show_unit_price", "label": "Show per-unit price for packs", "default": true },
     { "type": "text", "id": "unit_label", "label": "Unit word", "default": "reel", "info": "e.g. reel, bulb" },
     { "type": "checkbox", "id": "show_rating_line", "label": "Show rating line under price", "default": true },
