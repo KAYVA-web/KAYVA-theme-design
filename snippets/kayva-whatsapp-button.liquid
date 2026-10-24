@@ -39,9 +39,11 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
       color: #FFFFFF;
     }
-    /* Sit above the floating buy bar on product pages */
-    body:has(.kv-pinfo__floatbar) .kv-whatsapp-btn {
-      bottom: 96px;
+    /* Sit above the floating buy bar on product pages (phones: see kayva-product-info) */
+    @media (min-width: 641px) {
+      body:has(.kv-pinfo__floatbar) .kv-whatsapp-btn {
+        bottom: 96px;
+      }
     }
     @media (max-width: 600px) {
       .kv-whatsapp-btn {
@@ -49,9 +51,6 @@
         height: 50px;
         bottom: 18px;
         right: 18px;
-      }
-      body:has(.kv-pinfo__floatbar) .kv-whatsapp-btn {
-        bottom: 110px;
       }
     }
   </style>

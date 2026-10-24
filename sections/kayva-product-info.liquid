@@ -442,12 +442,15 @@
 }
 .kv-pinfo__floatbar-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 @media (max-width: 640px) {
-  .kv-pinfo__floatbar-title { max-width: 140px; }
-  .kv-pinfo__floatbar-btn { padding: 0 16px; }
-  .kv-pinfo__floatbar-actions { gap: 10px; }
-  .kv-pinfo__floatbar-price { font-size: 17px; }
-  .kv-pinfo__floatbar-compare { font-size: 12px; }
-  .kv-pinfo__floatbar-unit { display: none; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-inner { display: flex; align-items: center; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-info { display: none; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-actions { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-price { font-size: 18px; flex-shrink: 0; margin-right: 4px; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-compare { font-size: 12px; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-unit { display: none; }
+  .kv-pinfo__floatbar .kv-pinfo__floatbar-btn { flex: 1; height: 48px; padding: 0 8px; font-size: 11px; letter-spacing: 0.06em; white-space: nowrap; }
+  body:has(.kv-pinfo__floatbar) .kv-whatsapp-btn { bottom: 84px; }
+  #google-merchantwidget-iframe-wrapper { bottom: 80px !important; }
 }
 
 /* Accordion (description / shipping / etc) */

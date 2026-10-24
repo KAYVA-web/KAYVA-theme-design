@@ -140,6 +140,9 @@
   @media (max-width: 600px) {
     .kv-footer__grid { grid-template-columns: 1fr; gap: 32px; }
     .kv-footer__bottom { flex-direction: column; text-align: center; }
+    /* 44px tap targets; negative margin keeps the first icon aligned with the text */
+    .kv-footer__social { gap: 0; margin-left: -13px; }
+    .kv-footer__social-link { padding: 13px; }
   }
 </style>
 
@@ -217,8 +220,24 @@
                 <a href="https://wa.me/{{ wa_digits }}" target="_blank" rel="noopener">{{ section.settings.company_whatsapp }}</a>
               </p>
             {%- endif -%}
-            {%- if section.settings.company_phone != blank -%}
-              {%- assign tel_digits = section.settings.company_phone | remove: ' ' | remove: '-' -%}
+            {%- liquid
+              # Local SG numbers ("88074359") get +65 so the tel: link dials correctly from abroad
+              assign tel_digits = section.settings.company_phone | remove: ' ' | remove: '-'
+              assign tel_first = tel_digits | slice: 0
+              if tel_digits != blank and tel_first != '+'
+                assign tel_digits = tel_digits | prepend: '+65'
+              endif
+              # Skip the Contact row when it's the same number as WhatsApp
+              assign phone_same_as_wa = false
+              if section.settings.company_whatsapp != blank
+                assign wa_compare = section.settings.company_whatsapp | remove: '+' | remove: ' ' | remove: '-'
+                assign tel_compare = tel_digits | remove: '+'
+                if wa_compare == tel_compare
+                  assign phone_same_as_wa = true
+                endif
+              endif
+            -%}
+            {%- if section.settings.company_phone != blank and phone_same_as_wa == false -%}
               <p class="kv-footer__detail">
                 <span class="kv-footer__detail-label">Contact</span>
                 <a href="tel:{{ tel_digits }}">{{ section.settings.company_phone }}</a>
@@ -402,7 +421,7 @@
           "type": "text",
           "id": "title",
           "label": "Column heading",
-          "default": "Shop"
+          "default": "Support"
         },
         {
           "type": "link_list",
