@@ -2,7 +2,8 @@
 
 <div class="blog-post-content rte">
   <rte-formatter>
-    {{ article.content }}
+    {%- comment -%} The article title is the page's only <h1>; demote any <h1> pasted into the body {%- endcomment -%}
+    {{ article.content | replace: '<h1', '<h2' | replace: '</h1>', '</h2>' | replace: '<H1', '<h2' | replace: '</H1>', '</h2>' }}
   </rte-formatter>
 </div>
 
