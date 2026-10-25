@@ -18,7 +18,8 @@
   display: block;
   margin-bottom: 22px;
 }
-.kv-whero-{{ section.id }} h1 {
+.kv-whero-{{ section.id }} h1.kv-whero__eyebrow { margin-top: 0; line-height: inherit; }
+.kv-whero-{{ section.id }} .kv-whero__title {
   font-family: var(--kayva-font);
   font-size: clamp(2.3rem, 4.7vw, 3.75rem);
   font-weight: 200;
@@ -107,10 +108,16 @@
 <section class="kv-whero-{{ section.id }}">
   <div class="kayva-page-width">
     <div class="kv-whero__inner">
-      {%- if section.settings.eyebrow != blank -%}
-        <span class="kv-whero__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- if template.name == 'blog' -%}
+        {%- comment -%} Blog listing: the blog name is the page's <h1>; the headline is supporting copy {%- endcomment -%}
+        <h1 class="kv-whero__eyebrow">{{ blog.title }}</h1>
+        <p class="kv-whero__title">{{ section.settings.heading }}</p>
+      {%- else -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="kv-whero__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        <h1 class="kv-whero__title">{{ section.settings.heading }}</h1>
       {%- endif -%}
-      <h1>{{ section.settings.heading }}</h1>
       {%- if section.settings.subheading != blank -%}
         <p class="kv-whero__sub">{{ section.settings.subheading }}</p>
       {%- endif -%}
