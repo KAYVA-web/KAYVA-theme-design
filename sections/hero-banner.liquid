@@ -108,7 +108,18 @@
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
-        <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+        {%- liquid
+          # Article pages already have the article title as their <h1>, so "auto" demotes the hero heading there
+          assign heading_tag = section.settings.heading_tag | default: 'auto'
+          if heading_tag == 'auto'
+            if template.name == 'article'
+              assign heading_tag = 'p'
+            else
+              assign heading_tag = 'h1'
+            endif
+          endif
+        -%}
+        <{{ heading_tag }} class="hero__heading">{{ section.settings.heading }}</{{ heading_tag }}>
       {%- endif -%}
 
       {%- if section.settings.subtext != blank -%}
@@ -201,6 +212,19 @@
       "id": "heading",
       "label": "Heading",
       "default": "Light that renders colour the way your home deserves."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag (SEO)",
+      "options": [
+        { "value": "auto", "label": "Auto (H1, except on blog articles)" },
+        { "value": "h1", "label": "H1 — the page's main title" },
+        { "value": "h2", "label": "H2" },
+        { "value": "p", "label": "Paragraph (no heading)" }
+      ],
+      "default": "auto",
+      "info": "Use one H1 per page. On article pages the article title is the H1."
     },
     {
       "type": "textarea",

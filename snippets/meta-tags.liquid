@@ -119,6 +119,10 @@
   href="{{ canonical_url }}"
 >
 
+{%- if template.name == 'blog' and current_page > 1 -%}
+  <meta name="robots" content="noindex, follow">
+{%- endif -%}
+
 {% if page_description %}
   <meta
     name="description"
